@@ -14,6 +14,10 @@ jobs:
           java-version: 1.8
       - name: Grant permission
         run: chmod +x gradlew
-      - run: echo "$github_ref"
+      - run: echo "gpr.version=$tag" > buildSrc/version.properties
         env:
-          github_ref: ${{ github.event.release.tag_name }}
+          tag: ${{ github.event.release.tag_name }}
+      - run: ./gradlew :plugin-core:publishGprPublicationToGitHubPackagesRepository
+        env:
+          USER_NAME: "github-bot"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
