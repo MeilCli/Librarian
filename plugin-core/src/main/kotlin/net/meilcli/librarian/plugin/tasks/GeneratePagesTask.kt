@@ -219,11 +219,11 @@ open class GeneratePagesTask : DefaultTask() {
 
         val result = mutableListOf<LibraryGroup>()
         val json = Json(JsonConfiguration.Default)
-        for (grouptFile in groupsFolder.listFiles() ?: emptyArray()) {
+        for (groupFile in groupsFolder.listFiles() ?: emptyArray()) {
             try {
-                result += json.parse(LibraryGroup.serializer(), grouptFile.readText())
+                result += json.parse(LibraryGroup.serializer(), groupFile.readText())
             } catch (exception: Exception) {
-                project.logger.warn("Librarian cannot read group file: ${grouptFile.absolutePath}", exception)
+                project.logger.warn("Librarian cannot read group file: ${groupFile.absolutePath}", exception)
             }
         }
 
