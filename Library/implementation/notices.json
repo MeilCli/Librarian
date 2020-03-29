@@ -1,63 +1,67 @@
-[
-    {
-        "artifacts": [
-            "androidx.constraintlayout:constraintlayout"
-        ],
-        "name": "Android ConstraintLayout",
-        "author": "The Android Open Source Project",
-        "url": "http://tools.android.com",
-        "description": "ConstraintLayout for Android",
-        "licenses": [
-            {
-                "name": "The Apache Software License, Version 2.0",
-                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        ]
-    },
-    {
-        "artifacts": [
-            "androidx.appcompat:appcompat",
-            "androidx.core:core-ktx"
-        ],
-        "name": "AndroidX",
-        "author": "The Android Open Source Project",
-        "url": "https://developer.android.com/jetpack/androidx",
-        "description": null,
-        "licenses": [
-            {
-                "name": "The Apache Software License, Version 2.0",
-                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        ]
-    },
-    {
-        "artifacts": [
-            "org.jetbrains.kotlin:kotlin-android-extensions-runtime"
-        ],
-        "name": "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
-        "author": "JetBrains - Kotlin Team",
-        "url": "https://kotlinlang.org/",
-        "description": "Kotlin Android Extensions Runtime",
-        "licenses": [
-            {
-                "name": "The Apache License, Version 2.0",
-                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        ]
-    },
-    {
-        "artifacts": [
-            "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
-        ],
-        "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-        "author": "JetBrains - Kotlin Team",
-        "url": "https://kotlinlang.org/",
-        "description": "Kotlin Standard Library JDK 7 extension",
-        "licenses": [
-            {
-                "name": "The Apache License, Version 2.0",
-                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        ]
-    }
-]
+{
+    "title": "Sample production binary using libraries",
+    "description": "app modules' implementationDependenciesMetadata and releaseImplementationDependenciesMetadata list",
+    "notices": [
+        {
+            "artifacts": [
+                "androidx.constraintlayout:constraintlayout"
+            ],
+            "name": "Android ConstraintLayout",
+            "author": "The Android Open Source Project",
+            "url": "http://tools.android.com",
+            "description": "ConstraintLayout for Android",
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "androidx.appcompat:appcompat",
+                "androidx.core:core-ktx"
+            ],
+            "name": "AndroidX",
+            "author": "The Android Open Source Project",
+            "url": "https://developer.android.com/jetpack/androidx",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-android-extensions-runtime"
+            ],
+            "name": "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": "Kotlin Android Extensions Runtime",
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+            ],
+            "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": "Kotlin Standard Library JDK 7 extension",
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        }
+    ]
+}

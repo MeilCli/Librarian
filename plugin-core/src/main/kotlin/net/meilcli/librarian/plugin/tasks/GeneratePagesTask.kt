@@ -1,15 +1,11 @@
 package net.meilcli.librarian.plugin.tasks
 
 import kotlinx.serialization.UnstableDefault
-import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
-import net.meilcli.librarian.plugin.entities.Artifact
-import net.meilcli.librarian.plugin.entities.Library
-import net.meilcli.librarian.plugin.entities.LibraryGroup
-import net.meilcli.librarian.plugin.entities.Notice
+import net.meilcli.librarian.plugin.entities.*
 import net.meilcli.librarian.plugin.internal.ArtifactLoader
 import net.meilcli.librarian.plugin.internal.LibrarianException
 import net.meilcli.librarian.plugin.internal.Placeholder
@@ -190,7 +186,7 @@ open class GeneratePagesTask : DefaultTask() {
         }
 
         val outputFile = File(outputDirectory, page.jsonFileName)
-        val text = json.stringify(ListSerializer(Notice.serializer()), notices)
+        val text = json.stringify(Notices.serializer(), Notices(page.title, page.description, notices))
         outputFile.writeText(text, Charsets.UTF_8)
     }
 

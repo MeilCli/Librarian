@@ -1,80 +1,84 @@
-[
-    {
-        "artifacts": [
-            "org.junit.jupiter:junit-jupiter-api",
-            "org.junit.jupiter:junit-jupiter-engine"
-        ],
-        "name": "JUnit5",
-        "author": "JUnit Team",
-        "url": "https://junit.org/junit5/",
-        "description": null,
-        "licenses": [
-            {
-                "name": "Eclipse Public License v2.0",
-                "url": "https://www.eclipse.org/legal/epl-v20.html"
-            }
-        ]
-    },
-    {
-        "artifacts": [
-            "com.squareup.okio:okio"
-        ],
-        "name": "Okio",
-        "author": "Square, Inc.",
-        "url": "https://github.com/square/okio/",
-        "description": "A modern I/O API for Java",
-        "licenses": [
-            {
-                "name": "The Apache Software License, Version 2.0",
-                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        ]
-    },
-    {
-        "artifacts": [
-            "com.tickaroo.tikxml:annotation",
-            "com.tickaroo.tikxml:core",
-            "com.tickaroo.tikxml:processor"
-        ],
-        "name": "TikXml",
-        "author": "Tickaroo",
-        "url": "https://github.com/Tickaroo/tikxml",
-        "description": null,
-        "licenses": [
-            {
-                "name": "The Apache Software License, Version 2.0",
-                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        ]
-    },
-    {
-        "artifacts": [
-            "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
-        ],
-        "name": "kotlinx-serialization-runtime",
-        "author": "JetBrains - JetBrains Team",
-        "url": "https://github.com/Kotlin/kotlinx.serialization",
-        "description": "Kotlin multiplatform serialization runtime library",
-        "licenses": [
-            {
-                "name": "The Apache Software License, Version 2.0",
-                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        ]
-    },
-    {
-        "artifacts": [
-            "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
-        ],
-        "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-        "author": "JetBrains - Kotlin Team",
-        "url": "https://kotlinlang.org/",
-        "description": "Kotlin Standard Library JDK 7 extension",
-        "licenses": [
-            {
-                "name": "The Apache License, Version 2.0",
-                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-        ]
-    }
-]
+{
+    "title": "Librarian plugin-core's using libraries",
+    "description": "This list is using development of Librarian",
+    "notices": [
+        {
+            "artifacts": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.jupiter:junit-jupiter-engine"
+            ],
+            "name": "JUnit5",
+            "author": "JUnit Team",
+            "url": "https://junit.org/junit5/",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "Eclipse Public License v2.0",
+                    "url": "https://www.eclipse.org/legal/epl-v20.html"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "com.squareup.okio:okio"
+            ],
+            "name": "Okio",
+            "author": "Square, Inc.",
+            "url": "https://github.com/square/okio/",
+            "description": "A modern I/O API for Java",
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "com.tickaroo.tikxml:annotation",
+                "com.tickaroo.tikxml:core",
+                "com.tickaroo.tikxml:processor"
+            ],
+            "name": "TikXml",
+            "author": "Tickaroo",
+            "url": "https://github.com/Tickaroo/tikxml",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
+            ],
+            "name": "kotlinx-serialization-runtime",
+            "author": "JetBrains - JetBrains Team",
+            "url": "https://github.com/Kotlin/kotlinx.serialization",
+            "description": "Kotlin multiplatform serialization runtime library",
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+            ],
+            "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": "Kotlin Standard Library JDK 7 extension",
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        }
+    ]
+}
