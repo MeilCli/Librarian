@@ -2,7 +2,7 @@ package net.meilcli.librarian.plugin
 
 import net.meilcli.librarian.plugin.tasks.GenerateGroupsTask
 import net.meilcli.librarian.plugin.tasks.GeneratePagesTask
-import net.meilcli.librarian.plugin.tasks.LoadArtifactsTask
+import net.meilcli.librarian.plugin.tasks.GenerateArtifactsTask
 import net.meilcli.librarian.plugin.tasks.ShowConfigurationsTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -23,7 +23,7 @@ open class LibrarianPlugin : Plugin<Project> {
             this.extension = extension
         }
 
-        project.createTask<LoadArtifactsTask>("librarianLoadArtifacts").apply {
+        project.createTask<GenerateArtifactsTask>("librarianGenerateArtifacts").apply {
             this.extension = extension
         }
 

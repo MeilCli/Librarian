@@ -14,7 +14,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
-open class LoadArtifactsTask : DefaultTask() {
+open class GenerateArtifactsTask : DefaultTask() {
 
     @Input
     var extension: LibrarianExtension? = null
