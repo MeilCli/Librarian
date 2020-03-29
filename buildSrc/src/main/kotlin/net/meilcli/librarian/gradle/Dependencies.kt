@@ -26,6 +26,14 @@ object Dependencies {
         val espresso = Dependency("androidx.test.espresso", "espresso-core", "3.2.0")
     }
 
+    object Librarian {
+
+        private const val group = "net.meilcli.librarian"
+        private const val version = "0.1.0"
+
+        val pluginCore = Dependency(group, "plugin-core", version)
+    }
+
     object Junit5 {
 
         private const val version = "5.6.1"

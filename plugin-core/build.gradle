@@ -4,6 +4,13 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://maven.pkg.github.com/MeilCli/Librarian"
+            credentials {
+                username System.getenv("USER_NAME")
+                password System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
     dependencies {
         if (local_build) {
@@ -12,6 +19,8 @@ buildscript {
             classpath Dependencies.TikXml.annotation
             classpath Dependencies.TikXml.core
             classpath Dependencies.SquareUp.okio
+        } else {
+            classpath Dependencies.Librarian.pluginCore
         }
     }
 }
@@ -43,50 +52,48 @@ gradlePlugin {
     }
 }
 
-if (local_build) {
-    apply plugin: 'librarian'
+apply plugin: 'librarian'
 
-    librarian {
-        depth = "firstLevel"
+librarian {
+    depth = "firstLevel"
 
-        pages {
-            "plugin-core-usings-plugin" {
-                title = "Librarian plugin-core's using libraries"
-                description = "This list is including plugin binary"
-                configurations = [
-                        "implementationDependenciesMetadata"
-                ]
-            }
-            "plugin-core-usings-environment" {
-                title = "Librarian plugin-core's using libraries"
-                description = "This list is using development of Librarian"
-                configurations = [
-                        "kapt",
-                        "testImplementationDependenciesMetadata",
-                        "testRuntimeOnlyDependenciesMetadata"
-                ]
-            }
+    pages {
+        "plugin-core-usings-plugin" {
+            title = "Librarian plugin-core's using libraries"
+            description = "This list is including plugin binary"
+            configurations = [
+                    "implementationDependenciesMetadata"
+            ]
         }
+        "plugin-core-usings-development" {
+            title = "Librarian plugin-core's using libraries"
+            description = "This list is using development of Librarian"
+            configurations = [
+                    "kapt",
+                    "testImplementationDependenciesMetadata",
+                    "testRuntimeOnlyDependenciesMetadata"
+            ]
+        }
+    }
 
-        groups {
-            "TikXml" {
-                artifacts = [
-                        "com.tickaroo.tikxml:annotation",
-                        "com.tickaroo.tikxml:core",
-                        "com.tickaroo.tikxml:processor"
-                ]
-                author = "Tickaroo"
-                url = "https://github.com/Tickaroo/tikxml"
-                licenseName = "The Apache Software License, Version 2.0"
-                licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-            "JUnit5" {
-                artifacts = [
-                        "org.junit.jupiter:junit-jupiter-api",
-                        "org.junit.jupiter:junit-jupiter-engine"
-                ]
-                author = "JUnit Team"
-            }
+    groups {
+        "TikXml" {
+            artifacts = [
+                    "com.tickaroo.tikxml:annotation",
+                    "com.tickaroo.tikxml:core",
+                    "com.tickaroo.tikxml:processor"
+            ]
+            author = "Tickaroo"
+            url = "https://github.com/Tickaroo/tikxml"
+            licenseName = "The Apache Software License, Version 2.0"
+            licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+        "JUnit5" {
+            artifacts = [
+                    "org.junit.jupiter:junit-jupiter-api",
+                    "org.junit.jupiter:junit-jupiter-engine"
+            ]
+            author = "JUnit Team"
         }
     }
 }

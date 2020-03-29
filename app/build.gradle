@@ -4,6 +4,13 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://maven.pkg.github.com/MeilCli/Librarian"
+            credentials {
+                username System.getenv("USER_NAME")
+                password System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
     dependencies {
         if (local_build) {
@@ -12,6 +19,8 @@ buildscript {
             classpath Dependencies.TikXml.annotation
             classpath Dependencies.TikXml.core
             classpath Dependencies.SquareUp.okio
+        } else {
+            classpath Dependencies.Librarian.pluginCore
         }
     }
 }
@@ -53,34 +62,32 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-if (local_build) {
-    apply plugin: 'librarian'
+apply plugin: 'librarian'
 
-    librarian {
-        depth = "firstLevel"
+librarian {
+    depth = "firstLevel"
 
-        pages {
-            implementation {
-                title = "Sample production binary using libraries"
-                description = "app modules' implementationDependenciesMetadata and releaseImplementationDependenciesMetadata list"
-                configurations = [
-                        "implementationDependenciesMetadata",
-                        "releaseImplementationDependenciesMetadata"
-                ]
-            }
+    pages {
+        implementation {
+            title = "Sample production binary using libraries"
+            description = "app modules' implementationDependenciesMetadata and releaseImplementationDependenciesMetadata list"
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "releaseImplementationDependenciesMetadata"
+            ]
         }
+    }
 
-        groups {
-            "AndroidX" {
-                artifacts = [
-                        "androidx.appcompat:appcompat",
-                        "androidx.core:core-ktx"
-                ]
-                author = "The Android Open Source Project"
-                url = "https://developer.android.com/jetpack/androidx"
-                licenseName = "The Apache Software License, Version 2.0"
-                licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
+    groups {
+        "AndroidX" {
+            artifacts = [
+                    "androidx.appcompat:appcompat",
+                    "androidx.core:core-ktx"
+            ]
+            author = "The Android Open Source Project"
+            url = "https://developer.android.com/jetpack/androidx"
+            licenseName = "The Apache Software License, Version 2.0"
+            licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
     }
 }
