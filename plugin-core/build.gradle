@@ -7,7 +7,7 @@ buildscript {
         maven {
             url "https://maven.pkg.github.com/MeilCli/Librarian"
             credentials {
-                username System.getenv("USER_NAME")
+                username System.getenv("GITHUB_USRE")
                 password System.getenv("GITHUB_TOKEN")
             }
         }

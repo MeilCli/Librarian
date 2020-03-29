@@ -7,6 +7,11 @@ on:
 jobs:
   package:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_USER: "github-bot"
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
+      BINTRAY_TOKEN: ${{ secrets.BINTRAY_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
@@ -18,10 +23,4 @@ jobs:
         env:
           tag: ${{ github.event.release.tag_name }}
       - run: ./gradlew :plugin-core:publishGprPublicationToGitHubPackagesRepository
-        env:
-          USER_NAME: "github-bot"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: ./gradlew :plugin-core:bintrayUpload
-        env:
-          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
-          BINTRAY_TOKEN: ${{ secrets.BINTRAY_TOKEN }}

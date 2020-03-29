@@ -31,7 +31,7 @@ class MavenPublishPlugin : Plugin<Project> {
                 url = URI("https://maven.pkg.github.com/MeilCli/Librarian")
 
                 credentials {
-                    username = project.findProperty("gpr.user") as? String ?: System.getenv("USER_NAME")
+                    username = project.findProperty("gpr.user") as? String ?: System.getenv("GITHUB_USER")
                     password = project.findProperty("gpr.token") as? String ?: System.getenv("GITHUB_TOKEN")
                 }
             }
