@@ -6,7 +6,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        def githubUser = System.getenv("GITHUB_USRE")
+        def githubUser = System.getenv("GITHUB_USER")
         def githubToken = System.getenv("GITHUB_TOKEN")
         if (githubUser != null && githubToken != null) {
             maven {
@@ -41,7 +41,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        def githubUser = System.getenv("GITHUB_USRE")
+        def githubUser = System.getenv("GITHUB_USER")
         def githubToken = System.getenv("GITHUB_TOKEN")
         if (githubUser != null && githubToken != null) {
             maven {
