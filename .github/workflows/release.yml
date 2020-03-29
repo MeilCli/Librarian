@@ -16,4 +16,4 @@ jobs:
         run: chmod +x gradlew
       - run: echo "$github_ref"
         env:
-          github_ref: ${{ github.ref }}
+          github_ref: ${{ github.event.release.tag_name }}
