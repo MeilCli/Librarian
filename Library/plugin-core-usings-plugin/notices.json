@@ -3,23 +3,23 @@
     "description": "This list is including plugin binary",
     "notices": [
         {
-          "artifacts": [
-            "org.jetbrains.kotlin:kotlin-gradle-plugin",
-            "org.jetbrains.kotlin:kotlin-serialization",
-            "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
-          ],
-          "name": "Kotlin",
-          "author": "JetBrains - Kotlin Team",
-          "url": "https://kotlinlang.org/",
-          "description": null,
-          "licenses": [
-            {
-              "name": "The Apache License, Version 2.0",
-              "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-          ]
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-gradle-plugin",
+                "org.jetbrains.kotlin:kotlin-serialization",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+            ],
+            "name": "Kotlin",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
         },
-      {
+        {
             "artifacts": [
                 "com.squareup.okio:okio"
             ],

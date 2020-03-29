@@ -51,6 +51,21 @@
           ]
         },
       {
+        "artifacts": [
+          "net.meilcli.librarian:plugin-core"
+        ],
+        "name": "Librarian",
+        "author": "MeilCli",
+        "url": "https://github.com/MeilCli/Librarian",
+        "description": null,
+        "licenses": [
+          {
+            "name": "MIT License",
+            "url": "https://github.com/MeilCli/Librarian/blob/master/LICENSE"
+          }
+        ]
+      },
+      {
             "artifacts": [
                 "com.squareup.okio:okio"
             ],
@@ -76,6 +91,21 @@
             "url": "https://github.com/Tickaroo/tikxml",
             "description": null,
             "licenses": [
+              {
+                "name": "The Apache Software License, Version 2.0",
+                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+              }
+            ]
+        },
+      {
+        "artifacts": [
+          "com.jfrog.bintray.gradle:gradle-bintray-plugin"
+        ],
+        "name": "gradle-bintray-plugin",
+        "author": "Yoav Landman",
+        "url": "https://github.com/bintray/gradle-bintray-plugin",
+        "description": null,
+        "licenses": [
                 {
                     "name": "The Apache Software License, Version 2.0",
                     "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
