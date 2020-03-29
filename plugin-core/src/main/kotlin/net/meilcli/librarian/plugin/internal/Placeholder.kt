@@ -1,6 +1,6 @@
 package net.meilcli.librarian.plugin.internal
 
-object PlaceHolder {
+object Placeholder {
 
     const val name = "PUT NAME"
     const val author = "PUT AUTHOR"

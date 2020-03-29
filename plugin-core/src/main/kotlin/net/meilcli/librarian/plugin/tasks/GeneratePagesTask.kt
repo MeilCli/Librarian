@@ -12,7 +12,7 @@ import net.meilcli.librarian.plugin.entities.LibraryGroup
 import net.meilcli.librarian.plugin.entities.Notice
 import net.meilcli.librarian.plugin.internal.ArtifactLoader
 import net.meilcli.librarian.plugin.internal.LibrarianException
-import net.meilcli.librarian.plugin.internal.PlaceHolder
+import net.meilcli.librarian.plugin.internal.Placeholder
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -74,7 +74,7 @@ open class GeneratePagesTask : DefaultTask() {
                     if (foundArtifact.licenses.isNotEmpty()) {
                         // check same licenses
                         for (checkLicense in foundArtifact.licenses) {
-                            if (checkLicense.name == PlaceHolder.licenseName || checkLicense.url == PlaceHolder.licenseUrl) {
+                            if (checkLicense.name == Placeholder.licenseName || checkLicense.url == Placeholder.licenseUrl) {
                                 // will override by group
                                 continue
                             }
@@ -136,11 +136,11 @@ open class GeneratePagesTask : DefaultTask() {
         }
 
         for (notice in notices) {
-            if (notice.author == PlaceHolder.author || notice.name == PlaceHolder.name || notice.url == PlaceHolder.url) {
+            if (notice.author == Placeholder.author || notice.name == Placeholder.name || notice.url == Placeholder.url) {
                 warnOrThrow(notice)
             }
             for (license in notice.licenses) {
-                if (license.name == PlaceHolder.name || license.url == PlaceHolder.url) {
+                if (license.name == Placeholder.name || license.url == Placeholder.url) {
                     warnOrThrow(notice)
                 }
             }
