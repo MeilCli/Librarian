@@ -2,6 +2,7 @@ import net.meilcli.librarian.gradle.Dependencies
 
 buildscript {
     ext.kotlin_version = '1.3.61'
+    ext.local_build = false
     repositories {
         google()
         jcenter()

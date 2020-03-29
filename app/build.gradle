@@ -6,11 +6,13 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath fileTree(dir: 'libs', include: ['*.jar'])
-        classpath Dependencies.Kotlin.Serialization.runtime
-        classpath Dependencies.TikXml.annotation
-        classpath Dependencies.TikXml.core
-        classpath Dependencies.SquareUp.okio
+        if (local_build) {
+            classpath fileTree(dir: 'libs', include: ['*.jar'])
+            classpath Dependencies.Kotlin.Serialization.runtime
+            classpath Dependencies.TikXml.annotation
+            classpath Dependencies.TikXml.core
+            classpath Dependencies.SquareUp.okio
+        }
     }
 }
 
@@ -51,32 +53,34 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-apply plugin: 'librarian'
+if (local_build) {
+    apply plugin: 'librarian'
 
-librarian {
-    depth = "firstLevel"
+    librarian {
+        depth = "firstLevel"
 
-    pages {
-        implementation {
-            title = "Sample production binary using libraries"
-            description = "app modules' implementationDependenciesMetadata and releaseImplementationDependenciesMetadata list"
-            configurations = [
-                    "implementationDependenciesMetadata",
-                    "releaseImplementationDependenciesMetadata"
-            ]
+        pages {
+            implementation {
+                title = "Sample production binary using libraries"
+                description = "app modules' implementationDependenciesMetadata and releaseImplementationDependenciesMetadata list"
+                configurations = [
+                        "implementationDependenciesMetadata",
+                        "releaseImplementationDependenciesMetadata"
+                ]
+            }
         }
-    }
 
-    groups {
-        "AndroidX" {
-            artifacts = [
-                    "androidx.appcompat:appcompat",
-                    "androidx.core:core-ktx"
-            ]
-            author = "The Android Open Source Project"
-            url = "https://developer.android.com/jetpack/androidx"
-            licenseName = "The Apache Software License, Version 2.0"
-            licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        groups {
+            "AndroidX" {
+                artifacts = [
+                        "androidx.appcompat:appcompat",
+                        "androidx.core:core-ktx"
+                ]
+                author = "The Android Open Source Project"
+                url = "https://developer.android.com/jetpack/androidx"
+                licenseName = "The Apache Software License, Version 2.0"
+                licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
         }
     }
 }
