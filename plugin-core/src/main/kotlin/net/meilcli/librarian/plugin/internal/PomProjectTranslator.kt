@@ -7,7 +7,7 @@ import net.meilcli.librarian.plugin.entities.PomProject
 object PomProjectTranslator {
 
     fun translate(pomProject: PomProject): Library {
-        val name = pomProject.name ?: "PUT LIBRARY NAME"
+        val name = pomProject.name ?: PlaceHolder.name
         val developer = pomProject.developers
             ?.filter { it.name != null || it.organization != null }
             ?.joinToString {
@@ -19,11 +19,11 @@ object PomProjectTranslator {
                     "${it.name}"
                 }
             }
-        val author = if (developer.isNullOrEmpty()) "PUT AUTHOR" else developer
-        val url = pomProject.url ?: "PUT LIBRARY URL"
+        val author = if (developer.isNullOrEmpty()) PlaceHolder.author else developer
+        val url = pomProject.url ?: PlaceHolder.url
         val licenses = pomProject.licenses
-            ?.map { License(it.name ?: "PUT LICENSE NAME", it.url ?: "PUT LICENSE URL") }
-            ?: listOf(License("PUT LICENSE NAME", "PUT LICENSE URL"))
+            ?.map { License(it.name ?: PlaceHolder.licenseName, it.url ?: PlaceHolder.licenseUrl) }
+            ?: listOf(License(PlaceHolder.licenseName, PlaceHolder.licenseUrl))
 
         return Library(
             artifact = "${pomProject.group}:${pomProject.artifact}",
