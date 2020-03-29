@@ -78,6 +78,12 @@ class ArtifactLoader {
         for (configuration in project.configurations) {
             loadResolvedArtifacts(project, configuration, context, depth)
         }
+        for (configuration in project.buildscript.configurations) {
+            loadResolvedArtifacts(project, configuration, context, depth)
+        }
+        for (configuration in project.rootProject.buildscript.configurations) {
+            loadResolvedArtifacts(project, configuration, context, depth)
+        }
     }
 
     private fun loadResolvedArtifacts(
