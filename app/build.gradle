@@ -1,30 +1,5 @@
 import net.meilcli.librarian.gradle.Dependencies
 
-buildscript {
-    repositories {
-        google()
-        jcenter()
-        maven {
-            url "https://maven.pkg.github.com/MeilCli/Librarian"
-            credentials {
-                username System.getenv("GITHUB_USER")
-                password System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
-    dependencies {
-        if (local_build) {
-            classpath fileTree(dir: 'libs', include: ['*.jar'])
-            classpath Dependencies.Kotlin.Serialization.runtime
-            classpath Dependencies.TikXml.annotation
-            classpath Dependencies.TikXml.core
-            classpath Dependencies.SquareUp.okio
-        } else {
-            classpath Dependencies.Librarian.pluginCore
-        }
-    }
-}
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'

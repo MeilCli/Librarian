@@ -6,12 +6,34 @@ buildscript {
     repositories {
         google()
         jcenter()
+        def githubUser = System.getenv("GITHUB_USRE")
+        def githubToken = System.getenv("GITHUB_TOKEN")
+        if (githubUser != null && githubToken != null) {
+            maven {
+                url "https://maven.pkg.github.com/MeilCli/Librarian"
+                credentials {
+                    username githubUser
+                    password githubToken
+                }
+            }
+        } else {
+            maven { url "https://dl.bintray.com/meilcli/librarian" }
+        }
     }
     dependencies {
         classpath Dependencies.Android.gradle
         classpath Dependencies.Kotlin.gradle
         classpath Dependencies.Kotlin.Serialization.gradle
         classpath Dependencies.Bintray.plugin
+        if (local_build) {
+            classpath fileTree(dir: 'libs', include: ['*.jar'])
+            classpath Dependencies.Kotlin.Serialization.runtime
+            classpath Dependencies.TikXml.annotation
+            classpath Dependencies.TikXml.core
+            classpath Dependencies.SquareUp.okio
+        } else {
+            classpath Dependencies.Librarian.pluginCore
+        }
     }
 }
 
