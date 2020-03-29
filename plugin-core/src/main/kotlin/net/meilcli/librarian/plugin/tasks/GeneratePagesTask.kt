@@ -143,7 +143,7 @@ open class GeneratePagesTask : DefaultTask() {
                     warnOrThrow(notice)
                 }
             }
-            if (notices.any { it.artifacts == notice.artifacts }) {
+            if (1 < notices.count { it.artifacts == notice.artifacts }) {
                 project.logger.warn("Librarian warning: notice has duplication, ${notice.artifacts.joinToString()}")
             }
         }
