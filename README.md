@@ -78,7 +78,7 @@ librarian {
     failOnGeneratePageWhenFoundPlaceholder = true // Boolean, default value is true
 
     pages {
-        "plugin-core-usings-plugin" { // page name, must be unique and not same artifactsFolderNAme and groupsFolderName
+        "plugin-core-usings-plugin" { // page name, must be unique
             title = "Librarian plugin-core's using libraries" // String?, default value is same the name
             description = null // String?, default value is null
             markdown = true // Boolean, default value is null
@@ -92,7 +92,7 @@ librarian {
     }
 
     groups {
-        "Kotlin" { // group name
+        "Kotlin" { // group name, must be unique
             artifacts = [
                     "org.jetbrains.kotlin:kotlin-gradle-plugin",
                     "org.jetbrains.kotlin:kotlin-serialization",
