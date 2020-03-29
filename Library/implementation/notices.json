@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Android ConstraintLayout",
+        "author": "The Android Open Source Project",
+        "url": "http://tools.android.com",
+        "description": "ConstraintLayout for Android",
+        "licenses": [
+            {
+                "name": "The Apache Software License, Version 2.0",
+                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        ]
+    },
+    {
+        "name": "AndroidX",
+        "author": "The Android Open Source Project",
+        "url": "https://developer.android.com/jetpack/androidx",
+        "description": null,
+        "licenses": [
+            {
+                "name": "The Apache Software License, Version 2.0",
+                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        ]
+    },
+    {
+        "name": "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+        "author": "JetBrains - Kotlin Team",
+        "url": "https://kotlinlang.org/",
+        "description": "Kotlin Android Extensions Runtime",
+        "licenses": [
+            {
+                "name": "The Apache License, Version 2.0",
+                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        ]
+    },
+    {
+        "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+        "author": "JetBrains - Kotlin Team",
+        "url": "https://kotlinlang.org/",
+        "description": "Kotlin Standard Library JDK 7 extension",
+        "licenses": [
+            {
+                "name": "The Apache License, Version 2.0",
+                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        ]
+    }
+]

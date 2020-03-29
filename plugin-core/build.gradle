@@ -1,0 +1,89 @@
+import net.meilcli.librarian.gradle.Dependencies
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath fileTree(dir: 'libs', include: ['*.jar'])
+        classpath Dependencies.Kotlin.Serialization.runtime
+        classpath Dependencies.TikXml.annotation
+        classpath Dependencies.TikXml.core
+        classpath Dependencies.SquareUp.okio
+    }
+}
+
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'KotlinLibraryPlugin'
+
+dependencies {
+    implementation Dependencies.Kotlin.Serialization.runtime
+    implementation Dependencies.TikXml.annotation
+    implementation Dependencies.TikXml.core
+    implementation Dependencies.SquareUp.okio
+    kapt Dependencies.TikXml.processor
+}
+
+gradlePlugin {
+    plugins {
+        librarianPlugin {
+            id = "librarian"
+            displayName = "Librarian Plugin"
+            description = "Librarian..."
+            implementationClass = "net.meilcli.librarian.plugin.LibrarianPlugin"
+        }
+    }
+}
+
+apply plugin: 'librarian'
+
+librarian {
+    depth = "firstLevel"
+
+    pages {
+        "plugin-core-usings-plugin" {
+            title = "Librarian plugin-core's using libraries"
+            description = "This list is including plugin binary"
+            configurations = [
+                    "implementationDependenciesMetadata"
+            ]
+        }
+        "plugin-core-usings-environment" {
+            title = "Librarian plugin-core's using libraries"
+            description = "This list is using development of Librarian"
+            configurations = [
+                    "kapt",
+                    "testImplementationDependenciesMetadata",
+                    "testRuntimeOnlyDependenciesMetadata"
+            ]
+        }
+    }
+
+    groups {
+        "TikXml" {
+            artifacts = [
+                    "com.tickaroo.tikxml:annotation",
+                    "com.tickaroo.tikxml:core",
+                    "com.tickaroo.tikxml:processor"
+            ]
+            author = "Tickaroo"
+            url = "https://github.com/Tickaroo/tikxml"
+            licenseName = "The Apache Software License, Version 2.0"
+            licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+        "JUnit5" {
+            artifacts = [
+                    "org.junit.jupiter:junit-jupiter-api",
+                    "org.junit.jupiter:junit-jupiter-engine"
+            ]
+            author = "JUnit Team"
+            url = "https://junit.org/junit5/"
+            licenseName = "Eclipse Public License v2.0"
+            licenseUrl = "https://www.eclipse.org/legal/epl-v20.html"
+        }
+    }
+}
