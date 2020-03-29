@@ -30,6 +30,8 @@ open class LibrarianExtension @Inject constructor(
             else -> LibrarianDepth.FirstLevel
         }
 
+    var failOnGeneratePageWhenFoundPlaceholder = true
+
     val pages = objectFactory.domainObjectContainer(LibrarianPageExtension::class.java)
 
     val groups = objectFactory.domainObjectContainer(LibrarianGroupExtension::class.java)

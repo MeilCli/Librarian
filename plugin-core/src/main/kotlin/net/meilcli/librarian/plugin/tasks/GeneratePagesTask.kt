@@ -11,6 +11,8 @@ import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.LibraryGroup
 import net.meilcli.librarian.plugin.entities.Notice
 import net.meilcli.librarian.plugin.internal.ArtifactLoader
+import net.meilcli.librarian.plugin.internal.LibrarianException
+import net.meilcli.librarian.plugin.internal.PlaceHolder
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -37,6 +39,9 @@ open class GeneratePagesTask : DefaultTask() {
             try {
                 writePage(page, artifactLoaderResult, artifacts ?: emptyList(), groups ?: emptyList())
             } catch (exception: Exception) {
+                if (exception is LibrarianException) {
+                    throw exception
+                }
                 project.logger.error("Failed Librarian, page: ${page.name}", exception)
             }
         }
@@ -65,7 +70,19 @@ open class GeneratePagesTask : DefaultTask() {
             val foundArtifact = artifacts.find { it.artifact == noticeArtifact.artifact }
             val foundGroup = groups.find { it.artifacts.contains(noticeArtifact.artifact) }
             val notice = when {
-                foundGroup != null -> {
+                foundGroup != null && foundArtifact != null -> {
+                    if (foundArtifact.licenses.isNotEmpty()) {
+                        // check same licenses
+                        for (checkLicense in foundArtifact.licenses) {
+                            if (checkLicense.name == PlaceHolder.licenseName || checkLicense.url == PlaceHolder.licenseUrl) {
+                                // will override by group
+                                continue
+                            }
+                            if (foundGroup.licenses.contains(checkLicense).not()) {
+                                project.logger.warn("Librarian warning: group has not artifact license, ${foundGroup.name}, ${foundArtifact.artifact}")
+                            }
+                        }
+                    }
                     Notice(
                         artifacts = foundGroup.artifacts,
                         name = foundGroup.name,
@@ -86,7 +103,7 @@ open class GeneratePagesTask : DefaultTask() {
                     )
                 }
                 else -> {
-                    throw IllegalStateException("Librarian not found library data: ${noticeArtifact.group}:${noticeArtifact.name}")
+                    throw LibrarianException("Librarian not found library data: ${noticeArtifact.group}:${noticeArtifact.name}")
                 }
             }
 
@@ -95,6 +112,8 @@ open class GeneratePagesTask : DefaultTask() {
             }
         }
 
+        checkNotice(notices)
+
         notices.sortBy { it.name }
 
         if (page.markdown) {
@@ -102,6 +121,29 @@ open class GeneratePagesTask : DefaultTask() {
         }
         if (page.json) {
             writeJsonPage(page, notices)
+        }
+    }
+
+    private fun checkNotice(notices: List<Notice>) {
+        val extension = extension ?: return
+
+        fun warnOrThrow(notice: Notice) {
+            if (extension.failOnGeneratePageWhenFoundPlaceholder) {
+                throw LibrarianException("Librarian error: notice has placeholder, ${notice.artifacts.joinToString()}")
+            } else {
+                project.logger.warn("Librarian warning: notice has placeholder, ${notice.artifacts.joinToString()}")
+            }
+        }
+
+        for (notice in notices) {
+            if (notice.author == PlaceHolder.author || notice.name == PlaceHolder.name || notice.url == PlaceHolder.url) {
+                warnOrThrow(notice)
+            }
+            for (license in notice.licenses) {
+                if (license.name == PlaceHolder.name || license.url == PlaceHolder.url) {
+                    warnOrThrow(notice)
+                }
+            }
         }
     }
 
