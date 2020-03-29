@@ -34,6 +34,11 @@ object Dependencies {
         val pluginCore = Dependency(group, "plugin-core", version)
     }
 
+    object Bintray {
+
+        val plugin = Dependency("com.jfrog.bintray.gradle", "gradle-bintray-plugin", "1.8.4")
+    }
+
     object Junit5 {
 
         private const val version = "5.6.1"

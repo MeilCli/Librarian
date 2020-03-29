@@ -31,6 +31,7 @@ apply plugin: 'kotlinx-serialization'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'KotlinLibraryPlugin'
 apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 apply plugin: 'MavenPublishPlugin'
 
 dependencies {

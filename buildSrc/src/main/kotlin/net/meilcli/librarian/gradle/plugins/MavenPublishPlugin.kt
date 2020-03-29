@@ -1,5 +1,6 @@
 package net.meilcli.librarian.gradle.plugins
 
+import com.jfrog.bintray.gradle.BintrayExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
@@ -57,6 +58,25 @@ class MavenPublishPlugin : Plugin<Project> {
 
                 from(project.components["java"])
             }
+        }
+
+        val bintray = checkNotNull(project.extensions.findByType(BintrayExtension::class.java))
+        bintray.apply {
+            user = project.findProperty("bintray.user") as? String ?: System.getenv("BINTRAY_USER")
+            key = project.findProperty("bintray.token") as? String ?: System.getenv("BINTRAY_TOKEN")
+            pkg.apply {
+                userOrg = "meilcli"
+                repo = "librarian"
+                name = project.name
+                setLicenses("MIT")
+                githubRepo = "MeilCli/Librarian"
+                websiteUrl = "https://github.com/MeilCli/Librarian"
+                vcsUrl = "https://github.com/MeilCli/Librarian.git"
+
+                version.name = versionValue
+            }
+            setPublications("gpr")
+            dryRun = true
         }
     }
 }
