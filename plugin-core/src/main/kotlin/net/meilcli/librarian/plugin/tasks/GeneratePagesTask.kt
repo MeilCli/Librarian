@@ -71,6 +71,9 @@ open class GeneratePagesTask : DefaultTask() {
             val foundGroup = groups.find { it.artifacts.contains(noticeArtifact.artifact) }
             val notice = when {
                 foundGroup != null && foundArtifact != null -> {
+                    val author = foundGroup.author ?: foundArtifact.author
+                    val url = foundGroup.url ?: foundArtifact.url
+                    val licenses = foundGroup.licenses ?: foundArtifact.licenses
                     if (foundArtifact.licenses.isNotEmpty()) {
                         // check same licenses
                         for (checkLicense in foundArtifact.licenses) {
@@ -78,7 +81,7 @@ open class GeneratePagesTask : DefaultTask() {
                                 // will override by group
                                 continue
                             }
-                            if (foundGroup.licenses.contains(checkLicense).not()) {
+                            if (licenses.contains(checkLicense).not()) {
                                 project.logger.warn("Librarian warning: group has not artifact license, ${foundGroup.name}, ${foundArtifact.artifact}")
                             }
                         }
@@ -86,10 +89,10 @@ open class GeneratePagesTask : DefaultTask() {
                     Notice(
                         artifacts = foundGroup.artifacts,
                         name = foundGroup.name,
-                        author = foundGroup.author,
-                        url = foundGroup.url,
+                        author = author,
+                        url = url,
                         description = foundGroup.description,
-                        licenses = foundGroup.licenses
+                        licenses = licenses
                     )
                 }
                 foundArtifact != null -> {
@@ -143,6 +146,9 @@ open class GeneratePagesTask : DefaultTask() {
                 if (license.name == Placeholder.name || license.url == Placeholder.url) {
                     warnOrThrow(notice)
                 }
+            }
+            if (notices.any { it.artifacts == notice.artifacts }) {
+                project.logger.warn("Librarian warning: notice has duplication, ${notice.artifacts.joinToString()}")
             }
         }
     }

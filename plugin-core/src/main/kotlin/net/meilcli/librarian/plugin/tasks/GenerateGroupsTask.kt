@@ -5,6 +5,7 @@ import kotlinx.serialization.json.Json
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.entities.LibraryGroup
 import net.meilcli.librarian.plugin.entities.License
+import net.meilcli.librarian.plugin.internal.Placeholder
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -20,17 +21,23 @@ open class GenerateGroupsTask : DefaultTask() {
     fun action() {
         val extension = extension ?: return
         val groups = extension.groups.map {
-            val license = License(
-                it.licenseName,
-                it.licenseUrl
-            )
+            val licenses = if (it.licenseName != null || it.licenseUrl != null) {
+                listOf(
+                    License(
+                        it.licenseName ?: Placeholder.licenseName,
+                        it.licenseUrl ?: Placeholder.licenseUrl
+                    )
+                )
+            } else {
+                null
+            }
             LibraryGroup(
                 artifacts = it.artifacts.toList(),
                 name = it.name,
                 author = it.author,
                 url = it.url,
                 description = it.description,
-                licenses = listOf(license)
+                licenses = licenses
             )
         }
 

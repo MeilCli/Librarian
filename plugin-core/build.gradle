@@ -81,9 +81,6 @@ librarian {
                     "org.junit.jupiter:junit-jupiter-engine"
             ]
             author = "JUnit Team"
-            url = "https://junit.org/junit5/"
-            licenseName = "Eclipse Public License v2.0"
-            licenseUrl = "https://www.eclipse.org/legal/epl-v20.html"
         }
     }
 }

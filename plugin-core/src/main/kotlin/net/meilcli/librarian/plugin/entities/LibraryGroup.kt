@@ -13,14 +13,14 @@ data class LibraryGroup(
     val name: String,
 
     @SerialName("author")
-    val author: String,
+    val author: String?,
 
     @SerialName("url")
-    val url: String,
+    val url: String?,
 
     @SerialName("description")
     val description: String?,
 
     @SerialName("licenses")
-    val licenses: List<License>
+    val licenses: List<License>?
 )
