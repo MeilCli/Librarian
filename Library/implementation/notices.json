@@ -1,5 +1,8 @@
 [
     {
+        "artifacts": [
+            "androidx.constraintlayout:constraintlayout"
+        ],
         "name": "Android ConstraintLayout",
         "author": "The Android Open Source Project",
         "url": "http://tools.android.com",
@@ -12,6 +15,10 @@
         ]
     },
     {
+        "artifacts": [
+            "androidx.appcompat:appcompat",
+            "androidx.core:core-ktx"
+        ],
         "name": "AndroidX",
         "author": "The Android Open Source Project",
         "url": "https://developer.android.com/jetpack/androidx",
@@ -24,6 +31,9 @@
         ]
     },
     {
+        "artifacts": [
+            "org.jetbrains.kotlin:kotlin-android-extensions-runtime"
+        ],
         "name": "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
         "author": "JetBrains - Kotlin Team",
         "url": "https://kotlinlang.org/",
@@ -36,6 +46,9 @@
         ]
     },
     {
+        "artifacts": [
+            "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+        ],
         "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
         "author": "JetBrains - Kotlin Team",
         "url": "https://kotlinlang.org/",

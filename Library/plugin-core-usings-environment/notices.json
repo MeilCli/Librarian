@@ -1,5 +1,9 @@
 [
     {
+        "artifacts": [
+            "org.junit.jupiter:junit-jupiter-api",
+            "org.junit.jupiter:junit-jupiter-engine"
+        ],
         "name": "JUnit5",
         "author": "JUnit Team",
         "url": "https://junit.org/junit5/",
@@ -12,6 +16,9 @@
         ]
     },
     {
+        "artifacts": [
+            "com.squareup.okio:okio"
+        ],
         "name": "Okio",
         "author": "Square, Inc.",
         "url": "https://github.com/square/okio/",
@@ -24,6 +31,11 @@
         ]
     },
     {
+        "artifacts": [
+            "com.tickaroo.tikxml:annotation",
+            "com.tickaroo.tikxml:core",
+            "com.tickaroo.tikxml:processor"
+        ],
         "name": "TikXml",
         "author": "Tickaroo",
         "url": "https://github.com/Tickaroo/tikxml",
@@ -36,6 +48,9 @@
         ]
     },
     {
+        "artifacts": [
+            "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
+        ],
         "name": "kotlinx-serialization-runtime",
         "author": "JetBrains - JetBrains Team",
         "url": "https://github.com/Kotlin/kotlinx.serialization",
@@ -48,6 +63,9 @@
         ]
     },
     {
+        "artifacts": [
+            "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+        ],
         "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
         "author": "JetBrains - Kotlin Team",
         "url": "https://kotlinlang.org/",

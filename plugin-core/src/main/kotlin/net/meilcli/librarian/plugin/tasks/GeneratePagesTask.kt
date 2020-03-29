@@ -62,11 +62,12 @@ open class GeneratePagesTask : DefaultTask() {
         }
 
         for (noticeArtifact in noticeArtifacts) {
-            val foundArtifact = artifacts.find { it.artifact == "${noticeArtifact.group}:${noticeArtifact.name}" }
-            val foundGroup = groups.find { it.artifacts.contains("${noticeArtifact.group}:${noticeArtifact.name}") }
+            val foundArtifact = artifacts.find { it.artifact == noticeArtifact.artifact }
+            val foundGroup = groups.find { it.artifacts.contains(noticeArtifact.artifact) }
             val notice = when {
                 foundGroup != null -> {
                     Notice(
+                        artifacts = foundGroup.artifacts,
                         name = foundGroup.name,
                         author = foundGroup.author,
                         url = foundGroup.url,
@@ -76,6 +77,7 @@ open class GeneratePagesTask : DefaultTask() {
                 }
                 foundArtifact != null -> {
                     Notice(
+                        artifacts = listOf(foundArtifact.artifact),
                         name = foundArtifact.name,
                         author = foundArtifact.author,
                         url = foundArtifact.url,

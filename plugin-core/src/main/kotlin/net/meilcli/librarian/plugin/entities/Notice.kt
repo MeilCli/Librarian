@@ -6,6 +6,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Notice(
 
+    @SerialName("artifacts")
+    val artifacts: List<String>,
+
     @SerialName("name")
     val name: String,
 
