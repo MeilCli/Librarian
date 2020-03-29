@@ -76,7 +76,8 @@ class MavenPublishPlugin : Plugin<Project> {
                 version.name = versionValue
             }
             setPublications("gpr")
-            dryRun = true
+            publish = true
+            override = true
         }
     }
 }
