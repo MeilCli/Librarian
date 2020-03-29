@@ -5,13 +5,25 @@ import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.kotlin.dsl.get
+import java.io.File
 import java.net.URI
+import java.util.*
 
 class MavenPublishPlugin : Plugin<Project> {
 
     @Suppress("UnstableApiUsage")
     override fun apply(project: Project) {
         val extension = checkNotNull(project.extensions.findByType(PublishingExtension::class.java))
+
+        val versionPropertyFile = File(project.rootProject.rootDir, "buildSrc/version.properties")
+        val versionProperty = Properties()
+        val versionValue = if (versionPropertyFile.exists()) {
+            versionProperty.load(versionPropertyFile.inputStream())
+            versionProperty.getProperty("gpr.version") ?: "0.0.1"
+        } else {
+            "0.0.1"
+        }
+
         extension.repositories {
             maven {
                 name = "GitHubPackages"
@@ -26,7 +38,7 @@ class MavenPublishPlugin : Plugin<Project> {
         extension.publications {
             register("gpr", MavenPublication::class.java) {
                 groupId = "net.meilcli.librarian"
-                version = project.findProperty("gpr.version") as? String ?: "0.0.1"
+                version = versionValue
 
                 pom {
                     url.set("https://github.com/MeilCli/Librarian")
