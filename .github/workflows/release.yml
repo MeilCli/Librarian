@@ -14,4 +14,6 @@ jobs:
           java-version: 1.8
       - name: Grant permission
         run: chmod +x gradlew
-      - run: echo $(github.ref)
+      - run: echo "$github_ref"
+        env:
+          github_ref: ${{ github.ref }}
