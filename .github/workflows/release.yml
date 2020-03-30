@@ -22,7 +22,7 @@ jobs:
       - run: echo "gpr.version=$tag" > buildSrc/version.properties
         env:
           tag: ${{ github.event.release.tag_name }}
-      - run: ./gradlew :plugin-core:publishGprPublicationToGitHubPackagesRepository
-      - run: ./gradlew :plugin-preset:publishGprPublicationToGitHubPackagesRepository
+      - run: ./gradlew :plugin-core:publishPluginMavenPublicationToGitHubPackagesRepository
+      - run: ./gradlew :plugin-preset:publishPluginMavenPublicationToGitHubPackagesRepository
       - run: ./gradlew :plugin-core:bintrayUpload
       - run: ./gradlew :plugin-preset:bintrayUpload

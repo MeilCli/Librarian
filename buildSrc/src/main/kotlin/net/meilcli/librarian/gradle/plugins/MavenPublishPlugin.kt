@@ -36,48 +36,66 @@ class MavenPublishPlugin : Plugin<Project> {
                 }
             }
         }
-        extension.publications {
-            register("gpr", MavenPublication::class.java) {
-                groupId = "net.meilcli.librarian"
-                version = versionValue
+        project.afterEvaluate {
+            val publication = extension.publications.findByName("pluginMaven") as? MavenPublication
+            extension.publications {
+                // escape multiple attach Publication
+                val attach: (MavenPublication) -> Unit = {
+                    it.groupId = "net.meilcli.librarian"
+                    it.version = versionValue
 
-                pom {
-                    url.set("https://github.com/MeilCli/Librarian")
-                    licenses {
-                        license {
-                            name.set("MIT License")
-                            url.set("https://github.com/MeilCli/Librarian/blob/master/LICENSE")
+                    it.pom {
+                        url.set("https://github.com/MeilCli/Librarian")
+                        licenses {
+                            license {
+                                name.set("MIT License")
+                                url.set("https://github.com/MeilCli/Librarian/blob/master/LICENSE")
+                            }
+                        }
+                        developers {
+                            developer {
+                                name.set("MeilCli")
+                            }
                         }
                     }
-                    developers {
-                        developer {
-                            name.set("MeilCli")
-                        }
+                    if (publication == null) {
+                        // component can include one time
+                        it.from(project.components["java"])
                     }
                 }
 
-                from(project.components["java"])
+                if (publication != null) {
+                    attach(publication)
+                } else {
+                    register("gpr", MavenPublication::class.java) {
+                        attach(this)
+                    }
+                }
             }
-        }
 
-        val bintray = checkNotNull(project.extensions.findByType(BintrayExtension::class.java))
-        bintray.apply {
-            user = project.findProperty("bintray.user") as? String ?: System.getenv("BINTRAY_USER")
-            key = project.findProperty("bintray.token") as? String ?: System.getenv("BINTRAY_TOKEN")
-            pkg.apply {
-                userOrg = "meilcli"
-                repo = "librarian"
-                name = project.name
-                setLicenses("MIT")
-                githubRepo = "MeilCli/Librarian"
-                websiteUrl = "https://github.com/MeilCli/Librarian"
-                vcsUrl = "https://github.com/MeilCli/Librarian.git"
+            val bintray = checkNotNull(project.extensions.findByType(BintrayExtension::class.java))
+            bintray.apply {
+                user = project.findProperty("bintray.user") as? String ?: System.getenv("BINTRAY_USER")
+                key = project.findProperty("bintray.token") as? String ?: System.getenv("BINTRAY_TOKEN")
+                pkg.apply {
+                    userOrg = "meilcli"
+                    repo = "librarian"
+                    name = project.name
+                    setLicenses("MIT")
+                    githubRepo = "MeilCli/Librarian"
+                    websiteUrl = "https://github.com/MeilCli/Librarian"
+                    vcsUrl = "https://github.com/MeilCli/Librarian.git"
 
-                version.name = versionValue
+                    version.name = versionValue
+                }
+                if (publication == null) {
+                    setPublications("gpr")
+                } else {
+                    setPublications("pluginMaven")
+                }
+                publish = true
+                override = true
             }
-            setPublications("gpr")
-            publish = true
-            override = true
         }
     }
 }
