@@ -4,9 +4,24 @@
     "notices": [
         {
             "artifacts": [
+              "org.jetbrains.kotlin:kotlin-stdlib",
+              "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
+              "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+              "org.jetbrains.kotlin:kotlin-stdlib-jre7",
+              "org.jetbrains.kotlin:kotlin-stdlib-jre8",
+              "org.jetbrains.kotlin:kotlin-stdlib-js",
+              "org.jetbrains.kotlin:kotlin-stdlib-common",
+              "org.jetbrains.kotlin:kotlin-reflect",
+              "org.jetbrains.kotlin:kotlin-test",
+              "org.jetbrains.kotlin:kotlin-test-junit",
+              "org.jetbrains.kotlin:kotlin-test-junit5",
+              "org.jetbrains.kotlin:kotlin-test-common",
+              "org.jetbrains.kotlin:kotlin-test-js",
+              "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+              "org.jetbrains.kotlin:kotlin-android-extensions",
                 "org.jetbrains.kotlin:kotlin-gradle-plugin",
-                "org.jetbrains.kotlin:kotlin-serialization",
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+              "org.jetbrains.kotlin:kotlin-noarg",
+              "org.jetbrains.kotlin:kotlin-allopen"
             ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",
@@ -21,12 +36,20 @@
         },
         {
             "artifacts": [
-                "com.squareup.okio:okio"
+              "com.squareup.okio:okio-parent",
+              "com.squareup.okio:okio",
+              "com.squareup.okio:okio-js",
+              "com.squareup.okio:okio-metadata",
+              "com.squareup.okio:okio-multiplatform",
+              "com.squareup.okio:okio-iosx64",
+              "com.squareup.okio:okio-macosx64",
+              "com.squareup.okio:okio-iosarm64",
+              "com.squareup.okio:okio-linuxx64"
             ],
             "name": "Okio",
             "author": "Square, Inc.",
             "url": "https://github.com/square/okio/",
-            "description": "A modern I/O API for Java",
+          "description": null,
             "licenses": [
                 {
                     "name": "The Apache Software License, Version 2.0",
@@ -53,12 +76,34 @@
         },
         {
             "artifacts": [
-                "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-iosx64",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-macosx64",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-iosarm64",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-tvosarm64",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-linuxx64",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-watchosx86",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-watchosarm64",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-tvosx64",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-mingwx64",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-iosarm32",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-watchosarm32",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-jsonparser",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-linuxarm32hfp",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-mingwx86",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-linuxarm64",
+              "org.jetbrains.kotlinx:kotlinx-serialization-runtime-wasm32",
+              "org.jetbrains.kotlinx:kotlinx-serialization-protobuf-common",
+              "org.jetbrains.kotlinx:kotlinx-serialization-protobuf",
+              "org.jetbrains.kotlinx:kotlinx-serialization-cbor"
             ],
-            "name": "kotlinx-serialization-runtime",
+          "name": "kotlinx.serialization",
             "author": "JetBrains - JetBrains Team",
             "url": "https://github.com/Kotlin/kotlinx.serialization",
-            "description": "Kotlin multiplatform serialization runtime library",
+          "description": null,
             "licenses": [
                 {
                     "name": "The Apache Software License, Version 2.0",

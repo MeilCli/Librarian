@@ -6,5 +6,4 @@ app modules' implementationDependenciesMetadata and releaseImplementationDepende
 ## Using
 - [Android ConstraintLayout](http://tools.android.com), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The Android Open Source Project
 - [AndroidX](https://developer.android.com/jetpack/androidx), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The Android Open Source Project
-- [org.jetbrains.kotlin:kotlin-android-extensions-runtime](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
-- [org.jetbrains.kotlin:kotlin-stdlib-jdk7](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
+- [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team

@@ -3,21 +3,21 @@
     "description": "This list is using development of Librarian",
     "notices": [
         {
-          "artifacts": [
-            "com.android.tools.build:gradle"
-          ],
-          "name": "Gradle Plug-in for Android",
-          "author": "The Android Open Source Project",
-          "url": "https://developer.android.com/studio",
-          "description": "Gradle plug-in to build Android applications.",
-          "licenses": [
-            {
-              "name": "The Apache Software License, Version 2.0",
-              "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-          ]
+            "artifacts": [
+                "com.android.tools.build:gradle"
+            ],
+            "name": "Gradle Plug-in for Android",
+            "author": "The Android Open Source Project",
+            "url": "https://developer.android.com/studio",
+            "description": "Gradle plug-in to build Android applications.",
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
         },
-      {
+        {
             "artifacts": [
                 "org.junit.jupiter:junit-jupiter-api",
                 "org.junit.jupiter:junit-jupiter-engine"
@@ -34,45 +34,69 @@
             ]
         },
         {
-          "artifacts": [
-            "org.jetbrains.kotlin:kotlin-gradle-plugin",
-            "org.jetbrains.kotlin:kotlin-serialization",
-            "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
-          ],
-          "name": "Kotlin",
-          "author": "JetBrains - Kotlin Team",
-          "url": "https://kotlinlang.org/",
-          "description": null,
-          "licenses": [
-            {
-              "name": "The Apache License, Version 2.0",
-              "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            }
-          ]
-        },
-      {
-        "artifacts": [
-          "net.meilcli.librarian:plugin-core"
-        ],
-        "name": "Librarian",
-        "author": "MeilCli",
-        "url": "https://github.com/MeilCli/Librarian",
-        "description": null,
-        "licenses": [
-          {
-            "name": "MIT License",
-            "url": "https://github.com/MeilCli/Librarian/blob/master/LICENSE"
-          }
-        ]
-      },
-      {
             "artifacts": [
-                "com.squareup.okio:okio"
+                "org.jetbrains.kotlin:kotlin-stdlib",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jre7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jre8",
+                "org.jetbrains.kotlin:kotlin-stdlib-js",
+                "org.jetbrains.kotlin:kotlin-stdlib-common",
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-test",
+                "org.jetbrains.kotlin:kotlin-test-junit",
+                "org.jetbrains.kotlin:kotlin-test-junit5",
+                "org.jetbrains.kotlin:kotlin-test-common",
+                "org.jetbrains.kotlin:kotlin-test-js",
+                "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+                "org.jetbrains.kotlin:kotlin-android-extensions",
+                "org.jetbrains.kotlin:kotlin-gradle-plugin",
+                "org.jetbrains.kotlin:kotlin-noarg",
+                "org.jetbrains.kotlin:kotlin-allopen"
+            ],
+            "name": "Kotlin",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "net.meilcli.librarian:plugin-core",
+                "net.meilcli.librarian:plugin-preset"
+            ],
+            "name": "Librarian",
+            "author": "MeilCli",
+            "url": "https://github.com/MeilCli/Librarian",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "MIT License",
+                    "url": "https://github.com/MeilCli/Librarian/blob/master/LICENSE"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "com.squareup.okio:okio-parent",
+                "com.squareup.okio:okio",
+                "com.squareup.okio:okio-js",
+                "com.squareup.okio:okio-metadata",
+                "com.squareup.okio:okio-multiplatform",
+                "com.squareup.okio:okio-iosx64",
+                "com.squareup.okio:okio-macosx64",
+                "com.squareup.okio:okio-iosarm64",
+                "com.squareup.okio:okio-linuxx64"
             ],
             "name": "Okio",
             "author": "Square, Inc.",
             "url": "https://github.com/square/okio/",
-            "description": "A modern I/O API for Java",
+            "description": null,
             "licenses": [
                 {
                     "name": "The Apache Software License, Version 2.0",
@@ -91,21 +115,6 @@
             "url": "https://github.com/Tickaroo/tikxml",
             "description": null,
             "licenses": [
-              {
-                "name": "The Apache Software License, Version 2.0",
-                "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-              }
-            ]
-        },
-      {
-        "artifacts": [
-          "com.jfrog.bintray.gradle:gradle-bintray-plugin"
-        ],
-        "name": "gradle-bintray-plugin",
-        "author": "Yoav Landman",
-        "url": "https://github.com/bintray/gradle-bintray-plugin",
-        "description": null,
-        "licenses": [
                 {
                     "name": "The Apache Software License, Version 2.0",
                     "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
@@ -114,15 +123,67 @@
         },
         {
             "artifacts": [
-                "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
+                "com.jfrog.bintray.gradle:gradle-bintray-plugin"
             ],
-            "name": "kotlinx-serialization-runtime",
-            "author": "JetBrains - JetBrains Team",
-            "url": "https://github.com/Kotlin/kotlinx.serialization",
-            "description": "Kotlin multiplatform serialization runtime library",
+            "name": "gradle-bintray-plugin",
+            "author": "Yoav Landman",
+            "url": "https://github.com/bintray/gradle-bintray-plugin",
+            "description": null,
             "licenses": [
                 {
                     "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-iosx64",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-macosx64",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-iosarm64",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-tvosarm64",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-linuxx64",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-watchosx86",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-watchosarm64",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-tvosx64",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-mingwx64",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-iosarm32",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-watchosarm32",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-jsonparser",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-linuxarm32hfp",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-mingwx86",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-linuxarm64",
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime-wasm32",
+                "org.jetbrains.kotlinx:kotlinx-serialization-protobuf-common",
+                "org.jetbrains.kotlinx:kotlinx-serialization-protobuf",
+                "org.jetbrains.kotlinx:kotlinx-serialization-cbor"
+            ],
+            "name": "kotlinx.serialization",
+            "author": "JetBrains - JetBrains Team",
+            "url": "https://github.com/Kotlin/kotlinx.serialization",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-serialization"
+            ],
+            "name": "org.jetbrains.kotlin:kotlin-serialization",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": "null",
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
                     "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
                 }
             ]

@@ -34,6 +34,7 @@ buildscript {
         } else {
             classpath Dependencies.Librarian.pluginCore
         }
+        classpath Dependencies.Librarian.plguinPreset // cannot use local jar
     }
 }
 

@@ -35,27 +35,29 @@
         },
         {
             "artifacts": [
-                "org.jetbrains.kotlin:kotlin-android-extensions-runtime"
+                "org.jetbrains.kotlin:kotlin-stdlib",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jre7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jre8",
+                "org.jetbrains.kotlin:kotlin-stdlib-js",
+                "org.jetbrains.kotlin:kotlin-stdlib-common",
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-test",
+                "org.jetbrains.kotlin:kotlin-test-junit",
+                "org.jetbrains.kotlin:kotlin-test-junit5",
+                "org.jetbrains.kotlin:kotlin-test-common",
+                "org.jetbrains.kotlin:kotlin-test-js",
+                "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+                "org.jetbrains.kotlin:kotlin-android-extensions",
+                "org.jetbrains.kotlin:kotlin-gradle-plugin",
+                "org.jetbrains.kotlin:kotlin-noarg",
+                "org.jetbrains.kotlin:kotlin-allopen"
             ],
-            "name": "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+            "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",
             "url": "https://kotlinlang.org/",
-            "description": "Kotlin Android Extensions Runtime",
-            "licenses": [
-                {
-                    "name": "The Apache License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                }
-            ]
-        },
-        {
-            "artifacts": [
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
-            ],
-            "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-            "author": "JetBrains - Kotlin Team",
-            "url": "https://kotlinlang.org/",
-            "description": "Kotlin Standard Library JDK 7 extension",
+            "description": null,
             "licenses": [
                 {
                     "name": "The Apache License, Version 2.0",

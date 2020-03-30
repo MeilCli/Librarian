@@ -7,4 +7,4 @@ This list is including plugin binary
 - [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
 - [Okio](https://github.com/square/okio/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
 - [TikXml](https://github.com/Tickaroo/tikxml), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Tickaroo
-- [kotlinx-serialization-runtime](https://github.com/Kotlin/kotlinx.serialization), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
+- [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team

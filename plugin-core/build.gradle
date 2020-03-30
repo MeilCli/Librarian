@@ -29,6 +29,7 @@ gradlePlugin {
 }
 
 apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
 
 librarian {
     depth = "firstLevel"
@@ -54,13 +55,6 @@ librarian {
     }
 
     groups {
-        "Kotlin" {
-            artifacts = [
-                    "org.jetbrains.kotlin:kotlin-gradle-plugin",
-                    "org.jetbrains.kotlin:kotlin-serialization",
-                    "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
-            ]
-        }
         "TikXml" {
             artifacts = [
                     "com.tickaroo.tikxml:annotation",
@@ -87,7 +81,8 @@ librarian {
         }
         "Librarian" {
             artifacts = [
-                    "net.meilcli.librarian:plugin-core"
+                    "net.meilcli.librarian:plugin-core",
+                    "net.meilcli.librarian:plugin-preset"
             ]
         }
     }
