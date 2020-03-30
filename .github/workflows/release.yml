@@ -23,4 +23,6 @@ jobs:
         env:
           tag: ${{ github.event.release.tag_name }}
       - run: ./gradlew :plugin-core:publishGprPublicationToGitHubPackagesRepository
+      - run: ./gradlew :plugin-preset:publishGprPublicationToGitHubPackagesRepository
       - run: ./gradlew :plugin-core:bintrayUpload
+      - run: ./gradlew :plugin-preset:bintrayUpload

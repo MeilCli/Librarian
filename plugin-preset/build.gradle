@@ -1,0 +1,24 @@
+import net.meilcli.librarian.gradle.Dependencies
+
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'kotlin'
+apply plugin: 'KotlinLibraryPlugin'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'MavenPublishPlugin'
+
+dependencies {
+    implementation project(':plugin-core')
+    implementation Dependencies.Kotlin.Serialization.runtime
+}
+
+gradlePlugin {
+    plugins {
+        librarianPlugin {
+            id = "librarian-preset"
+            displayName = "Librarian Preset Plugin"
+            description = "Librarian is generate notice that library used in gradle module"
+            implementationClass = "net.meilcli.librarian.plugin.LibrarianPresetPlugin"
+        }
+    }
+}

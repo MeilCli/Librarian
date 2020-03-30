@@ -1,18 +1,17 @@
 package net.meilcli.librarian.plugin
 
+import net.meilcli.librarian.plugin.extensions.createTask
+import net.meilcli.librarian.plugin.tasks.GenerateArtifactsTask
 import net.meilcli.librarian.plugin.tasks.GenerateGroupsTask
 import net.meilcli.librarian.plugin.tasks.GeneratePagesTask
-import net.meilcli.librarian.plugin.tasks.GenerateArtifactsTask
 import net.meilcli.librarian.plugin.tasks.ShowConfigurationsTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.Task
 
 open class LibrarianPlugin : Plugin<Project> {
 
     companion object {
 
-        private const val librarianGroup = "librarian"
         private const val librarianExtension = "librarian"
     }
 
@@ -34,11 +33,5 @@ open class LibrarianPlugin : Plugin<Project> {
         project.createTask<GeneratePagesTask>("librarianGeneratePages").apply {
             this.extension = extension
         }
-    }
-
-    private inline fun <reified T : Task> Project.createTask(name: String): T {
-        val task = tasks.create(name, T::class.java)
-        task.group = librarianGroup
-        return task
     }
 }

@@ -23,4 +23,6 @@ data class LibraryGroup(
 
     @SerialName("licenses")
     val licenses: List<License>?
-)
+) {
+    constructor(artifacts: List<String>, name: String) : this(artifacts, name, null, null, null, null)
+}

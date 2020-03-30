@@ -1,2 +1,2 @@
-include ':app', ':plugin-core', ':sample-child', ':sample-child:sample-child-nested'
+include ':app', ':plugin-core', ':sample-child', ':sample-child:sample-child-nested', ':plugin-preset'
 rootProject.name='Librarian'
