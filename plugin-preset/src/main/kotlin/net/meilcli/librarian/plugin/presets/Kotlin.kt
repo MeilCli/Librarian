@@ -21,6 +21,7 @@ fun kotlin(){
         "kotlin-test-js",
         "kotlin-android-extensions-runtime",
         "kotlin-android-extensions",
+        "kotlin-serialization",
         "kotlin-gradle-plugin",
         "kotlin-noarg",
         "kotlin-allopen"
