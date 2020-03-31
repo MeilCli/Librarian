@@ -109,7 +109,7 @@ librarian {
 ```
 
 |path|summary|
-|:--:|:--:|
+|:--|:--|
 |librarian.dataFolderName|output root folder name|
 |librarian.artifactsFolderName|output result folder name of `librarianGenerateArtifacts`|
 |librarian.groupsFolderName|output result folder name of `librarianGenerateGroups`|
