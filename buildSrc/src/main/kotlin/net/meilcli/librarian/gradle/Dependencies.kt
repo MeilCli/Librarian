@@ -9,7 +9,6 @@ object Dependencies {
 
         val gradle = Dependency(group, "kotlin-gradle-plugin", kotlinVersion)
         val stdlib = Dependency(group, "kotlin-stdlib-jdk7", kotlinVersion)
-        val reflect = Dependency(group, "kotlin-reflect", kotlinVersion)
 
         object Serialization {
 
@@ -22,6 +21,11 @@ object Dependencies {
     object Android {
 
         val gradle = Dependency("com.android.tools.build", "gradle", "3.5.3")
+
+        val appCompat = Dependency("androidx.appcompat", "appcompat", "1.1.0")
+        val coreKtx = Dependency("androidx.core", "core-ktx", "1.2.0")
+        val constraintLayout = Dependency("androidx.constraintlayout", "constraintlayout", "1.1.3")
+
         val junit = Dependency("androidx.test.ext", "junit", "1.1.1")
         val espresso = Dependency("androidx.test.espresso", "espresso-core", "3.2.0")
     }
@@ -32,12 +36,17 @@ object Dependencies {
         private const val version = "0.2.1"
 
         val pluginCore = Dependency(group, "plugin-core", version)
-        val plguinPreset = Dependency(group, "plugin-preset", version)
+        val pluginPreset = Dependency(group, "plugin-preset", version)
     }
 
     object Bintray {
 
         val plugin = Dependency("com.jfrog.bintray.gradle", "gradle-bintray-plugin", "1.8.4")
+    }
+
+    object Junit4 {
+
+        val junit = Dependency("junit", "junit", "4.12")
     }
 
     object Junit5 {
@@ -54,7 +63,6 @@ object Dependencies {
         private const val version = "0.8.13"
         private const val group = "com.tickaroo.tikxml"
 
-        val annotation = Dependency(group, "annotation", version)
         val core = Dependency(group, "core", version)
         val processor = Dependency(group, "processor", version)
     }
