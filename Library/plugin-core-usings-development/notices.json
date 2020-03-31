@@ -36,6 +36,7 @@
         {
             "artifacts": [
                 "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-serialization",
                 "org.jetbrains.kotlin:kotlin-gradle-plugin"
             ],
             "name": "Kotlin",
@@ -51,6 +52,7 @@
         },
         {
             "artifacts": [
+                "net.meilcli.librarian:plugin-core",
                 "net.meilcli.librarian:plugin-preset"
             ],
             "name": "Librarian",
@@ -122,21 +124,6 @@
             "licenses": [
                 {
                     "name": "The Apache Software License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                }
-            ]
-        },
-        {
-            "artifacts": [
-                "org.jetbrains.kotlin:kotlin-serialization"
-            ],
-            "name": "org.jetbrains.kotlin:kotlin-serialization",
-            "author": "JetBrains - Kotlin Team",
-            "url": "https://kotlinlang.org/",
-            "description": "null",
-            "licenses": [
-                {
-                    "name": "The Apache License, Version 2.0",
                     "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
                 }
             ]

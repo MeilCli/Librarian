@@ -37,10 +37,9 @@ dependencies {
 }
 
 apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
 
 librarian {
-    depth = "firstLevel"
-
     pages {
         implementation {
             title = "Sample production binary using libraries"
@@ -49,19 +48,6 @@ librarian {
                     "implementationDependenciesMetadata",
                     "releaseImplementationDependenciesMetadata"
             ]
-        }
-    }
-
-    groups {
-        "AndroidX" {
-            artifacts = [
-                    "androidx.appcompat:appcompat",
-                    "androidx.core:core-ktx"
-            ]
-            author = "The Android Open Source Project"
-            url = "https://developer.android.com/jetpack/androidx"
-            licenseName = "The Apache Software License, Version 2.0"
-            licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
     }
 }
