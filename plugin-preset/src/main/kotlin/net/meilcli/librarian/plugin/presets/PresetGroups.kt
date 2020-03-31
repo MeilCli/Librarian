@@ -14,6 +14,7 @@ object PresetGroups {
 
     init {
         kotlin()
+        android()
         square()
     }
 }
