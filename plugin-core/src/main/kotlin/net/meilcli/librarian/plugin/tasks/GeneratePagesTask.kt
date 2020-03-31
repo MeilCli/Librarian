@@ -111,6 +111,7 @@ open class GeneratePagesTask : DefaultTask() {
             }
         }
 
+        reduceUnUseArtifact(notices, artifactLoaderResult)
         checkNotice(notices)
 
         notices.sortBy { it.name }
@@ -146,6 +147,27 @@ open class GeneratePagesTask : DefaultTask() {
             if (1 < notices.count { it.artifacts == notice.artifacts }) {
                 project.logger.warn("Librarian warning: notice has duplication, ${notice.artifacts.joinToString()}")
             }
+        }
+    }
+
+    private fun reduceUnUseArtifact(notices: MutableList<Notice>, artifactLoaderResult: ArtifactLoader.Result) {
+        for (i in 0 until notices.size) {
+            val oldNotice = notices[i]
+            val newNotice = Notice(
+                oldNotice.artifacts
+                    .filter { artifact ->
+                        artifactLoaderResult.entries
+                            .asSequence()
+                            .flatMap { it.artifacts.asSequence() }
+                            .any { it.artifact == artifact }
+                    },
+                name = oldNotice.name,
+                author = oldNotice.author,
+                url = oldNotice.url,
+                description = oldNotice.description,
+                licenses = oldNotice.licenses
+            )
+            notices[i] = newNotice
         }
     }
 
