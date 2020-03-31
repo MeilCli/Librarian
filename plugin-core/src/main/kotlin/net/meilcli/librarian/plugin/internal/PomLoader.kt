@@ -27,6 +27,7 @@ class PomLoader {
         }
         try {
             result = artifact.getPomFile(project)?.loadPomProject(artifact)
+            result = result?.toOverridePomProjectIfNeeded(project)
             if (result != null) {
                 pomCache[artifact] = result
             }
@@ -84,6 +85,39 @@ class PomLoader {
         } catch (exception: Exception) {
             logger.warn("Librarian okio error", exception)
             return null
+        }
+    }
+
+    // try override name, url, description
+    private fun PomProject.toOverridePomProjectIfNeeded(project: Project): PomProject {
+        val parentGroup = parent?.group ?: return this
+        val parentArtifact = parent.artifact ?: return this
+        val parentVersion = parent.version ?: return this
+
+        if (name != null &&
+            url != null &&
+            description != null &&
+            developers != null &&
+            licenses != null
+        ) {
+            return this
+        }
+
+        try {
+            val parentProject = load(project, Artifact(parentGroup, parentArtifact, parentVersion))
+            return PomProject(
+                group = group,
+                artifact = artifact,
+                version = version,
+                parent = parent,
+                name = name ?: parentProject?.name,
+                url = url ?: parentProject?.url,
+                description = description ?: parentProject?.description,
+                developers = developers ?: parentProject?.developers,
+                licenses = licenses ?: parentProject?.licenses
+            )
+        } catch (exception: Exception) {
+            return this
         }
     }
 }
