@@ -26,11 +26,14 @@ data class PomProject(
     @PropertyElement(name = "url")
     val url: String?,
 
+    @Element
+    val parent: PomParentProject?,
+
     @Path("licenses")
-    @Element()
+    @Element
     val licenses: List<PomLicense>?,
 
     @Path("developers")
-    @Element()
+    @Element
     val developers: List<PomDeveloper>?
 )

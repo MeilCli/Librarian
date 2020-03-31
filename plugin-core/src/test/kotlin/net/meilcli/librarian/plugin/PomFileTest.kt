@@ -3,8 +3,7 @@ package net.meilcli.librarian.plugin
 import com.tickaroo.tikxml.TikXml
 import net.meilcli.librarian.plugin.entities.PomProject
 import okio.Buffer
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class PomFileTest {
@@ -38,6 +37,10 @@ class PomFileTest {
         assertEquals(1, project.developers?.size)
         assertEquals("test-name", project.developers?.first()?.name)
         assertEquals("test-organization", project.developers?.first()?.organization)
+        assertNotNull(project.parent)
+        assertEquals("test-group", project.parent?.group)
+        assertEquals("test-artifact", project.parent?.artifact)
+        assertEquals("1.0.0", project.parent?.version)
     }
 
     @Test
@@ -58,6 +61,10 @@ class PomFileTest {
         assertEquals(1, project.developers?.size)
         assertEquals("test-name", project.developers?.first()?.name)
         assertEquals("test-organization", project.developers?.first()?.organization)
+        assertNotNull(project.parent)
+        assertEquals("test-group", project.parent?.group)
+        assertEquals("test-artifact", project.parent?.artifact)
+        assertEquals("1.0.0", project.parent?.version)
     }
 
     @Test
@@ -78,5 +85,32 @@ class PomFileTest {
         assertEquals("The Apache License, Version 2.0", project.licenses?.first()?.name)
         assertEquals("http://www.apache.org/licenses/LICENSE-2.0.txt", project.licenses?.first()?.url)
         assertNull(project.developers)
+        assertNotNull(project.parent)
+        assertEquals("test-group", project.parent?.group)
+        assertEquals("test-artifact", project.parent?.artifact)
+        assertEquals("1.0.0", project.parent?.version)
+    }
+
+    @Test
+    fun testWithoutParent() {
+        val text = readFile("test-pom-without-parent.xml")
+        val parser = TikXml.Builder()
+            .exceptionOnUnreadXml(false)
+            .build()
+        val project = parser.read(Buffer().writeUtf8(text), PomProject::class.java)
+
+        assertEquals("test-group", project.group)
+        assertEquals("test-artifact", project.artifact)
+        assertEquals("1.0.0", project.version)
+        assertEquals("test-name", project.name)
+        assertEquals("test-description", project.description)
+        assertEquals("https://meilcli.net", project.url)
+        assertEquals(1, project.licenses?.size)
+        assertEquals("The Apache License, Version 2.0", project.licenses?.first()?.name)
+        assertEquals("http://www.apache.org/licenses/LICENSE-2.0.txt", project.licenses?.first()?.url)
+        assertEquals(1, project.developers?.size)
+        assertEquals("test-name", project.developers?.first()?.name)
+        assertEquals("test-organization", project.developers?.first()?.organization)
+        assertNull(project.parent)
     }
 }
