@@ -64,6 +64,7 @@ object Dependencies {
         private const val group = "com.tickaroo.tikxml"
 
         val core = Dependency(group, "core", version)
+        val coreAnnotation = Dependency(group, "annotation", version)
         val processor = Dependency(group, "processor", version)
     }
 

@@ -28,6 +28,7 @@ buildscript {
             classpath fileTree(dir: 'libs', include: ['*.jar'])
             classpath Dependencies.Kotlin.Serialization.runtime
             classpath Dependencies.TikXml.core
+            classpath Dependencies.TikXml.coreAnnotation
             classpath Dependencies.SquareUp.okio
         } else {
             classpath Dependencies.Librarian.pluginCore

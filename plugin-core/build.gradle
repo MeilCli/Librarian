@@ -12,6 +12,7 @@ apply plugin: 'MavenPublishPlugin'
 dependencies {
     implementation Dependencies.Kotlin.Serialization.runtime
     implementation Dependencies.TikXml.core
+    implementation Dependencies.TikXml.coreAnnotation
     implementation Dependencies.SquareUp.okio
     kapt Dependencies.TikXml.processor
 }
