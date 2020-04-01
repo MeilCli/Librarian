@@ -2,6 +2,15 @@
   <dictionary name="kimit">
     <words>
       <w>bintray</w>
+      <w>constraintlayout</w>
+      <w>jfrog</w>
+      <w>kotlinx</w>
+      <w>meilcli</w>
+      <w>okio</w>
+      <w>recyclerview</w>
+      <w>squareup</w>
+      <w>tickaroo</w>
+      <w>tikxml</w>
     </words>
   </dictionary>
 </component>
