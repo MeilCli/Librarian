@@ -1,4 +1,4 @@
-package net.meilcli.librarian.serializer
+package net.meilcli.librarian.serializers
 
 import android.content.Context
 import kotlinx.serialization.UnstableDefault

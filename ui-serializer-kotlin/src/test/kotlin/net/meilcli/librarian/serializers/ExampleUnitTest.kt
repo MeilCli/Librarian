@@ -1,4 +1,4 @@
-package net.meilcli.librarian.serializer
+package net.meilcli.librarian.serializers
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

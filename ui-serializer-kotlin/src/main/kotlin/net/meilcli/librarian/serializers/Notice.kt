@@ -1,4 +1,4 @@
-package net.meilcli.librarian.serializer
+package net.meilcli.librarian.serializers
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
