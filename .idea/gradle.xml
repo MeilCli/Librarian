@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/plugin-preset" />
             <option value="$PROJECT_DIR$/sample-child" />
             <option value="$PROJECT_DIR$/sample-child/sample-child-nested" />
+            <option value="$PROJECT_DIR$/ui-activity" />
             <option value="$PROJECT_DIR$/ui-core" />
             <option value="$PROJECT_DIR$/ui-fragment" />
           </set>

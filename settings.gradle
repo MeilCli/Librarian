@@ -1,2 +1,2 @@
-include ':app', ':plugin-core', ':sample-child', ':sample-child:sample-child-nested', ':plugin-preset', ':ui-core', ':ui-fragment'
+include ':app', ':plugin-core', ':sample-child', ':sample-child:sample-child-nested', ':plugin-preset', ':ui-core', ':ui-fragment', ':ui-activity'
 rootProject.name='Librarian'
