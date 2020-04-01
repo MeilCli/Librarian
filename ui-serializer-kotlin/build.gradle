@@ -1,0 +1,10 @@
+import net.meilcli.librarian.gradle.Dependencies
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'AndroidLibraryPlugin'
+
+dependencies {
+    implementation Dependencies.Kotlin.Serialization.runtime
+}

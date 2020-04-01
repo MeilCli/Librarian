@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/ui-activity" />
             <option value="$PROJECT_DIR$/ui-core" />
             <option value="$PROJECT_DIR$/ui-fragment" />
+            <option value="$PROJECT_DIR$/ui-serializer-kotlin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
