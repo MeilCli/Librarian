@@ -1,4 +1,4 @@
-package net.meilcli.librarian.activity
+package net.meilcli.librarian.activities
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
