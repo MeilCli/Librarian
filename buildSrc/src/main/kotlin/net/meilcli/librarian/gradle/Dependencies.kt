@@ -24,6 +24,7 @@ object Dependencies {
 
         val appCompat = Dependency("androidx.appcompat", "appcompat", "1.1.0")
         val coreKtx = Dependency("androidx.core", "core-ktx", "1.2.0")
+        val recyclerView = Dependency("androidx.recyclerview", "recyclerview", "1.1.0")
         val constraintLayout = Dependency("androidx.constraintlayout", "constraintlayout", "1.1.3")
 
         val junit = Dependency("androidx.test.ext", "junit", "1.1.1")
