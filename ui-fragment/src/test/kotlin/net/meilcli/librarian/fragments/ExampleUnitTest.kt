@@ -1,4 +1,4 @@
-package net.meilcli.librarian.fragment
+package net.meilcli.librarian.fragments
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
