@@ -4,7 +4,9 @@ Librarian is generate notice that library used in gradle module
 
 - Can notice by every configurations
 - Can aggregate artifacts by same library
+- Preset famous library groups
 - Separating notice file
+- Android native viewer
 
 ## Required
 - Gradle 5.5 or over
@@ -49,6 +51,7 @@ And set classpath:
 buildscript {
     dependencies {
         classpath "net.meilcli.librarian:plugin-core:VERSION" // replace VERSION
+        classpath "net.meilcli.librarian:plugin-preset:VERSION" // replace VERSION
     }
 }
 ```
@@ -56,17 +59,22 @@ buildscript {
 And apply plugin your project:
 ```groovy
 apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
 ```
 
 ### Task
-- `librarianGenerateArtifacts`
-  - generate artifacts
-- `librarianGenerateGroups`
-  - generate groups
-- `librarianGeneratePages`
-  - generate page, must execute after `librarianGenerateArtifacts`
-- `librarianShowConfigurations`
-  - output configurations that has dependency to console
+- librarian plugin
+  - `librarianGenerateArtifacts`
+    - generate artifacts
+  - `librarianGenerateGroups`
+    - generate groups
+  - `librarianGeneratePages`
+    - generate page, must execute after `librarianGenerateArtifacts`
+  - `librarianShowConfigurations`
+    - output configurations that has dependency to console
+- librarian preset plugin
+  - `librarianGeneratePresetGroups`
+    - generate preset groups, recommend execute before `librarianGenerateGroups`
 
 ### Configuration
 ```groovy
@@ -121,6 +129,7 @@ librarian {
 1. configure your project, put `pages`
    - `librarianShowConfigurations` task helps when configure your project
 1. execute `librarianGenerateArtifacts` task
+1. execute `librarianGeneratePresetGroups` task if using `librarian-preset`
 1. execute `librarianGeneratePages` task
 1. if output error or incomplete result, configure your project that put `groups` and execute `librarianGenerateGroups` task
    - then execute `librarianGeneratePages` task
