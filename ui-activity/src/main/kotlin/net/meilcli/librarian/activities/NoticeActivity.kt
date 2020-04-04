@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import net.meilcli.librarian.INotice
 import net.meilcli.librarian.NoticeStyle
 import net.meilcli.librarian.ParcelableNotice
@@ -31,13 +30,9 @@ class NoticeActivity : AppCompatActivity() {
         val notice = intent.getParcelableExtra<ParcelableNotice>(noticeKey)
             ?: throw IllegalStateException("must use createIntent() when launch activity")
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        toolbar.title = notice.name
-
         val noticeView = findViewById<NoticeView>(R.id.notice_view)
         noticeView.setNotice(notice)
         noticeView.setStyle(NoticeStyle().apply {
-            showName = false
             onLicenseClicked = { launchUrl(it.url) }
             onUrlClicked = { launchUrl(it) }
         })

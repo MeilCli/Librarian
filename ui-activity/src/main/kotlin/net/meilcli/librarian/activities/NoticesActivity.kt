@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import net.meilcli.librarian.INotices
 import net.meilcli.librarian.INoticesReader
 import net.meilcli.librarian.NoticesStyle
@@ -42,13 +41,9 @@ class NoticesActivity : AppCompatActivity() {
                 ?: noticesReader.read(this, checkNotNull(intent.getStringExtra(noticesFileKey)) { "must set noticesFile" })
         }
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        toolbar.title = notices.title
-
         val noticesView = findViewById<NoticesView>(R.id.notices_view)
         noticesView.setNotices(notices)
         noticesView.setStyle(NoticesStyle().apply {
-            showTitle = false
             onNoticeClicked = { startActivity(NoticeActivity.createIntent(this@NoticesActivity, it)) }
         })
     }

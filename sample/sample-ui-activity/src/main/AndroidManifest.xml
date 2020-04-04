@@ -16,8 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="net.meilcli.librarian.activities.NoticesActivity" />
-        <activity android:name="net.meilcli.librarian.activities.NoticeActivity" />
+        <activity
+            android:name="net.meilcli.librarian.activities.NoticesActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="net.meilcli.librarian.activities.NoticeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
