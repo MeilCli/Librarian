@@ -15,6 +15,7 @@ object PresetGroups {
     init {
         kotlin()
         android()
+        librarian()
         square()
     }
 }
