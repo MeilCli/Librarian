@@ -4,29 +4,12 @@
     "notices": [
         {
             "artifacts": [
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-                "org.jetbrains.kotlin:kotlin-serialization",
-                "org.jetbrains.kotlin:kotlin-gradle-plugin"
-            ],
-            "name": "Kotlin",
-            "author": "JetBrains - Kotlin Team",
-            "url": "https://kotlinlang.org/",
-            "description": null,
-            "licenses": [
-                {
-                    "name": "The Apache License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                }
-            ]
-        },
-        {
-            "artifacts": [
                 "com.squareup.okio:okio"
             ],
             "name": "Okio",
             "author": "Square, Inc.",
             "url": "https://github.com/square/okio/",
-            "description": null,
+            "description": "A modern I/O API for Java",
             "licenses": [
                 {
                     "name": "The Apache Software License, Version 2.0",
@@ -55,13 +38,28 @@
             "artifacts": [
                 "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
             ],
-            "name": "kotlinx.serialization",
+            "name": "kotlinx-serialization-runtime",
             "author": "JetBrains - JetBrains Team",
             "url": "https://github.com/Kotlin/kotlinx.serialization",
-            "description": null,
+            "description": "Kotlin multiplatform serialization runtime library",
             "licenses": [
                 {
                     "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+            ],
+            "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": "Kotlin Standard Library JDK 7 extension",
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
                     "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
                 }
             ]

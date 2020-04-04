@@ -1,58 +1,58 @@
 {
-  "title": "Using Libraries",
-  "description": "sample-from-maven is using this libraries.",
-  "notices": [
-    {
-      "artifacts": [
-        "androidx.appcompat:appcompat"
-      ],
-      "name": "Android Jetpack",
-      "author": "The Android Open Source Project",
-      "url": "https://developer.android.com/jetpack/androidx",
-      "description": null,
-      "licenses": [
+    "title": "Using Libraries",
+    "description": "sample-from-maven is using this libraries.",
+    "notices": [
         {
-          "name": "The Apache Software License, Version 2.0",
-          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-        }
-      ]
-    },
-    {
-      "artifacts": [
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-        "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
-        "org.jetbrains.kotlin:kotlin-android-extensions",
-        "org.jetbrains.kotlin:kotlin-serialization",
-        "org.jetbrains.kotlin:kotlin-gradle-plugin"
-      ],
-      "name": "Kotlin",
-      "author": "JetBrains - Kotlin Team",
-      "url": "https://kotlinlang.org/",
-      "description": null,
-      "licenses": [
+            "artifacts": [
+                "androidx.appcompat:appcompat"
+            ],
+            "name": "Android AppCompat Library v7",
+            "author": "The Android Open Source Project",
+            "url": "https://developer.android.com/jetpack/androidx",
+            "description": "The Support Library is a static library that you can add to your Android application in order to use APIs that are either not available for older platform versions or utility APIs that aren't a part of the framework APIs. Compatible on devices running API 14 or later.",
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
         {
-          "name": "The Apache License, Version 2.0",
-          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-        }
-      ]
-    },
-    {
-      "artifacts": [
-        "net.meilcli.librarian:plugin-core",
-        "net.meilcli.librarian:plugin-preset",
-        "net.meilcli.librarian:ui-activity",
-        "net.meilcli.librarian:ui-serializer-kotlin"
-      ],
-      "name": "Librarian",
-      "author": "MeilCli",
-      "url": "https://github.com/MeilCli/Librarian",
-      "description": null,
-      "licenses": [
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+                "org.jetbrains.kotlin:kotlin-android-extensions",
+                "org.jetbrains.kotlin:kotlin-serialization",
+                "org.jetbrains.kotlin:kotlin-gradle-plugin"
+            ],
+            "name": "Kotlin",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
         {
-          "name": "MIT License",
-          "url": "https://github.com/MeilCli/Librarian/blob/master/LICENSE"
+            "artifacts": [
+                "net.meilcli.librarian:plugin-core",
+                "net.meilcli.librarian:plugin-preset",
+                "net.meilcli.librarian:ui-activity",
+                "net.meilcli.librarian:ui-serializer-kotlin"
+            ],
+            "name": "Librarian",
+            "author": "MeilCli",
+            "url": "https://github.com/MeilCli/Librarian",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "MIT License",
+                    "url": "https://github.com/MeilCli/Librarian/blob/master/LICENSE"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
