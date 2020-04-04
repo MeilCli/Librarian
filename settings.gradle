@@ -1,2 +1,3 @@
 include ':app', ':plugin-core', ':sample-child', ':sample-child:sample-child-nested', ':plugin-preset', ':ui-core', ':ui-fragment', ':ui-activity', ':ui-serializer-kotlin'
+include ':sample:sample-ui-core'
 rootProject.name='Librarian'
