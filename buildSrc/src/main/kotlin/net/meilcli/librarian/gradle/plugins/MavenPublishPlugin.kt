@@ -46,6 +46,7 @@ class MavenPublishPlugin : Plugin<Project> {
                     it.version = versionValue
 
                     it.pom {
+                        name.set("Librarian")
                         url.set("https://github.com/MeilCli/Librarian")
                         licenses {
                             license {
