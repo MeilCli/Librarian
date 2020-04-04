@@ -45,10 +45,10 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Grant permission
         run: chmod +x gradlew
-      - ./gradlew librarianGenerateArtifacts
-      - ./gradlew librarianGeneratePresetGroups
-      - ./gradlew librarianGenerateGroups
-      - ./gradlew librarianGeneratePages
+      - run: ./gradlew librarianGenerateArtifacts
+      - run: ./gradlew librarianGeneratePresetGroups
+      - run: ./gradlew librarianGenerateGroups
+      - run: ./gradlew librarianGeneratePages
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
         with:
