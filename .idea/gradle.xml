@@ -11,13 +11,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/plugin-core" />
             <option value="$PROJECT_DIR$/plugin-preset" />
             <option value="$PROJECT_DIR$/sample" />
-            <option value="$PROJECT_DIR$/sample-child" />
-            <option value="$PROJECT_DIR$/sample-child/sample-child-nested" />
             <option value="$PROJECT_DIR$/sample/sample-ui-core" />
             <option value="$PROJECT_DIR$/ui-activity" />
             <option value="$PROJECT_DIR$/ui-core" />
