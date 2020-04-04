@@ -22,6 +22,7 @@ class LibrarianPresetPlugin : Plugin<Project> {
             depends += generatePresetGroupsTask
             depends += checkNotNull(project.tasks.findByName(LibrarianPlugin.generateGroupsTask))
             depends += checkNotNull(project.tasks.findByName(LibrarianPlugin.generatePagesTask))
+            setDependsOn(depends)
         }
     }
 }

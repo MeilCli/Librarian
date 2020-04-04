@@ -26,6 +26,7 @@ librarian {
                     "implementationDependenciesMetadata",
                     "releaseImplementationDependenciesMetadata"
             ]
+            jsonAdditionalOutputPath = file("src/main/assets/notices.json")
         }
     }
 }
