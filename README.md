@@ -8,6 +8,18 @@ Librarian is generate notice that library used in gradle module
 - Separating notice file
 - Android native viewer
 
+## Table of Contents
+- [Required](README.md#Required)
+  - [Upgrade Gradle version](README.md#upgrade-gradle-version)
+- [Getting started](README.md#getting-started)
+  - [Install](README.md#install)
+  - [Task](README.md#task)
+  - [Configuration](README.md#configuration)
+  - [Generate Notice Page](README.md#generate-notice-page)
+- [GitHub Actions](README.md#github-actions)
+  - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
+- [License](README.md#license)
+  
 ## Required
 - Gradle 5.5 or over
 - (if you develop Android app) Android Studio and Android Gradle Plugin 3.5 or over
