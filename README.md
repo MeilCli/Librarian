@@ -70,11 +70,15 @@ apply plugin: 'librarian-preset'
     - generate groups
   - `librarianGeneratePages`
     - generate page, must execute after `librarianGenerateArtifacts`
+  - `librarianGeneratePipeline`
+    - execute tasks: `librarianGenerateArtifacts`, `librarianGenerateGroups` and `librarianGeneratePages`
   - `librarianShowConfigurations`
     - output configurations that has dependency to console
 - librarian preset plugin
   - `librarianGeneratePresetGroups`
     - generate preset groups, recommend execute before `librarianGenerateGroups`
+  - `librarianGeneratePresetPipeline`
+    - execute tasks: `librarianGenerateArtifacts`, `librarianGeneratePresetGroups` ,`librarianGenerateGroups` and `librarianGeneratePages`
 
 ### Configuration
 ```groovy
@@ -134,6 +138,8 @@ librarian {
 1. if output error or incomplete result, configure your project that put `groups` and execute `librarianGenerateGroups` task
    - then execute `librarianGeneratePages` task
 
+if you want generate notice page by one task, execute `librarianGeneratePipeline` or `librarianGeneratePresetPipeline`
+
 ## GitHub Actions
 if you use GitHub Actions, recommend use GitHub Packages when CI Build
 
@@ -165,6 +171,40 @@ jobs:
     env:
       GITHUB_USER: "github-bot"
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Auto Generate Notice and Create Pull Request
+using [peter-evans/create-pull-request](https://github.com/peter-evans/create-pull-request) example:
+
+```yml
+name: CI
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+
+jobs:
+  librarian:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_USER: "github-bot"
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Grant permission
+        run: chmod +x gradlew
+      - run: ./gradlew librarianGeneratePresetPipeline
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          commit-message: "update library notices"
+          title: "update library notices"
 ```
 
 ## License
