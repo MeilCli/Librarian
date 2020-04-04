@@ -1,5 +1,7 @@
 package net.meilcli.librarian.plugin
 
+import java.io.File
+
 open class LibrarianPageExtension(val name: String) {
 
     var title = name
@@ -8,5 +10,6 @@ open class LibrarianPageExtension(val name: String) {
     var markdownFileName = "README.md"
     var json = true
     var jsonFileName = "notices.json"
+    var jsonAdditionalOutputPath: File? = null
     var configurations = mutableListOf<String>()
 }

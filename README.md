@@ -109,6 +109,7 @@ librarian {
             markdownFileName = "README.md" // String, default value is README.md
             json = true // Boolean, default value is null
             jsonFileName = "notices.json" // String, default value is notices.json
+            jsonAdditionalOutputPath = null // File, default is null
             configurations = [
                     "implementationDependenciesMetadata"
             ] // Array of String, default is empty list

@@ -210,6 +210,8 @@ open class GeneratePagesTask : DefaultTask() {
         val outputFile = File(outputDirectory, page.jsonFileName)
         val text = json.stringify(Notices.serializer(), Notices(page.title, page.description, notices))
         outputFile.writeText(text, Charsets.UTF_8)
+
+        page.jsonAdditionalOutputPath?.writeText(text, Charsets.UTF_8)
     }
 
     @UnstableDefault
