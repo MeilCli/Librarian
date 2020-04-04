@@ -173,7 +173,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### Auto Generate Notice and Create Pull Request
+### Auto Generate Notice Page and Create Pull Request
 using [peter-evans/create-pull-request](https://github.com/peter-evans/create-pull-request) example:
 
 ```yml
