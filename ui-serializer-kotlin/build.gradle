@@ -6,6 +6,6 @@ apply plugin: 'kotlinx-serialization'
 apply plugin: 'AndroidLibraryPlugin'
 
 dependencies {
-    implementation project(":ui-core")
-    implementation Dependencies.Kotlin.Serialization.runtime
+    api project(":ui-core")
+    api Dependencies.Kotlin.Serialization.runtime
 }

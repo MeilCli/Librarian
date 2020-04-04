@@ -5,5 +5,5 @@ apply plugin: 'kotlin-android'
 apply plugin: 'AndroidLibraryPlugin'
 
 dependencies {
-    implementation Dependencies.Android.recyclerView
+    api Dependencies.Android.recyclerView
 }

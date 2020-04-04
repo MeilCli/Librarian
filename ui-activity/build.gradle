@@ -5,6 +5,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'AndroidLibraryPlugin'
 
 dependencies {
-    implementation project(':ui-core')
-    implementation Dependencies.Android.activity
+    api project(':ui-core')
+    api Dependencies.Android.activity
 }
