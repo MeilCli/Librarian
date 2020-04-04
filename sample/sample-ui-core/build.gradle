@@ -6,3 +6,24 @@ apply plugin: 'AndroidApplicationPlugin' // this is define at buildSrc
 androidApplication {
     applicationIdPostfix = "core"
 }
+
+dependencies {
+    implementation project(':ui-core')
+    implementation project(':ui-serializer-kotlin')
+}
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "sample-ui-core" {
+            title = "Using Libraries"
+            description = "sample-ui-core is using this libraries."
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "releaseImplementationDependenciesMetadata"
+            ]
+        }
+    }
+}
