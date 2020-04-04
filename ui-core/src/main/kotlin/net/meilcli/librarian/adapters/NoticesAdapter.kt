@@ -44,7 +44,7 @@ class NoticesAdapter : RecyclerView.Adapter<NoticesHolder>() {
 
         entities.clear()
 
-        if (style.noticesShowTitle) {
+        if (style.showTitle) {
             entities += Entity.Title(notices.title)
         }
         val description = notices.description

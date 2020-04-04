@@ -5,7 +5,7 @@ import androidx.annotation.LayoutRes
 
 class NoticesStyle {
 
-    var noticesShowTitle = true
+    var showTitle = true
 
     @LayoutRes
     var titleHolderLayout = R.layout.holder_notices_title
