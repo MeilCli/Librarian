@@ -1,4 +1,4 @@
-package net.meilcli.sample.activity
+package net.meilcli.librarian.sample.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
