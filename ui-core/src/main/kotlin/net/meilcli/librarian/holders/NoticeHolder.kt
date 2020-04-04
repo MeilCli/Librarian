@@ -1,5 +1,6 @@
 package net.meilcli.librarian.holders
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,8 +42,9 @@ sealed class NoticeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val author = itemView.findViewById<TextView>(style.authorHolderAuthorId)
 
+        @SuppressLint("SetTextI18n")
         fun bind(author: String) {
-            this.author.text = author
+            this.author.text = "Author: $author"
         }
     }
 
