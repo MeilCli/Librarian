@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'AndroidApplicationPlugin' // this is define at buildSrc
+
+android {
+    defaultConfig {
+        applicationIdSuffix = "activity"
+    }
+}
+
+dependencies {
+    implementation project(':ui-activity')
+    implementation project(':ui-serializer-kotlin')
+}
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "sample-ui-activity" {
+            title = "Using Libraries"
+            description = "sample-ui-activity is using this libraries."
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "releaseImplementationDependenciesMetadata"
+            ]
+        }
+    }
+}

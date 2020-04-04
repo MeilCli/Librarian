@@ -1,6 +1,9 @@
 import net.meilcli.librarian.gradle.Dependencies
 
 buildscript {
+    ext {
+        kotlin_version = '1.3.61'
+    }
     ext.local_build = false
     repositories {
         google()
@@ -33,7 +36,8 @@ buildscript {
         } else {
             classpath Dependencies.Librarian.pluginCore
         }
-        classpath Dependencies.Librarian.pluginPreset // cannot use local jar
+        classpath Dependencies.Librarian.pluginPreset
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // cannot use local jar
     }
 }
 
