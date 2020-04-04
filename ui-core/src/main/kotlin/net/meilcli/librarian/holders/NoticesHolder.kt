@@ -13,9 +13,9 @@ sealed class NoticesHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     class Title(
         parent: ViewGroup,
         style: NoticesStyle
-    ) : NoticesHolder(LayoutInflater.from(parent.context).inflate(style.noticesTitleHolderLayout, parent, false)) {
+    ) : NoticesHolder(LayoutInflater.from(parent.context).inflate(style.titleHolderLayout, parent, false)) {
 
-        private val title = itemView.findViewById<TextView>(style.noticesTitleHolderTitleId)
+        private val title = itemView.findViewById<TextView>(style.titleHolderTitleId)
 
         fun bind(title: String) {
             this.title.text = title
@@ -25,9 +25,9 @@ sealed class NoticesHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     class Description(
         parent: ViewGroup,
         style: NoticesStyle
-    ) : NoticesHolder(LayoutInflater.from(parent.context).inflate(style.noticesDescriptionHolderLayout, parent, false)) {
+    ) : NoticesHolder(LayoutInflater.from(parent.context).inflate(style.descriptionHolderLayout, parent, false)) {
 
-        private val description = itemView.findViewById<TextView>(style.noticesDescriptionHolderDescriptionId)
+        private val description = itemView.findViewById<TextView>(style.descriptionHolderDescriptionId)
 
         fun bind(description: String) {
             this.description.text = description
@@ -37,9 +37,9 @@ sealed class NoticesHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     class Notice(
         parent: ViewGroup,
         private val style: NoticesStyle
-    ) : NoticesHolder(LayoutInflater.from(parent.context).inflate(style.noticesNoticeHolderLayout, parent, false)) {
+    ) : NoticesHolder(LayoutInflater.from(parent.context).inflate(style.noticeHolderLayout, parent, false)) {
 
-        private val name = itemView.findViewById<TextView>(style.noticesNoticeHolderNameId)
+        private val name = itemView.findViewById<TextView>(style.noticeHolderNameId)
 
         fun bind(notice: INotice) {
             this.name.text = notice.name
