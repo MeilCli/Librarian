@@ -2,7 +2,6 @@ package net.meilcli.librarian.serializers
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import net.meilcli.librarian.ILicense
 import net.meilcli.librarian.INotice
 
 @Serializable
@@ -24,5 +23,5 @@ data class Notice(
     override val description: String?,
 
     @SerialName("licenses")
-    override val licenses: List<ILicense>
+    override val licenses: List<License>
 ) : INotice

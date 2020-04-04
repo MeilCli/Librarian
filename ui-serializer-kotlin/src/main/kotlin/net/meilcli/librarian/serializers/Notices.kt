@@ -2,7 +2,6 @@ package net.meilcli.librarian.serializers
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import net.meilcli.librarian.INotice
 import net.meilcli.librarian.INotices
 
 @Serializable
@@ -15,5 +14,5 @@ data class Notices(
     override val description: String?,
 
     @SerialName("notices")
-    override val notices: List<INotice>
+    override val notices: List<Notice>
 ) : INotices
