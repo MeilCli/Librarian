@@ -12,6 +12,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
+        android:background="?attr/selectableItemBackground"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         tools:text="Using Library" />
 </FrameLayout>
