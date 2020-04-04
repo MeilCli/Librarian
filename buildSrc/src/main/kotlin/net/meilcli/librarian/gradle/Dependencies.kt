@@ -23,11 +23,9 @@ object Dependencies {
         val gradle = Dependency("com.android.tools.build", "gradle", "3.6.2")
 
         val appCompat = Dependency("androidx.appcompat", "appcompat", "1.1.0")
-        val coreKtx = Dependency("androidx.core", "core-ktx", "1.2.0")
         val activity = Dependency("androidx.activity", "activity", "1.1.0")
         val fragment = Dependency("androidx.fragment", "fragment", "1.2.3")
         val recyclerView = Dependency("androidx.recyclerview", "recyclerview", "1.1.0")
-        val constraintLayout = Dependency("androidx.constraintlayout", "constraintlayout", "1.1.3")
 
         val junit = Dependency("androidx.test.ext", "junit", "1.1.1")
         val espresso = Dependency("androidx.test.espresso", "espresso-core", "3.2.0")
@@ -36,10 +34,12 @@ object Dependencies {
     object Librarian {
 
         private const val group = "net.meilcli.librarian"
-        private const val version = "0.2.3"
+        private const val version = "0.3.0"
 
         val pluginCore = Dependency(group, "plugin-core", version)
         val pluginPreset = Dependency(group, "plugin-preset", version)
+        val uiActivity = Dependency(group, "ui-activity", version)
+        val uiSerializerKotlin = Dependency(group, "ui-serializer-kotlin", version)
     }
 
     object Bintray {

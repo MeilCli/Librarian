@@ -1,4 +1,5 @@
 include ':plugin-core', ':plugin-preset', ':ui-core', ':ui-fragment', ':ui-activity', ':ui-serializer-kotlin'
 include ':sample:sample-ui-core'
-rootProject.name='Librarian'
 include ':sample:sample-ui-activity'
+include ':sample:sample-from-maven'
+rootProject.name='Librarian'

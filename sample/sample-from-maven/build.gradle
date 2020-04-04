@@ -1,0 +1,33 @@
+import net.meilcli.librarian.gradle.Dependencies
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'AndroidApplicationPlugin' // this is define at buildSrc
+
+android {
+    defaultConfig {
+        applicationIdSuffix = "maven"
+    }
+}
+
+dependencies {
+    implementation Dependencies.Librarian.uiActivity
+    implementation Dependencies.Librarian.uiSerializerKotlin
+}
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "sample-from-maven" {
+            title = "Using Libraries"
+            description = "sample-from-maven is using this libraries."
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "releaseImplementationDependenciesMetadata"
+            ]
+        }
+    }
+}
