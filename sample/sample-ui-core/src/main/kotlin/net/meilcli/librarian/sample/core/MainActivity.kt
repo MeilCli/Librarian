@@ -1,7 +1,6 @@
 package net.meilcli.librarian.sample.core
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import net.meilcli.librarian.INotices
@@ -31,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
         noticesView.setNotices(notices)
         noticesView.setStyle(NoticesStyle().apply {
-            onNoticeClicked = { Toast.makeText(this@MainActivity, "onClicked: ${it.name}", Toast.LENGTH_SHORT).show() }
+            onNoticeClicked = { startActivity(SubActivity.createIntent(this@MainActivity, it)) }
         })
     }
 
