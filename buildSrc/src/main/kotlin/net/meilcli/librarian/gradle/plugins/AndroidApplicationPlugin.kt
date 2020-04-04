@@ -1,6 +1,6 @@
 package net.meilcli.librarian.gradle.plugins
 
-import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.ProguardFiles
 import net.meilcli.librarian.gradle.Dependencies
 import net.meilcli.librarian.gradle.extensions.androidTestImplementation
@@ -13,31 +13,29 @@ import org.gradle.kotlin.dsl.dependencies
 class AndroidApplicationPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
-        val plugin = checkNotNull(project.plugins.findPlugin(AppPlugin::class.java)) { "must set android library plugin" }
-        plugin.apply {
-            extension.compileSdkVersion(29)
+        val extension = project.extensions.findByName("android") as BaseExtension
+        extension.compileSdkVersion(29)
 
-            extension.defaultConfig {
-                minSdkVersion(15)
-                targetSdkVersion(29)
-                applicationId = "net.meilcli.librarian.sample"
-                versionCode = 1
-                versionName = "1.0"
-                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-            }
+        extension.defaultConfig {
+            minSdkVersion(15)
+            targetSdkVersion(29)
+            applicationId = "net.meilcli.librarian.sample"
+            versionCode = 1
+            versionName = "1.0"
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
 
-            (extension.buildTypes.findByName("release")
-                ?: extension.buildTypes.create("release")).apply {
-                isMinifyEnabled = false
-                proguardFiles(
-                    ProguardFiles.getDefaultProguardFile("proguard-android-optimize.txt", project),
-                    "proguard-rules.pro"
-                )
-            }
+        (extension.buildTypes.findByName("release")
+            ?: extension.buildTypes.create("release")).apply {
+            isMinifyEnabled = false
+            proguardFiles(
+                ProguardFiles.getDefaultProguardFile("proguard-android-optimize.txt", project),
+                "proguard-rules.pro"
+            )
+        }
 
-            extension.sourceSets.all {
-                java.srcDir("src/${name}/kotlin")
-            }
+        extension.sourceSets.all {
+            java.srcDir("src/${name}/kotlin")
         }
 
         project.dependencies {

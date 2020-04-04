@@ -20,7 +20,7 @@ object Dependencies {
 
     object Android {
 
-        val gradle = Dependency("com.android.tools.build", "gradle", "3.5.3")
+        val gradle = Dependency("com.android.tools.build", "gradle", "3.6.2")
 
         val appCompat = Dependency("androidx.appcompat", "appcompat", "1.1.0")
         val coreKtx = Dependency("androidx.core", "core-ktx", "1.2.0")
