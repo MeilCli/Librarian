@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="net.meilcli.librarian.activities.NoticesActivity" />
+        <activity android:name="net.meilcli.librarian.activities.NoticeActivity" />
     </application>
 
 </manifest>
