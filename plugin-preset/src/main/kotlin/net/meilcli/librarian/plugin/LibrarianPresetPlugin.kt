@@ -14,6 +14,7 @@ class LibrarianPresetPlugin : Plugin<Project> {
 
         val generatePresetGroupsTask = project.createTask<GeneratePresetGroupsTask>("librarianGeneratePresetGroups").apply {
             this.extension = extension
+            mustRunAfter(LibrarianPlugin.generateArtifactsTask)
         }
 
         project.createTask<GeneratePresetPipelineTask>("librarianGeneratePresetPipeline").apply {

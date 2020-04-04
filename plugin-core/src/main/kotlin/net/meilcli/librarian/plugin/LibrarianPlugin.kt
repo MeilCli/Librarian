@@ -30,10 +30,12 @@ open class LibrarianPlugin : Plugin<Project> {
 
         generatePipelineDependTasks += project.createTask<GenerateGroupsTask>(generateGroupsTask).apply {
             this.extension = extension
+            mustRunAfter(generateArtifactsTask, "librarianGeneratePresetGroups")
         }
 
         generatePipelineDependTasks += project.createTask<GeneratePagesTask>(generatePagesTask).apply {
             this.extension = extension
+            mustRunAfter(generateGroupsTask)
         }
 
         project.createTask<GeneratePipelineTask>("librarianGeneratePipeline").apply {
