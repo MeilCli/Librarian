@@ -3,6 +3,9 @@ import net.meilcli.librarian.gradle.Dependencies
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'AndroidLibraryPlugin'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'MavenPublishPlugin'
 
 dependencies {
     api project(':ui-core')

@@ -24,5 +24,11 @@ jobs:
           tag: ${{ github.event.release.tag_name }}
       - run: ./gradlew :plugin-core:publishPluginMavenPublicationToGitHubPackagesRepository
       - run: ./gradlew :plugin-preset:publishPluginMavenPublicationToGitHubPackagesRepository
+      - run: ./gradlew :ui-core:publishGprPublicationToGitHubPackagesRepository
+      - run: ./gradlew :ui-activity:publishGprPublicationToGitHubPackagesRepository
+      - run: ./gradlew :ui-serializer-kotlin:publishGprPublicationToGitHubPackagesRepository
       - run: ./gradlew :plugin-core:bintrayUpload
       - run: ./gradlew :plugin-preset:bintrayUpload
+      - run: ./gradlew :ui-core:bintrayUpload
+      - run: ./gradlew :ui-activity:bintrayUpload
+      - run: ./gradlew :ui-serializer-kotlin:bintrayUpload

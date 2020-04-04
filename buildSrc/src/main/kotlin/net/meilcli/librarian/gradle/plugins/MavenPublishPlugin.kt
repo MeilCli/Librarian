@@ -1,5 +1,6 @@
 package net.meilcli.librarian.gradle.plugins
 
+import com.android.build.gradle.LibraryPlugin
 import com.jfrog.bintray.gradle.BintrayExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -60,7 +61,11 @@ class MavenPublishPlugin : Plugin<Project> {
                     }
                     if (publication == null) {
                         // component can include one time
-                        it.from(project.components["java"])
+                        if (project.plugins.hasPlugin(LibraryPlugin::class.java)) {
+                            it.from(project.components["release"])
+                        } else {
+                            it.from(project.components["java"])
+                        }
                     }
                 }
 
