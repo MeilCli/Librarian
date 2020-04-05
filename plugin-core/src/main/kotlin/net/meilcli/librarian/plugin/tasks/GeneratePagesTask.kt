@@ -77,6 +77,10 @@ open class GeneratePagesTask : DefaultTask() {
                                 // will override by group
                                 continue
                             }
+                            if (licenses.isEmpty()) {
+                                // will override by group
+                                continue
+                            }
                             if (licenses.contains(checkLicense).not()) {
                                 project.logger.warn("Librarian warning: group has not artifact license, ${foundGroup.name}, ${foundArtifact.artifact}")
                             }
