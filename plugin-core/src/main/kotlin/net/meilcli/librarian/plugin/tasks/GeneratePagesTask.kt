@@ -250,7 +250,7 @@ open class GeneratePagesTask : DefaultTask() {
 
     @UnstableDefault
     private fun loadGroups(): List<LibraryGroup>? {
-        val groupsFolder = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.buildFolder}")
+        val groupsFolder = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.groupsFolder}")
         if (groupsFolder.exists().not()) {
             return null
         }
