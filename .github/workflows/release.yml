@@ -26,9 +26,13 @@ jobs:
       - run: ./gradlew :plugin-preset:publishPluginMavenPublicationToGitHubPackagesRepository
       - run: ./gradlew :ui-core:publishGprPublicationToGitHubPackagesRepository
       - run: ./gradlew :ui-activity:publishGprPublicationToGitHubPackagesRepository
+      - run: ./gradlew :ui-fragment:publishGprPublicationToGitHubPackagesRepository
       - run: ./gradlew :ui-serializer-kotlin:publishGprPublicationToGitHubPackagesRepository
+      - run: ./gradlew :ui-serializer-moshi:publishGprPublicationToGitHubPackagesRepository
       - run: ./gradlew :plugin-core:bintrayUpload
       - run: ./gradlew :plugin-preset:bintrayUpload
       - run: ./gradlew :ui-core:bintrayUpload
       - run: ./gradlew :ui-activity:bintrayUpload
+      - run: ./gradlew :ui-fragment:bintrayUpload
       - run: ./gradlew :ui-serializer-kotlin:bintrayUpload
+      - run: ./gradlew :ui-serializer-moshi:bintrayUpload
