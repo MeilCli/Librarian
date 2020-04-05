@@ -71,7 +71,7 @@ fun square() {
         "moshi-kotlin",
         "moshi-adapters",
         "moshi-kotlin-codegen"
-    )
+    ).addAuthor("Square, Inc.")
     PresetGroups += group(
         "LeakCanary",
         "com.squareup.leakcanary",
