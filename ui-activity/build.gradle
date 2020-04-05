@@ -17,7 +17,7 @@ apply plugin: 'librarian-preset'
 
 librarian {
     pages {
-        "ui-activity-usings-plugin" {
+        "ui-activity-usings-library" {
             title = "Librarian ui-activity's using libraries"
             description = "This list is including library binary"
             configurations = [
