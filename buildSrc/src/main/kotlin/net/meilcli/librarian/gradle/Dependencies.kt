@@ -74,5 +74,7 @@ object Dependencies {
     object SquareUp {
 
         val okio = Dependency("com.squareup.okio", "okio", "2.5.0")
+        val moshi = Dependency("com.squareup.moshi", "moshi", "1.9.2")
+        val moshiKapt = Dependency("com.squareup.moshi", "moshi-kotlin-codegen", "1.9.2")
     }
 }

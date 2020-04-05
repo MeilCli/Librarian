@@ -2,10 +2,13 @@
   <dictionary name="kimit">
     <words>
       <w>bintray</w>
+      <w>codegen</w>
       <w>constraintlayout</w>
       <w>jfrog</w>
+      <w>kapt</w>
       <w>kotlinx</w>
       <w>meilcli</w>
+      <w>moshi</w>
       <w>okio</w>
       <w>recyclerview</w>
       <w>squareup</w>

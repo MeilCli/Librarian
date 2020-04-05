@@ -23,6 +23,7 @@
             <option value="$PROJECT_DIR$/ui-core" />
             <option value="$PROJECT_DIR$/ui-fragment" />
             <option value="$PROJECT_DIR$/ui-serializer-kotlin" />
+            <option value="$PROJECT_DIR$/ui-serializer-moshi" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
