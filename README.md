@@ -16,6 +16,9 @@ Librarian is generate notice that library used in gradle module
   - [Task](README.md#task)
   - [Configuration](README.md#configuration)
   - [Generate Notice Page](README.md#generate-notice-page)
+- [Android Viewer](README.md#android-viewer)
+  - [Getting started of ui-activity](README.md#getting-started-of-ui-activity)
+  - [Samples](README.md#sampled)
 - [GitHub Actions](README.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
 - [License](README.md#license)
@@ -150,6 +153,69 @@ librarian {
    - then execute `librarianGeneratePages` task
 
 if you want generate notice page by one task, execute `librarianGeneratePipeline` or `librarianGeneratePresetPipeline`
+
+## Android Viewer
+Librarian is prepared Android Viewer library
+
+- `ui-core`: core of UI, including some interface, NoticesView and NoticeView
+- `ui-activity`: wrap of core, for easily usage of Activity
+- `ui-fragment`: wrap of core, for easily usage of Fragment
+- `ui-serializer-**`: serializer implementation of some Json Serializer Library
+
+### Getting started of ui-activity
+install UI Library:
+```groovy
+dependencies {
+    implementation "net.meilcli.librarian:ui-activity:VERSION" // replace VERSION
+    implementation "net.meilcli.librarian:ui-serializer-kotlin:VERSION" // replace VERSION
+}
+```
+
+configure Librarian:
+```groovy
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "sample-from-maven" {
+            title = "Using Libraries"
+            description = "sample-from-maven is using this libraries."
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "releaseImplementationDependenciesMetadata"
+            ]
+            jsonAdditionalOutputPath = file("src/main/assets/notices.json")
+        }
+    }
+}
+```
+
+register activity:
+```xml
+<application>
+<!-- Replace your NoActionBar style -->
+    <activity
+        android:name="net.meilcli.librarian.activities.NoticesActivity"
+        android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+        android:name="net.meilcli.librarian.activities.NoticeActivity"
+        android:theme="@style/AppTheme.NoActionBar" />
+</application>
+```
+
+register listener:
+```kotlin
+button.setOnClickListener {
+    startActivity(NoticesActivity.createIntent(this, NoticesReader(), "notices.json"))
+}
+```
+
+### Samples
+- Using `ui-core`: [sample/sample-ui-core](sample/sample-ui-core)
+- Using `ui-activity`: [sample/sample-ui-activity](sample/sample-ui-activity)
+- Using `ui-fragment`: [sample/sample-ui-fragment](sample/sample-ui-fragment)
+- Using Dynamic Feature Module: [sample/sample-dynamic-app](sample/sample-dynamic-app)
 
 ## GitHub Actions
 if you use GitHub Actions, recommend use GitHub Packages when CI Build
