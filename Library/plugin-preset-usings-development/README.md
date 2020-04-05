@@ -5,10 +5,10 @@ This list is using development of Librarian
 
 ## Using
 - [Gradle Plug-in for Android](https://developer.android.com/studio), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The Android Open Source Project
-- [JUnit5](https://junit.org/junit5/), licensed on [Eclipse Public License v2.0](https://www.eclipse.org/legal/epl-v20.html), made by JUnit Team
+- [JUnit](https://junit.org/junit5/), licensed on [Eclipse Public License v2.0](https://www.eclipse.org/legal/epl-v20.html), made by JUnit Team
 - [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
 - [Librarian](https://github.com/MeilCli/Librarian), licensed on [MIT License](https://github.com/MeilCli/Librarian/blob/master/LICENSE), made by MeilCli
 - [Okio](https://github.com/square/okio/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
 - [TikXml](https://github.com/Tickaroo/tikxml), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Tickaroo
-- [gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Yoav Landman
+- [gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JFrog
 - [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
