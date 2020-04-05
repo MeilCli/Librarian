@@ -127,21 +127,30 @@ open class GeneratePagesTask : DefaultTask() {
     private fun checkNotice(notices: List<Notice>) {
         val extension = extension ?: return
 
-        fun warnOrThrow(notice: Notice) {
+        fun warnOrThrow(notice: Notice, name: String) {
             if (extension.failOnGeneratePageWhenFoundPlaceholder) {
-                throw LibrarianException("Librarian error: notice has placeholder, ${notice.artifacts.joinToString()}")
+                throw LibrarianException("Librarian error: notice has placeholder at $name, ${notice.artifacts.joinToString()}")
             } else {
-                project.logger.warn("Librarian warning: notice has placeholder, ${notice.artifacts.joinToString()}")
+                project.logger.warn("Librarian warning: notice has placeholder at $name, ${notice.artifacts.joinToString()}")
             }
         }
 
         for (notice in notices) {
-            if (notice.author == Placeholder.author || notice.name == Placeholder.name || notice.url == Placeholder.url) {
-                warnOrThrow(notice)
+            if (notice.author == Placeholder.author) {
+                warnOrThrow(notice, "author")
+            }
+            if (notice.name == Placeholder.name) {
+                warnOrThrow(notice, "name")
+            }
+            if (notice.url == Placeholder.url) {
+                warnOrThrow(notice, "url")
             }
             for (license in notice.licenses) {
-                if (license.name == Placeholder.name || license.url == Placeholder.url) {
-                    warnOrThrow(notice)
+                if (license.name == Placeholder.name) {
+                    warnOrThrow(notice, "license.name")
+                }
+                if (license.url == Placeholder.url) {
+                    warnOrThrow(notice, "license.url")
                 }
             }
             if (1 < notices.count { it.artifacts == notice.artifacts }) {
