@@ -1,57 +1,57 @@
 {
-  "title": "Using Libraries",
-  "description": "sample-ui-fragment is using this libraries.",
-  "notices": [
-    {
-      "artifacts": [
-        "androidx.appcompat:appcompat",
-        "androidx.fragment:fragment",
-        "androidx.recyclerview:recyclerview"
-      ],
-      "name": "Android Jetpack",
-      "author": "The Android Open Source Project",
-      "url": "https://developer.android.com/jetpack/androidx",
-      "description": null,
-      "licenses": [
+    "title": "Using Libraries",
+    "description": "sample-ui-fragment is using this libraries.",
+    "notices": [
         {
-          "name": "The Apache Software License, Version 2.0",
-          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-        }
-      ]
-    },
-    {
-      "artifacts": [
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-        "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
-        "org.jetbrains.kotlin:kotlin-android-extensions",
-        "org.jetbrains.kotlin:kotlin-serialization",
-        "org.jetbrains.kotlin:kotlin-gradle-plugin"
-      ],
-      "name": "Kotlin",
-      "author": "JetBrains - Kotlin Team",
-      "url": "https://kotlinlang.org/",
-      "description": null,
-      "licenses": [
+            "artifacts": [
+                "androidx.appcompat:appcompat",
+                "androidx.fragment:fragment",
+                "androidx.recyclerview:recyclerview"
+            ],
+            "name": "Android Jetpack",
+            "author": "The Android Open Source Project",
+            "url": "https://developer.android.com/jetpack/androidx",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
         {
-          "name": "The Apache License, Version 2.0",
-          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-        }
-      ]
-    },
-    {
-      "artifacts": [
-        "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
-      ],
-      "name": "kotlinx.serialization",
-      "author": "JetBrains - JetBrains Team",
-      "url": "https://github.com/Kotlin/kotlinx.serialization",
-      "description": null,
-      "licenses": [
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+                "org.jetbrains.kotlin:kotlin-android-extensions",
+                "org.jetbrains.kotlin:kotlin-serialization",
+                "org.jetbrains.kotlin:kotlin-gradle-plugin"
+            ],
+            "name": "Kotlin",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
         {
-          "name": "The Apache Software License, Version 2.0",
-          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            "artifacts": [
+                "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
+            ],
+            "name": "kotlinx.serialization",
+            "author": "JetBrains - JetBrains Team",
+            "url": "https://github.com/Kotlin/kotlinx.serialization",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
