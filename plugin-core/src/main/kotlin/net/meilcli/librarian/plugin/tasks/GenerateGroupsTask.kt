@@ -40,6 +40,6 @@ open class GenerateGroupsTask : DefaultTask() {
             )
         }
 
-        GroupWriter.write(project, extension, groups)
+        GroupWriter.write(project, groups)
     }
 }

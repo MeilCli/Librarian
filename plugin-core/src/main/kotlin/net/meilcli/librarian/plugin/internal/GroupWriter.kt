@@ -10,8 +10,8 @@ import java.io.File
 object GroupWriter {
 
     @UnstableDefault
-    fun write(project: Project, extension: LibrarianExtension, groups: Collection<LibraryGroup>) {
-        val outputDirectory = File(project.rootProject.rootDir, "${extension.dataFolderName}/${extension.groupsFolderName}")
+    fun write(project: Project, groups: Collection<LibraryGroup>) {
+        val outputDirectory = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.groupsFolder}")
         if (outputDirectory.exists().not()) {
             outputDirectory.mkdirs()
         }

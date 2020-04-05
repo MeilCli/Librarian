@@ -96,8 +96,6 @@ apply plugin: 'librarian-preset'
 ```groovy
 librarian {
     dataFolderName = "Library" // String, default value is Library
-    artifactsFolderName = "Artifacts" // String, default value is Artifacts
-    groupsFolderName = "Groups" // String, default value is Groups
     depth = "firstLevel" // String, firstLevel or allLevel, default value is firstLevel
     failOnGeneratePageWhenFoundPlaceholder = true // Boolean, default value is true
 
@@ -136,8 +134,6 @@ librarian {
 |path|summary|
 |:--|:--|
 |librarian.dataFolderName|output root folder name|
-|librarian.artifactsFolderName|output result folder name of `librarianGenerateArtifacts`|
-|librarian.groupsFolderName|output result folder name of `librarianGenerateGroups`|
 |librarian.depth|search dependency depth, firstLevel find your directly dependency|
 |librarian.failOnGeneratePageWhenFoundPlaceholder|fail on `librarianGeneratePages` when found placeholder|
 

@@ -38,7 +38,6 @@ open class GeneratePresetGroupsTask : DefaultTask() {
 
     @UnstableDefault
     private fun loadDependency(artifactLoaderResult: ArtifactLoader.Result, page: LibrarianPageExtension) {
-        val extension = extension ?: return
         val queue = mutableSetOf<Artifact>()
 
         for (configuration in page.configurations) {
@@ -58,6 +57,6 @@ open class GeneratePresetGroupsTask : DefaultTask() {
             }
         }
 
-        GroupWriter.write(project, extension, foundPresetGroups)
+        GroupWriter.write(project, foundPresetGroups)
     }
 }

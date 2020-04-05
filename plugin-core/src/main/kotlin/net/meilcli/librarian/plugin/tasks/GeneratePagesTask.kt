@@ -230,8 +230,7 @@ open class GeneratePagesTask : DefaultTask() {
 
     @UnstableDefault
     private fun loadArtifacts(): List<Library>? {
-        val extension = extension ?: return null
-        val artifactsFolder = File(project.rootProject.rootDir, "${extension.dataFolderName}/${extension.artifactsFolderName}")
+        val artifactsFolder = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.artifactsFolder}")
         if (artifactsFolder.exists().not()) {
             return null
         }
@@ -251,8 +250,7 @@ open class GeneratePagesTask : DefaultTask() {
 
     @UnstableDefault
     private fun loadGroups(): List<LibraryGroup>? {
-        val extension = extension ?: return null
-        val groupsFolder = File(project.rootProject.rootDir, "${extension.dataFolderName}/${extension.groupsFolderName}")
+        val groupsFolder = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.buildFolder}")
         if (groupsFolder.exists().not()) {
             return null
         }

@@ -12,15 +12,12 @@ open class LibrarianExtension @Inject constructor(
     companion object {
 
         const val defaultDataFolder = "Library"
-        const val defaultArtifactsFolder = "Artifacts"
-        const val defaultGroupsFolder = "Groups"
+        const val buildFolder = "librarian"
+        const val artifactsFolder = "artifacts"
+        const val groupsFolder = "groups"
     }
 
     var dataFolderName = defaultDataFolder
-
-    var artifactsFolderName = defaultArtifactsFolder
-
-    var groupsFolderName = defaultGroupsFolder
 
     var depth = "firstLevel"
 

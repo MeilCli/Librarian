@@ -76,7 +76,7 @@ open class GenerateArtifactsTask : DefaultTask() {
                 )
             }
 
-        val outputDirectory = File(project.rootProject.rootDir, "${extension.dataFolderName}/${extension.artifactsFolderName}")
+        val outputDirectory = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.artifactsFolder}")
         if (outputDirectory.exists().not()) {
             outputDirectory.mkdirs()
         }
@@ -86,7 +86,7 @@ open class GenerateArtifactsTask : DefaultTask() {
         }
 
         for (result in results) {
-            val outputFile = File(outputDirectory, "${result.artifact.replace(':','-')}.json")
+            val outputFile = File(outputDirectory, "${result.artifact.replace(':', '-')}.json")
             val text = json.stringify(Library.serializer(), result)
             outputFile.writeText(text, Charsets.UTF_8)
         }
