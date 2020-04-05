@@ -16,6 +16,8 @@ object PresetGroups {
         kotlin()
         android()
         librarian()
+        junit()
         square()
+        bintray()
     }
 }
