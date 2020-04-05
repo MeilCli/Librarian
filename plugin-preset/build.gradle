@@ -22,3 +22,55 @@ gradlePlugin {
         }
     }
 }
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "plugin-preset-usings-plugin" {
+            title = "Librarian plugin-preset's using libraries"
+            description = "This list is including plugin binary"
+            configurations = [
+                    "implementationDependenciesMetadata"
+            ]
+        }
+        "plugin-preset-usings-development" {
+            title = "Librarian plugin-preset's using libraries"
+            description = "This list is using development of Librarian"
+            configurations = [
+                    "kapt",
+                    "testImplementationDependenciesMetadata",
+                    "testRuntimeOnlyDependenciesMetadata",
+                    "classpath"
+            ]
+        }
+    }
+
+    groups {
+        "TikXml" {
+            artifacts = [
+                    "com.tickaroo.tikxml:annotation",
+                    "com.tickaroo.tikxml:core",
+                    "com.tickaroo.tikxml:processor"
+            ]
+            author = "Tickaroo"
+            url = "https://github.com/Tickaroo/tikxml"
+            licenseName = "The Apache Software License, Version 2.0"
+            licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+        "JUnit5" {
+            artifacts = [
+                    "org.junit.jupiter:junit-jupiter-api",
+                    "org.junit.jupiter:junit-jupiter-engine"
+            ]
+            author = "JUnit Team"
+        }
+        "gradle-bintray-plugin" {
+            artifacts = [
+                    "com.jfrog.bintray.gradle:gradle-bintray-plugin"
+            ]
+            url = "https://github.com/bintray/gradle-bintray-plugin"
+        }
+    }
+}

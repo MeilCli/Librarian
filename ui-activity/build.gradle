@@ -11,3 +11,36 @@ dependencies {
     api project(':ui-core')
     api Dependencies.Android.activity
 }
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "ui-activity-usings-plugin" {
+            title = "Librarian ui-activity's using libraries"
+            description = "This list is including library binary"
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "apiDependenciesMetadata"
+            ]
+        }
+        "ui-activity-usings-development" {
+            title = "Librarian ui-activity's using libraries"
+            description = "This list is using development of Librarian"
+            configurations = [
+                    "testImplementationDependenciesMetadata",
+                    "androidTestImplementationDependenciesMetadata",
+                    "classpath"
+            ]
+        }
+    }
+    groups {
+        "gradle-bintray-plugin" {
+            artifacts = [
+                    "com.jfrog.bintray.gradle:gradle-bintray-plugin"
+            ]
+            url = "https://github.com/bintray/gradle-bintray-plugin"
+        }
+    }
+}

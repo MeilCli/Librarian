@@ -32,8 +32,6 @@ apply plugin: 'librarian'
 apply plugin: 'librarian-preset'
 
 librarian {
-    depth = "firstLevel"
-
     pages {
         "plugin-core-usings-plugin" {
             title = "Librarian plugin-core's using libraries"
@@ -78,12 +76,6 @@ librarian {
                     "com.jfrog.bintray.gradle:gradle-bintray-plugin"
             ]
             url = "https://github.com/bintray/gradle-bintray-plugin"
-        }
-        "Librarian" {
-            artifacts = [
-                    "net.meilcli.librarian:plugin-core",
-                    "net.meilcli.librarian:plugin-preset"
-            ]
         }
     }
 }
