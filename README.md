@@ -18,7 +18,7 @@ Librarian is generate notice that library used in gradle module
   - [Generate Notice Page](README.md#generate-notice-page)
 - [Android Viewer](README.md#android-viewer)
   - [Getting started of ui-activity](README.md#getting-started-of-ui-activity)
-  - [Samples](README.md#sampled)
+  - [Samples](README.md#samples)
 - [GitHub Actions](README.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
 - [License](README.md#license)
