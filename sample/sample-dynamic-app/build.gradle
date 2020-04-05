@@ -1,0 +1,37 @@
+import net.meilcli.librarian.gradle.Dependencies
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'AndroidApplicationPlugin' // this is define at buildSrc
+
+android {
+    defaultConfig {
+        applicationIdSuffix = "dynamic"
+    }
+    dynamicFeatures = [":sample:feature"]
+}
+
+dependencies {
+    implementation Dependencies.Librarian.uiActivity
+    implementation Dependencies.Librarian.uiSerializerKotlin
+}
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    additionalModules = [":sample:feature"]
+    pages {
+        "sample-dynamic-app" {
+            title = "Using Libraries"
+            description = "sample-dynamic-app is using this libraries."
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "releaseImplementationDependenciesMetadata",
+                    "releaseCompileClasspath" // for dynamic feature module
+            ]
+            jsonAdditionalOutputPath = file("src/main/assets/notices.json")
+        }
+    }
+}

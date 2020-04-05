@@ -1,0 +1,13 @@
+<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="net.meilcli.librarian.sample.dynamic.feature">
+
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/title_sample_dynamic_feature">
+        <dist:delivery>
+            <dist:install-time />
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
+    </dist:module>
+</manifest>
+
