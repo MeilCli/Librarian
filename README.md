@@ -211,6 +211,7 @@ button.setOnClickListener {
     startActivity(NoticesActivity.createIntent(this, NoticesReader(), "notices.json"))
 }
 ```
+
 ### Serializers
 - KotlinX Serialization: `ui-serializer-kotlin`
 - Moshi: `ui-serializer-moshi`
