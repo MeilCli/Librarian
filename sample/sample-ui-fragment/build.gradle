@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'AndroidApplicationPlugin' // this is define at buildSrc
+
+android {
+    defaultConfig {
+        applicationIdSuffix = "fragment"
+    }
+}
+
+dependencies {
+    implementation project(':ui-fragment')
+    implementation project(':ui-serializer-kotlin')
+}
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "sample-ui-fragment" {
+            title = "Using Libraries"
+            description = "sample-ui-fragment is using this libraries."
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "releaseImplementationDependenciesMetadata"
+            ]
+            jsonAdditionalOutputPath = file("src/main/assets/notices.json")
+        }
+    }
+}
