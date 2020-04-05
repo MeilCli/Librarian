@@ -35,12 +35,4 @@ librarian {
             ]
         }
     }
-    groups {
-        "gradle-bintray-plugin" {
-            artifacts = [
-                    "com.jfrog.bintray.gradle:gradle-bintray-plugin"
-            ]
-            url = "https://github.com/bintray/gradle-bintray-plugin"
-        }
-    }
 }

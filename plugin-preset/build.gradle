@@ -59,18 +59,5 @@ librarian {
             licenseName = "The Apache Software License, Version 2.0"
             licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
-        "JUnit5" {
-            artifacts = [
-                    "org.junit.jupiter:junit-jupiter-api",
-                    "org.junit.jupiter:junit-jupiter-engine"
-            ]
-            author = "JUnit Team"
-        }
-        "gradle-bintray-plugin" {
-            artifacts = [
-                    "com.jfrog.bintray.gradle:gradle-bintray-plugin"
-            ]
-            url = "https://github.com/bintray/gradle-bintray-plugin"
-        }
     }
 }
