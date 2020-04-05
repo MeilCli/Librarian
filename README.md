@@ -169,7 +169,7 @@ install UI Library:
 ```groovy
 dependencies {
     implementation "net.meilcli.librarian:ui-activity:VERSION" // replace VERSION
-    implementation "net.meilcli.librarian:ui-serializer-kotlin:VERSION" // replace VERSION
+    implementation "net.meilcli.librarian:ui-serializer-kotlin:VERSION" // replace VERSION and serializer
 }
 ```
 
@@ -196,7 +196,7 @@ librarian {
 register activity:
 ```xml
 <application>
-<!-- Replace your NoActionBar style -->
+    <!-- Replace your NoActionBar style -->
     <activity
         android:name="net.meilcli.librarian.activities.NoticesActivity"
         android:theme="@style/AppTheme.NoActionBar" />
