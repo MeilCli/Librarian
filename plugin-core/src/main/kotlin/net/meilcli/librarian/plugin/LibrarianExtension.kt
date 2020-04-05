@@ -29,6 +29,8 @@ open class LibrarianExtension @Inject constructor(
 
     var failOnGeneratePageWhenFoundPlaceholder = true
 
+    var additionalModules = mutableListOf<String>()
+
     val pages = objectFactory.domainObjectContainer(LibrarianPageExtension::class.java)
 
     val groups = objectFactory.domainObjectContainer(LibrarianGroupExtension::class.java)

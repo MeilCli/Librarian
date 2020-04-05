@@ -27,7 +27,7 @@ open class GenerateArtifactsTask : DefaultTask() {
             return
         }
 
-        val artifactLoaderResult = ArtifactLoader().load(project, extension.depthType)
+        val artifactLoaderResult = ArtifactLoader().load(project, extension)
         val pomLoader = PomLoader()
 
         for (page in extension.pages) {
@@ -41,7 +41,6 @@ open class GenerateArtifactsTask : DefaultTask() {
 
     @UnstableDefault
     private fun loadDependency(pomLoader: PomLoader, artifactLoaderResult: ArtifactLoader.Result, page: LibrarianPageExtension) {
-        val extension = extension ?: return
         val queue = mutableSetOf<Artifact>()
 
         for (configuration in page.configurations) {

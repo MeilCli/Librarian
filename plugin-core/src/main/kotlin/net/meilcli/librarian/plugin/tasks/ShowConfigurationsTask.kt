@@ -14,7 +14,7 @@ open class ShowConfigurationsTask : DefaultTask() {
     @TaskAction
     fun action() {
         val extension = extension ?: return
-        val result = ArtifactLoader().load(project, extension.depthType)
+        val result = ArtifactLoader().load(project, extension)
         project.logger.quiet("Configurations that have dependencies")
         for (entry in result.entries) {
             project.logger.quiet("${entry.configurationName} has ${entry.artifacts.size} entries")

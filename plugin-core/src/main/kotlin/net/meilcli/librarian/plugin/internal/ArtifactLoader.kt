@@ -1,6 +1,7 @@
 package net.meilcli.librarian.plugin.internal
 
 import net.meilcli.librarian.plugin.LibrarianDepth
+import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
@@ -59,9 +60,20 @@ class ArtifactLoader {
 
     private val logger = LoggerFactory.getLogger(ArtifactLoader::class.java)
 
-    fun load(project: Project, depth: LibrarianDepth): Result {
+    fun load(project: Project, extension: LibrarianExtension): Result {
         val context = Context()
-        loadResolvedArtifacts(project, context, depth)
+
+        loadResolvedArtifacts(project, context, extension.depthType)
+
+        for (additionalModule in extension.additionalModules) {
+            val additionalProject = project.findProject(additionalModule)
+            if (additionalProject == null) {
+                logger.warn("Librarian not found module: $additionalModule")
+                continue
+            }
+            loadResolvedArtifacts(additionalProject, context, extension.depthType)
+        }
+
         return context.result()
     }
 

@@ -25,7 +25,7 @@ open class GeneratePresetGroupsTask : DefaultTask() {
             return
         }
 
-        val artifactLoaderResult = ArtifactLoader().load(project, extension.depthType)
+        val artifactLoaderResult = ArtifactLoader().load(project, extension)
 
         for (page in extension.pages) {
             try {

@@ -27,7 +27,7 @@ open class GeneratePagesTask : DefaultTask() {
             return
         }
 
-        val artifactLoaderResult = ArtifactLoader().load(project, extension.depthType)
+        val artifactLoaderResult = ArtifactLoader().load(project, extension)
         val artifacts = loadArtifacts()
         val groups = loadGroups()
 
