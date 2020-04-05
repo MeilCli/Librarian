@@ -38,9 +38,9 @@
                 "junit:junit"
             ],
             "name": "JUnit",
-            "author": "David Saff, Kevin Cooney, Stefan Birkner, Marc Philipp",
+            "author": "JUnit Team",
             "url": "http://junit.org",
-            "description": "JUnit is a unit testing framework for Java, created by Erich Gamma and Kent Beck.",
+            "description": null,
             "licenses": [
                 {
                     "name": "Eclipse Public License 1.0",
@@ -86,7 +86,7 @@
                 "com.jfrog.bintray.gradle:gradle-bintray-plugin"
             ],
             "name": "gradle-bintray-plugin",
-            "author": "Yoav Landman",
+            "author": "JFrog",
             "url": "https://github.com/bintray/gradle-bintray-plugin",
             "description": null,
             "licenses": [

@@ -6,7 +6,7 @@ This list is using development of Librarian
 ## Using
 - [AndroidX Test Library](https://developer.android.com/testing), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The Android Open Source Project
 - [Gradle Plug-in for Android](https://developer.android.com/studio), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The Android Open Source Project
-- [JUnit](http://junit.org), licensed on [Eclipse Public License 1.0](http://www.eclipse.org/legal/epl-v10.html), made by David Saff, Kevin Cooney, Stefan Birkner, Marc Philipp
+- [JUnit](http://junit.org), licensed on [Eclipse Public License 1.0](http://www.eclipse.org/legal/epl-v10.html), made by JUnit Team
 - [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
 - [Librarian](https://github.com/MeilCli/Librarian), licensed on [MIT License](https://github.com/MeilCli/Librarian/blob/master/LICENSE), made by MeilCli
-- [gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Yoav Landman
+- [gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JFrog

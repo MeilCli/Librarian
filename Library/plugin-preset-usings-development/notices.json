@@ -22,7 +22,7 @@
                 "org.junit.jupiter:junit-jupiter-api",
                 "org.junit.jupiter:junit-jupiter-engine"
             ],
-            "name": "JUnit5",
+            "name": "JUnit",
             "author": "JUnit Team",
             "url": "https://junit.org/junit5/",
             "description": null,
@@ -103,7 +103,7 @@
                 "com.jfrog.bintray.gradle:gradle-bintray-plugin"
             ],
             "name": "gradle-bintray-plugin",
-            "author": "Yoav Landman",
+            "author": "JFrog",
             "url": "https://github.com/bintray/gradle-bintray-plugin",
             "description": null,
             "licenses": [
