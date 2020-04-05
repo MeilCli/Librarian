@@ -211,7 +211,12 @@ open class GeneratePagesTask : DefaultTask() {
         val text = json.stringify(Notices.serializer(), Notices(page.title, page.description, notices))
         outputFile.writeText(text, Charsets.UTF_8)
 
-        page.jsonAdditionalOutputPath?.writeText(text, Charsets.UTF_8)
+        page.jsonAdditionalOutputPath?.also {
+            if (it.parentFile.exists().not()) {
+                it.parentFile.mkdirs()
+            }
+            it.writeText(text, Charsets.UTF_8)
+        }
     }
 
     @UnstableDefault
