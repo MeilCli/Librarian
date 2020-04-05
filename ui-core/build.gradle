@@ -10,3 +10,28 @@ apply plugin: 'MavenPublishPlugin'
 dependencies {
     api Dependencies.Android.recyclerView
 }
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "ui-core-usings-library" {
+            title = "Librarian ui-core's using libraries"
+            description = "This list is including library binary"
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "apiDependenciesMetadata"
+            ]
+        }
+        "ui-core-usings-development" {
+            title = "Librarian ui-core's using libraries"
+            description = "This list is using development of Librarian"
+            configurations = [
+                    "testImplementationDependenciesMetadata",
+                    "androidTestImplementationDependenciesMetadata",
+                    "classpath"
+            ]
+        }
+    }
+}

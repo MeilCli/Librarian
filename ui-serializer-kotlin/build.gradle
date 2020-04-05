@@ -12,3 +12,28 @@ dependencies {
     api project(":ui-core")
     api Dependencies.Kotlin.Serialization.runtime
 }
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "ui-serializer-kotlin-usings-library" {
+            title = "Librarian ui-serializer-kotlin's using libraries"
+            description = "This list is including library binary"
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "apiDependenciesMetadata"
+            ]
+        }
+        "ui-serializer-kotlin-usings-development" {
+            title = "Librarian ui-serialzier-kotlin's using libraries"
+            description = "This list is using development of Librarian"
+            configurations = [
+                    "testImplementationDependenciesMetadata",
+                    "androidTestImplementationDependenciesMetadata",
+                    "classpath"
+            ]
+        }
+    }
+}

@@ -13,3 +13,29 @@ dependencies {
     api Dependencies.SquareUp.moshi
     kapt Dependencies.SquareUp.moshiKapt
 }
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "ui-serializer-moshi-usings-library" {
+            title = "Librarian ui-serializer-moshi's using libraries"
+            description = "This list is including library binary"
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "apiDependenciesMetadata"
+            ]
+        }
+        "ui-serializer-moshi-usings-development" {
+            title = "Librarian ui-serialzier-moshi's using libraries"
+            description = "This list is using development of Librarian"
+            configurations = [
+                    "testImplementationDependenciesMetadata",
+                    "androidTestImplementationDependenciesMetadata",
+                    "classpath",
+                    "kapt"
+            ]
+        }
+    }
+}

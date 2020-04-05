@@ -11,3 +11,28 @@ dependencies {
     api project(':ui-core')
     api Dependencies.Android.fragment
 }
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "ui-fragment-usings-library" {
+            title = "Librarian ui-fragment's using libraries"
+            description = "This list is including library binary"
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "apiDependenciesMetadata"
+            ]
+        }
+        "ui-fragment-usings-development" {
+            title = "Librarian ui-fragment's using libraries"
+            description = "This list is using development of Librarian"
+            configurations = [
+                    "testImplementationDependenciesMetadata",
+                    "androidTestImplementationDependenciesMetadata",
+                    "classpath"
+            ]
+        }
+    }
+}
