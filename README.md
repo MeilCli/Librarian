@@ -23,6 +23,7 @@ Librarian is generate notice that library used in gradle module
 - [GitHub Actions](README.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
 - [License](README.md#license)
+  - [Using Libraries](README.md#using-libraries)
   
 ## Required
 - Gradle 5.5 or over
@@ -290,7 +291,23 @@ jobs:
 ```
 
 ## License
-MIT License
+Librarian is MIT License
 
-- using libraries: [see link](Library/plugin-core-usings-plugin)
-- using libraries when developing: [see link](Library/plugin-core-usings-development)
+### Using Libraries
+including binary:
+- `plugin-core`: [see link](Library/plugin-core-usings-plugin)
+- `plugin-preset`: [see link](Library/plugin-preset-usings-plugin)
+- `ui-core`: [see link](Library/ui-core-usings-library)
+- `ui-activity`: [see link](Library/ui-activity-usings-library)
+- `ui-fragment`: [see link](Library/ui-fragment-usings-library)
+- `ui-serializer-kotlin`: [see link](Library/ui-serializer-kotlin-usings-library)
+- `ui-serializer-moshi`: [see link](Library/ui-serializer-moshi-usings-library)
+
+when developing
+- `plugin-core`: [see link](Library/plugin-core-usings-development)
+- `plugin-preset`: [see link](Library/plugin-preset-usings-development)
+- `ui-core`: [see link](Library/ui-core-usings-development)
+- `ui-activity`: [see link](Library/ui-activity-usings-development)
+- `ui-fragment`: [see link](Library/ui-fragment-usings-development)
+- `ui-serializer-kotlin`: [see link](Library/ui-serializer-kotlin-usings-development)
+- `ui-serializer-moshi`: [see link](Library/ui-serializer-moshi-usings-development)
