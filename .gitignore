@@ -13,6 +13,4 @@
 .externalNativeBuild
 .cxx
 
-Library/Artifacts
-Library/Groups
 libs
