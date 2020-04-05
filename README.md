@@ -18,6 +18,7 @@ Librarian is generate notice that library used in gradle module
   - [Generate Notice Page](README.md#generate-notice-page)
 - [Android Viewer](README.md#android-viewer)
   - [Getting started of ui-activity](README.md#getting-started-of-ui-activity)
+  - [Serializers](README.md#serializers)
   - [Samples](README.md#samples)
 - [GitHub Actions](README.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
@@ -210,6 +211,9 @@ button.setOnClickListener {
     startActivity(NoticesActivity.createIntent(this, NoticesReader(), "notices.json"))
 }
 ```
+### Serializers
+- KotlinX Serialization: `ui-serializer-kotlin`
+- Moshi: `ui-serializer-moshi`
 
 ### Samples
 - Using `ui-core`: [sample/sample-ui-core](sample/sample-ui-core)
