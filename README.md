@@ -20,6 +20,8 @@ Librarian is generate notice that library used in gradle module
   - [Getting started of ui-activity](README.md#getting-started-of-ui-activity)
   - [Serializers](README.md#serializers)
   - [Samples](README.md#samples)
+- [Tips](README.md#tips)
+  - [Cannot auto generate because Librarian dose not infer some information](README.md#cannot-auto-generate-because-librarian-dose-not-infer-some-information)
 - [GitHub Actions](README.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
 - [License](README.md#license)
@@ -289,6 +291,34 @@ jobs:
           commit-message: "update library notices"
           title: "update library notices"
 ```
+
+## Tips
+### Cannot auto generate because Librarian dose not infer some information
+Sometimes, Librarian dose not infer Library information when not enough pom file
+
+You can compensate information by using Library groups. Library groups is prepared originally for aggregation artifacts, but can use as to override information your hand
+
+example:
+```groovy
+librarian {
+    groups {
+        "Kotlin" { // group name, must be unique
+            artifacts = [
+                    "org.jetbrains.kotlin:kotlin-gradle-plugin",
+                    "org.jetbrains.kotlin:kotlin-serialization",
+                    "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+            ] // Array of String, default is empty list
+        }
+        author = null // String?, default value is null
+        url = null // String?, default value is null
+        description = null // String?, default value is null
+        licenseName = null // String?, default value is null
+        licenseUrl = null // String?, default value is null
+    }
+}
+```
+
+Or, can request preset [here](https://github.com/MeilCli/Librarian/issues/new/choose)
 
 ## License
 Librarian is MIT License
