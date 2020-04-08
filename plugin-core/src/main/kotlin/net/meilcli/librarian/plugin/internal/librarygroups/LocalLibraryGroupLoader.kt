@@ -7,9 +7,11 @@ import net.meilcli.librarian.plugin.entities.LibraryGroup
 import org.gradle.api.Project
 import java.io.File
 
-class LocalLibraryGroupLoader : ILibraryGroupLoader {
+class LocalLibraryGroupLoader(
+    private val project: Project
+) : ILibraryGroupLoader {
 
-    override fun loadLibraryGroups(project: Project): List<LibraryGroup> {
+    override fun loadLibraryGroups(): List<LibraryGroup> {
         val groupsFolder = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.groupsFolder}")
         if (groupsFolder.exists().not()) {
             return emptyList()
