@@ -1,7 +1,6 @@
 package net.meilcli.librarian.plugin.tasks
 
 import kotlinx.serialization.UnstableDefault
-import kotlinx.serialization.json.Json
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
@@ -10,12 +9,12 @@ import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.IParameterizedLoader
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
+import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryWriter
 import net.meilcli.librarian.plugin.internal.pomprojects.LibraryTranslator
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
-import java.io.File
 
 open class GenerateArtifactsTask : DefaultTask() {
 
@@ -84,19 +83,7 @@ open class GenerateArtifactsTask : DefaultTask() {
                 )
             }
 
-        val outputDirectory = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.artifactsFolder}")
-        if (outputDirectory.exists().not()) {
-            outputDirectory.mkdirs()
-        }
-
-        val json = Json {
-            this.prettyPrint = true
-        }
-
-        for (result in results) {
-            val outputFile = File(outputDirectory, "${result.artifact.replace(':', '-')}.json")
-            val text = json.stringify(Library.serializer(), result)
-            outputFile.writeText(text, Charsets.UTF_8)
-        }
+        val libraryWriter = LocalLibraryWriter(project)
+        libraryWriter.write(results)
     }
 }
