@@ -5,7 +5,11 @@ import kotlinx.serialization.json.Json
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.*
-import net.meilcli.librarian.plugin.internal.*
+import net.meilcli.librarian.plugin.internal.ArtifactLoader
+import net.meilcli.librarian.plugin.internal.LibrarianException
+import net.meilcli.librarian.plugin.internal.Placeholder
+import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryLoader
+import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupLoader
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction

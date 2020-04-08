@@ -7,9 +7,9 @@ import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.internal.ArtifactLoader
-import net.meilcli.librarian.plugin.internal.IPomProjectLoader
-import net.meilcli.librarian.plugin.internal.MavenPomProjectLoader
 import net.meilcli.librarian.plugin.internal.PomProjectTranslator
+import net.meilcli.librarian.plugin.internal.pomprojects.IPomProjectLoader
+import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction

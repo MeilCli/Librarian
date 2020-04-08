@@ -1,4 +1,4 @@
-package net.meilcli.librarian.plugin.internal
+package net.meilcli.librarian.plugin.internal.pomprojects
 
 import com.tickaroo.tikxml.TikXml
 import net.meilcli.librarian.plugin.entities.Artifact

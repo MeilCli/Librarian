@@ -1,4 +1,4 @@
-package net.meilcli.librarian.plugin.internal
+package net.meilcli.librarian.plugin.internal.librarygroups
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration

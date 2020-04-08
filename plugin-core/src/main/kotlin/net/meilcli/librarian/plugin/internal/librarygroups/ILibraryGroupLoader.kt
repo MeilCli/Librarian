@@ -1,4 +1,4 @@
-package net.meilcli.librarian.plugin.internal
+package net.meilcli.librarian.plugin.internal.librarygroups
 
 import net.meilcli.librarian.plugin.entities.LibraryGroup
 import org.gradle.api.Project
