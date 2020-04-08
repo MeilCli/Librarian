@@ -2,14 +2,10 @@ package net.meilcli.librarian.plugin.tasks
 
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonConfiguration
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.*
-import net.meilcli.librarian.plugin.internal.ArtifactLoader
-import net.meilcli.librarian.plugin.internal.LibrarianException
-import net.meilcli.librarian.plugin.internal.LocalLibraryLoader
-import net.meilcli.librarian.plugin.internal.Placeholder
+import net.meilcli.librarian.plugin.internal.*
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -29,14 +25,15 @@ open class GeneratePagesTask : DefaultTask() {
         }
 
         val libraryLoader = LocalLibraryLoader()
+        val libraryGroupLoader = LocalLibraryGroupLoader()
 
         val artifactLoaderResult = ArtifactLoader().load(project, extension)
         val libraries = libraryLoader.loadLibraries(project)
-        val groups = loadGroups()
+        val libraryGroups = libraryGroupLoader.loadLibraryGroups(project)
 
         for (page in extension.pages) {
             try {
-                writePage(page, artifactLoaderResult, libraries, groups ?: emptyList())
+                writePage(page, artifactLoaderResult, libraries, libraryGroups)
             } catch (exception: Exception) {
                 if (exception is LibrarianException) {
                     throw exception
@@ -51,7 +48,7 @@ open class GeneratePagesTask : DefaultTask() {
         page: LibrarianPageExtension,
         artifactLoaderResult: ArtifactLoader.Result,
         libraries: List<Library>,
-        groups: List<LibraryGroup>
+        libraryGroups: List<LibraryGroup>
     ) {
         val notices = mutableListOf<Notice>()
         val noticeArtifacts = mutableSetOf<Artifact>()
@@ -67,7 +64,7 @@ open class GeneratePagesTask : DefaultTask() {
 
         for (noticeArtifact in noticeArtifacts) {
             val foundArtifact = libraries.find { it.artifact == noticeArtifact.artifact }
-            val foundGroup = groups.find { it.artifacts.contains(noticeArtifact.artifact) }
+            val foundGroup = libraryGroups.find { it.artifacts.contains(noticeArtifact.artifact) }
             val notice = when {
                 foundGroup != null && foundArtifact != null -> {
                     val author = foundGroup.author ?: foundArtifact.author
@@ -233,25 +230,5 @@ open class GeneratePagesTask : DefaultTask() {
             }
             it.writeText(text, Charsets.UTF_8)
         }
-    }
-
-    @UnstableDefault
-    private fun loadGroups(): List<LibraryGroup>? {
-        val groupsFolder = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.groupsFolder}")
-        if (groupsFolder.exists().not()) {
-            return null
-        }
-
-        val result = mutableListOf<LibraryGroup>()
-        val json = Json(JsonConfiguration.Default)
-        for (groupFile in groupsFolder.listFiles() ?: emptyArray()) {
-            try {
-                result += json.parse(LibraryGroup.serializer(), groupFile.readText())
-            } catch (exception: Exception) {
-                project.logger.warn("Librarian cannot read group file: ${groupFile.absolutePath}", exception)
-            }
-        }
-
-        return result
     }
 }
