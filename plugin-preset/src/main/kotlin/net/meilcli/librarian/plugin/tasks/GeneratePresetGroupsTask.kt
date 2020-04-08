@@ -4,8 +4,9 @@ import kotlinx.serialization.UnstableDefault
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
+import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.entities.LibraryGroup
-import net.meilcli.librarian.plugin.internal.ArtifactLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupWriter
 import net.meilcli.librarian.plugin.presets.PresetGroups
 import org.gradle.api.DefaultTask
@@ -25,11 +26,12 @@ open class GeneratePresetGroupsTask : DefaultTask() {
             return
         }
 
-        val artifactLoaderResult = ArtifactLoader().load(project, extension)
+        val configurationArtifactLoader = ConfigurationArtifactLoader(project, extension)
+        val configurationArtifacts = configurationArtifactLoader.load()
 
         for (page in extension.pages) {
             try {
-                loadDependency(artifactLoaderResult, page)
+                loadDependency(configurationArtifacts, page)
             } catch (exception: Exception) {
                 project.logger.error("Failed Librarian, page: ${page.name}", exception)
             }
@@ -37,11 +39,11 @@ open class GeneratePresetGroupsTask : DefaultTask() {
     }
 
     @UnstableDefault
-    private fun loadDependency(artifactLoaderResult: ArtifactLoader.Result, page: LibrarianPageExtension) {
+    private fun loadDependency(configurationArtifacts: List<ConfigurationArtifact>, page: LibrarianPageExtension) {
         val queue = mutableSetOf<Artifact>()
 
         for (configuration in page.configurations) {
-            val artifactResult = artifactLoaderResult.entries.firstOrNull { it.configurationName == configuration }
+            val artifactResult = configurationArtifacts.firstOrNull { it.configurationName == configuration }
             if (artifactResult == null) {
                 project.logger.warn("Librarian cannot resolve unknown configuration: $configuration")
                 continue

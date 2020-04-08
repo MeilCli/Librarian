@@ -5,10 +5,11 @@ import kotlinx.serialization.json.Json
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
+import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.PomProject
-import net.meilcli.librarian.plugin.internal.ArtifactLoader
 import net.meilcli.librarian.plugin.internal.IParameterizedLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
 import net.meilcli.librarian.plugin.internal.pomprojects.LibraryTranslator
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
 import org.gradle.api.DefaultTask
@@ -29,12 +30,12 @@ open class GenerateArtifactsTask : DefaultTask() {
             return
         }
 
-        val artifactLoaderResult = ArtifactLoader().load(project, extension)
+        val configurationArtifactLoader = ConfigurationArtifactLoader(project, extension)
         val pomLoader = MavenPomProjectLoader(project)
 
         for (page in extension.pages) {
             try {
-                loadDependency(pomLoader, artifactLoaderResult, page)
+                loadDependency(pomLoader, configurationArtifactLoader.load(), page)
             } catch (exception: Exception) {
                 project.logger.error("Failed Librarian, page: ${page.name}", exception)
             }
@@ -44,18 +45,18 @@ open class GenerateArtifactsTask : DefaultTask() {
     @UnstableDefault
     private fun loadDependency(
         pomProjectLoader: IParameterizedLoader<Artifact, PomProject?>,
-        artifactLoaderResult: ArtifactLoader.Result,
+        configurationArtifacts: List<ConfigurationArtifact>,
         page: LibrarianPageExtension
     ) {
         val queue = mutableSetOf<Artifact>()
 
         for (configuration in page.configurations) {
-            val artifactResult = artifactLoaderResult.entries.firstOrNull { it.configurationName == configuration }
-            if (artifactResult == null) {
+            val configurationArtifact = configurationArtifacts.firstOrNull { it.configurationName == configuration }
+            if (configurationArtifact == null) {
                 project.logger.warn("Librarian cannot resolve unknown configuration: $configuration")
                 continue
             }
-            queue.addAll(artifactResult.artifacts)
+            queue.addAll(configurationArtifact.artifacts)
         }
 
         val libraryTranslator = LibraryTranslator()

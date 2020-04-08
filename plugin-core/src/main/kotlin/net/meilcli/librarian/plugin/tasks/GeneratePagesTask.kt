@@ -5,9 +5,9 @@ import kotlinx.serialization.json.Json
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.*
-import net.meilcli.librarian.plugin.internal.ArtifactLoader
 import net.meilcli.librarian.plugin.internal.LibrarianException
 import net.meilcli.librarian.plugin.internal.Placeholder
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupLoader
 import org.gradle.api.DefaultTask
@@ -30,14 +30,15 @@ open class GeneratePagesTask : DefaultTask() {
 
         val libraryLoader = LocalLibraryLoader(project)
         val libraryGroupLoader = LocalLibraryGroupLoader(project)
+        val configurationArtifactLoader = ConfigurationArtifactLoader(project, extension)
 
-        val artifactLoaderResult = ArtifactLoader().load(project, extension)
+        val configurationArtifacts = configurationArtifactLoader.load()
         val libraries = libraryLoader.load()
         val libraryGroups = libraryGroupLoader.load()
 
         for (page in extension.pages) {
             try {
-                writePage(page, artifactLoaderResult, libraries, libraryGroups)
+                writePage(page, configurationArtifacts, libraries, libraryGroups)
             } catch (exception: Exception) {
                 if (exception is LibrarianException) {
                     throw exception
@@ -50,7 +51,7 @@ open class GeneratePagesTask : DefaultTask() {
     @UnstableDefault
     private fun writePage(
         page: LibrarianPageExtension,
-        artifactLoaderResult: ArtifactLoader.Result,
+        configurationArtifacts: List<ConfigurationArtifact>,
         libraries: List<Library>,
         libraryGroups: List<LibraryGroup>
     ) {
@@ -58,7 +59,7 @@ open class GeneratePagesTask : DefaultTask() {
         val noticeArtifacts = mutableSetOf<Artifact>()
 
         for (configuration in page.configurations) {
-            val artifactResult = artifactLoaderResult.entries.firstOrNull { it.configurationName == configuration }
+            val artifactResult = configurationArtifacts.firstOrNull { it.configurationName == configuration }
             if (artifactResult == null) {
                 project.logger.warn("Librarian cannot resolve unknown configuration: $configuration")
                 continue
@@ -119,7 +120,7 @@ open class GeneratePagesTask : DefaultTask() {
             }
         }
 
-        reduceUnUseArtifact(notices, artifactLoaderResult)
+        reduceUnUseArtifact(notices, configurationArtifacts)
         checkNotice(notices)
 
         notices.sortBy { it.name }
@@ -167,13 +168,13 @@ open class GeneratePagesTask : DefaultTask() {
         }
     }
 
-    private fun reduceUnUseArtifact(notices: MutableList<Notice>, artifactLoaderResult: ArtifactLoader.Result) {
+    private fun reduceUnUseArtifact(notices: MutableList<Notice>, configurationArtifacts: List<ConfigurationArtifact>) {
         for (i in 0 until notices.size) {
             val oldNotice = notices[i]
             val newNotice = Notice(
                 oldNotice.artifacts
                     .filter { artifact ->
-                        artifactLoaderResult.entries
+                        configurationArtifacts
                             .asSequence()
                             .flatMap { it.artifacts.asSequence() }
                             .any { it.artifact == artifact }

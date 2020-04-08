@@ -1,24 +1,20 @@
-package net.meilcli.librarian.plugin.internal
+package net.meilcli.librarian.plugin.internal.artifacts
 
 import net.meilcli.librarian.plugin.LibrarianDepth
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.entities.Artifact
+import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
+import net.meilcli.librarian.plugin.internal.ILoader
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.ResolvedArtifact
 import org.gradle.api.artifacts.ResolvedDependency
 import org.slf4j.LoggerFactory
 
-class ArtifactLoader {
-
-    data class Result(
-        val entries: List<Entry>
-    ) {
-        data class Entry(
-            val configurationName: String,
-            val artifacts: List<Artifact>
-        )
-    }
+class ConfigurationArtifactLoader(
+    private val project: Project,
+    private val extension: LibrarianExtension
+) : ILoader<List<ConfigurationArtifact>> {
 
     private class Context {
 
@@ -48,8 +44,8 @@ class ArtifactLoader {
             list.add(artifact)
         }
 
-        fun result(): Result {
-            return Result(artifacts.map { Result.Entry(it.key, it.value) })
+        fun result(): List<ConfigurationArtifact> {
+            return artifacts.map { ConfigurationArtifact(it.key, it.value) }
         }
     }
 
@@ -58,9 +54,9 @@ class ArtifactLoader {
         private const val unspecifiedVersion = "unspecified"
     }
 
-    private val logger = LoggerFactory.getLogger(ArtifactLoader::class.java)
+    private val logger = LoggerFactory.getLogger(ConfigurationArtifactLoader::class.java)
 
-    fun load(project: Project, extension: LibrarianExtension): Result {
+    override fun load(): List<ConfigurationArtifact> {
         val context = Context()
 
         loadResolvedArtifacts(project, context, extension.depthType)
