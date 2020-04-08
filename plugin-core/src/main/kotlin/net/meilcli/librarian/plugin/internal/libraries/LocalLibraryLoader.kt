@@ -7,9 +7,11 @@ import net.meilcli.librarian.plugin.entities.Library
 import org.gradle.api.Project
 import java.io.File
 
-class LocalLibraryLoader : ILibraryLoader {
+class LocalLibraryLoader(
+    private val project: Project
+) : ILibraryLoader {
 
-    override fun loadLibraries(project: Project): List<Library> {
+    override fun loadLibraries(): List<Library> {
         val artifactsFolder = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.artifactsFolder}")
         if (artifactsFolder.exists().not()) {
             return emptyList()
