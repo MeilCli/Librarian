@@ -1,14 +1,16 @@
-package net.meilcli.librarian.plugin.internal
+package net.meilcli.librarian.plugin.internal.pomprojects
 
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.License
 import net.meilcli.librarian.plugin.entities.PomProject
+import net.meilcli.librarian.plugin.internal.ITranslator
+import net.meilcli.librarian.plugin.internal.Placeholder
 
-object PomProjectTranslator {
+class LibraryTranslator : ITranslator<PomProject, Library> {
 
-    fun translate(pomProject: PomProject): Library {
-        val name = pomProject.name ?: Placeholder.name
-        val developer = pomProject.developers
+    override fun translate(source: PomProject): Library {
+        val name = source.name ?: Placeholder.name
+        val developer = source.developers
             ?.filter { it.name != null || it.organization != null }
             ?.joinToString {
                 if (it.organization != null && it.name != null) {
@@ -20,17 +22,17 @@ object PomProjectTranslator {
                 }
             }
         val author = if (developer.isNullOrEmpty()) Placeholder.author else developer
-        val url = pomProject.url ?: Placeholder.url
-        val licenses = pomProject.licenses
+        val url = source.url ?: Placeholder.url
+        val licenses = source.licenses
             ?.map { License(it.name ?: Placeholder.licenseName, it.url ?: Placeholder.licenseUrl) }
             ?: listOf(License(Placeholder.licenseName, Placeholder.licenseUrl))
 
         return Library(
-            artifact = "${pomProject.group}:${pomProject.artifact}",
+            artifact = "${source.group}:${source.artifact}",
             name = name,
             author = author,
             url = url,
-            description = pomProject.description,
+            description = source.description,
             licenses = licenses
         )
     }

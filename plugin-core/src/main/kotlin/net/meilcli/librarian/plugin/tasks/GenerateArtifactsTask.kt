@@ -7,8 +7,8 @@ import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.internal.ArtifactLoader
-import net.meilcli.librarian.plugin.internal.PomProjectTranslator
 import net.meilcli.librarian.plugin.internal.pomprojects.IPomProjectLoader
+import net.meilcli.librarian.plugin.internal.pomprojects.LibraryTranslator
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -57,6 +57,8 @@ open class GenerateArtifactsTask : DefaultTask() {
             queue.addAll(artifactResult.artifacts)
         }
 
+        val libraryTranslator = LibraryTranslator()
+
         val results = queue.asSequence()
             .map {
                 val result = pomProjectLoader.load(project, it)
@@ -66,7 +68,7 @@ open class GenerateArtifactsTask : DefaultTask() {
                 result
             }
             .filterNotNull()
-            .map { PomProjectTranslator.translate(it) }
+            .map { libraryTranslator.translate(it) }
             .groupBy { it.artifact }
             .map {
                 val library = it.value.first() // ToDo: Priority
