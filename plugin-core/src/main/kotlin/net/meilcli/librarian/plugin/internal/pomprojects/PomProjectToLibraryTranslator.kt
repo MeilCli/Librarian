@@ -6,7 +6,7 @@ import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.ITranslator
 import net.meilcli.librarian.plugin.internal.Placeholder
 
-class LibraryTranslator : ITranslator<PomProject, Library> {
+class PomProjectToLibraryTranslator : ITranslator<PomProject, Library> {
 
     override fun translate(source: PomProject): Library {
         val name = source.name ?: Placeholder.name

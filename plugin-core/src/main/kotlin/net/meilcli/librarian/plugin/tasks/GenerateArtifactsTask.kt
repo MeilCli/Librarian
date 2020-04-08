@@ -11,8 +11,8 @@ import net.meilcli.librarian.plugin.internal.IParameterizedLoader
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryWriter
-import net.meilcli.librarian.plugin.internal.pomprojects.LibraryTranslator
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
+import net.meilcli.librarian.plugin.internal.pomprojects.PomProjectToLibraryTranslator
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -49,7 +49,7 @@ open class GenerateArtifactsTask : DefaultTask() {
         page: LibrarianPageExtension
     ) {
         val pageFilter = ConfigurationArtifactByPageFilter(page)
-        val libraryTranslator = LibraryTranslator()
+        val libraryTranslator = PomProjectToLibraryTranslator()
 
         val results = configurationArtifacts.let { pageFilter.filter(it) }
             .asSequence()
