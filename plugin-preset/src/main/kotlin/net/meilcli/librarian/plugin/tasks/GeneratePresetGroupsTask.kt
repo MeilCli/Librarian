@@ -6,7 +6,7 @@ import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.LibraryGroup
 import net.meilcli.librarian.plugin.internal.ArtifactLoader
-import net.meilcli.librarian.plugin.internal.GroupWriter
+import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupWriter
 import net.meilcli.librarian.plugin.presets.PresetGroups
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -57,6 +57,7 @@ open class GeneratePresetGroupsTask : DefaultTask() {
             }
         }
 
-        GroupWriter.write(project, foundPresetGroups)
+        val libraryGroupWriter = LocalLibraryGroupWriter(project)
+        libraryGroupWriter.write(foundPresetGroups)
     }
 }

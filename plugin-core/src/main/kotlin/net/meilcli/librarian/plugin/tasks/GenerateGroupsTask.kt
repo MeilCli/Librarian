@@ -4,8 +4,8 @@ import kotlinx.serialization.UnstableDefault
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.entities.LibraryGroup
 import net.meilcli.librarian.plugin.entities.License
-import net.meilcli.librarian.plugin.internal.GroupWriter
 import net.meilcli.librarian.plugin.internal.Placeholder
+import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupWriter
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -40,6 +40,7 @@ open class GenerateGroupsTask : DefaultTask() {
             )
         }
 
-        GroupWriter.write(project, groups)
+        val libraryGroupWriter = LocalLibraryGroupWriter(project)
+        libraryGroupWriter.write(groups)
     }
 }
