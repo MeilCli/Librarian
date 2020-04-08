@@ -6,8 +6,9 @@ import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.Library
+import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.ArtifactLoader
-import net.meilcli.librarian.plugin.internal.pomprojects.IPomProjectLoader
+import net.meilcli.librarian.plugin.internal.IParameterizedLoader
 import net.meilcli.librarian.plugin.internal.pomprojects.LibraryTranslator
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
 import org.gradle.api.DefaultTask
@@ -42,7 +43,7 @@ open class GenerateArtifactsTask : DefaultTask() {
 
     @UnstableDefault
     private fun loadDependency(
-        pomProjectLoader: IPomProjectLoader,
+        pomProjectLoader: IParameterizedLoader<Artifact, PomProject?>,
         artifactLoaderResult: ArtifactLoader.Result,
         page: LibrarianPageExtension
     ) {

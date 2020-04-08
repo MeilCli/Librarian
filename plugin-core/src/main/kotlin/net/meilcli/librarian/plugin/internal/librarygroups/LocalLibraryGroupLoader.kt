@@ -4,14 +4,15 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.entities.LibraryGroup
+import net.meilcli.librarian.plugin.internal.ILoader
 import org.gradle.api.Project
 import java.io.File
 
 class LocalLibraryGroupLoader(
     private val project: Project
-) : ILibraryGroupLoader {
+) : ILoader<List<LibraryGroup>> {
 
-    override fun loadLibraryGroups(): List<LibraryGroup> {
+    override fun load(): List<LibraryGroup> {
         val groupsFolder = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.groupsFolder}")
         if (groupsFolder.exists().not()) {
             return emptyList()

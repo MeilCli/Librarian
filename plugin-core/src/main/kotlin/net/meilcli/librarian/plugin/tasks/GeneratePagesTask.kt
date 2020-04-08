@@ -32,8 +32,8 @@ open class GeneratePagesTask : DefaultTask() {
         val libraryGroupLoader = LocalLibraryGroupLoader(project)
 
         val artifactLoaderResult = ArtifactLoader().load(project, extension)
-        val libraries = libraryLoader.loadLibraries()
-        val libraryGroups = libraryGroupLoader.loadLibraryGroups()
+        val libraries = libraryLoader.load()
+        val libraryGroups = libraryGroupLoader.load()
 
         for (page in extension.pages) {
             try {

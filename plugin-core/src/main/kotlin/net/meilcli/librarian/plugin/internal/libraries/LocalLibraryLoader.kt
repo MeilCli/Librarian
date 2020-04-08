@@ -4,14 +4,15 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.entities.Library
+import net.meilcli.librarian.plugin.internal.ILoader
 import org.gradle.api.Project
 import java.io.File
 
 class LocalLibraryLoader(
     private val project: Project
-) : ILibraryLoader {
+) : ILoader<List<Library>> {
 
-    override fun loadLibraries(): List<Library> {
+    override fun load(): List<Library> {
         val artifactsFolder = File(project.buildDir, "${LibrarianExtension.buildFolder}/${LibrarianExtension.artifactsFolder}")
         if (artifactsFolder.exists().not()) {
             return emptyList()

@@ -3,6 +3,7 @@ package net.meilcli.librarian.plugin.internal.pomprojects
 import com.tickaroo.tikxml.TikXml
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.PomProject
+import net.meilcli.librarian.plugin.internal.IParameterizedLoader
 import okio.buffer
 import okio.source
 import org.gradle.api.Project
@@ -16,26 +17,26 @@ import java.io.File
 
 class MavenPomProjectLoader(
     private val project: Project
-) : IPomProjectLoader {
+) : IParameterizedLoader<Artifact, PomProject?> {
 
     private val logger = LoggerFactory.getLogger(MavenPomProjectLoader::class.java)
 
     private val pomCache = mutableMapOf<Artifact, PomProject>()
 
-    override fun load(artifact: Artifact): PomProject? {
-        var result = pomCache[artifact]
+    override fun load(parameter: Artifact): PomProject? {
+        var result = pomCache[parameter]
         if (result != null) {
             return result
         }
         try {
-            result = artifact.getPomFile(project)?.loadPomProject(artifact)
+            result = parameter.getPomFile(project)?.loadPomProject(parameter)
             result = result?.toOverridePomProjectIfNeeded(project)
             if (result != null) {
-                pomCache[artifact] = result
+                pomCache[parameter] = result
             }
             return result
         } catch (exception: Exception) {
-            logger.warn("Librarian cannot resolve pom file: ${artifact.group}:${artifact.name}:${artifact.version}")
+            logger.warn("Librarian cannot resolve pom file: ${parameter.group}:${parameter.name}:${parameter.version}")
         }
         return null
     }
