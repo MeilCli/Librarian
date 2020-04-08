@@ -14,13 +14,13 @@ import org.gradle.maven.MavenPomArtifact
 import org.slf4j.LoggerFactory
 import java.io.File
 
-class PomLoader {
+class MavenPomLoader : IPomLoader {
 
-    private val logger = LoggerFactory.getLogger(PomLoader::class.java)
+    private val logger = LoggerFactory.getLogger(MavenPomLoader::class.java)
 
     private val pomCache = mutableMapOf<Artifact, PomProject>()
 
-    fun load(project: Project, artifact: Artifact): PomProject? {
+    override fun load(project: Project, artifact: Artifact): PomProject? {
         var result = pomCache[artifact]
         if (result != null) {
             return result

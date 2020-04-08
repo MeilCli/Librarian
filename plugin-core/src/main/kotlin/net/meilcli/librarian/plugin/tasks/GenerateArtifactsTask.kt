@@ -7,7 +7,8 @@ import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.internal.ArtifactLoader
-import net.meilcli.librarian.plugin.internal.PomLoader
+import net.meilcli.librarian.plugin.internal.IPomLoader
+import net.meilcli.librarian.plugin.internal.MavenPomLoader
 import net.meilcli.librarian.plugin.internal.PomProjectTranslator
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -28,7 +29,7 @@ open class GenerateArtifactsTask : DefaultTask() {
         }
 
         val artifactLoaderResult = ArtifactLoader().load(project, extension)
-        val pomLoader = PomLoader()
+        val pomLoader = MavenPomLoader()
 
         for (page in extension.pages) {
             try {
@@ -40,7 +41,7 @@ open class GenerateArtifactsTask : DefaultTask() {
     }
 
     @UnstableDefault
-    private fun loadDependency(pomLoader: PomLoader, artifactLoaderResult: ArtifactLoader.Result, page: LibrarianPageExtension) {
+    private fun loadDependency(pomLoader: IPomLoader, artifactLoaderResult: ArtifactLoader.Result, page: LibrarianPageExtension) {
         val queue = mutableSetOf<Artifact>()
 
         for (configuration in page.configurations) {
