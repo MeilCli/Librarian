@@ -8,6 +8,7 @@ import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.IParameterizedLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ArtifactToPomProjectTranslator
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactToArtifactTranslator
@@ -51,19 +52,13 @@ open class GenerateArtifactsTask : DefaultTask() {
     ) {
         val pageFilter = ConfigurationArtifactByPageFilter(page)
         val artifactTranslator = ConfigurationArtifactToArtifactTranslator()
+        val pomProjectTranslator = ArtifactToPomProjectTranslator(pomProjectLoader)
         val libraryTranslator = PomProjectToLibraryTranslator()
 
         val results = configurationArtifacts.let { pageFilter.filter(it) }
             .let { artifactTranslator.translate(it) }
+            .let { pomProjectTranslator.translate(it) }
             .asSequence()
-            .map {
-                val result = pomProjectLoader.load(it)
-                if (result == null) {
-                    project.logger.warn("Librarian cannot found pom: ${it.group}:${it.name}:${it.version}")
-                }
-                result
-            }
-            .filterNotNull()
             .map { libraryTranslator.translate(it) }
             .groupBy { it.artifact }
             .map {
