@@ -10,6 +10,7 @@ import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.IParameterizedLoader
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactToArtifactTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryWriter
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
 import net.meilcli.librarian.plugin.internal.pomprojects.PomProjectToLibraryTranslator
@@ -49,12 +50,12 @@ open class GenerateArtifactsTask : DefaultTask() {
         page: LibrarianPageExtension
     ) {
         val pageFilter = ConfigurationArtifactByPageFilter(page)
+        val artifactTranslator = ConfigurationArtifactToArtifactTranslator()
         val libraryTranslator = PomProjectToLibraryTranslator()
 
         val results = configurationArtifacts.let { pageFilter.filter(it) }
+            .let { artifactTranslator.translate(it) }
             .asSequence()
-            .flatMap { it.artifacts.asSequence() }
-            .distinct()
             .map {
                 val result = pomProjectLoader.load(it)
                 if (result == null) {

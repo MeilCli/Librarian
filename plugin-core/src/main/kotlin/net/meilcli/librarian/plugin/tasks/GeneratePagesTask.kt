@@ -9,6 +9,7 @@ import net.meilcli.librarian.plugin.internal.LibrarianException
 import net.meilcli.librarian.plugin.internal.Placeholder
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactToArtifactTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupLoader
 import org.gradle.api.DefaultTask
@@ -58,8 +59,9 @@ open class GeneratePagesTask : DefaultTask() {
     ) {
         val notices = mutableListOf<Notice>()
         val pageFiler = ConfigurationArtifactByPageFilter(page)
+        val artifactTranslator = ConfigurationArtifactToArtifactTranslator()
 
-        for (noticeArtifact in configurationArtifacts.let { pageFiler.filter(it) }.flatMap { it.artifacts }.distinct()) {
+        for (noticeArtifact in configurationArtifacts.let { pageFiler.filter(it) }.let { artifactTranslator.translate(it) }) {
             val foundArtifact = libraries.find { it.artifact == noticeArtifact.artifact }
             val foundGroup = libraryGroups.find { it.artifacts.contains(noticeArtifact.artifact) }
             val notice = when {

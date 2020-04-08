@@ -7,6 +7,7 @@ import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.entities.LibraryGroup
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactToArtifactTranslator
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupWriter
 import net.meilcli.librarian.plugin.presets.PresetGroups
 import org.gradle.api.DefaultTask
@@ -41,9 +42,10 @@ open class GeneratePresetGroupsTask : DefaultTask() {
     @UnstableDefault
     private fun loadDependency(configurationArtifacts: List<ConfigurationArtifact>, page: LibrarianPageExtension) {
         val pageFilter = ConfigurationArtifactByPageFilter(page)
+        val artifactTranslator = ConfigurationArtifactToArtifactTranslator()
         val foundPresetGroups = mutableSetOf<LibraryGroup>()
 
-        for (artifact in configurationArtifacts.let { pageFilter.filter(it) }.flatMap { it.artifacts }.distinct()) {
+        for (artifact in configurationArtifacts.let { pageFilter.filter(it) }.let { artifactTranslator.translate(it) }) {
             val foundPresetGroup = PresetGroups.groups.find { it.artifacts.contains(artifact.artifact) }
             if (foundPresetGroup != null) {
                 foundPresetGroups += foundPresetGroup
