@@ -14,13 +14,15 @@ import org.gradle.maven.MavenPomArtifact
 import org.slf4j.LoggerFactory
 import java.io.File
 
-class MavenPomProjectLoader : IPomProjectLoader {
+class MavenPomProjectLoader(
+    private val project: Project
+) : IPomProjectLoader {
 
     private val logger = LoggerFactory.getLogger(MavenPomProjectLoader::class.java)
 
     private val pomCache = mutableMapOf<Artifact, PomProject>()
 
-    override fun load(project: Project, artifact: Artifact): PomProject? {
+    override fun load(artifact: Artifact): PomProject? {
         var result = pomCache[artifact]
         if (result != null) {
             return result
@@ -104,7 +106,7 @@ class MavenPomProjectLoader : IPomProjectLoader {
         }
 
         try {
-            val parentProject = load(project, Artifact(parentGroup, parentArtifact, parentVersion))
+            val parentProject = load(Artifact(parentGroup, parentArtifact, parentVersion))
             return PomProject(
                 group = group,
                 artifact = artifact,

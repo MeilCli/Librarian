@@ -29,7 +29,7 @@ open class GenerateArtifactsTask : DefaultTask() {
         }
 
         val artifactLoaderResult = ArtifactLoader().load(project, extension)
-        val pomLoader = MavenPomProjectLoader()
+        val pomLoader = MavenPomProjectLoader(project)
 
         for (page in extension.pages) {
             try {
@@ -61,7 +61,7 @@ open class GenerateArtifactsTask : DefaultTask() {
 
         val results = queue.asSequence()
             .map {
-                val result = pomProjectLoader.load(project, it)
+                val result = pomProjectLoader.load(it)
                 if (result == null) {
                     project.logger.warn("Librarian cannot found pom: ${it.group}:${it.name}:${it.version}")
                 }
