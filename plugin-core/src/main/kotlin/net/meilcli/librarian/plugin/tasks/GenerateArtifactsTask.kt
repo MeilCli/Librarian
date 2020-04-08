@@ -8,6 +8,7 @@ import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.IParameterizedLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryWriter
 import net.meilcli.librarian.plugin.internal.pomprojects.LibraryTranslator
@@ -47,20 +48,13 @@ open class GenerateArtifactsTask : DefaultTask() {
         configurationArtifacts: List<ConfigurationArtifact>,
         page: LibrarianPageExtension
     ) {
-        val queue = mutableSetOf<Artifact>()
-
-        for (configuration in page.configurations) {
-            val configurationArtifact = configurationArtifacts.firstOrNull { it.configurationName == configuration }
-            if (configurationArtifact == null) {
-                project.logger.warn("Librarian cannot resolve unknown configuration: $configuration")
-                continue
-            }
-            queue.addAll(configurationArtifact.artifacts)
-        }
-
+        val pageFilter = ConfigurationArtifactByPageFilter(page)
         val libraryTranslator = LibraryTranslator()
 
-        val results = queue.asSequence()
+        val results = configurationArtifacts.let { pageFilter.filter(it) }
+            .asSequence()
+            .flatMap { it.artifacts.asSequence() }
+            .distinct()
             .map {
                 val result = pomProjectLoader.load(it)
                 if (result == null) {

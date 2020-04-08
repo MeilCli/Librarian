@@ -7,6 +7,7 @@ import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.*
 import net.meilcli.librarian.plugin.internal.LibrarianException
 import net.meilcli.librarian.plugin.internal.Placeholder
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupLoader
@@ -56,18 +57,9 @@ open class GeneratePagesTask : DefaultTask() {
         libraryGroups: List<LibraryGroup>
     ) {
         val notices = mutableListOf<Notice>()
-        val noticeArtifacts = mutableSetOf<Artifact>()
+        val pageFiler = ConfigurationArtifactByPageFilter(page)
 
-        for (configuration in page.configurations) {
-            val artifactResult = configurationArtifacts.firstOrNull { it.configurationName == configuration }
-            if (artifactResult == null) {
-                project.logger.warn("Librarian cannot resolve unknown configuration: $configuration")
-                continue
-            }
-            noticeArtifacts.addAll(artifactResult.artifacts)
-        }
-
-        for (noticeArtifact in noticeArtifacts) {
+        for (noticeArtifact in configurationArtifacts.let { pageFiler.filter(it) }.flatMap { it.artifacts }.distinct()) {
             val foundArtifact = libraries.find { it.artifact == noticeArtifact.artifact }
             val foundGroup = libraryGroups.find { it.artifacts.contains(noticeArtifact.artifact) }
             val notice = when {

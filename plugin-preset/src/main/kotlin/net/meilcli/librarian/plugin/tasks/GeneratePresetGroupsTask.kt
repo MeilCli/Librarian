@@ -3,9 +3,9 @@ package net.meilcli.librarian.plugin.tasks
 import kotlinx.serialization.UnstableDefault
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
-import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.entities.LibraryGroup
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupWriter
 import net.meilcli.librarian.plugin.presets.PresetGroups
@@ -40,19 +40,10 @@ open class GeneratePresetGroupsTask : DefaultTask() {
 
     @UnstableDefault
     private fun loadDependency(configurationArtifacts: List<ConfigurationArtifact>, page: LibrarianPageExtension) {
-        val queue = mutableSetOf<Artifact>()
-
-        for (configuration in page.configurations) {
-            val artifactResult = configurationArtifacts.firstOrNull { it.configurationName == configuration }
-            if (artifactResult == null) {
-                project.logger.warn("Librarian cannot resolve unknown configuration: $configuration")
-                continue
-            }
-            queue.addAll(artifactResult.artifacts)
-        }
-
+        val pageFilter = ConfigurationArtifactByPageFilter(page)
         val foundPresetGroups = mutableSetOf<LibraryGroup>()
-        for (artifact in queue) {
+
+        for (artifact in configurationArtifacts.let { pageFilter.filter(it) }.flatMap { it.artifacts }.distinct()) {
             val foundPresetGroup = PresetGroups.groups.find { it.artifacts.contains(artifact.artifact) }
             if (foundPresetGroup != null) {
                 foundPresetGroups += foundPresetGroup
