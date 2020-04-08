@@ -14,9 +14,9 @@ import org.gradle.maven.MavenPomArtifact
 import org.slf4j.LoggerFactory
 import java.io.File
 
-class MavenPomLoader : IPomLoader {
+class MavenPomProjectLoader : IPomProjectLoader {
 
-    private val logger = LoggerFactory.getLogger(MavenPomLoader::class.java)
+    private val logger = LoggerFactory.getLogger(MavenPomProjectLoader::class.java)
 
     private val pomCache = mutableMapOf<Artifact, PomProject>()
 

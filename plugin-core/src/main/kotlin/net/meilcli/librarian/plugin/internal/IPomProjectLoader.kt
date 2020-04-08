@@ -4,7 +4,7 @@ import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.PomProject
 import org.gradle.api.Project
 
-interface IPomLoader {
+interface IPomProjectLoader {
 
     fun load(project: Project, artifact: Artifact): PomProject?
 }

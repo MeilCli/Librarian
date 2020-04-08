@@ -7,8 +7,8 @@ import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.internal.ArtifactLoader
-import net.meilcli.librarian.plugin.internal.IPomLoader
-import net.meilcli.librarian.plugin.internal.MavenPomLoader
+import net.meilcli.librarian.plugin.internal.IPomProjectLoader
+import net.meilcli.librarian.plugin.internal.MavenPomProjectLoader
 import net.meilcli.librarian.plugin.internal.PomProjectTranslator
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -29,7 +29,7 @@ open class GenerateArtifactsTask : DefaultTask() {
         }
 
         val artifactLoaderResult = ArtifactLoader().load(project, extension)
-        val pomLoader = MavenPomLoader()
+        val pomLoader = MavenPomProjectLoader()
 
         for (page in extension.pages) {
             try {
@@ -41,7 +41,11 @@ open class GenerateArtifactsTask : DefaultTask() {
     }
 
     @UnstableDefault
-    private fun loadDependency(pomLoader: IPomLoader, artifactLoaderResult: ArtifactLoader.Result, page: LibrarianPageExtension) {
+    private fun loadDependency(
+        pomProjectLoader: IPomProjectLoader,
+        artifactLoaderResult: ArtifactLoader.Result,
+        page: LibrarianPageExtension
+    ) {
         val queue = mutableSetOf<Artifact>()
 
         for (configuration in page.configurations) {
@@ -55,7 +59,7 @@ open class GenerateArtifactsTask : DefaultTask() {
 
         val results = queue.asSequence()
             .map {
-                val result = pomLoader.load(project, it)
+                val result = pomProjectLoader.load(project, it)
                 if (result == null) {
                     project.logger.warn("Librarian cannot found pom: ${it.group}:${it.name}:${it.version}")
                 }
