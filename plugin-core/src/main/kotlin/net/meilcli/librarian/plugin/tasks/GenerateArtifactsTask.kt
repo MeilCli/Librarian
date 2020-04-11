@@ -5,8 +5,11 @@ import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
+import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.PomProject
-import net.meilcli.librarian.plugin.internal.IParameterizedLoader
+import net.meilcli.librarian.plugin.internal.IAggregator
+import net.meilcli.librarian.plugin.internal.ITranslator
+import net.meilcli.librarian.plugin.internal.IWriter
 import net.meilcli.librarian.plugin.internal.artifacts.*
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesWriter
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
@@ -30,34 +33,42 @@ open class GenerateArtifactsTask : DefaultTask() {
 
         val configurationArtifactLoader = ConfigurationArtifactsLoader(project, extension)
         val configurationArtifacts = configurationArtifactLoader.load()
-        val pomLoader = MavenPomProjectLoader(project)
+        val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
+        val pomProjectsTranslator = ArtifactsToPomProjectsTranslator(MavenPomProjectLoader(project))
+        val librariesAggregator = PomProjectsToLibrariesAggregator(PomProjectToLibraryTranslator())
+        val librariesWriter = LocalLibrariesWriter(project)
 
         for (page in extension.pages) {
             try {
-                loadDependency(pomLoader, configurationArtifacts, page)
+                executePage(
+                    page,
+                    configurationArtifacts,
+                    artifactsTranslator,
+                    pomProjectsTranslator,
+                    librariesAggregator,
+                    librariesWriter
+                )
             } catch (exception: Exception) {
                 project.logger.error("Failed Librarian, page: ${page.name}", exception)
             }
         }
     }
 
-    private fun loadDependency(
-        pomProjectLoader: IParameterizedLoader<Artifact, PomProject?>,
+    private fun executePage(
+        page: LibrarianPageExtension,
         configurationArtifacts: List<ConfigurationArtifact>,
-        page: LibrarianPageExtension
+        artifactsTranslator: ITranslator<List<ConfigurationArtifact>, Set<Artifact>>,
+        pomProjectsTranslator: ITranslator<Collection<Artifact>, List<PomProject>>,
+        librariesAggregator: IAggregator<List<PomProject>, List<Library>>,
+        librariesWriter: IWriter<List<Library>>
     ) {
         val pageFilter = ConfigurationArtifactsByPageFilter(page)
-        val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
-        val pomProjectsTranslator = ArtifactsToPomProjectsTranslator(pomProjectLoader)
-        val libraryTranslator = PomProjectToLibraryTranslator()
-        val librariesAggregator = PomProjectsToLibrariesAggregator(libraryTranslator)
 
         val results = configurationArtifacts.let { pageFilter.filter(it) }
             .let { artifactsTranslator.translate(it) }
             .let { pomProjectsTranslator.translate(it) }
             .let { librariesAggregator.aggregate(it) }
 
-        val libraryWriter = LocalLibrariesWriter(project)
-        libraryWriter.write(results)
+        librariesWriter.write(results)
     }
 }
