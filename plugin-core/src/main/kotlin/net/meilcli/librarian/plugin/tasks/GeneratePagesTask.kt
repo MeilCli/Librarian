@@ -13,6 +13,7 @@ import net.meilcli.librarian.plugin.internal.Placeholder
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
+import net.meilcli.librarian.plugin.internal.libraries.LibraryToNoticeTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupsLoader
 import net.meilcli.librarian.plugin.internal.notices.LocalJsonNoticesWriter
@@ -65,6 +66,7 @@ open class GeneratePagesTask : DefaultTask() {
         val notices = mutableListOf<Notice>()
         val pageFiler = ConfigurationArtifactsByPageFilter(page)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
+        val noticeTranslator = LibraryToNoticeTranslator()
 
         for (noticeArtifact in configurationArtifacts.let { pageFiler.filter(it) }.let { artifactsTranslator.translate(it) }) {
             val foundArtifact = libraries.find { it.artifact == noticeArtifact.artifact }
@@ -99,16 +101,7 @@ open class GeneratePagesTask : DefaultTask() {
                         licenses = licenses
                     )
                 }
-                foundArtifact != null -> {
-                    Notice(
-                        artifacts = listOf(foundArtifact.artifact),
-                        name = foundArtifact.name,
-                        author = foundArtifact.author,
-                        url = foundArtifact.url,
-                        description = foundArtifact.description,
-                        licenses = foundArtifact.licenses
-                    )
-                }
+                foundArtifact != null -> noticeTranslator.translate(foundArtifact)
                 else -> {
                     throw LibrarianException("Librarian not found library data: ${noticeArtifact.group}:${noticeArtifact.name}")
                 }
