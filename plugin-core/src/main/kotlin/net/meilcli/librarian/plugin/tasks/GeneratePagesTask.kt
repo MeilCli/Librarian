@@ -1,10 +1,13 @@
 package net.meilcli.librarian.plugin.tasks
 
 import kotlinx.serialization.UnstableDefault
-import kotlinx.serialization.json.Json
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
-import net.meilcli.librarian.plugin.entities.*
+import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
+import net.meilcli.librarian.plugin.entities.Library
+import net.meilcli.librarian.plugin.entities.LibraryGroup
+import net.meilcli.librarian.plugin.entities.Notice
+import net.meilcli.librarian.plugin.internal.IWriter
 import net.meilcli.librarian.plugin.internal.LibrarianException
 import net.meilcli.librarian.plugin.internal.Placeholder
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
@@ -12,6 +15,7 @@ import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoa
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupsLoader
+import net.meilcli.librarian.plugin.internal.notices.LocalJsonNoticesWriter
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -40,7 +44,7 @@ open class GeneratePagesTask : DefaultTask() {
 
         for (page in extension.pages) {
             try {
-                writePage(page, configurationArtifacts, libraries, libraryGroups)
+                writePage(extension, page, configurationArtifacts, libraries, libraryGroups)
             } catch (exception: Exception) {
                 if (exception is LibrarianException) {
                     throw exception
@@ -52,6 +56,7 @@ open class GeneratePagesTask : DefaultTask() {
 
     @UnstableDefault
     private fun writePage(
+        extension: LibrarianExtension,
         page: LibrarianPageExtension,
         configurationArtifacts: List<ConfigurationArtifact>,
         libraries: List<Library>,
@@ -119,11 +124,17 @@ open class GeneratePagesTask : DefaultTask() {
 
         notices.sortBy { it.name }
 
+        val writers = mutableListOf<IWriter<List<Notice>>>()
+
         if (page.markdown) {
             writeMarkdownPage(page, notices)
         }
         if (page.json) {
-            writeJsonPage(page, notices)
+            writers += LocalJsonNoticesWriter(project, extension, page)
+        }
+
+        for (writer in writers) {
+            writer.write(notices)
         }
     }
 
@@ -205,29 +216,5 @@ open class GeneratePagesTask : DefaultTask() {
 
         val outputFile = File(outputDirectory, page.markdownFileName)
         outputFile.writeText(sb.toString(), Charsets.UTF_8)
-    }
-
-    @UnstableDefault
-    private fun writeJsonPage(page: LibrarianPageExtension, notices: List<Notice>) {
-        val extension = extension ?: return
-        val outputDirectory = File(project.rootProject.rootDir, "${extension.dataFolderName}/${page.name}")
-        if (outputDirectory.exists().not()) {
-            outputDirectory.mkdirs()
-        }
-
-        val json = Json {
-            this.prettyPrint = true
-        }
-
-        val outputFile = File(outputDirectory, page.jsonFileName)
-        val text = json.stringify(Notices.serializer(), Notices(page.title, page.description, notices))
-        outputFile.writeText(text, Charsets.UTF_8)
-
-        page.jsonAdditionalOutputPath?.also {
-            if (it.parentFile.exists().not()) {
-                it.parentFile.mkdirs()
-            }
-            it.writeText(text, Charsets.UTF_8)
-        }
     }
 }
