@@ -11,7 +11,7 @@ import org.gradle.api.artifacts.ResolvedArtifact
 import org.gradle.api.artifacts.ResolvedDependency
 import org.slf4j.LoggerFactory
 
-class ConfigurationArtifactLoader(
+class ConfigurationArtifactsLoader(
     private val project: Project,
     private val extension: LibrarianExtension
 ) : ILoader<List<ConfigurationArtifact>> {
@@ -54,7 +54,7 @@ class ConfigurationArtifactLoader(
         private const val unspecifiedVersion = "unspecified"
     }
 
-    private val logger = LoggerFactory.getLogger(ConfigurationArtifactLoader::class.java)
+    private val logger = LoggerFactory.getLogger(ConfigurationArtifactsLoader::class.java)
 
     override fun load(): List<ConfigurationArtifact> {
         val context = Context()

@@ -6,11 +6,11 @@ import net.meilcli.librarian.plugin.internal.IParameterizedLoader
 import net.meilcli.librarian.plugin.internal.ITranslator
 import org.slf4j.LoggerFactory
 
-class ArtifactToPomProjectTranslator(
+class ArtifactsToPomProjectsTranslator(
     private val pomProjectLoader: IParameterizedLoader<Artifact, PomProject?>
 ) : ITranslator<Collection<Artifact>, List<PomProject>> {
 
-    private val logger = LoggerFactory.getLogger(ArtifactToPomProjectTranslator::class.java)
+    private val logger = LoggerFactory.getLogger(ArtifactsToPomProjectsTranslator::class.java)
 
     override fun translate(source: Collection<Artifact>): List<PomProject> {
         val result = mutableListOf<PomProject>()

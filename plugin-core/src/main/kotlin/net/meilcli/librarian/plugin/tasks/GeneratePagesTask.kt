@@ -7,11 +7,11 @@ import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.*
 import net.meilcli.librarian.plugin.internal.LibrarianException
 import net.meilcli.librarian.plugin.internal.Placeholder
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactToArtifactTranslator
-import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryLoader
-import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
+import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesLoader
+import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupsLoader
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -30,13 +30,13 @@ open class GeneratePagesTask : DefaultTask() {
             return
         }
 
-        val libraryLoader = LocalLibraryLoader(project)
-        val libraryGroupLoader = LocalLibraryGroupLoader(project)
-        val configurationArtifactLoader = ConfigurationArtifactLoader(project, extension)
+        val librariesLoader = LocalLibrariesLoader(project)
+        val libraryGroupsLoader = LocalLibraryGroupsLoader(project)
+        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension)
 
-        val configurationArtifacts = configurationArtifactLoader.load()
-        val libraries = libraryLoader.load()
-        val libraryGroups = libraryGroupLoader.load()
+        val configurationArtifacts = configurationArtifactsLoader.load()
+        val libraries = librariesLoader.load()
+        val libraryGroups = libraryGroupsLoader.load()
 
         for (page in extension.pages) {
             try {
@@ -58,10 +58,10 @@ open class GeneratePagesTask : DefaultTask() {
         libraryGroups: List<LibraryGroup>
     ) {
         val notices = mutableListOf<Notice>()
-        val pageFiler = ConfigurationArtifactByPageFilter(page)
-        val artifactTranslator = ConfigurationArtifactToArtifactTranslator()
+        val pageFiler = ConfigurationArtifactsByPageFilter(page)
+        val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
 
-        for (noticeArtifact in configurationArtifacts.let { pageFiler.filter(it) }.let { artifactTranslator.translate(it) }) {
+        for (noticeArtifact in configurationArtifacts.let { pageFiler.filter(it) }.let { artifactsTranslator.translate(it) }) {
             val foundArtifact = libraries.find { it.artifact == noticeArtifact.artifact }
             val foundGroup = libraryGroups.find { it.artifacts.contains(noticeArtifact.artifact) }
             val notice = when {

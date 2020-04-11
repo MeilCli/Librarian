@@ -7,7 +7,7 @@ import net.meilcli.librarian.plugin.internal.IWriter
 import org.gradle.api.Project
 import java.io.File
 
-class LocalLibraryGroupWriter(
+class LocalLibraryGroupsWriter(
     private val project: Project
 ) : IWriter<Collection<LibraryGroup>> {
 

@@ -8,11 +8,11 @@ import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.IParameterizedLoader
-import net.meilcli.librarian.plugin.internal.artifacts.ArtifactToPomProjectTranslator
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactByPageFilter
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactToArtifactTranslator
-import net.meilcli.librarian.plugin.internal.libraries.LocalLibraryWriter
+import net.meilcli.librarian.plugin.internal.artifacts.ArtifactsToPomProjectsTranslator
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
+import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesWriter
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
 import net.meilcli.librarian.plugin.internal.pomprojects.PomProjectToLibraryTranslator
 import org.gradle.api.DefaultTask
@@ -32,7 +32,7 @@ open class GenerateArtifactsTask : DefaultTask() {
             return
         }
 
-        val configurationArtifactLoader = ConfigurationArtifactLoader(project, extension)
+        val configurationArtifactLoader = ConfigurationArtifactsLoader(project, extension)
         val pomLoader = MavenPomProjectLoader(project)
 
         for (page in extension.pages) {
@@ -50,14 +50,14 @@ open class GenerateArtifactsTask : DefaultTask() {
         configurationArtifacts: List<ConfigurationArtifact>,
         page: LibrarianPageExtension
     ) {
-        val pageFilter = ConfigurationArtifactByPageFilter(page)
-        val artifactTranslator = ConfigurationArtifactToArtifactTranslator()
-        val pomProjectTranslator = ArtifactToPomProjectTranslator(pomProjectLoader)
+        val pageFilter = ConfigurationArtifactsByPageFilter(page)
+        val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
+        val pomProjectsTranslator = ArtifactsToPomProjectsTranslator(pomProjectLoader)
         val libraryTranslator = PomProjectToLibraryTranslator()
 
         val results = configurationArtifacts.let { pageFilter.filter(it) }
-            .let { artifactTranslator.translate(it) }
-            .let { pomProjectTranslator.translate(it) }
+            .let { artifactsTranslator.translate(it) }
+            .let { pomProjectsTranslator.translate(it) }
             .asSequence()
             .map { libraryTranslator.translate(it) }
             .groupBy { it.artifact }
@@ -73,7 +73,7 @@ open class GenerateArtifactsTask : DefaultTask() {
                 )
             }
 
-        val libraryWriter = LocalLibraryWriter(project)
+        val libraryWriter = LocalLibrariesWriter(project)
         libraryWriter.write(results)
     }
 }

@@ -1,7 +1,7 @@
 package net.meilcli.librarian.plugin.tasks
 
 import net.meilcli.librarian.plugin.LibrarianExtension
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -15,7 +15,7 @@ open class ShowConfigurationsTask : DefaultTask() {
     fun action() {
         val extension = extension ?: return
 
-        val configurationArtifactsLoader = ConfigurationArtifactLoader(project, extension)
+        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension)
 
         val result = configurationArtifactsLoader.load()
         project.logger.quiet("Configurations that have dependencies")

@@ -4,7 +4,7 @@ import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.internal.ITranslator
 
-class ConfigurationArtifactToArtifactTranslator : ITranslator<List<ConfigurationArtifact>, Set<Artifact>> {
+class ConfigurationArtifactsToArtifactsTranslator : ITranslator<List<ConfigurationArtifact>, Set<Artifact>> {
 
     override fun translate(source: List<ConfigurationArtifact>): Set<Artifact> {
         val result = mutableSetOf<Artifact>()

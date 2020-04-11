@@ -5,11 +5,11 @@ import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.internal.IFilter
 import org.slf4j.LoggerFactory
 
-class ConfigurationArtifactByPageFilter(
+class ConfigurationArtifactsByPageFilter(
     private val pageExtension: LibrarianPageExtension
 ) : IFilter<List<ConfigurationArtifact>> {
 
-    private val logger = LoggerFactory.getLogger(ConfigurationArtifactByPageFilter::class.java)
+    private val logger = LoggerFactory.getLogger(ConfigurationArtifactsByPageFilter::class.java)
 
     override fun filter(source: List<ConfigurationArtifact>): List<ConfigurationArtifact> {
         val result = mutableListOf<ConfigurationArtifact>()

@@ -8,7 +8,7 @@ import net.meilcli.librarian.plugin.internal.ILoader
 import org.gradle.api.Project
 import java.io.File
 
-class LocalLibraryGroupLoader(
+class LocalLibraryGroupsLoader(
     private val project: Project
 ) : ILoader<List<LibraryGroup>> {
 
