@@ -15,9 +15,12 @@ import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoa
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LibraryToNoticeTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesLoader
+import net.meilcli.librarian.plugin.internal.librarygroups.LibraryGroupToNoticeTranslator
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupsLoader
+import net.meilcli.librarian.plugin.internal.notices.LicenseOverrideNoticeValidator
 import net.meilcli.librarian.plugin.internal.notices.LocalJsonNoticesWriter
 import net.meilcli.librarian.plugin.internal.notices.LocalMarkdownNoticesWriter
+import net.meilcli.librarian.plugin.internal.notices.NoticeOverride
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -66,42 +69,24 @@ open class GeneratePagesTask : DefaultTask() {
         val notices = mutableListOf<Notice>()
         val pageFiler = ConfigurationArtifactsByPageFilter(page)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
-        val noticeTranslator = LibraryToNoticeTranslator()
+        val libraryToNoticeTranslator = LibraryToNoticeTranslator()
+        val libraryGroupToNoticeTranslator = LibraryGroupToNoticeTranslator()
+        val noticeOverride = NoticeOverride()
+        val overrideNoticeValidator = LicenseOverrideNoticeValidator()
 
         for (noticeArtifact in configurationArtifacts.let { pageFiler.filter(it) }.let { artifactsTranslator.translate(it) }) {
-            val foundArtifact = libraries.find { it.artifact == noticeArtifact.artifact }
-            val foundGroup = libraryGroups.find { it.artifacts.contains(noticeArtifact.artifact) }
+            val foundLibrary = libraries.find { it.artifact == noticeArtifact.artifact }
+            val foundLibraryGroup = libraryGroups.find { it.artifacts.contains(noticeArtifact.artifact) }
             val notice = when {
-                foundGroup != null && foundArtifact != null -> {
-                    val author = foundGroup.author ?: foundArtifact.author
-                    val url = foundGroup.url ?: foundArtifact.url
-                    val licenses = foundGroup.licenses ?: foundArtifact.licenses
-                    if (foundArtifact.licenses.isNotEmpty()) {
-                        // check same licenses
-                        for (checkLicense in foundArtifact.licenses) {
-                            if (checkLicense.name == Placeholder.licenseName || checkLicense.url == Placeholder.licenseUrl) {
-                                // will override by group
-                                continue
-                            }
-                            if (licenses.isEmpty()) {
-                                // will override by group
-                                continue
-                            }
-                            if (licenses.contains(checkLicense).not()) {
-                                project.logger.warn("Librarian warning: group has not artifact license, ${foundGroup.name}, ${foundArtifact.artifact}")
-                            }
-                        }
+                foundLibraryGroup != null && foundLibrary != null -> {
+                    val libraryNotice = libraryToNoticeTranslator.translate(foundLibrary)
+                    val libraryGroupNotice = libraryGroupToNoticeTranslator.translate(foundLibraryGroup)
+                    if (overrideNoticeValidator.valid(libraryNotice, libraryGroupNotice).not()) {
+                        project.logger.warn("Librarian warning: group has not artifact license, ${foundLibraryGroup.name}, ${foundLibrary.artifact}")
                     }
-                    Notice(
-                        artifacts = foundGroup.artifacts,
-                        name = foundGroup.name,
-                        author = author,
-                        url = url,
-                        description = foundGroup.description,
-                        licenses = licenses
-                    )
+                    noticeOverride.override(libraryNotice, libraryGroupNotice)
                 }
-                foundArtifact != null -> noticeTranslator.translate(foundArtifact)
+                foundLibrary != null -> libraryToNoticeTranslator.translate(foundLibrary)
                 else -> {
                     throw LibrarianException("Librarian not found library data: ${noticeArtifact.group}:${noticeArtifact.name}")
                 }
