@@ -10,6 +10,7 @@ import net.meilcli.librarian.plugin.entities.Notice
 import net.meilcli.librarian.plugin.internal.IWriter
 import net.meilcli.librarian.plugin.internal.LibrarianException
 import net.meilcli.librarian.plugin.internal.Placeholder
+import net.meilcli.librarian.plugin.internal.artifacts.ArtifactsToNoticesAggregator
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
@@ -17,10 +18,7 @@ import net.meilcli.librarian.plugin.internal.libraries.LibraryToNoticeTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LibraryGroupToNoticeTranslator
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupsLoader
-import net.meilcli.librarian.plugin.internal.notices.LicenseOverrideNoticeValidator
-import net.meilcli.librarian.plugin.internal.notices.LocalJsonNoticesWriter
-import net.meilcli.librarian.plugin.internal.notices.LocalMarkdownNoticesWriter
-import net.meilcli.librarian.plugin.internal.notices.NoticeOverride
+import net.meilcli.librarian.plugin.internal.notices.*
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -66,41 +64,24 @@ open class GeneratePagesTask : DefaultTask() {
         libraries: List<Library>,
         libraryGroups: List<LibraryGroup>
     ) {
-        val notices = mutableListOf<Notice>()
         val pageFiler = ConfigurationArtifactsByPageFilter(page)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
-        val libraryToNoticeTranslator = LibraryToNoticeTranslator()
-        val libraryGroupToNoticeTranslator = LibraryGroupToNoticeTranslator()
-        val noticeOverride = NoticeOverride()
-        val overrideNoticeValidator = LicenseOverrideNoticeValidator()
+        val noticesAggregator = ArtifactsToNoticesAggregator(
+            LibraryToNoticeTranslator(),
+            LibraryGroupToNoticeTranslator(),
+            NoticeOverride(),
+            LicenseOverrideNoticeValidator()
+        )
+        val reduceUnUsedArtifactAggregator = NoticesByReduceUnUsedArtifactAggregator()
+        val sortTranslator = NoticesBySortTranslator()
 
-        for (noticeArtifact in configurationArtifacts.let { pageFiler.filter(it) }.let { artifactsTranslator.translate(it) }) {
-            val foundLibrary = libraries.find { it.artifact == noticeArtifact.artifact }
-            val foundLibraryGroup = libraryGroups.find { it.artifacts.contains(noticeArtifact.artifact) }
-            val notice = when {
-                foundLibraryGroup != null && foundLibrary != null -> {
-                    val libraryNotice = libraryToNoticeTranslator.translate(foundLibrary)
-                    val libraryGroupNotice = libraryGroupToNoticeTranslator.translate(foundLibraryGroup)
-                    if (overrideNoticeValidator.valid(libraryNotice, libraryGroupNotice).not()) {
-                        project.logger.warn("Librarian warning: group has not artifact license, ${foundLibraryGroup.name}, ${foundLibrary.artifact}")
-                    }
-                    noticeOverride.override(libraryNotice, libraryGroupNotice)
-                }
-                foundLibrary != null -> libraryToNoticeTranslator.translate(foundLibrary)
-                else -> {
-                    throw LibrarianException("Librarian not found library data: ${noticeArtifact.group}:${noticeArtifact.name}")
-                }
-            }
+        val notices = configurationArtifacts.let { pageFiler.filter(it) }
+            .let { artifactsTranslator.translate(it) }
+            .let { noticesAggregator.aggregate(it, libraries, libraryGroups) }
+            .let { reduceUnUsedArtifactAggregator.aggregate(it, configurationArtifacts) }
+            .let { sortTranslator.translate(it) }
 
-            if (notices.contains(notice).not()) {
-                notices.add(notice)
-            }
-        }
-
-        reduceUnUseArtifact(notices, configurationArtifacts)
         checkNotice(notices)
-
-        notices.sortBy { it.name }
 
         val writers = mutableListOf<IWriter<List<Notice>>>()
 
@@ -148,27 +129,6 @@ open class GeneratePagesTask : DefaultTask() {
             if (1 < notices.count { it.artifacts == notice.artifacts }) {
                 project.logger.warn("Librarian warning: notice has duplication, ${notice.artifacts.joinToString()}")
             }
-        }
-    }
-
-    private fun reduceUnUseArtifact(notices: MutableList<Notice>, configurationArtifacts: List<ConfigurationArtifact>) {
-        for (i in 0 until notices.size) {
-            val oldNotice = notices[i]
-            val newNotice = Notice(
-                oldNotice.artifacts
-                    .filter { artifact ->
-                        configurationArtifacts
-                            .asSequence()
-                            .flatMap { it.artifacts.asSequence() }
-                            .any { it.artifact == artifact }
-                    },
-                name = oldNotice.name,
-                author = oldNotice.author,
-                url = oldNotice.url,
-                description = oldNotice.description,
-                licenses = oldNotice.licenses
-            )
-            notices[i] = newNotice
         }
     }
 }
