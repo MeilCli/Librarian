@@ -52,7 +52,7 @@ open class GeneratePresetGroupsTask : DefaultTask() {
             }
         }
 
-        val libraryGroupWriter = LocalLibraryGroupsWriter(project)
-        libraryGroupWriter.write(foundPresetGroups)
+        val libraryGroupsWriter = LocalLibraryGroupsWriter(project)
+        libraryGroupsWriter.write(foundPresetGroups)
     }
 }
