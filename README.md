@@ -105,6 +105,7 @@ librarian {
     dataFolderName = "Library" // String, default value is Library
     depth = "firstLevel" // String, firstLevel or allLevel, default value is firstLevel
     failOnGeneratePageWhenFoundPlaceholder = true // Boolean, default value is true
+    failOnOverrideUnMatchedLicense = true // Boolean, default value is true
     additionalModules = [] // Array of String
 
     pages {
@@ -144,6 +145,7 @@ librarian {
 |librarian.dataFolderName|output root folder name|
 |librarian.depth|search dependency depth, firstLevel find your directly dependency|
 |librarian.failOnGeneratePageWhenFoundPlaceholder|fail on `librarianGeneratePages` when found placeholder|
+|librarian.failOnOverrideUnMatchedLicense|fail on override un matched license by group|
 |librarian.additionalModules|additional resolve modules, use when like android dynamic feature module|
 
 ### Generate Notice Page

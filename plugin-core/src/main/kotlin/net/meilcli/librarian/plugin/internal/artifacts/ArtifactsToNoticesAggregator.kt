@@ -1,5 +1,6 @@
 package net.meilcli.librarian.plugin.internal.artifacts
 
+import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.LibraryGroup
@@ -8,6 +9,7 @@ import net.meilcli.librarian.plugin.internal.*
 import org.slf4j.LoggerFactory
 
 class ArtifactsToNoticesAggregator(
+    private val extension: LibrarianExtension,
     private val libraryToNoticeTranslator: ITranslator<Library, Notice>,
     private val libraryGroupToNoticeTranslator: ITranslator<LibraryGroup, Notice>,
     private val noticeOverride: IOverride<Notice>,
@@ -27,7 +29,11 @@ class ArtifactsToNoticesAggregator(
                 if (foundLibraryGroup != null) {
                     val libraryGroupNotice = libraryGroupToNoticeTranslator.translate(foundLibraryGroup)
                     if (overrideNoticeValidator.valid(notice, libraryGroupNotice).not()) {
-                        logger.warn("Librarian warning: group has not artifact license, ${foundLibraryGroup.name}, ${foundLibrary.artifact}")
+                        if (extension.failOnOverrideUnMatchedLicense) {
+                            throw LibrarianException("group has not artifact license, ${foundLibraryGroup.name}, ${foundLibrary.artifact}")
+                        } else {
+                            logger.warn("Librarian warning: group has not artifact license, ${foundLibraryGroup.name}, ${foundLibrary.artifact}")
+                        }
                     }
                     notice = noticeOverride.override(notice, libraryGroupNotice)
                 }
