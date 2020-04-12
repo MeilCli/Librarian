@@ -10,10 +10,14 @@ import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.IAggregator
 import net.meilcli.librarian.plugin.internal.ITranslator
 import net.meilcli.librarian.plugin.internal.IWriter
-import net.meilcli.librarian.plugin.internal.artifacts.*
+import net.meilcli.librarian.plugin.internal.artifacts.ArtifactsToPomProjectsTranslator
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
+import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesWriter
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
 import net.meilcli.librarian.plugin.internal.pomprojects.PomProjectToLibraryTranslator
+import net.meilcli.librarian.plugin.internal.pomprojects.PomProjectsToLibrariesAggregator
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -35,7 +39,9 @@ open class GenerateArtifactsTask : DefaultTask() {
         val configurationArtifacts = configurationArtifactLoader.load()
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val pomProjectsTranslator = ArtifactsToPomProjectsTranslator(MavenPomProjectLoader(project))
-        val librariesAggregator = PomProjectsToLibrariesAggregator(PomProjectToLibraryTranslator())
+        val librariesAggregator = PomProjectsToLibrariesAggregator(
+            PomProjectToLibraryTranslator()
+        )
         val librariesWriter = LocalLibrariesWriter(project)
 
         for (page in extension.pages) {

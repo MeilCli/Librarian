@@ -1,4 +1,4 @@
-package net.meilcli.librarian.plugin.internal.artifacts
+package net.meilcli.librarian.plugin.internal.pomprojects
 
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.PomProject
