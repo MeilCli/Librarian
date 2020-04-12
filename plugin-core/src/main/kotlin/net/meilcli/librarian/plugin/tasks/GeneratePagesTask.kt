@@ -3,13 +3,8 @@ package net.meilcli.librarian.plugin.tasks
 import kotlinx.serialization.UnstableDefault
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
-import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
-import net.meilcli.librarian.plugin.entities.Library
-import net.meilcli.librarian.plugin.entities.LibraryGroup
-import net.meilcli.librarian.plugin.entities.Notice
-import net.meilcli.librarian.plugin.internal.IWriter
-import net.meilcli.librarian.plugin.internal.LibrarianException
-import net.meilcli.librarian.plugin.internal.Placeholder
+import net.meilcli.librarian.plugin.entities.*
+import net.meilcli.librarian.plugin.internal.*
 import net.meilcli.librarian.plugin.internal.artifacts.ArtifactsToNoticesAggregator
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
@@ -39,6 +34,16 @@ open class GeneratePagesTask : DefaultTask() {
         val librariesLoader = LocalLibrariesLoader(project)
         val libraryGroupsLoader = LocalLibraryGroupsLoader(project)
         val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension)
+        val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
+        val noticesAggregator = ArtifactsToNoticesAggregator(
+            extension,
+            LibraryToNoticeTranslator(),
+            LibraryGroupToNoticeTranslator(),
+            NoticeOverride(),
+            LicenseOverrideNoticeValidator()
+        )
+        val reduceUnUsedArtifactAggregator = NoticesByReduceUnUsedArtifactAggregator()
+        val sortTranslator = NoticesBySortTranslator()
 
         val configurationArtifacts = configurationArtifactsLoader.load()
         val libraries = librariesLoader.load()
@@ -46,7 +51,17 @@ open class GeneratePagesTask : DefaultTask() {
 
         for (page in extension.pages) {
             try {
-                writePage(extension, page, configurationArtifacts, libraries, libraryGroups)
+                writePage(
+                    extension,
+                    page,
+                    configurationArtifacts,
+                    libraries,
+                    libraryGroups,
+                    artifactsTranslator,
+                    noticesAggregator,
+                    reduceUnUsedArtifactAggregator,
+                    sortTranslator
+                )
             } catch (exception: Exception) {
                 if (exception is LibrarianException) {
                     throw exception
@@ -62,19 +77,13 @@ open class GeneratePagesTask : DefaultTask() {
         page: LibrarianPageExtension,
         configurationArtifacts: List<ConfigurationArtifact>,
         libraries: List<Library>,
-        libraryGroups: List<LibraryGroup>
+        libraryGroups: List<LibraryGroup>,
+        artifactsTranslator: ITranslator<List<ConfigurationArtifact>, Set<Artifact>>,
+        noticesAggregator: IAggregator3<Collection<Artifact>, List<Library>, List<LibraryGroup>, List<Notice>>,
+        reduceUnUsedArtifactAggregator: IAggregator2<List<Notice>, List<ConfigurationArtifact>, List<Notice>>,
+        sortTranslator: ITranslator<List<Notice>, List<Notice>>
     ) {
         val pageFiler = ConfigurationArtifactsByPageFilter(page)
-        val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
-        val noticesAggregator = ArtifactsToNoticesAggregator(
-            extension,
-            LibraryToNoticeTranslator(),
-            LibraryGroupToNoticeTranslator(),
-            NoticeOverride(),
-            LicenseOverrideNoticeValidator()
-        )
-        val reduceUnUsedArtifactAggregator = NoticesByReduceUnUsedArtifactAggregator()
-        val sortTranslator = NoticesBySortTranslator()
 
         val notices = configurationArtifacts.let { pageFiler.filter(it) }
             .let { artifactsTranslator.translate(it) }
