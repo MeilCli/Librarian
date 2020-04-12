@@ -1,6 +1,5 @@
 package net.meilcli.librarian.plugin.tasks
 
-import kotlinx.serialization.UnstableDefault
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
@@ -19,7 +18,6 @@ open class GeneratePresetGroupsTask : DefaultTask() {
     @Input
     var extension: LibrarianExtension? = null
 
-    @UnstableDefault
     @TaskAction
     fun action() {
         val extension = extension ?: return
@@ -32,15 +30,14 @@ open class GeneratePresetGroupsTask : DefaultTask() {
 
         for (page in extension.pages) {
             try {
-                loadDependency(configurationArtifacts, page)
+                writePresetGroups(configurationArtifacts, page)
             } catch (exception: Exception) {
                 project.logger.error("Failed Librarian, page: ${page.name}", exception)
             }
         }
     }
 
-    @UnstableDefault
-    private fun loadDependency(configurationArtifacts: List<ConfigurationArtifact>, page: LibrarianPageExtension) {
+    private fun writePresetGroups(configurationArtifacts: List<ConfigurationArtifact>, page: LibrarianPageExtension) {
         val pageFilter = ConfigurationArtifactsByPageFilter(page)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val foundPresetGroups = mutableSetOf<LibraryGroup>()
