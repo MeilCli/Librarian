@@ -1,6 +1,6 @@
 package net.meilcli.librarian.plugin.internal
 
-interface IAggregator<TSource, TResult> {
+interface IAggregator1<TSource, TResult> {
 
     fun aggregate(source: TSource): TResult
 }

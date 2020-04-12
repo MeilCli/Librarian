@@ -2,12 +2,12 @@ package net.meilcli.librarian.plugin.internal.pomprojects
 
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.PomProject
-import net.meilcli.librarian.plugin.internal.IAggregator
+import net.meilcli.librarian.plugin.internal.IAggregator1
 import net.meilcli.librarian.plugin.internal.ITranslator
 
 class PomProjectsToLibrariesAggregator(
     private val libraryTranslator: ITranslator<PomProject, Library>
-) : IAggregator<List<PomProject>, List<Library>> {
+) : IAggregator1<List<PomProject>, List<Library>> {
 
     override fun aggregate(source: List<PomProject>): List<Library> {
         return source.asSequence()
