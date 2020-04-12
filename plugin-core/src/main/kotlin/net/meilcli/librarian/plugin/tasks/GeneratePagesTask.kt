@@ -67,6 +67,7 @@ open class GeneratePagesTask : DefaultTask() {
         val pageFiler = ConfigurationArtifactsByPageFilter(page)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val noticesAggregator = ArtifactsToNoticesAggregator(
+            extension,
             LibraryToNoticeTranslator(),
             LibraryGroupToNoticeTranslator(),
             NoticeOverride(),
