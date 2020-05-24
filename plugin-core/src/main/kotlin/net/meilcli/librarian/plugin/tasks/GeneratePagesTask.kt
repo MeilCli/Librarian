@@ -89,6 +89,7 @@ open class GeneratePagesTask : DefaultTask() {
             .let { artifactsTranslator.translate(it) }
             .let { noticesAggregator.aggregate(it, libraries, libraryGroups) }
             .let { reduceUnUsedArtifactAggregator.aggregate(it, configurationArtifacts) }
+            .let { it + page.additionalNotices.map { it.toNotice() } }
             .let { sortTranslator.translate(it) }
 
         checkNotice(notices)

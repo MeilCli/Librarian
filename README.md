@@ -124,6 +124,19 @@ librarian {
             configurations = [
                     "implementationDependenciesMetadata"
             ] // Array of String, default is empty list
+            additionalNotices {
+                "AdditionalNotice" { // Notice name
+                    artifacts = ["text:com"] // Array of String, default is empty, must set value
+                    author = "Tester" // String, default is empty, must set value
+                    url = "https://google.com" // String, default is empty, must set value
+                    description = "" // String?, default value is null
+                    licenses {
+                        "MIT" { // License name, must set value
+                            url = "https://google.com" // String, default is empty, must set value
+                        }
+                    }
+                }
+            }
         }
     }
 

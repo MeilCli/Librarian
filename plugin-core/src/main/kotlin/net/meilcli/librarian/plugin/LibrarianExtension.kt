@@ -2,11 +2,13 @@ package net.meilcli.librarian.plugin
 
 import org.gradle.api.Action
 import org.gradle.api.NamedDomainObjectContainer
+import org.gradle.api.Project
 import org.gradle.api.model.ObjectFactory
 import javax.inject.Inject
 
 open class LibrarianExtension @Inject constructor(
-    @Suppress("UnstableApiUsage") val objectFactory: ObjectFactory
+    project: Project,
+    @Suppress("UnstableApiUsage") private val objectFactory: ObjectFactory
 ) {
 
     companion object {
@@ -37,7 +39,7 @@ open class LibrarianExtension @Inject constructor(
 
     var ignoreArtifacts = mutableListOf<String>()
 
-    val pages = objectFactory.domainObjectContainer(LibrarianPageExtension::class.java)
+    val pages = project.container(LibrarianPageExtension::class.java, LibrarianPageFactory(project, objectFactory))
 
     val groups = objectFactory.domainObjectContainer(LibrarianGroupExtension::class.java)
 

@@ -18,7 +18,7 @@ open class LibrarianPlugin : Plugin<Project> {
     }
 
     override fun apply(project: Project) {
-        val extension = project.extensions.create(librarianExtension, LibrarianExtension::class.java)
+        val extension = project.extensions.create(librarianExtension, LibrarianExtension::class.java, project)
         val generatePipelineDependTasks = mutableListOf<Task>()
 
         project.createTask<ShowConfigurationsTask>("librarianShowConfigurations").apply {
