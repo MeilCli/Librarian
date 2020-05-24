@@ -37,4 +37,14 @@ librarian {
             ]
         }
     }
+
+    groups {
+        "Gson" {
+            artifacts = ["com.google.code.gson:gson"]
+            author = "Google Inc."
+            url = "https://github.com/google/gson"
+            licenseName = "Apache License 2.0"
+            licenseUrl = "https://github.com/google/gson/blob/master/LICENSE"
+        }
+    }
 }
