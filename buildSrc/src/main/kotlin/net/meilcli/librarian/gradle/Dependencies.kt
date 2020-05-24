@@ -76,5 +76,16 @@ object Dependencies {
         val okio = Dependency("com.squareup.okio", "okio", "2.5.0")
         val moshi = Dependency("com.squareup.moshi", "moshi", "1.9.2")
         val moshiKapt = Dependency("com.squareup.moshi", "moshi-kotlin-codegen", "1.9.2")
+        val okhttp = Dependency("com.squareup.okhttp3", "okhttp", "4.5.0")
+        val retrofit = Dependency("com.squareup.retrofit2", "retrofit", "2.8.1")
+    }
+
+    object JakeWharton {
+
+        val retrofitKotlinSerializationConverter = Dependency(
+            "com.jakewharton.retrofit",
+            "retrofit2-kotlinx-serialization-converter",
+            "0.5.0"
+        )
     }
 }

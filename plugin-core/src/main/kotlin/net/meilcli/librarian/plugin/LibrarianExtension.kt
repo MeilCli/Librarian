@@ -31,6 +31,8 @@ open class LibrarianExtension @Inject constructor(
 
     var failOnOverrideUnMatchedLicense = true
 
+    var useBintray = true
+
     var additionalModules = mutableListOf<String>()
 
     val pages = objectFactory.domainObjectContainer(LibrarianPageExtension::class.java)

@@ -30,6 +30,9 @@ buildscript {
             classpath Dependencies.TikXml.core
             classpath Dependencies.TikXml.coreAnnotation
             classpath Dependencies.SquareUp.okio
+            classpath Dependencies.SquareUp.okhttp
+            classpath Dependencies.SquareUp.retrofit
+            classpath Dependencies.JakeWharton.retrofitKotlinSerializationConverter
         } else {
             classpath Dependencies.Librarian.pluginCore
         }

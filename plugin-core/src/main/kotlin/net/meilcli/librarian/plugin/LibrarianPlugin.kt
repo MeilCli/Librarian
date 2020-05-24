@@ -13,6 +13,7 @@ open class LibrarianPlugin : Plugin<Project> {
         private const val librarianExtension = "librarian"
         const val generateArtifactsTask = "librarianGenerateArtifacts"
         const val generateGroupsTask = "librarianGenerateGroups"
+        const val generateBintrayGroupsTask = "librarianGenerateBintrayGroups"
         const val generatePagesTask = "librarianGeneratePages"
     }
 
@@ -28,9 +29,14 @@ open class LibrarianPlugin : Plugin<Project> {
             this.extension = extension
         }
 
-        generatePipelineDependTasks += project.createTask<GenerateGroupsTask>(generateGroupsTask).apply {
+        generatePipelineDependTasks += project.createTask<GenerateBintrayGroupsTask>(generateBintrayGroupsTask).apply {
             this.extension = extension
             mustRunAfter(generateArtifactsTask, "librarianGeneratePresetGroups")
+        }
+
+        generatePipelineDependTasks += project.createTask<GenerateGroupsTask>(generateGroupsTask).apply {
+            this.extension = extension
+            mustRunAfter(generateArtifactsTask, generateBintrayGroupsTask, "librarianGeneratePresetGroups")
         }
 
         generatePipelineDependTasks += project.createTask<GeneratePagesTask>(generatePagesTask).apply {

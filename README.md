@@ -87,6 +87,8 @@ apply plugin: 'librarian-preset'
     - generate artifacts
   - `librarianGenerateGroups`
     - generate groups
+  - `librarianGenerateBintrayGroups`
+    - generate groups using by Bintray package information
   - `librarianGeneratePages`
     - generate page, must execute after `librarianGenerateArtifacts`
   - `librarianGeneratePipeline`
@@ -106,6 +108,7 @@ librarian {
     depth = "firstLevel" // String, firstLevel or allLevel, default value is firstLevel
     failOnGeneratePageWhenFoundPlaceholder = true // Boolean, default value is true
     failOnOverrideUnMatchedLicense = true // Boolean, default value is true
+    useBintray = true // Boolean, default value is true
     additionalModules = [] // Array of String
 
     pages {
@@ -146,6 +149,7 @@ librarian {
 |librarian.depth|search dependency depth, firstLevel find your directly dependency|
 |librarian.failOnGeneratePageWhenFoundPlaceholder|fail on `librarianGeneratePages` when found placeholder|
 |librarian.failOnOverrideUnMatchedLicense|fail on override un matched license by group|
+|librarian.useBintray|if true, actually use Bintray api at `librarianGenerateBintrayGroups` task`|
 |librarian.additionalModules|additional resolve modules, use when like android dynamic feature module|
 
 ### Generate Notice Page
@@ -154,6 +158,7 @@ librarian {
    - `librarianShowConfigurations` task helps when configure your project
 1. execute `librarianGenerateArtifacts` task
 1. execute `librarianGeneratePresetGroups` task if using `librarian-preset`
+1. execute `librarianGenerateBintrayGroups` task if using Bintray package information
 1. execute `librarianGeneratePages` task
 1. if output error or incomplete result, configure your project that put `groups` and execute `librarianGenerateGroups` task
    - then execute `librarianGeneratePages` task

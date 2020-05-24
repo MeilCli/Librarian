@@ -21,6 +21,7 @@ class LibrarianPresetPlugin : Plugin<Project> {
             val depends = mutableListOf<Task>()
             depends += checkNotNull(project.tasks.findByName(LibrarianPlugin.generateArtifactsTask))
             depends += generatePresetGroupsTask
+            depends += checkNotNull(project.tasks.findByPath(LibrarianPlugin.generateBintrayGroupsTask))
             depends += checkNotNull(project.tasks.findByName(LibrarianPlugin.generateGroupsTask))
             depends += checkNotNull(project.tasks.findByName(LibrarianPlugin.generatePagesTask))
             setDependsOn(depends)
