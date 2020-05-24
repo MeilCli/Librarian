@@ -147,12 +147,12 @@ librarian {
                     "org.jetbrains.kotlin:kotlin-serialization",
                     "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
             ] // Array of String, default is empty list
+            author = null // String?, default value is null
+            url = null // String?, default value is null
+            description = null // String?, default value is null
+            licenseName = null // String?, default value is null
+            licenseUrl = null // String?, default value is null
         }
-        author = null // String?, default value is null
-        url = null // String?, default value is null
-        description = null // String?, default value is null
-        licenseName = null // String?, default value is null
-        licenseUrl = null // String?, default value is null
     }
 }
 ```
@@ -264,12 +264,12 @@ librarian {
                     "org.jetbrains.kotlin:kotlin-serialization",
                     "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
             ] // Array of String, default is empty list
+            author = null // String?, default value is null
+            url = null // String?, default value is null
+            description = null // String?, default value is null
+            licenseName = null // String?, default value is null
+            licenseUrl = null // String?, default value is null
         }
-        author = null // String?, default value is null
-        url = null // String?, default value is null
-        description = null // String?, default value is null
-        licenseName = null // String?, default value is null
-        licenseUrl = null // String?, default value is null
     }
 }
 ```
