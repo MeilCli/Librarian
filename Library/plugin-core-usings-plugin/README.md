@@ -5,6 +5,9 @@ This list is including plugin binary
 
 ## Using
 - [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
+- [OkHttp](https://square.github.io/okhttp/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
 - [Okio](https://github.com/square/okio/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
+- [Retrofit](https://github.com/square/retrofit/), licensed on [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
+- [Retrofit 2 Kotlin Serialization Converter](https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Jake Wharton
 - [TikXml](https://github.com/Tickaroo/tikxml), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Tickaroo
 - [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
