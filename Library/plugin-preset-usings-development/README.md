@@ -8,7 +8,10 @@ This list is using development of Librarian
 - [JUnit](https://junit.org/junit5/), licensed on [Eclipse Public License v2.0](https://www.eclipse.org/legal/epl-v20.html), made by JUnit Team
 - [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
 - [Librarian](https://github.com/MeilCli/Librarian), licensed on [MIT License](https://github.com/MeilCli/Librarian/blob/master/LICENSE), made by MeilCli
+- [OkHttp](https://square.github.io/okhttp/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
 - [Okio](https://github.com/square/okio/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
+- [Retrofit](https://github.com/square/retrofit/), licensed on [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
+- [Retrofit 2 Kotlin Serialization Converter](https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Jake Wharton
 - [TikXml](https://github.com/Tickaroo/tikxml), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Tickaroo
 - [gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JFrog
 - [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
