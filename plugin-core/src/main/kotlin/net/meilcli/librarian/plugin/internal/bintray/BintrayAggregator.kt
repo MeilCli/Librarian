@@ -37,8 +37,10 @@ class BintrayAggregator(
         val aggregatePackages = bintrayPackages.filter { it.second.canAggregateToGroup() }
             .groupBy { it.second }
             .map { it.toLibraryGroup(licenses) }
+            .filter { it.name != Placeholder.name }
         val noAggregatePackages = bintrayPackages.filter { it.second.canAggregateToGroup().not() }
             .map { it.toLibraryGroup(licenses) }
+            .filter { it.name != Placeholder.name }
 
         return aggregatePackages + noAggregatePackages
     }
@@ -50,7 +52,11 @@ class BintrayAggregator(
     private fun Pair<Artifact, BintrayPackage>.toLibraryGroup(licenses: List<BintrayLicense>): LibraryGroup {
         return LibraryGroup(
             artifacts = listOf(first.artifact),
-            name = "${second.owner}/${second.repository}",
+            name = when {
+                second.githubRepository != null -> second.githubRepository?.replace("/", "_") ?: Placeholder.name
+                second.repository != "jcenter" -> second.repository
+                else -> Placeholder.name
+            },
             author = second.owner,
             description = second.description,
             url = when {
@@ -66,7 +72,11 @@ class BintrayAggregator(
     private fun Map.Entry<BintrayPackage, List<Pair<Artifact, BintrayPackage>>>.toLibraryGroup(licenses: List<BintrayLicense>): LibraryGroup {
         return LibraryGroup(
             artifacts = value.map { it.first.artifact },
-            name = "${key.owner}/${key.repository}",
+            name = when {
+                key.githubRepository != null -> key.githubRepository?.replace("/", "_") ?: Placeholder.name
+                key.repository != "jcenter" -> key.repository
+                else -> Placeholder.name
+            },
             author = key.owner,
             description = key.description,
             url = when {
