@@ -11,7 +11,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 
-class GenerateBintrayGroupsTask : DefaultTask() {
+open class GenerateBintrayGroupsTask : DefaultTask() {
 
     @Input
     var extension: LibrarianExtension? = null
