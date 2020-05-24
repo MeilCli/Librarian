@@ -4,6 +4,7 @@
       <w>bintray</w>
       <w>codegen</w>
       <w>constraintlayout</w>
+      <w>gson</w>
       <w>jakewharton</w>
       <w>jcenter</w>
       <w>jfrog</w>

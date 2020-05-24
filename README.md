@@ -240,6 +240,7 @@ button.setOnClickListener {
 ### Serializers
 - KotlinX Serialization: `ui-serializer-kotlin`
 - Moshi: `ui-serializer-moshi`
+- Gson: `ui-serializer-gson`
 
 ### Samples
 - Using `ui-core`: [sample/sample-ui-core](sample/sample-ui-core)
@@ -354,6 +355,7 @@ including binary:
 - `ui-fragment`: [see link](Library/ui-fragment-usings-library)
 - `ui-serializer-kotlin`: [see link](Library/ui-serializer-kotlin-usings-library)
 - `ui-serializer-moshi`: [see link](Library/ui-serializer-moshi-usings-library)
+- `ui-serializer-gson`: [see link](Library/ui-serializer-gson-usings-library)
 
 when developing
 - `plugin-core`: [see link](Library/plugin-core-usings-development)
@@ -363,3 +365,4 @@ when developing
 - `ui-fragment`: [see link](Library/ui-fragment-usings-development)
 - `ui-serializer-kotlin`: [see link](Library/ui-serializer-kotlin-usings-development)
 - `ui-serializer-moshi`: [see link](Library/ui-serializer-moshi-usings-development)
+- `ui-serializer-gson`: [see link](Library/ui-serializer-gson-usings-development)

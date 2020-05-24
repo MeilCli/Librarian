@@ -1,5 +1,5 @@
 include ':plugin-core', ':plugin-preset', ':ui-core', ':ui-fragment', ':ui-activity'
-include ':ui-serializer-kotlin', ':ui-serializer-moshi'
+include ':ui-serializer-kotlin', ':ui-serializer-moshi', ':ui-serializer-gson'
 include ':sample:sample-ui-core'
 include ':sample:sample-ui-activity'
 include ':sample:sample-ui-fragment'

@@ -88,4 +88,9 @@ object Dependencies {
             "0.5.0"
         )
     }
+
+    object Google {
+
+        val gson = Dependency("com.google.code.gson", "gson", "2.8.6")
+    }
 }

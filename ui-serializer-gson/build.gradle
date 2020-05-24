@@ -1,0 +1,40 @@
+import net.meilcli.librarian.gradle.Dependencies
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'AndroidLibraryPlugin'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'MavenPublishPlugin'
+
+dependencies {
+    api project(":ui-core")
+    api Dependencies.Google.gson
+}
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "ui-serializer-gson-usings-library" {
+            title = "Librarian ui-serializer-gson's using libraries"
+            description = "This list is including library binary"
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "apiDependenciesMetadata"
+            ]
+        }
+        "ui-serializer-gson-usings-development" {
+            title = "Librarian ui-serialzier-gson's using libraries"
+            description = "This list is using development of Librarian"
+            configurations = [
+                    "testImplementationDependenciesMetadata",
+                    "androidTestImplementationDependenciesMetadata",
+                    "classpath",
+                    "kapt"
+            ]
+        }
+    }
+}

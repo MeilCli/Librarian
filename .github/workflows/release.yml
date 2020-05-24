@@ -29,6 +29,7 @@ jobs:
       - run: ./gradlew :ui-fragment:publishGprPublicationToGitHubPackagesRepository
       - run: ./gradlew :ui-serializer-kotlin:publishGprPublicationToGitHubPackagesRepository
       - run: ./gradlew :ui-serializer-moshi:publishGprPublicationToGitHubPackagesRepository
+      - run: ./gradlew :ui-serializer-gson:publishGprPublicationToGitHubPackagesRepository
       - run: ./gradlew :plugin-core:bintrayUpload
       - run: ./gradlew :plugin-preset:bintrayUpload
       - run: ./gradlew :ui-core:bintrayUpload
@@ -36,3 +37,4 @@ jobs:
       - run: ./gradlew :ui-fragment:bintrayUpload
       - run: ./gradlew :ui-serializer-kotlin:bintrayUpload
       - run: ./gradlew :ui-serializer-moshi:bintrayUpload
+      - run: ./gradlew :ui-serializer-gson:bintrayUpload
