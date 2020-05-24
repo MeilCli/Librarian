@@ -30,9 +30,9 @@ class ArtifactsToNoticesAggregator(
                     val libraryGroupNotice = libraryGroupToNoticeTranslator.translate(foundLibraryGroup)
                     if (overrideNoticeValidator.valid(notice, libraryGroupNotice).not()) {
                         if (extension.failOnOverrideUnMatchedLicense) {
-                            throw LibrarianException("group has not artifact license, ${foundLibraryGroup.name}, ${foundLibrary.artifact}")
+                            throw LibrarianException("group has not artifact license, ${foundLibraryGroup.name}, ${foundLibrary.artifact}, source: ${notice.licenses.joinToString()}, group: ${libraryGroupNotice.licenses.joinToString()}")
                         } else {
-                            logger.warn("Librarian warning: group has not artifact license, ${foundLibraryGroup.name}, ${foundLibrary.artifact}")
+                            logger.warn("Librarian warning: group has not artifact license, ${foundLibraryGroup.name}, ${foundLibrary.artifact}, source: ${notice.licenses.joinToString()}, group: ${libraryGroupNotice.licenses.joinToString()}")
                         }
                     }
                     notice = noticeOverride.override(notice, libraryGroupNotice)

@@ -5,6 +5,7 @@ import net.meilcli.librarian.plugin.internal.artifacts.ArtifactsByLibraryGroupsF
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
 import net.meilcli.librarian.plugin.internal.bintray.*
+import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupsLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupsWriter
 import org.gradle.api.DefaultTask
@@ -31,10 +32,11 @@ open class GenerateBintrayGroupsTask : DefaultTask() {
             .let { artifactsTranslator.translate(it) }
             .let { libraryGroupsFilter.filter(it) }
 
+        val librariesLoader = LocalLibrariesLoader(project)
         val bintrayRepositoryLoader = ArtifactToBintrayRepositoryLoader(BintrayRepositoriesLoader(project))
         val bintrayPackageLoader = ArtifactAndBintrayRepositoryToBintrayPackageLoader(project)
         val bintrayLicensesLoader = BintrayLicensesLoader()
-        val bintrayAggregator = BintrayAggregator(bintrayRepositoryLoader, bintrayPackageLoader, bintrayLicensesLoader)
+        val bintrayAggregator = BintrayAggregator(librariesLoader, bintrayRepositoryLoader, bintrayPackageLoader, bintrayLicensesLoader)
 
         val libraryGroups = bintrayAggregator.aggregate(artifacts)
 

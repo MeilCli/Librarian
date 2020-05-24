@@ -8,6 +8,7 @@ import net.meilcli.librarian.plugin.internal.Placeholder
 import org.slf4j.LoggerFactory
 
 class BintrayAggregator(
+    private val librariesLoader: ILoader<List<Library>>,
     private val bintrayRepositoryLoader: IParameterizedLoader<Artifact, BintrayRepository?>,
     private val bintrayPackageLoader: IParameterizedLoader<Pair<Artifact, BintrayRepository>, BintrayPackage?>,
     private val bintrayLicensesLoader: ILoader<List<BintrayLicense>?>
@@ -22,6 +23,7 @@ class BintrayAggregator(
             return emptyList()
         }
 
+        val libraries = librariesLoader.load()
         val bintrayPackages = mutableListOf<Pair<Artifact, BintrayPackage>>()
 
         for (artifact in source) {
@@ -36,10 +38,10 @@ class BintrayAggregator(
 
         val aggregatePackages = bintrayPackages.filter { it.second.canAggregateToGroup() }
             .groupBy { it.second }
-            .map { it.toLibraryGroup(licenses) }
+            .map { it.toLibraryGroup(libraries, licenses) }
             .filter { it.name != Placeholder.name }
         val noAggregatePackages = bintrayPackages.filter { it.second.canAggregateToGroup().not() }
-            .map { it.toLibraryGroup(licenses) }
+            .map { it.toLibraryGroup(libraries, licenses) }
             .filter { it.name != Placeholder.name }
 
         return aggregatePackages + noAggregatePackages
@@ -49,43 +51,47 @@ class BintrayAggregator(
         return githubRepository != null || vcsUrl != null || websiteUrl != null
     }
 
-    private fun Pair<Artifact, BintrayPackage>.toLibraryGroup(licenses: List<BintrayLicense>): LibraryGroup {
-        return LibraryGroup(
-            artifacts = listOf(first.artifact),
-            name = when {
-                second.githubRepository != null -> second.githubRepository?.replace("/", "_") ?: Placeholder.name
-                second.repository != "jcenter" -> second.repository
-                else -> Placeholder.name
-            },
-            author = second.owner,
-            description = second.description,
-            url = when {
-                second.githubRepository != null -> "https://github.com/${second.githubRepository}"
-                second.websiteUrl != null -> second.websiteUrl
-                second.vcsUrl != null -> second.vcsUrl
-                else -> Placeholder.url
-            },
-            licenses = second.licenses.map { x -> licenses.first { y -> y.name == x }.toLicense() }
-        )
+    private fun Pair<Artifact, BintrayPackage>.toLibraryGroup(libraries: List<Library>, licenses: List<BintrayLicense>): LibraryGroup {
+        return createLibraryGroup(listOf(first.artifact), libraries, licenses, second)
     }
 
-    private fun Map.Entry<BintrayPackage, List<Pair<Artifact, BintrayPackage>>>.toLibraryGroup(licenses: List<BintrayLicense>): LibraryGroup {
+    private fun Map.Entry<BintrayPackage, List<Pair<Artifact, BintrayPackage>>>.toLibraryGroup(
+        libraries: List<Library>,
+        licenses: List<BintrayLicense>
+    ): LibraryGroup {
+        return createLibraryGroup(value.map { it.first.artifact }, libraries, licenses, key)
+    }
+
+    private fun createLibraryGroup(
+        artifacts: List<String>,
+        libraries: List<Library>,
+        licenses: List<BintrayLicense>,
+        bintrayPackage: BintrayPackage
+    ): LibraryGroup {
+        val foundLibraryAuthor = libraries.firstOrNull { it.author != Placeholder.author }?.author
+        val foundLibraryUrl = libraries.firstOrNull { it.url != Placeholder.url }?.url
+        val foundLibraryLicenses = libraries.firstOrNull {
+            it.licenses.isNotEmpty() && it.licenses[0].name != Placeholder.licenseName && it.licenses[0].url != Placeholder.licenseUrl
+        }
+            ?.licenses
+
         return LibraryGroup(
-            artifacts = value.map { it.first.artifact },
+            artifacts = artifacts,
             name = when {
-                key.githubRepository != null -> key.githubRepository?.replace("/", "_") ?: Placeholder.name
-                key.repository != "jcenter" -> key.repository
+                bintrayPackage.githubRepository != null -> bintrayPackage.githubRepository.replace("/", "_")
+                bintrayPackage.repository != "jcenter" -> bintrayPackage.repository
                 else -> Placeholder.name
             },
-            author = key.owner,
-            description = key.description,
+            author = foundLibraryAuthor ?: bintrayPackage.owner,
+            description = bintrayPackage.description,
             url = when {
-                key.githubRepository != null -> "https://github.com/${key.githubRepository}"
-                key.websiteUrl != null -> key.websiteUrl
-                key.vcsUrl != null -> key.vcsUrl
+                foundLibraryUrl != null -> foundLibraryUrl
+                bintrayPackage.githubRepository != null -> "https://github.com/${bintrayPackage.githubRepository}"
+                bintrayPackage.websiteUrl != null -> bintrayPackage.websiteUrl
+                bintrayPackage.vcsUrl != null -> bintrayPackage.vcsUrl
                 else -> Placeholder.url
             },
-            licenses = key.licenses.map { x -> licenses.first { y -> y.name == x }.toLicense() }
+            licenses = foundLibraryLicenses ?: bintrayPackage.licenses.map { x -> licenses.first { y -> y.name == x }.toLicense() }
         )
     }
 

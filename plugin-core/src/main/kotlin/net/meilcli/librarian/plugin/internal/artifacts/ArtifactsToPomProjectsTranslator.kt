@@ -19,6 +19,8 @@ class ArtifactsToPomProjectsTranslator(
             val pomProject = pomProjectLoader.load(entity)
             if (pomProject == null) {
                 logger.warn("Librarian cannot found pom: ${entity.group}:${entity.name}:${entity.version}")
+            } else {
+                result += pomProject
             }
         }
 

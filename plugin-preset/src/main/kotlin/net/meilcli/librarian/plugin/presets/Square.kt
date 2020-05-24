@@ -55,7 +55,7 @@ fun square() {
         "adapter-scala",
         "adapter-java8",
         "adapter-guava"
-    )
+    ).addAuthor("Square, Inc.")
     PresetGroups += group(
         "Picasso",
         "com.squareup.picasso",

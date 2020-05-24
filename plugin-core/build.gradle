@@ -36,6 +36,7 @@ apply plugin: 'librarian'
 apply plugin: 'librarian-preset'
 
 librarian {
+    failOnOverrideUnMatchedLicense = false
     pages {
         "plugin-core-usings-plugin" {
             title = "Librarian plugin-core's using libraries"
