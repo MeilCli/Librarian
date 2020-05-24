@@ -16,7 +16,7 @@ class ConfigurationArtifactsLoader(
     private val extension: LibrarianExtension
 ) : ILoader<List<ConfigurationArtifact>> {
 
-    private class Context {
+    private class Context(private val extension: LibrarianExtension) {
 
         private val artifacts = mutableMapOf<String, MutableList<Artifact>>()
         private val projects = mutableListOf<Project>()
@@ -36,6 +36,10 @@ class ConfigurationArtifactsLoader(
                 resolvedArtifact.moduleVersion.id.name,
                 resolvedArtifact.moduleVersion.id.version
             )
+
+            if (extension.ignoreArtifacts.any { artifact.artifact.startsWith(it) }) {
+                return
+            }
 
             val list = artifacts.getOrPut(configurationName) { mutableListOf() }
             if (list.contains(artifact)) {
@@ -57,7 +61,7 @@ class ConfigurationArtifactsLoader(
     private val logger = LoggerFactory.getLogger(ConfigurationArtifactsLoader::class.java)
 
     override fun load(): List<ConfigurationArtifact> {
-        val context = Context()
+        val context = Context(extension)
 
         loadResolvedArtifacts(project, context, extension.depthType)
 
