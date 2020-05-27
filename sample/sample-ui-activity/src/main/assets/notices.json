@@ -4,9 +4,9 @@
     "notices": [
         {
             "artifacts": [
-                "androidx.activity:activity",
+                "androidx.recyclerview:recyclerview",
                 "androidx.appcompat:appcompat",
-                "androidx.recyclerview:recyclerview"
+                "androidx.activity:activity"
             ],
             "name": "Android Jetpack",
             "author": "The Android Open Source Project",
@@ -22,10 +22,7 @@
         {
             "artifacts": [
                 "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-                "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
-                "org.jetbrains.kotlin:kotlin-android-extensions",
-                "org.jetbrains.kotlin:kotlin-serialization",
-                "org.jetbrains.kotlin:kotlin-gradle-plugin"
+                "org.jetbrains.kotlin:kotlin-android-extensions-runtime"
             ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",

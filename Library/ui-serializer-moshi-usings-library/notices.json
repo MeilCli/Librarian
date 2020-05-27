@@ -4,8 +4,8 @@
     "notices": [
         {
             "artifacts": [
-                "androidx.appcompat:appcompat",
-                "androidx.recyclerview:recyclerview"
+                "androidx.recyclerview:recyclerview",
+                "androidx.appcompat:appcompat"
             ],
             "name": "Android Jetpack",
             "author": "The Android Open Source Project",
@@ -20,9 +20,7 @@
         },
         {
             "artifacts": [
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-                "org.jetbrains.kotlin:kotlin-serialization",
-                "org.jetbrains.kotlin:kotlin-gradle-plugin"
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
             ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",
@@ -37,8 +35,7 @@
         },
         {
             "artifacts": [
-                "com.squareup.moshi:moshi",
-                "com.squareup.moshi:moshi-kotlin-codegen"
+                "com.squareup.moshi:moshi"
             ],
             "name": "Moshi",
             "author": "Square, Inc.",
