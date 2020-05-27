@@ -1,0 +1,84 @@
+{
+    "title": "Sandbox of notices",
+    "description": "This list is sandbox",
+    "notices": [
+        {
+            "artifacts": [
+                "androidx.appcompat:appcompat",
+                "androidx.browser:browser",
+                "androidx.emoji:emoji",
+                "androidx.recyclerview:recyclerview",
+                "androidx.transition:transition"
+            ],
+            "name": "Android Jetpack",
+            "author": "The Android Open Source Project",
+            "url": "https://developer.android.com/jetpack/androidx",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "androidx.appcompat:appcompat",
+                "androidx.browser:browser",
+                "androidx.emoji:emoji",
+                "androidx.recyclerview:recyclerview",
+                "androidx.transition:transition"
+            ],
+            "name": "Android Jetpack",
+            "author": "The Android Open Source Project",
+            "url": "http://developer.android.com/tools/extras/support-library.html",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                },
+                {
+                    "name": "SIL Open Font License, Version 1.1",
+                    "url": "http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web"
+                },
+                {
+                    "name": "Unicode, Inc. License",
+                    "url": "http://www.unicode.org/copyright.html#License"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "androidx.cardview:cardview"
+            ],
+            "name": "Android Support CardView v7",
+            "author": "The Android Open Source Project",
+            "url": "http://developer.android.com/tools/extras/support-library.html",
+            "description": "Android Support CardView v7",
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-serialization",
+                "org.jetbrains.kotlin:kotlin-gradle-plugin"
+            ],
+            "name": "Kotlin",
+            "author": "JetBrains - Kotlin Team",
+            "url": "https://kotlinlang.org/",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        }
+    ]
+}
