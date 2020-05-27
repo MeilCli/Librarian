@@ -50,9 +50,8 @@
         },
         {
             "artifacts": [
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-                "org.jetbrains.kotlin:kotlin-serialization",
-                "org.jetbrains.kotlin:kotlin-gradle-plugin"
+                "org.jetbrains.kotlin:kotlin-gradle-plugin",
+                "org.jetbrains.kotlin:kotlin-serialization"
             ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",
@@ -83,7 +82,6 @@
         },
         {
             "artifacts": [
-                "com.squareup.moshi:moshi",
                 "com.squareup.moshi:moshi-kotlin-codegen"
             ],
             "name": "Moshi",

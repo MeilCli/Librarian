@@ -6,9 +6,9 @@
             "artifacts": [
                 "androidx.appcompat:appcompat",
                 "androidx.browser:browser",
-                "androidx.emoji:emoji",
                 "androidx.recyclerview:recyclerview",
-                "androidx.transition:transition"
+                "androidx.transition:transition",
+                "androidx.cardview:cardview"
             ],
             "name": "Android Jetpack",
             "author": "The Android Open Source Project",
@@ -23,11 +23,7 @@
         },
         {
             "artifacts": [
-                "androidx.appcompat:appcompat",
-                "androidx.browser:browser",
-                "androidx.emoji:emoji",
-                "androidx.recyclerview:recyclerview",
-                "androidx.transition:transition"
+                "androidx.emoji:emoji"
             ],
             "name": "Android Jetpack",
             "author": "The Android Open Source Project",
@@ -50,24 +46,7 @@
         },
         {
             "artifacts": [
-                "androidx.cardview:cardview"
-            ],
-            "name": "Android Support CardView v7",
-            "author": "The Android Open Source Project",
-            "url": "http://developer.android.com/tools/extras/support-library.html",
-            "description": "Android Support CardView v7",
-            "licenses": [
-                {
-                    "name": "The Apache Software License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                }
-            ]
-        },
-        {
-            "artifacts": [
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-                "org.jetbrains.kotlin:kotlin-serialization",
-                "org.jetbrains.kotlin:kotlin-gradle-plugin"
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
             ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",

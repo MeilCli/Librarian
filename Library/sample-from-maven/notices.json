@@ -19,11 +19,8 @@
         },
         {
             "artifacts": [
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
                 "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
-                "org.jetbrains.kotlin:kotlin-android-extensions",
-                "org.jetbrains.kotlin:kotlin-serialization",
-                "org.jetbrains.kotlin:kotlin-gradle-plugin"
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
             ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",
@@ -38,8 +35,6 @@
         },
         {
             "artifacts": [
-                "net.meilcli.librarian:plugin-core",
-                "net.meilcli.librarian:plugin-preset",
                 "net.meilcli.librarian:ui-activity",
                 "net.meilcli.librarian:ui-serializer-kotlin"
             ],

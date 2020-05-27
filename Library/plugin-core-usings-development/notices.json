@@ -36,8 +36,8 @@
         {
             "artifacts": [
                 "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-                "org.jetbrains.kotlin:kotlin-serialization",
-                "org.jetbrains.kotlin:kotlin-gradle-plugin"
+                "org.jetbrains.kotlin:kotlin-gradle-plugin",
+                "org.jetbrains.kotlin:kotlin-serialization"
             ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",
@@ -128,9 +128,9 @@
         },
         {
             "artifacts": [
-                "com.tickaroo.tikxml:annotation",
+                "com.tickaroo.tikxml:processor",
                 "com.tickaroo.tikxml:core",
-                "com.tickaroo.tikxml:processor"
+                "com.tickaroo.tikxml:annotation"
             ],
             "name": "TikXml",
             "author": "Tickaroo",
