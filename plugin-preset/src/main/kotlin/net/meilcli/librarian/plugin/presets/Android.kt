@@ -26,6 +26,7 @@ fun android() {
             "androidx.camera:camera-extensions",
             "androidx.car:car",
             "androidx.car:car-cluster",
+            "androidx.cardview:cardview",
             "androidx.collection:collection",
             "androidx.collection:collection-ktx",
             "androidx.compose:compose-runtime",
@@ -55,6 +56,11 @@ fun android() {
             "androidx.interpolator:interpolator",
             "androidx.leanback:leanback",
             "androidx.leanback:leanback-preference",
+            "androidx.legacy:legacy-support-core-ui",
+            "androidx.legacy:legacy-support-core-utils",
+            "androidx.legacy:legacy-support-v4",
+            "androidx.legacy:legacy-support-v13",
+            "androidx.legacy:legacy-preference-v14",
             "androidx.lifecycle:lifecycle-extensions",
             "androidx.lifecycle:lifecycle-runtime",
             "androidx.lifecycle:lifecycle-viewmodel-ktx",
@@ -167,6 +173,18 @@ fun android() {
             "androidx.work:work-testing"
         ),
         "Android Jetpack"
+    )
+    PresetGroups += LibraryGroup(
+        artifacts = listOf(
+            "androidx.databinding:databinding-adapters",
+            "androidx.databinding:databinding-runtime",
+            "androidx.databinding:databinding-common"
+        ),
+        name = "AndroidX DataBinding",
+        author = "The Android Open Source Project",
+        url = "https://developer.android.com/studio",
+        description = null,
+        licenses = null
     )
     PresetGroups += LibraryGroup(
         listOf(
