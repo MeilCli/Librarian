@@ -9,6 +9,7 @@ import net.meilcli.librarian.plugin.internal.artifacts.ArtifactsToNoticesAggrega
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
 import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
+import net.meilcli.librarian.plugin.internal.libraries.LibrariesToNoticeTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LibraryToNoticeTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LibraryGroupToNoticeTranslator
@@ -38,11 +39,11 @@ open class GeneratePagesTask : DefaultTask() {
         val noticesAggregator = ArtifactsToNoticesAggregator(
             extension,
             LibraryToNoticeTranslator(),
+            LibrariesToNoticeTranslator(),
             LibraryGroupToNoticeTranslator(),
             NoticeOverride(),
             LicenseOverrideNoticeValidator()
         )
-        val reduceUnUsedArtifactAggregator = NoticesByReduceUnUsedArtifactAggregator()
         val sortTranslator = NoticesBySortTranslator()
 
         val configurationArtifacts = configurationArtifactsLoader.load()
@@ -59,7 +60,6 @@ open class GeneratePagesTask : DefaultTask() {
                     libraryGroups,
                     artifactsTranslator,
                     noticesAggregator,
-                    reduceUnUsedArtifactAggregator,
                     sortTranslator
                 )
             } catch (exception: Exception) {
@@ -80,7 +80,6 @@ open class GeneratePagesTask : DefaultTask() {
         libraryGroups: List<LibraryGroup>,
         artifactsTranslator: ITranslator<List<ConfigurationArtifact>, Set<Artifact>>,
         noticesAggregator: IAggregator3<Collection<Artifact>, List<Library>, List<LibraryGroup>, List<Notice>>,
-        reduceUnUsedArtifactAggregator: IAggregator2<List<Notice>, List<ConfigurationArtifact>, List<Notice>>,
         sortTranslator: ITranslator<List<Notice>, List<Notice>>
     ) {
         val pageFiler = ConfigurationArtifactsByPageFilter(page)
@@ -88,7 +87,6 @@ open class GeneratePagesTask : DefaultTask() {
         val notices = configurationArtifacts.let { pageFiler.filter(it) }
             .let { artifactsTranslator.translate(it) }
             .let { noticesAggregator.aggregate(it, libraries, libraryGroups) }
-            .let { reduceUnUsedArtifactAggregator.aggregate(it, configurationArtifacts) }
             .let { it + page.additionalNotices.map { it.toNotice() } }
             .let { sortTranslator.translate(it) }
 
