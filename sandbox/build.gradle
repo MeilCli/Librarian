@@ -1,0 +1,23 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'AndroidLibraryPlugin'
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.2.0'
+}
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "sandbox" {
+            title = "Sandbox of notices"
+            description = "This list is sandbox"
+            configurations = [
+                    "implementationDependenciesMetadata",
+                    "apiDependenciesMetadata"
+            ]
+        }
+    }
+}
