@@ -83,8 +83,8 @@ class ArtifactsToNoticesAggregator(
                 } else {
                     logger.warn("Librarian warning: group has not artifact license, ${key.name}, ${notice.artifacts.joinToString()}, source: ${notice.licenses.joinToString()}, group: ${libraryGroupNotice.licenses.joinToString()}")
                 }
-                notice = noticeOverride.override(notice, libraryGroupNotice)
             }
+            notice = noticeOverride.override(notice, libraryGroupNotice)
             return notice
         }
 
