@@ -19,5 +19,6 @@ object PresetGroups {
         junit()
         square()
         bintray()
+        xmlUtil()
     }
 }
