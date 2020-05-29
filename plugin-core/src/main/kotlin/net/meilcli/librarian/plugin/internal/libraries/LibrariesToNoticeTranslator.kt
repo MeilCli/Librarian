@@ -10,7 +10,7 @@ class LibrariesToNoticeTranslator : ITranslator<List<Library>, Notice> {
 
     override fun translate(source: List<Library>): Notice {
         return Notice(
-            artifacts = source.map { it.artifact },
+            artifacts = source.map { it.artifact }.sortedBy { it },
             name = source.firstOrNull()?.name ?: Placeholder.name,
             author = source.firstOrNull()?.author ?: Placeholder.author,
             url = source.firstOrNull()?.url ?: Placeholder.url,
