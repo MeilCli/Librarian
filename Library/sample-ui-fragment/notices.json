@@ -4,9 +4,7 @@
     "notices": [
         {
             "artifacts": [
-                "androidx.recyclerview:recyclerview",
-                "androidx.appcompat:appcompat",
-                "androidx.fragment:fragment"
+                "androidx.appcompat:appcompat"
             ],
             "name": "Android Jetpack",
             "author": "The Android Open Source Project",
@@ -21,8 +19,8 @@
         },
         {
             "artifacts": [
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-                "org.jetbrains.kotlin:kotlin-android-extensions-runtime"
+                "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
             ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",
@@ -31,21 +29,6 @@
             "licenses": [
                 {
                     "name": "The Apache License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                }
-            ]
-        },
-        {
-            "artifacts": [
-                "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
-            ],
-            "name": "kotlinx.serialization",
-            "author": "JetBrains - JetBrains Team",
-            "url": "https://github.com/Kotlin/kotlinx.serialization",
-            "description": null,
-            "licenses": [
-                {
-                    "name": "The Apache Software License, Version 2.0",
                     "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
                 }
             ]

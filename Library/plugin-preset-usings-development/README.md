@@ -12,6 +12,6 @@ This list is using development of Librarian
 - [Okio](https://github.com/square/okio/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
 - [Retrofit](https://github.com/square/retrofit/), licensed on [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
 - [Retrofit 2 Kotlin Serialization Converter](https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Jake Wharton
-- [TikXml](https://github.com/Tickaroo/tikxml), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Tickaroo
+- [XmlUtil](https://github.com/pdvrieze/xmlutil), licensed on [Apache License 2.0](https://github.com/pdvrieze/xmlutil/blob/master/COPYING), made by pdvrieze
 - [gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JFrog
 - [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
