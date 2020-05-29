@@ -79,17 +79,17 @@
         },
         {
             "artifacts": [
-                "com.tickaroo.tikxml:core",
-                "com.tickaroo.tikxml:annotation"
+                "net.devrieze:xmlutil-jvm",
+                "net.devrieze:xmlutil-serialization-jvm"
             ],
-            "name": "TikXml",
-            "author": "Tickaroo",
-            "url": "https://github.com/Tickaroo/tikxml",
+            "name": "XmlUtil",
+            "author": "pdvrieze",
+            "url": "https://github.com/pdvrieze/xmlutil",
             "description": null,
             "licenses": [
                 {
-                    "name": "The Apache Software License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    "name": "Apache License 2.0",
+                    "url": "https://github.com/pdvrieze/xmlutil/blob/master/COPYING"
                 }
             ]
         },

@@ -4,9 +4,9 @@
     "notices": [
         {
             "artifacts": [
-                "androidx.recyclerview:recyclerview",
                 "androidx.appcompat:appcompat",
-                "androidx.fragment:fragment"
+                "androidx.fragment:fragment",
+                "androidx.recyclerview:recyclerview"
             ],
             "name": "Android Jetpack",
             "author": "The Android Open Source Project",
