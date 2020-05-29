@@ -21,7 +21,7 @@ class PomProjectToLibraryTranslator : ITranslator<PomProject, Library> {
                     "${it.name}"
                 }
             }
-        val author = if (developer.isNullOrEmpty()) Placeholder.author else developer
+        val author = source.organization?.name ?: if (developer.isNullOrEmpty()) Placeholder.author else developer
         val url = source.url ?: Placeholder.url
         val licenses = source.licenses
             ?.map { License(it.name ?: Placeholder.licenseName, it.url ?: Placeholder.licenseUrl) }

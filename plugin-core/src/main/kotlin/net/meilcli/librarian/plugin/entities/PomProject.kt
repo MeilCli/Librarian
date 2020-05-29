@@ -15,6 +15,7 @@ data class PomProject(
     private var descriptionValue: PomDescription?,
     private var urlValue: PomUrl?,
     val parent: PomParentProject?,
+    val organization: PomOrganization?,
 
     @XmlSerialName("licenses", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
     @XmlChildrenName("license", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
@@ -111,6 +112,7 @@ data class PomProject(
         description: String?,
         url: String?,
         parent: PomParentProject?,
+        organization: PomOrganization?,
         licenses: List<PomLicense>?,
         developers: List<PomDeveloper>?
     ) : this(
@@ -121,6 +123,7 @@ data class PomProject(
         description?.let { PomDescription(it) },
         url?.let { PomUrl(it) },
         parent,
+        organization,
         licenses,
         developers
     )

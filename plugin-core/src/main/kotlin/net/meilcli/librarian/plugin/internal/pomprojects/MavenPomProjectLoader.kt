@@ -112,6 +112,7 @@ class MavenPomProjectLoader(
                 name = name ?: parentProject?.name,
                 url = url ?: parentProject?.url,
                 description = description ?: parentProject?.description,
+                organization = organization ?: parentProject?.organization,
                 developers = developers ?: parentProject?.developers,
                 licenses = licenses ?: parentProject?.licenses
             )
