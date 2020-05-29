@@ -10,6 +10,7 @@ fun librarian() {
         "ui-activity",
         "ui-fragment",
         "ui-serializer-kotlin",
-        "ui-serializer-moshi"
+        "ui-serializer-moshi",
+        "ui-serializer-gson"
     )
 }
