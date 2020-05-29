@@ -16,10 +16,16 @@ class ConfigurationArtifactsLoader(
     private val extension: LibrarianExtension
 ) : ILoader<List<ConfigurationArtifact>> {
 
+    private sealed class Result {
+
+        data class SubProject(val configuration: String, val project: Project) : Result()
+        data class Artifact(val configuration: String, val artifact: net.meilcli.librarian.plugin.entities.Artifact) : Result()
+    }
+
     private class Context(private val extension: LibrarianExtension) {
 
-        private val artifacts = mutableMapOf<String, MutableList<Artifact>>()
         private val projects = mutableListOf<Project>()
+        private val results = mutableMapOf<Project, MutableList<Result>>()
 
         fun addProject(project: Project) {
             projects.add(project)
@@ -29,8 +35,7 @@ class ConfigurationArtifactsLoader(
             return projects.contains(project)
         }
 
-        fun addArtifact(configuration: Configuration, resolvedArtifact: ResolvedArtifact) {
-            val configurationName = configuration.name
+        fun addArtifact(project: Project, configuration: Configuration, resolvedArtifact: ResolvedArtifact) {
             val artifact = Artifact(
                 resolvedArtifact.moduleVersion.id.group,
                 resolvedArtifact.moduleVersion.id.name,
@@ -41,15 +46,35 @@ class ConfigurationArtifactsLoader(
                 return
             }
 
-            val list = artifacts.getOrPut(configurationName) { mutableListOf() }
-            if (list.contains(artifact)) {
+            val element = Result.Artifact(configuration.name, artifact)
+            val list = results.getOrPut(project) { mutableListOf() }
+            if (list.contains(element)) {
                 return
             }
-            list.add(artifact)
+            list.add(element)
         }
 
-        fun result(): List<ConfigurationArtifact> {
-            return artifacts.map { ConfigurationArtifact(it.key, it.value) }
+        fun addSubProject(project: Project, configuration: Configuration, subProject: Project) {
+            val element = Result.SubProject(configuration.name, subProject)
+            val list = results.getOrPut(project) { mutableListOf() }
+            if (list.contains(element)) {
+                return
+            }
+            list.add(element)
+        }
+
+        fun result(project: Project): List<ConfigurationArtifact> {
+            return aggregateResult(project, emptyList()).groupBy { it.first }
+                .map { x -> ConfigurationArtifact(x.key, x.value.map { y -> y.second }) }
+        }
+
+        private fun aggregateResult(project: Project, parentConfigurations: List<String>): List<Pair<List<String>, Artifact>> {
+            return results.getOrDefault(project, mutableListOf()).flatMap {
+                when (it) {
+                    is Result.SubProject -> aggregateResult(it.project, parentConfigurations + listOf(it.configuration))
+                    is Result.Artifact -> listOf(Pair(parentConfigurations + listOf(it.configuration), it.artifact))
+                }
+            }
         }
     }
 
@@ -74,7 +99,7 @@ class ConfigurationArtifactsLoader(
             loadResolvedArtifacts(additionalProject, context, extension.depthType)
         }
 
-        return context.result()
+        return context.result(project)
     }
 
     private fun loadResolvedArtifacts(
@@ -130,6 +155,7 @@ class ConfigurationArtifactsLoader(
             if (resolvedDependency.moduleVersion == unspecifiedVersion) {
                 val subProject = resolvedDependency.getSubProject(project)
                 if (subProject != null) {
+                    context.addSubProject(project, configuration, subProject)
                     loadResolvedArtifacts(subProject, context, depth)
                 } else {
                     loadResolvedArtifacts(project, configuration, resolvedDependency.children, context, depth)
@@ -140,7 +166,7 @@ class ConfigurationArtifactsLoader(
                     LibrarianDepth.AllLevel -> resolvedDependency.allModuleArtifacts
                 }
                 for (resolvedArtifact in resolvedArtifacts) {
-                    context.addArtifact(configuration, resolvedArtifact)
+                    context.addArtifact(project, configuration, resolvedArtifact)
                 }
             }
         }

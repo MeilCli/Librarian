@@ -1,5 +1,6 @@
 package net.meilcli.librarian.plugin
 
+import net.meilcli.librarian.plugin.configurations.Configurations
 import org.gradle.api.Action
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Project
@@ -20,7 +21,12 @@ open class LibrarianPageExtension @Inject constructor(
     var json = true
     var jsonFileName = "notices.json"
     var jsonAdditionalOutputPath: File? = null
-    var configurations = mutableListOf<String>()
+
+    val configurations = objectFactory.newInstance(Configurations::class.java, objectFactory)
+
+    fun configurations(action: Action<in Configurations>) {
+        action.execute(configurations)
+    }
 
     val additionalNotices = project.container(LibrarianNoticeExtension::class.java, LibrarianNoticeFactory(objectFactory))
 

@@ -121,9 +121,15 @@ librarian {
             json = true // Boolean, default value is null
             jsonFileName = "notices.json" // String, default value is notices.json
             jsonAdditionalOutputPath = null // File, default is null
-            configurations = [
-                    "implementationDependenciesMetadata"
-            ] // Array of String, default is empty list
+            configurations {
+                exact {
+                    value = [""] // Array of String
+                }
+                contain {
+                    value = [""]
+                }
+                exact { value = [""] } // exact and contain can be multiple
+            }
             additionalNotices {
                 "AdditionalNotice" { // Notice name
                     artifacts = ["text:com"] // Array of String, default is empty, must set value
@@ -207,10 +213,14 @@ librarian {
         "sample-from-maven" {
             title = "Using Libraries"
             description = "sample-from-maven is using this libraries."
-            configurations = [
-                    "implementationDependenciesMetadata",
-                    "releaseImplementationDependenciesMetadata"
-            ]
+            configurations {
+                contain {
+                    value = [
+                        "implementationDependenciesMetadata",
+                        "releaseImplementationDependenciesMetadata"
+                    ]
+                }
+            }
             jsonAdditionalOutputPath = file("src/main/assets/notices.json")
         }
     }

@@ -20,7 +20,7 @@ open class ShowConfigurationsTask : DefaultTask() {
         val result = configurationArtifactsLoader.load()
         project.logger.quiet("Configurations that have dependencies")
         for (entry in result) {
-            project.logger.quiet("${entry.configurationName} has ${entry.artifacts.size} entries")
+            project.logger.quiet("${entry.configurationNames.joinToString(" => ")} has ${entry.artifacts.size} entries")
         }
     }
 }
