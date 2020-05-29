@@ -27,8 +27,8 @@ buildscript {
         if (local_build) {
             classpath fileTree(dir: 'libs', include: ['*.jar'])
             classpath Dependencies.Kotlin.Serialization.runtime
-            classpath Dependencies.TikXml.core
-            classpath Dependencies.TikXml.coreAnnotation
+            classpath Dependencies.XmlUtil.core
+            classpath Dependencies.XmlUtil.serialization
             classpath Dependencies.SquareUp.okio
             classpath Dependencies.SquareUp.okhttp
             classpath Dependencies.SquareUp.retrofit

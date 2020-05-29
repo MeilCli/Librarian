@@ -61,14 +61,13 @@ object Dependencies {
         val engine = Dependency(group, "junit-jupiter-engine", version)
     }
 
-    object TikXml {
+    object XmlUtil {
 
-        private const val version = "0.8.13"
-        private const val group = "com.tickaroo.tikxml"
+        private const val version = "0.20.0.1"
+        private const val group = "net.devrieze"
 
-        val core = Dependency(group, "core", version)
-        val coreAnnotation = Dependency(group, "annotation", version)
-        val processor = Dependency(group, "processor", version)
+        val core = Dependency(group, "xmlutil-jvm", version)
+        val serialization = Dependency(group, "xmlutil-serialization-jvm", version)
     }
 
     object SquareUp {

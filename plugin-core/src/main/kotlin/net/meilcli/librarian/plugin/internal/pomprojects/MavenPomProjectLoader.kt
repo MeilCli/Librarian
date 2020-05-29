@@ -1,11 +1,10 @@
 package net.meilcli.librarian.plugin.internal.pomprojects
 
-import com.tickaroo.tikxml.TikXml
+import kotlinx.serialization.modules.EmptyModule
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.IParameterizedLoader
-import okio.buffer
-import okio.source
+import nl.adaptivity.xmlutil.serialization.XML
 import org.gradle.api.Project
 import org.gradle.api.artifacts.result.ResolvedArtifactResult
 import org.gradle.api.internal.artifacts.DefaultModuleIdentifier
@@ -30,7 +29,7 @@ class MavenPomProjectLoader(
         }
         try {
             result = parameter.getPomFile(project)?.loadPomProject(parameter)
-            result = result?.toOverridePomProjectIfNeeded(project)
+            result = result?.toOverridePomProjectIfNeeded()
             if (result != null) {
                 pomCache[parameter] = result
             }
@@ -73,17 +72,14 @@ class MavenPomProjectLoader(
 
     private fun File.loadPomProject(artifact: Artifact): PomProject? {
         try {
-            this.source().use {
-                it.buffer().use { buffer ->
-                    val parser = TikXml.Builder()
-                        .exceptionOnUnreadXml(false)
-                        .build()
-                    return parser.read(buffer, PomProject::class.java).apply {
-                        this.group = this.group ?: artifact.group
-                        this.artifact = this.artifact ?: artifact.name
-                        this.version = this.version ?: artifact.version
-                    }
-                }
+            val text = readText(Charsets.UTF_8)
+            val xml = XML(EmptyModule) {
+                this.unknownChildHandler = { _, _, _, _ -> }
+            }
+            return xml.parse(PomProject.serializer(), text).apply {
+                this.group = this.group ?: artifact.group
+                this.artifact = this.artifact ?: artifact.name
+                this.version = this.version ?: artifact.version
             }
         } catch (exception: Exception) {
             logger.warn("Librarian okio error", exception)
@@ -92,7 +88,7 @@ class MavenPomProjectLoader(
     }
 
     // try override name, url, description
-    private fun PomProject.toOverridePomProjectIfNeeded(project: Project): PomProject {
+    private fun PomProject.toOverridePomProjectIfNeeded(): PomProject {
         val parentGroup = parent?.group ?: return this
         val parentArtifact = parent.artifact ?: return this
         val parentVersion = parent.version ?: return this

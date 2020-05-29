@@ -1,8 +1,8 @@
 package net.meilcli.librarian.plugin
 
-import com.tickaroo.tikxml.TikXml
+import kotlinx.serialization.modules.EmptyModule
 import net.meilcli.librarian.plugin.entities.PomProject
-import okio.Buffer
+import nl.adaptivity.xmlutil.serialization.XML
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
@@ -20,10 +20,10 @@ class PomFileTest {
     @Test
     fun testFull() {
         val text = readFile("test-pom-full.xml")
-        val parser = TikXml.Builder()
-            .exceptionOnUnreadXml(false)
-            .build()
-        val project = parser.read(Buffer().writeUtf8(text), PomProject::class.java)
+        val xml = XML(EmptyModule) {
+            this.unknownChildHandler = { _, _, _, _ -> }
+        }
+        val project = xml.parse(PomProject.serializer(), text)
 
         assertEquals("test-group", project.group)
         assertEquals("test-artifact", project.artifact)
@@ -46,10 +46,10 @@ class PomFileTest {
     @Test
     fun testWithoutLicenses() {
         val text = readFile("test-pom-without-licenses.xml")
-        val parser = TikXml.Builder()
-            .exceptionOnUnreadXml(false)
-            .build()
-        val project = parser.read(Buffer().writeUtf8(text), PomProject::class.java)
+        val xml = XML(EmptyModule) {
+            this.unknownChildHandler = { _, _, _, _ -> }
+        }
+        val project = xml.parse(PomProject.serializer(), text)
 
         assertEquals("test-group", project.group)
         assertEquals("test-artifact", project.artifact)
@@ -70,10 +70,10 @@ class PomFileTest {
     @Test
     fun testWithoutDevelopers() {
         val text = readFile("test-pom-without-developers.xml")
-        val parser = TikXml.Builder()
-            .exceptionOnUnreadXml(false)
-            .build()
-        val project = parser.read(Buffer().writeUtf8(text), PomProject::class.java)
+        val xml = XML(EmptyModule) {
+            this.unknownChildHandler = { _, _, _, _ -> }
+        }
+        val project = xml.parse(PomProject.serializer(), text)
 
         assertEquals("test-group", project.group)
         assertEquals("test-artifact", project.artifact)
@@ -94,10 +94,10 @@ class PomFileTest {
     @Test
     fun testWithoutParent() {
         val text = readFile("test-pom-without-parent.xml")
-        val parser = TikXml.Builder()
-            .exceptionOnUnreadXml(false)
-            .build()
-        val project = parser.read(Buffer().writeUtf8(text), PomProject::class.java)
+        val xml = XML(EmptyModule) {
+            this.unknownChildHandler = { _, _, _, _ -> }
+        }
+        val project = xml.parse(PomProject.serializer(), text)
 
         assertEquals("test-group", project.group)
         assertEquals("test-artifact", project.artifact)

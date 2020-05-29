@@ -11,14 +11,12 @@ apply plugin: 'MavenPublishPlugin'
 
 dependencies {
     implementation Dependencies.Kotlin.Serialization.runtime
-    implementation Dependencies.TikXml.core
-    implementation Dependencies.TikXml.coreAnnotation
+    implementation Dependencies.XmlUtil.core
+    implementation Dependencies.XmlUtil.serialization
     implementation Dependencies.SquareUp.okio
     implementation Dependencies.SquareUp.okhttp
     implementation Dependencies.SquareUp.retrofit
     implementation Dependencies.JakeWharton.retrofitKotlinSerializationConverter
-
-    kapt Dependencies.TikXml.processor
 }
 
 gradlePlugin {
@@ -49,25 +47,10 @@ librarian {
             title = "Librarian plugin-core's using libraries"
             description = "This list is using development of Librarian"
             configurations = [
-                    "kapt",
                     "testImplementationDependenciesMetadata",
                     "testRuntimeOnlyDependenciesMetadata",
                     "classpath"
             ]
-        }
-    }
-
-    groups {
-        "TikXml" {
-            artifacts = [
-                    "com.tickaroo.tikxml:annotation",
-                    "com.tickaroo.tikxml:core",
-                    "com.tickaroo.tikxml:processor"
-            ]
-            author = "Tickaroo"
-            url = "https://github.com/Tickaroo/tikxml"
-            licenseName = "The Apache Software License, Version 2.0"
-            licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
     }
 }

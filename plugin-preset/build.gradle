@@ -47,18 +47,4 @@ librarian {
             ]
         }
     }
-
-    groups {
-        "TikXml" {
-            artifacts = [
-                    "com.tickaroo.tikxml:annotation",
-                    "com.tickaroo.tikxml:core",
-                    "com.tickaroo.tikxml:processor"
-            ]
-            author = "Tickaroo"
-            url = "https://github.com/Tickaroo/tikxml"
-            licenseName = "The Apache Software License, Version 2.0"
-            licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-        }
-    }
 }

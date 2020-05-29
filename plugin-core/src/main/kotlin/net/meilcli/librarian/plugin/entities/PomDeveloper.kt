@@ -1,14 +1,32 @@
 package net.meilcli.librarian.plugin.entities
 
-import com.tickaroo.tikxml.annotation.PropertyElement
-import com.tickaroo.tikxml.annotation.Xml
+import kotlinx.serialization.Serializable
+import nl.adaptivity.xmlutil.serialization.XmlSerialName
+import nl.adaptivity.xmlutil.serialization.XmlValue
 
-@Xml(name = "developer")
+@Serializable
+@XmlSerialName("developer", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
 data class PomDeveloper(
+    private val nameValue: PomName?,
+    private val organizationValue: PomOrganization?
+) {
+    @Serializable
+    @XmlSerialName("name", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
+    data class PomName(
+        @XmlValue(true)
+        val value: String
+    )
 
-    @PropertyElement(name = "name")
-    val name: String?,
+    @Serializable
+    @XmlSerialName("organization", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
+    data class PomOrganization(
+        @XmlValue(true)
+        val value: String
+    )
 
-    @PropertyElement(name = "organization")
+    val name: String?
+        get() = nameValue?.value
+
     val organization: String?
-)
+        get() = organizationValue?.value
+}
