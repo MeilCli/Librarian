@@ -26,7 +26,8 @@ librarian {
                 contain {
                     value = [
                             "implementationDependenciesMetadata",
-                            "releaseImplementationDependenciesMetadata"
+                            "releaseImplementationDependenciesMetadata",
+                            "releaseRuntimeClasspath" // for child module
                     ]
                 }
             }
