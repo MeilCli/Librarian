@@ -4,8 +4,8 @@
     "notices": [
         {
             "artifacts": [
-                "androidx.recyclerview:recyclerview",
-                "androidx.appcompat:appcompat"
+                "androidx.appcompat:appcompat",
+                "androidx.recyclerview:recyclerview"
             ],
             "name": "Android Jetpack",
             "author": "The Android Open Source Project",
@@ -20,8 +20,8 @@
         },
         {
             "artifacts": [
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-                "org.jetbrains.kotlin:kotlin-android-extensions-runtime"
+                "org.jetbrains.kotlin:kotlin-android-extensions-runtime",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
             ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",
