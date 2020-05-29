@@ -24,10 +24,14 @@ librarian {
         "sample-from-maven" {
             title = "Using Libraries"
             description = "sample-from-maven is using this libraries."
-            configurations = [
-                    "implementationDependenciesMetadata",
-                    "releaseImplementationDependenciesMetadata"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "implementationDependenciesMetadata",
+                            "releaseImplementationDependenciesMetadata"
+                    ]
+                }
+            }
             jsonAdditionalOutputPath = file("src/main/assets/notices.json")
         }
     }

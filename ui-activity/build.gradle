@@ -20,19 +20,28 @@ librarian {
         "ui-activity-usings-library" {
             title = "Librarian ui-activity's using libraries"
             description = "This list is including library binary"
-            configurations = [
-                    "implementationDependenciesMetadata",
-                    "apiDependenciesMetadata"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "implementationDependenciesMetadata",
+                            "apiDependenciesMetadata",
+                            "releaseRuntimeClasspath"
+                    ]
+                }
+            }
         }
         "ui-activity-usings-development" {
             title = "Librarian ui-activity's using libraries"
             description = "This list is using development of Librarian"
-            configurations = [
-                    "testImplementationDependenciesMetadata",
-                    "androidTestImplementationDependenciesMetadata",
-                    "classpath"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "testImplementationDependenciesMetadata",
+                            "androidTestImplementationDependenciesMetadata",
+                            "classpath"
+                    ]
+                }
+            }
         }
     }
 }

@@ -22,10 +22,14 @@ librarian {
         "sample-ui-activity" {
             title = "Using Libraries"
             description = "sample-ui-activity is using this libraries."
-            configurations = [
-                    "implementationDependenciesMetadata",
-                    "releaseImplementationDependenciesMetadata"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "implementationDependenciesMetadata",
+                            "releaseImplementationDependenciesMetadata"
+                    ]
+                }
+            }
             jsonAdditionalOutputPath = file("src/main/assets/notices.json")
         }
     }

@@ -39,18 +39,22 @@ librarian {
         "plugin-core-usings-plugin" {
             title = "Librarian plugin-core's using libraries"
             description = "This list is including plugin binary"
-            configurations = [
-                    "implementationDependenciesMetadata"
-            ]
+            configurations {
+                contain { value = ["implementationDependenciesMetadata"] }
+            }
         }
         "plugin-core-usings-development" {
             title = "Librarian plugin-core's using libraries"
             description = "This list is using development of Librarian"
-            configurations = [
-                    "testImplementationDependenciesMetadata",
-                    "testRuntimeOnlyDependenciesMetadata",
-                    "classpath"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "testImplementationDependenciesMetadata",
+                            "testRuntimeOnlyDependenciesMetadata",
+                            "classpath"
+                    ]
+                }
+            }
         }
     }
 }

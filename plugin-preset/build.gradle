@@ -32,19 +32,23 @@ librarian {
         "plugin-preset-usings-plugin" {
             title = "Librarian plugin-preset's using libraries"
             description = "This list is including plugin binary"
-            configurations = [
-                    "implementationDependenciesMetadata"
-            ]
+            configurations {
+                contain { value = ["implementationDependenciesMetadata"] }
+            }
         }
         "plugin-preset-usings-development" {
             title = "Librarian plugin-preset's using libraries"
             description = "This list is using development of Librarian"
-            configurations = [
-                    "kapt",
-                    "testImplementationDependenciesMetadata",
-                    "testRuntimeOnlyDependenciesMetadata",
-                    "classpath"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "kapt",
+                            "testImplementationDependenciesMetadata",
+                            "testRuntimeOnlyDependenciesMetadata",
+                            "classpath"
+                    ]
+                }
+            }
         }
     }
 }

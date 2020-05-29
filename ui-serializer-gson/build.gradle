@@ -21,20 +21,29 @@ librarian {
         "ui-serializer-gson-usings-library" {
             title = "Librarian ui-serializer-gson's using libraries"
             description = "This list is including library binary"
-            configurations = [
-                    "implementationDependenciesMetadata",
-                    "apiDependenciesMetadata"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "implementationDependenciesMetadata",
+                            "apiDependenciesMetadata",
+                            "releaseRuntimeClasspath"
+                    ]
+                }
+            }
         }
         "ui-serializer-gson-usings-development" {
             title = "Librarian ui-serialzier-gson's using libraries"
             description = "This list is using development of Librarian"
-            configurations = [
-                    "testImplementationDependenciesMetadata",
-                    "androidTestImplementationDependenciesMetadata",
-                    "classpath",
-                    "kapt"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "testImplementationDependenciesMetadata",
+                            "androidTestImplementationDependenciesMetadata",
+                            "classpath",
+                            "kapt"
+                    ]
+                }
+            }
         }
     }
 

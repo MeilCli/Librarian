@@ -19,9 +19,13 @@ librarian {
         "sandbox" {
             title = "Sandbox of notices"
             description = "This list is sandbox"
-            configurations = [
-                    "implementationDependenciesMetadata"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "implementationDependenciesMetadata"
+                    ]
+                }
+            }
         }
     }
 }

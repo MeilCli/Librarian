@@ -22,10 +22,14 @@ librarian {
         "sample-ui-fragment" {
             title = "Using Libraries"
             description = "sample-ui-fragment is using this libraries."
-            configurations = [
-                    "implementationDependenciesMetadata",
-                    "releaseImplementationDependenciesMetadata"
-            ]
+            configurations {
+                contain {
+                    value = [
+                            "implementationDependenciesMetadata",
+                            "releaseImplementationDependenciesMetadata"
+                    ]
+                }
+            }
             jsonAdditionalOutputPath = file("src/main/assets/notices.json")
         }
     }
