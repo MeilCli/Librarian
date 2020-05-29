@@ -32,13 +32,11 @@ class ConfigurationArtifactsByPageFilter(
                     continue
                 }
                 if (configurationArtifact.configurationNames.all { configuration.value.contains(it) }) {
-                    logger.warn("contain ${configurationArtifact.configurationNames.joinToString()}, ${configurationArtifact.artifacts.joinToString()}")
                     return true
                 }
             }
             if (configuration is ExactConfiguration) {
                 if (configurationArtifact.configurationNames == configuration.value) {
-                    logger.warn("exact ${configurationArtifact.configurationNames.joinToString()}, ${configurationArtifact.artifacts.joinToString()}")
                     return true
                 }
             }
