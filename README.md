@@ -109,7 +109,6 @@ librarian {
     failOnGeneratePageWhenFoundPlaceholder = true // Boolean, default value is true
     failOnOverrideUnMatchedLicense = true // Boolean, default value is true
     useBintray = true // Boolean, default value is true
-    additionalModules = [] // Array of String
     ignoreArtifacts = [] // Array of String
 
     pages {
@@ -170,7 +169,6 @@ librarian {
 |librarian.failOnGeneratePageWhenFoundPlaceholder|fail on `librarianGeneratePages` when found placeholder|
 |librarian.failOnOverrideUnMatchedLicense|fail on override un matched license by group|
 |librarian.useBintray|if true, actually use Bintray api at `librarianGenerateBintrayGroups` task`|
-|librarian.additionalModules|additional resolve modules, use when like android dynamic feature module|
 |librarian.ignoreArtifacts|ignore notice of maven artifact, ignore by prefix match|
 
 ### Generate Notice Page

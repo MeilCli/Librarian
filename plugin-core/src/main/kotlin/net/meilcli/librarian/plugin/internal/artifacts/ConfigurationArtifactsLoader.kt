@@ -63,15 +63,25 @@ class ConfigurationArtifactsLoader(
             list.add(element)
         }
 
-        fun result(project: Project): List<ConfigurationArtifact> {
-            return aggregateResult(project, emptyList()).groupBy { it.first }
+        fun result(rootProject: Project): List<ConfigurationArtifact> {
+            return aggregateResult(rootProject, rootProject, emptyList()).groupBy { it.first }
                 .map { x -> ConfigurationArtifact(x.key, x.value.map { y -> y.second }) }
         }
 
-        private fun aggregateResult(project: Project, parentConfigurations: List<String>): List<Pair<List<String>, Artifact>> {
+        private fun aggregateResult(
+            rootProject: Project,
+            project: Project,
+            parentConfigurations: List<String>
+        ): List<Pair<List<String>, Artifact>> {
             return results.getOrDefault(project, mutableListOf()).flatMap {
                 when (it) {
-                    is Result.SubProject -> aggregateResult(it.project, parentConfigurations + listOf(it.configuration))
+                    is Result.SubProject -> {
+                        if (rootProject == it.project) {
+                            emptyList()
+                        } else {
+                            aggregateResult(rootProject, it.project, parentConfigurations + listOf(it.configuration))
+                        }
+                    }
                     is Result.Artifact -> listOf(Pair(parentConfigurations + listOf(it.configuration), it.artifact))
                 }
             }
@@ -89,15 +99,6 @@ class ConfigurationArtifactsLoader(
         val context = Context(extension)
 
         loadResolvedArtifacts(project, context, extension.depthType)
-
-        for (additionalModule in extension.additionalModules) {
-            val additionalProject = project.findProject(additionalModule)
-            if (additionalProject == null) {
-                logger.warn("Librarian not found module: $additionalModule")
-                continue
-            }
-            loadResolvedArtifacts(additionalProject, context, extension.depthType)
-        }
 
         return context.result(project)
     }

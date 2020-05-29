@@ -35,8 +35,6 @@ open class LibrarianExtension @Inject constructor(
 
     var useBintray = true
 
-    var additionalModules = mutableListOf<String>()
-
     var ignoreArtifacts = mutableListOf<String>()
 
     val pages = project.container(LibrarianPageExtension::class.java, LibrarianPageFactory(project, objectFactory))
