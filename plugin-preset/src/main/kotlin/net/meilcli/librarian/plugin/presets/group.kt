@@ -16,3 +16,14 @@ fun LibraryGroup.addAuthor(author: String): LibraryGroup {
         licenses = licenses
     )
 }
+
+fun LibraryGroup.addUrl(url: String): LibraryGroup {
+    return LibraryGroup(
+        artifacts = artifacts,
+        name = name,
+        author = author,
+        description = description,
+        url = url,
+        licenses = licenses
+    )
+}

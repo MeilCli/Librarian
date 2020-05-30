@@ -209,4 +209,8 @@ fun android() {
         ),
         "AndroidX Test Library"
     )
+    PresetGroups += LibraryGroup(
+        listOf("com.android.installreferrer:installreferrer"),
+        "Play Install Referrer Library"
+    ).addUrl("https://developer.android.com/google/play/installreferrer/library")
 }
