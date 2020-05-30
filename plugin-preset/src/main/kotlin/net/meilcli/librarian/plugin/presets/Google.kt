@@ -110,4 +110,31 @@ fun google() {
             "Apache License 2.0",
             "https://github.com/google/ExoPlayer/blob/release-v2/LICENSE"
         )
+
+    PresetGroups += group(
+        "Dagger",
+        "com.google.dagger",
+        "dagger",
+        "dagger-android",
+        "dagger-android-support",
+        "dagger-android-processor",
+        "dagger-android-jarimpl",
+        "dagger-android-support-jarimpl",
+        "dagger-android-support-legacy",
+        "dagger-android-legacy",
+        "dagger-compiler",
+        "dagger-gwt",
+        "dagger-grpc-server",
+        "dagger-grpc-server-annotations",
+        "dagger-grpc-server-processor",
+        "hilt-android",
+        "hilt-android-testing",
+        "hilt-android-gradle-plugin",
+        "hilt-android-compiler",
+        "dagger-spi",
+        "dagger-producers",
+        "dagger-parent",
+        "dagger-lint",
+        "dagger-lint-aar"
+    )
 }
