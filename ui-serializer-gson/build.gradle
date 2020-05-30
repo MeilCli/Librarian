@@ -46,11 +46,4 @@ librarian {
             }
         }
     }
-
-    groups {
-        "Gson" {
-            artifacts = ["com.google.code.gson:gson"]
-            author = "Google Inc."
-        }
-    }
 }

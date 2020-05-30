@@ -188,4 +188,9 @@ fun google() {
     )
         .addAuthor("Google Inc.")
         .addUrl("https://firebase.google.com")
+
+    PresetGroups += LibraryGroup(
+        listOf("com.google.code.gson:gson"),
+        "Gson"
+    ).addAuthor("Google Inc.")
 }
