@@ -7,6 +7,7 @@ Librarian can:
 - notify by every configurations
 - aggregate artifacts by same library
 - reference preset library information
+- generate markdown and json
 - separating notice file
 - Android native viewer
 
