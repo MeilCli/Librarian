@@ -1,51 +1,51 @@
 # Librarian
-![CI](https://github.com/MeilCli/Librarian/workflows/CI/badge.svg) [ ![Download](https://api.bintray.com/packages/meilcli/librarian/plugin-core/images/download.svg) ](https://bintray.com/meilcli/librarian/plugin-core/_latestVersion) [日本語](README-ja.md)
-Librarian is generate notice that library used in gradle module
+![CI](https://github.com/MeilCli/Librarian/workflows/CI/badge.svg) [ ![Download](https://api.bintray.com/packages/meilcli/librarian/plugin-core/images/download.svg) ](https://bintray.com/meilcli/librarian/plugin-core/_latestVersion) [English](README.md)
+Librarianはgradle moduleで使用しているライブラリーの通知を作ります
 
-Librarian can:
-- notify by every configurations
-- aggregate artifacts by same library
-- reference preset library information
-- separating notice file
-- Android native viewer
+Librarianは以下のことができます:
+- configurationごとに通知
+- 同一ライブラリーのArtifactsを集約
+- プリセットとして用意されたライブラリー情報を参照
+- 通知ファイルの分割
+- Androidのネイティブビューワー
 
-## Table of Contents
-- [Required](README.md#Required)
-  - [Upgrade Gradle version](README.md#upgrade-gradle-version)
-- [Getting started](README.md#getting-started)
-  - [Install](README.md#install)
-  - [Task](README.md#task)
-  - [Configuration](README.md#configuration)
-  - [Generate Notice Page](README.md#generate-notice-page)
-- [Android Viewer](README.md#android-viewer)
-  - [Getting started of ui-activity](README.md#getting-started-of-ui-activity)
-  - [Serializers](README.md#serializers)
-  - [Samples](README.md#samples)
-- [Tips](README.md#tips)
-  - [About the mechanism of page configuration](README.md#about-the-mechanism-of-page-configuration)
-  - [Add android dynamic feature module dependency notices](README.md#add-android-dynamic-feature-module-dependency-notices)
-  - [Cannot auto generate because Librarian dose not infer some information](README.md#cannot-auto-generate-because-librarian-dose-not-infer-some-information)
-  - [Add image resource license notice](README.md#add-image-resource-license-notice)
-- [GitHub Actions](README.md#github-actions)
-  - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
-- [License](README.md#license)
-  - [Using Libraries](README.md#using-libraries)
-  
-## Required
-- Gradle 5.5 or over
-- (if you develop Android app) Android Studio and Android Gradle Plugin 3.5 or over
+## 目次
+- [必須](README-ja.md#必須)
+  - [Gradleのバージョンアップ](README-ja.md#Gradleのバージョンアップ)
+- [はじめに](README-ja.md#はじめに)
+  - [インストール](README-ja.md#インストール)
+  - [タスク](README-ja.md#タスク)
+  - [構成](README-ja.md#構成)
+  - [通知ページの生成](README-ja.md#通知ページの生成)
+- [Androidビューワー](README-ja.md#Androidビューワー)
+  - [ui-activityの導入](README-ja.md#ui-activityの導入)
+  - [Jsonシリアライザー](README-ja.md#Jsonシリアライザー)
+  - [サンプル](README-ja.md#サンプル)
+- [Tips](README-ja.md#tips)
+  - [page configurationのメカニズムについて](README-ja.md#page-configurationのメカニズムについて)
+  - [Android dynamic feature moduleの依存を通知に追加する](README-ja.md#android-dynamic-feature-moduleの依存を通知に追加する)
+  - [Librarianが情報を推測できなくて通知を自動生成できない](README-ja.md#Librarianが情報を推測できなくて通知を自動生成できない)
+  - [イメージリソースライセンス通知を追加する](README-ja.md#イメージリソースライセンス通知を追加する)
+- [GitHub Actions](README-ja.md#github-actions)
+  - [Auto Generate Notice Page and Create Pull Request](README-ja.md#auto-generate-notice-page-and-create-pull-request)
+- [License](README-ja.md#license)
+  - [Using Libraries](README-ja.md#using-libraries)
 
-### Upgrade Gradle version
-1. open project folder
-1. move `gradle/wrapper/gradle-wrapper.properties`
-1. upgrade gradle version
-   - for example: `distributionUrl=https\://services.gradle.org/distributions/gradle-5.5.1-all.zip`
+## 必須
+- Gradle 5.5またはそれ以上
+- (Android開発の場合) version3.5以上のAndroid StudioとAndroid Gradle Plugin
 
-## Getting started
-### Install
-Librarian is published on GitHub Packages and Bintray. So you choice maven repository.
+### Gradleのバージョンアップ
+1. プロジェクトのフォルダーを開く
+1. `gradle/wrapper/gradle-wrapper.properties`に移動
+1. Gradleのバージョンを挙げます
+   - たとえばこのように書き換えます:`distributionUrl=https\://services.gradle.org/distributions/gradle-5.5.1-all.zip`
 
-using Bintray:
+## はじめに
+### インストール
+LibrarianはGitHub PackagesとBintrayに公開しているのでどちらのMaven Repositoryを参照するか選んでください
+
+Bintrayの場合:
 ```groovy
 buildscript {
     repositories {
@@ -54,7 +54,7 @@ buildscript {
 }
 ```
 
-using GitHub Packages:
+GitHub Packagesの場合:
 ```groovy
 buildscript {
     repositories {
@@ -69,7 +69,7 @@ buildscript {
 }
 ```
 
-And set classpath:
+そしてclasspathを追加してください:
 ```groovy
 buildscript {
     dependencies {
@@ -79,38 +79,38 @@ buildscript {
 }
 ```
 
-And apply plugin your project:
+そしてprojectにpluginを適用します:
 ```groovy
 apply plugin: 'librarian'
 apply plugin: 'librarian-preset'
 ```
 
-### Task
+### タスク
 - librarian plugin
   - `librarianGenerateArtifacts`
-    - generate artifacts
+    - artifactsを生成します
   - `librarianGenerateGroups`
-    - generate groups
+    - groupsを生成します
   - `librarianGenerateBintrayGroups`
-    - generate groups using by Bintray package information
-    - this feature is alpha
+    - Bintrayのパッケージ情報を使ってgroupsを生成します
+    - この機能はアルファ版です
   - `librarianGeneratePages`
-    - generate page, must execute after `librarianGenerateArtifacts`
+    - pageを生成します、必ず`librarianGenerateArtifacts`を実行したあとにする必要があります
   - `librarianGeneratePipeline`
-    - execute tasks: `librarianGenerateArtifacts`, `librarianGenerateGroups` and `librarianGeneratePages`
+    - これらのタスクを実行します: `librarianGenerateArtifacts`, `librarianGenerateGroups`, `librarianGeneratePages`
   - `librarianShowConfigurations`
-    - output configurations that has dependency to console
+    - 依存を持っているconfigurationsをコンソールに出力します
   - `librarianShowFirstDependencies`
-    - output first level dependencies to console
+    - ファーストレベルの依存をコンソールに出力します
   - `librarianShowAllDependencies`
-    - output all level dependencies to console
+    - すべてのレベルの依存をコンソールに出力します
 - librarian preset plugin
   - `librarianGeneratePresetGroups`
-    - generate preset groups, recommend execute before `librarianGenerateGroups`
+    - プリセットgroupを生成します、`librarianGenerateGroups`の前に実行することをお勧めします
   - `librarianGeneratePresetPipeline`
-    - execute tasks: `librarianGenerateArtifacts`, `librarianGeneratePresetGroups` ,`librarianGenerateGroups` and `librarianGeneratePages`
+    - これらのタスクを実行します: `librarianGenerateArtifacts`, `librarianGeneratePresetGroups` ,`librarianGenerateGroups`, `librarianGeneratePages`
 
-### Configuration
+### 構成
 ```groovy
 librarian {
     dataFolderName = "Library" // String, default value is Library
@@ -173,35 +173,34 @@ librarian {
 
 |path|summary|
 |:--|:--|
-|librarian.dataFolderName|output root folder name|
-|librarian.depth|search dependency depth, firstLevel find your directly dependency|
-|librarian.failOnGeneratePageWhenFoundPlaceholder|fail on `librarianGeneratePages` when found placeholder|
-|librarian.failOnOverrideUnMatchedLicense|fail on override un matched license by group|
-|librarian.useBintray|if true, actually use Bintray api at `librarianGenerateBintrayGroups` task, this feature is alpha|
-|librarian.ignoreArtifacts|ignore notice of maven artifact, ignore by prefix match|
+|librarian.dataFolderName|出力するrootフォルダーの名前|
+|librarian.depth|依存を検索する深さ、firstLevelはあなたが直接依存したものを探します|
+|librarian.failOnGeneratePageWhenFoundPlaceholder|`librarianGeneratePages`でプレースホルダーが見つかったときに失敗します|
+|librarian.failOnOverrideUnMatchedLicense|groupのライセンス情報と一致しないオーバーライドを使用としたときに失敗します|
+|librarian.useBintray|`librarianGenerateBintrayGroups`タスクのときにBintray APIを使ってライブラリー情報を探します、この機能はアルファ版です|
+|librarian.ignoreArtifacts|通知で無視するartifact、前方一致です|
 
-### Generate Notice Page
-1. install Librarian
-1. configure your project, put `pages`
-   - `librarianShowConfigurations` task helps when configure your project
-1. execute `librarianGenerateArtifacts` task
-1. execute `librarianGeneratePresetGroups` task if using `librarian-preset`
-1. execute `librarianGenerateBintrayGroups` task if using Bintray package information
-1. execute `librarianGeneratePages` task
-1. if output error or incomplete result, configure your project that put `groups` and execute `librarianGenerateGroups` task
-   - then execute `librarianGeneratePages` task
+### 通知ページの生成
+1. Librarianをインストール
+1. プロジェクトで構成を書きます、`pages`ブロックを付けてください
+   - `librarianShowConfigurations`タスクを使いながら構成を書くといいでしょう
+1. `librarianGenerateArtifacts`タスクを実行
+1. `librarian-preset`プラグインを使ってる場合は`librarianGeneratePresetGroups`タスクを実行
+1. Bintrayのパッケージ情報を使う場合は`librarianGenerateBintrayGroups`タスクを実行
+1. `librarianGeneratePages`タスクを実行
+1. もしエラーが出たり完了しなかったら`groups`ブロックを記述して`librarianGenerateGroups`タスクを実行します
 
-if you want generate notice page by one task, execute `librarianGeneratePipeline` or `librarianGeneratePresetPipeline`
+これらの流れを1つのタスクで行いたい場合は`librarianGeneratePipeline`タスクまたは`librarianGeneratePresetPipeline`タスクを実行します
 
-## Android Viewer
-Librarian is prepared Android Viewer library
+## Androidビューワー
+LibrarianはAndroidで通知を表示するためのネイティブビューワーを用意しています
 
-- `ui-core`: core of UI, including some interface, NoticesView and NoticeView
-- `ui-activity`: wrap of core, for easily usage of Activity
-- `ui-fragment`: wrap of core, for easily usage of Fragment
-- `ui-serializer-**`: serializer implementation of some Json Serializer Library
+- `ui-core`: UIのコア実装であり、NoticesViewとNoticeViewが含まれてます
+- `ui-activity`: Activityとして表示するための`ui-core`のラップ実装です
+- `ui-fragment`: Fragmentとして表示するための`ui-core`のラップ実装です
+- `ui-serializer-**`: 様々なJson Serializer Libraryのための実装です
 
-### Getting started of ui-activity
+### ui-activityの導入
 install UI Library:
 ```groovy
 dependencies {
@@ -254,32 +253,32 @@ button.setOnClickListener {
 }
 ```
 
-### Serializers
+### Jsonシリアライザー
 - KotlinX Serialization: `ui-serializer-kotlin`
 - Moshi: `ui-serializer-moshi`
 - Gson: `ui-serializer-gson`
 
-### Samples
+### サンプル
 - Using `ui-core`: [sample/sample-ui-core](sample/sample-ui-core)
 - Using `ui-activity`: [sample/sample-ui-activity](sample/sample-ui-activity)
 - Using `ui-fragment`: [sample/sample-ui-fragment](sample/sample-ui-fragment)
 - Using Dynamic Feature Module: [sample/sample-dynamic-app](sample/sample-dynamic-app)
 
 ## Tips
-### About the mechanism of page configuration
-Librarian can select configurations that including dependencies to notify on every page
+### page configurationのメカニズムについて
+Librarianはそれぞれのページにおいて依存を通知するconfigurationsを選ぶことができます
 
-in normal case, project has some configurations such as:
+通常ではプロジェクトはこのようなconfigurationsを持っています:
 - `implementationDependenciesMetadata`
 - `testImplementationDependenciesMetadata`
 - `classpath`
 - etc..
 
-the `dependencies` block configuration adds dependencies to these configurations. you can see configurations that has dependencies by `librarianShowConfigurations` task
+`dependencies`ブロックの構成でこららのconfigurationsに依存が追加されます。追加された依存は`librarianShowConfigurations`タスクで確認することができます
 
-add configuration names that want to notify at page to `pages.configurations` block. in normal case, you can use `contain` block
+通知したいconfiguration名を`pages.configurations`ブロックに追加します。通常では`contain`ブロックを使えばいいです
 
-in nested module case, you can set exact configuration name order, and `librarianShowConfigurations` task show configuration name order
+モジュールをネストした場合、configuration名の正確な順序を設定することができ、`librarianShowConfigurations`タスクではそれらの順序まで表示します
 
 example table:
 |configurations|contain("releaseRuntimeClasspath", "apiDependenciesMetadata")|exact("releaseRuntimeClasspath", "apiDependenciesMetadata")|
@@ -288,20 +287,20 @@ example table:
 |releaseRuntimeClasspath => releaseRuntimeClasspath|:o:|:x:|
 |releaseRuntimeClasspath => apiDependenciesMetadata|:o:|:o:|
 
-- `contain`: whether configuration names is contained in value
-- `exact`: whether configuration names is equaled to value
+- `contain`: `contain`で設定した値にconfigurationsが収まっているか
+- `exact`: `exact`で設定した値と同じか
 
-### Add android dynamic feature module dependency notices
-in the case of android dynamic feature module, dependency graph is different from normal case
+### Android dynamic feature moduleの依存を通知に追加する
+Android dynamic feature moduleを使っている場合は通常とは違う依存グラフになります
 
-dynamic feature module configuration names is the starting point about `releaseReverseMetadataValues`(different every build flavor)
+dynamic feature moduleのconfiguration名は`releaseReverseMetadataValues`(これはBuild Flavorによって異なる)といったものから始まります
 
 see sample: [sample/sample-dynamic-app](sample/sample-dynamic-app)
 
-### Cannot auto generate because Librarian dose not infer some information
-Sometimes, Librarian dose not infer Library information when not enough pom file
+### Librarianが情報を推測できなくて通知を自動生成できない
+ときどきLibrarianはPomファイルから情報を十分に得ることができません
 
-You can compensate information by using Library groups. Library groups is prepared originally for aggregation artifacts, but can use as to override information your hand
+そういったときはLibrary groupsを使って情報を補足することができます。Library groupはもともとはartifactsを集約するための機能ですが、情報をオーバーライドするためにも使用することができるのです
 
 example:
 ```groovy
@@ -323,10 +322,10 @@ librarian {
 }
 ```
 
-Or, can request preset [here](https://github.com/MeilCli/Librarian/issues/new/choose)
+もしくは[ここ](https://github.com/MeilCli/Librarian/issues/new/choose)からプリセットをリクエストすることができます
 
-### Add image resource license notice
-Sometimes, developers must notify image resource licence or else. Librarian can add notice apart from maven artifact
+### イメージリソースライセンス通知を追加する
+たまに開発者は使用しているイメージリソースなどの通知をしなければなりません。Librarianはmaven artifactとは別に通知を追加することができます
 
 example of Material design icons:
 ```groovy
