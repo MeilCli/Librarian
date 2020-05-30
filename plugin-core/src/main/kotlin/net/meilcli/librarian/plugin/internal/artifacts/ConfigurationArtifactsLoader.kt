@@ -1,7 +1,6 @@
 package net.meilcli.librarian.plugin.internal.artifacts
 
 import net.meilcli.librarian.plugin.LibrarianDepth
-import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.internal.ILoader
@@ -13,7 +12,8 @@ import org.slf4j.LoggerFactory
 
 class ConfigurationArtifactsLoader(
     private val project: Project,
-    private val extension: LibrarianExtension
+    private val depth: LibrarianDepth,
+    private val ignoreArtifacts: List<String>
 ) : ILoader<List<ConfigurationArtifact>> {
 
     private sealed class Result {
@@ -22,7 +22,7 @@ class ConfigurationArtifactsLoader(
         data class Artifact(val configuration: String, val artifact: net.meilcli.librarian.plugin.entities.Artifact) : Result()
     }
 
-    private class Context(private val extension: LibrarianExtension) {
+    private class Context(private val ignoreArtifacts: List<String>) {
 
         private val projects = mutableListOf<Project>()
         private val results = mutableMapOf<Project, MutableList<Result>>()
@@ -42,7 +42,7 @@ class ConfigurationArtifactsLoader(
                 resolvedArtifact.moduleVersion.id.version
             )
 
-            if (extension.ignoreArtifacts.any { artifact.artifact.startsWith(it) }) {
+            if (ignoreArtifacts.any { artifact.artifact.startsWith(it) }) {
                 return
             }
 
@@ -96,9 +96,9 @@ class ConfigurationArtifactsLoader(
     private val logger = LoggerFactory.getLogger(ConfigurationArtifactsLoader::class.java)
 
     override fun load(): List<ConfigurationArtifact> {
-        val context = Context(extension)
+        val context = Context(ignoreArtifacts)
 
-        loadResolvedArtifacts(project, context, extension.depthType)
+        loadResolvedArtifacts(project, context, depth)
 
         return context.result(project)
     }

@@ -25,6 +25,14 @@ open class LibrarianPlugin : Plugin<Project> {
             this.extension = extension
         }
 
+        project.createTask<ShowFirstDependenciesTask>("librarianShowFirstDependencies").apply {
+            this.extension = extension
+        }
+
+        project.createTask<ShowAllDependenciesTask>("librarianShowAllDependencies").apply {
+            this.extension = extension
+        }
+
         generatePipelineDependTasks += project.createTask<GenerateArtifactsTask>(generateArtifactsTask).apply {
             this.extension = extension
         }

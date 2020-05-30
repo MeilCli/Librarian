@@ -25,7 +25,7 @@ open class GeneratePresetGroupsTask : DefaultTask() {
             return
         }
 
-        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension)
+        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension.depthType, extension.ignoreArtifacts)
         val configurationArtifacts = configurationArtifactsLoader.load()
 
         for (page in extension.pages) {

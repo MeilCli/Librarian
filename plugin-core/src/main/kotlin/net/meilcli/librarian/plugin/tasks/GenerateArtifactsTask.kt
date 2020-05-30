@@ -35,7 +35,7 @@ open class GenerateArtifactsTask : DefaultTask() {
             return
         }
 
-        val configurationArtifactLoader = ConfigurationArtifactsLoader(project, extension)
+        val configurationArtifactLoader = ConfigurationArtifactsLoader(project, extension.depthType, extension.ignoreArtifacts)
         val configurationArtifacts = configurationArtifactLoader.load()
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val pomProjectsTranslator = ArtifactsToPomProjectsTranslator(MavenPomProjectLoader(project))

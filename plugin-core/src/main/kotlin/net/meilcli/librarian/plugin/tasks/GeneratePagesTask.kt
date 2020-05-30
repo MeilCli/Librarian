@@ -34,7 +34,7 @@ open class GeneratePagesTask : DefaultTask() {
 
         val librariesLoader = LocalLibrariesLoader(project)
         val libraryGroupsLoader = LocalLibraryGroupsLoader(project)
-        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension)
+        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension.depthType, extension.ignoreArtifacts)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val noticesAggregator = ArtifactsToNoticesAggregator(
             extension,

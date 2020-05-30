@@ -95,6 +95,10 @@ apply plugin: 'librarian-preset'
     - execute tasks: `librarianGenerateArtifacts`, `librarianGenerateGroups` and `librarianGeneratePages`
   - `librarianShowConfigurations`
     - output configurations that has dependency to console
+  - `librarianShowFirstDependencies`
+    - output first level dependencies to console
+  - `librarianShowAllDependencies`
+    - output all level dependencies to console
 - librarian preset plugin
   - `librarianGeneratePresetGroups`
     - generate preset groups, recommend execute before `librarianGenerateGroups`

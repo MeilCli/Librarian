@@ -25,7 +25,7 @@ open class GenerateBintrayGroupsTask : DefaultTask() {
         }
 
         val libraryGroupsLoader = LocalLibraryGroupsLoader(project)
-        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension)
+        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension.depthType, extension.ignoreArtifacts)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val libraryGroupsFilter = ArtifactsByLibraryGroupsFilter(libraryGroupsLoader.load())
         val artifacts = configurationArtifactsLoader.load()
