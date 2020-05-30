@@ -46,6 +46,54 @@
         },
         {
             "artifacts": [
+                "com.google.dagger:dagger"
+            ],
+            "name": "Dagger",
+            "author": "Google, Inc.",
+            "url": "https://github.com/google/dagger",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "Apache 2.0",
+                    "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "com.google.android.gms:play-services-ads",
+                "com.google.android.gms:play-services-analytics",
+                "com.google.android.gms:play-services-auth",
+                "com.google.android.gms:play-services-awareness",
+                "com.google.android.gms:play-services-base",
+                "com.google.android.gms:play-services-cast",
+                "com.google.android.gms:play-services-drive",
+                "com.google.android.gms:play-services-fitness",
+                "com.google.android.gms:play-services-games",
+                "com.google.android.gms:play-services-gcm",
+                "com.google.android.gms:play-services-identity",
+                "com.google.android.gms:play-services-location",
+                "com.google.android.gms:play-services-nearby",
+                "com.google.android.gms:play-services-panorama",
+                "com.google.android.gms:play-services-plus",
+                "com.google.android.gms:play-services-safetynet",
+                "com.google.android.gms:play-services-vision",
+                "com.google.android.gms:play-services-wallet",
+                "com.google.android.gms:play-services-wearable"
+            ],
+            "name": "Google Play Services",
+            "author": "Google Inc.",
+            "url": "https://developers.google.com/android/guides/overview",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "Android Software Development Kit License",
+                    "url": "https://developer.android.com/studio/terms.html"
+                }
+            ]
+        },
+        {
+            "artifacts": [
                 "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
             ],
             "name": "Kotlin",
@@ -56,6 +104,21 @@
                 {
                     "name": "The Apache License, Version 2.0",
                     "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "com.android.installreferrer:installreferrer"
+            ],
+            "name": "Play Install Referrer Library",
+            "author": "Google Inc.",
+            "url": "https://developer.android.com/google/play/installreferrer/library",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "Android Software Development Kit License",
+                    "url": "https://developer.android.com/studio/terms.html"
                 }
             ]
         },
