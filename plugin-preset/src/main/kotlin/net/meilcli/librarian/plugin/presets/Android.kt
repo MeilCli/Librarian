@@ -212,5 +212,25 @@ fun android() {
     PresetGroups += LibraryGroup(
         listOf("com.android.installreferrer:installreferrer"),
         "Play Install Referrer Library"
-    ).addUrl("https://developer.android.com/google/play/installreferrer/library")
+    )
+        .addUrl("https://developer.android.com/google/play/installreferrer/library")
+        .addAuthor("Google Inc.")
+    PresetGroups += LibraryGroup(
+        listOf(
+            "com.android.billingclient:billing",
+            "com.android.billingclient:billing-ktx"
+        ),
+        "Google Play Billing Library"
+    )
+        .addUrl("https://developer.android.com/google/play/billing/billing_overview")
+        .addAuthor("Google Inc.")
+    PresetGroups += LibraryGroup(
+        listOf(
+            "com.google.android.play:core",
+            "com.google.android.play:core-ktx"
+        ),
+        "Google Play Core Library"
+    )
+        .addUrl("https://developer.android.com/guide/playcore")
+        .addAuthor("Google Inc.")
 }
