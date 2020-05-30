@@ -6,5 +6,8 @@ This list is sandbox
 ## Using
 - [Android Jetpack](https://developer.android.com/jetpack/androidx), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The Android Open Source Project
 - [Android Jetpack](http://developer.android.com/tools/extras/support-library.html), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [SIL Open Font License, Version 1.1](http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web), [Unicode, Inc. License](http://www.unicode.org/copyright.html#License), made by The Android Open Source Project
+- [Dagger](https://github.com/google/dagger), licensed on [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by Google, Inc.
+- [Google Play Services](https://developers.google.com/android/guides/overview), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
 - [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
+- [Play Install Referrer Library](https://developer.android.com/google/play/installreferrer/library), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
 - [ThreeTen backport](https://www.threeten.org/threetenbp), licensed on [BSD 3-clause](https://raw.githubusercontent.com/ThreeTen/threetenbp/master/LICENSE.txt), made by ThreeTen.org
