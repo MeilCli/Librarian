@@ -82,4 +82,32 @@ fun google() {
     )
         .addAuthor("Google Inc.")
         .addUrl("https://developers.google.com/android/guides/overview")
+
+    PresetGroups += group(
+        "ExoPlayer",
+        "com.google.android.exoplayer",
+        "exoplayer",
+        "exoplayer-core",
+        "exoplayer-dash",
+        "exoplayer-hls",
+        "exoplayer-smoothstreaming",
+        "exoplayer-testutils",
+        "exoplayer-ui",
+        "extension-cast",
+        "extension-cronet",
+        "extension-gvr",
+        "extension-ima",
+        "extension-jobdispatcher",
+        "extension-leanback",
+        "extension-mediasession",
+        "extension-okhttp",
+        "extension-rtmp",
+        "extension-workmanager"
+    )
+        .addAuthor("Google Inc.")
+        .addUrl("https://github.com/google/ExoPlayer")
+        .addLicense(
+            "Apache License 2.0",
+            "https://github.com/google/ExoPlayer/blob/release-v2/LICENSE"
+        )
 }
