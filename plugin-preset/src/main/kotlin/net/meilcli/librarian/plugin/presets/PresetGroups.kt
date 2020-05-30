@@ -20,5 +20,6 @@ object PresetGroups {
         square()
         bintray()
         xmlUtil()
+        immutables()
     }
 }
