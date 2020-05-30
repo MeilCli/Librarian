@@ -1,5 +1,6 @@
 # Librarian
 ![CI](https://github.com/MeilCli/Librarian/workflows/CI/badge.svg) [ ![Download](https://api.bintray.com/packages/meilcli/librarian/plugin-core/images/download.svg) ](https://bintray.com/meilcli/librarian/plugin-core/_latestVersion) [English](README.md)
+
 Librarianはgradle moduleで使用しているライブラリーの通知を作ります
 
 Librarianは以下のことができます:
