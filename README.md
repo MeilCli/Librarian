@@ -2,7 +2,7 @@
 ![CI](https://github.com/MeilCli/Librarian/workflows/CI/badge.svg) [ ![Download](https://api.bintray.com/packages/meilcli/librarian/plugin-core/images/download.svg) ](https://bintray.com/meilcli/librarian/plugin-core/_latestVersion)  
 Librarian is generate notice that library used in gradle module
 
-- Can notice by every configurations
+- Can notify by every configurations
 - Can aggregate artifacts by same library
 - Preset famous library groups
 - Separating notice file
@@ -21,7 +21,10 @@ Librarian is generate notice that library used in gradle module
   - [Serializers](README.md#serializers)
   - [Samples](README.md#samples)
 - [Tips](README.md#tips)
+  - [About the mechanism of page configuration](README.md#about-the-mechanism-of-page-configuration)
+  - [Add android dynamic feature module dependency notices](README.md#add-android-dynamic-feature-module-dependency-notices)
   - [Cannot auto generate because Librarian dose not infer some information](README.md#cannot-auto-generate-because-librarian-dose-not-infer-some-information)
+  - [Add image resource license notice](README.md#add-image-resource-license-notice)
 - [GitHub Actions](README.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
 - [License](README.md#license)
@@ -262,6 +265,38 @@ button.setOnClickListener {
 - Using Dynamic Feature Module: [sample/sample-dynamic-app](sample/sample-dynamic-app)
 
 ## Tips
+### About the mechanism of page configuration
+Librarian can select configurations that including dependencies to notify on every page
+
+in normal case, project has some configurations such as:
+- `implementationDependenciesMetadata`
+- `testImplementationDependenciesMetadata`
+- `classpath`
+- etc..
+
+the `dependencies` block configuration adds dependencies to these configurations. you can see configurations that has dependencies by `librarianShowConfigurations` task
+
+add configuration names that want to notify at page to `pages.configurations` block. in normal case, you can use `contain` block
+
+in nested module case, you can set exact configuration name order, and `librarianShowConfigurations` task show configuration name order
+
+example table:
+|configurations|contain("releaseRuntimeClasspath", "apiDependenciesMetadata")|exact("releaseRuntimeClasspath", "apiDependenciesMetadata")|
+|:----|:--:|:--:|
+|releaseRuntimeClasspath => releaseApiDependenciesMetadata|:x:|:x:|
+|releaseRuntimeClasspath => releaseRuntimeClasspath|:o:|:x:|
+|releaseRuntimeClasspath => apiDependenciesMetadata|:o:|:o:|
+
+- `contain`: whether configuration names is contained in value
+- `exact`: whether configuration names is equaled to value
+
+### Add android dynamic feature module dependency notices
+in the case of android dynamic feature module, dependency graph is different from normal case
+
+dynamic feature module configuration names is the starting point about `releaseReverseMetadataValues`(different every build flavor)
+
+see sample: [sample/sample-dynamic-app](sample/sample-dynamic-app)
+
 ### Cannot auto generate because Librarian dose not infer some information
 Sometimes, Librarian dose not infer Library information when not enough pom file
 
@@ -288,6 +323,32 @@ librarian {
 ```
 
 Or, can request preset [here](https://github.com/MeilCli/Librarian/issues/new/choose)
+
+### Add image resource license notice
+Sometimes, developers must notify image resource licence or else. Librarian can add notice apart from maven artifact
+
+example of Material design icons:
+```groovy
+librarian {
+    pages {
+        "example" { // page name
+            additionalNotices {
+                "Material design icons" { // Notice name
+                    artifacts = ["com.google.material:icons"] // set any value
+                    author = "Google Inc."
+                    url = https://github.com/google/material-design-icons"
+                    description = "Material Design icons by Google" // optional
+                    licenses {
+                        "Apache License 2.0" {
+                            url = "https://github.com/google/material-design-icons/blob/master/LICENSE"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
 ## GitHub Actions
 if you use GitHub Actions, recommend use GitHub Packages when CI Build
