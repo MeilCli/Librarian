@@ -31,7 +31,7 @@ fun square() {
         "okcurl",
         "okhttp-bom",
         "okhttp-brotli"
-    )
+    ).addAuthor("Square, Inc.")
     PresetGroups += group(
         "Retrofit",
         "com.squareup.retrofit2",
