@@ -33,7 +33,7 @@ open class LibrarianExtension @Inject constructor(
 
     var failOnOverrideUnMatchedLicense = true
 
-    var useBintray = true
+    var useBintray = false
 
     var ignoreArtifacts = mutableListOf<String>()
 

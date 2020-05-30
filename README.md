@@ -89,6 +89,7 @@ apply plugin: 'librarian-preset'
     - generate groups
   - `librarianGenerateBintrayGroups`
     - generate groups using by Bintray package information
+    - this feature is alpha
   - `librarianGeneratePages`
     - generate page, must execute after `librarianGenerateArtifacts`
   - `librarianGeneratePipeline`
@@ -112,7 +113,7 @@ librarian {
     depth = "firstLevel" // String, firstLevel or allLevel, default value is firstLevel
     failOnGeneratePageWhenFoundPlaceholder = true // Boolean, default value is true
     failOnOverrideUnMatchedLicense = true // Boolean, default value is true
-    useBintray = true // Boolean, default value is true
+    useBintray = true // Boolean, default value is false
     ignoreArtifacts = [] // Array of String
 
     pages {
@@ -172,7 +173,7 @@ librarian {
 |librarian.depth|search dependency depth, firstLevel find your directly dependency|
 |librarian.failOnGeneratePageWhenFoundPlaceholder|fail on `librarianGeneratePages` when found placeholder|
 |librarian.failOnOverrideUnMatchedLicense|fail on override un matched license by group|
-|librarian.useBintray|if true, actually use Bintray api at `librarianGenerateBintrayGroups` task`|
+|librarian.useBintray|if true, actually use Bintray api at `librarianGenerateBintrayGroups` task`, this feature is alpha|
 |librarian.ignoreArtifacts|ignore notice of maven artifact, ignore by prefix match|
 
 ### Generate Notice Page
