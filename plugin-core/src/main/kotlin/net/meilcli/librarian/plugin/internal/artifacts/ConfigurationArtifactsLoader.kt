@@ -64,25 +64,34 @@ class ConfigurationArtifactsLoader(
         }
 
         fun result(rootProject: Project): List<ConfigurationArtifact> {
-            return aggregateResult(rootProject, rootProject, emptyList()).groupBy { it.first }
+            return aggregateResult(rootProject, emptyList())
+                .groupBy { x -> x.first.map { y -> y.second } }
                 .map { x -> ConfigurationArtifact(x.key, x.value.map { y -> y.second }) }
         }
 
         private fun aggregateResult(
-            rootProject: Project,
             project: Project,
-            parentConfigurations: List<String>
-        ): List<Pair<List<String>, Artifact>> {
+            parentConfigurations: List<Pair<String, String>>
+        ): List<Pair<List<Pair<String, String>>, Artifact>> {
             return results.getOrDefault(project, mutableListOf()).flatMap {
                 when (it) {
                     is Result.SubProject -> {
-                        if (rootProject == it.project) {
+                        if (parentConfigurations.any { x -> x.first == it.project.projectDir.path }) {
+                            // break infinite loop
                             emptyList()
                         } else {
-                            aggregateResult(rootProject, it.project, parentConfigurations + listOf(it.configuration))
+                            aggregateResult(
+                                it.project,
+                                parentConfigurations + listOf(Pair(project.projectDir.path, it.configuration))
+                            )
                         }
                     }
-                    is Result.Artifact -> listOf(Pair(parentConfigurations + listOf(it.configuration), it.artifact))
+                    is Result.Artifact -> listOf(
+                        Pair(
+                            parentConfigurations + listOf(Pair(project.projectDir.path, it.configuration)),
+                            it.artifact
+                        )
+                    )
                 }
             }
         }
