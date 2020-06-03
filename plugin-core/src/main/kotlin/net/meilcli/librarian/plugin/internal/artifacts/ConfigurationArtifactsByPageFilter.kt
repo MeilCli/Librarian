@@ -5,24 +5,13 @@ import net.meilcli.librarian.plugin.configurations.ContainConfiguration
 import net.meilcli.librarian.plugin.configurations.ExactConfiguration
 import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
 import net.meilcli.librarian.plugin.internal.IFilter
-import org.slf4j.LoggerFactory
 
 class ConfigurationArtifactsByPageFilter(
     private val pageExtension: LibrarianPageExtension
-) : IFilter<List<ConfigurationArtifact>> {
+) : IFilter<Sequence<ConfigurationArtifact>> {
 
-    private val logger = LoggerFactory.getLogger(ConfigurationArtifactsByPageFilter::class.java)
-
-    override fun filter(source: List<ConfigurationArtifact>): List<ConfigurationArtifact> {
-        val result = mutableListOf<ConfigurationArtifact>()
-
-        for (configurationArtifact in source) {
-            if (filter(configurationArtifact)) {
-                result += configurationArtifact
-            }
-        }
-
-        return result
+    override fun filter(source: Sequence<ConfigurationArtifact>): Sequence<ConfigurationArtifact> {
+        return source.filter { filter(it) }
     }
 
     private fun filter(configurationArtifact: ConfigurationArtifact): Boolean {

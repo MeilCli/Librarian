@@ -14,18 +14,18 @@ class ConfigurationArtifactsLoader(
     private val project: Project,
     private val depth: LibrarianDepth,
     private val ignoreArtifacts: List<String>
-) : ILoader<List<ConfigurationArtifact>> {
+) : ILoader<Sequence<ConfigurationArtifact>> {
 
     private sealed class Result {
 
-        data class SubProject(val configuration: String, val project: Project) : Result()
-        data class Artifact(val configuration: String, val artifact: net.meilcli.librarian.plugin.entities.Artifact) : Result()
+        data class SubProject(val project: Project) : Result()
+        data class Artifact(val artifact: net.meilcli.librarian.plugin.entities.Artifact) : Result()
     }
 
     private class Context(private val ignoreArtifacts: List<String>) {
 
         private val projects = mutableListOf<Project>()
-        private val results = mutableMapOf<Project, MutableList<Result>>()
+        private val results = mutableMapOf<Project, MutableMap<String, MutableList<Result>>>()
 
         fun addProject(project: Project) {
             projects.add(project)
@@ -46,8 +46,9 @@ class ConfigurationArtifactsLoader(
                 return
             }
 
-            val element = Result.Artifact(configuration.name, artifact)
-            val list = results.getOrPut(project) { mutableListOf() }
+            val element = Result.Artifact(artifact)
+            val map = results.getOrPut(project) { mutableMapOf() }
+            val list = map.getOrPut(configuration.name) { mutableListOf() }
             if (list.contains(element)) {
                 return
             }
@@ -55,45 +56,64 @@ class ConfigurationArtifactsLoader(
         }
 
         fun addSubProject(project: Project, configuration: Configuration, subProject: Project) {
-            val element = Result.SubProject(configuration.name, subProject)
-            val list = results.getOrPut(project) { mutableListOf() }
+            val element = Result.SubProject(subProject)
+            val map = results.getOrPut(project) { mutableMapOf() }
+            val list = map.getOrPut(configuration.name) { mutableListOf() }
             if (list.contains(element)) {
                 return
             }
             list.add(element)
         }
 
-        fun result(rootProject: Project): List<ConfigurationArtifact> {
-            return aggregateResult(rootProject, emptyList())
-                .groupBy { x -> x.first.map { y -> y.second } }
-                .map { x -> ConfigurationArtifact(x.key, x.value.map { y -> y.second }) }
-        }
+        fun result(rootProject: Project): Sequence<ConfigurationArtifact> {
+            val graph = mutableListOf<List<Pair<Project, String>>>()
 
-        private fun aggregateResult(
-            project: Project,
-            parentConfigurations: List<Pair<String, String>>
-        ): List<Pair<List<Pair<String, String>>, Artifact>> {
-            return results.getOrDefault(project, mutableListOf()).flatMap {
-                when (it) {
-                    is Result.SubProject -> {
-                        if (parentConfigurations.any { x -> x.first == it.project.projectDir.path }) {
-                            // break infinite loop
-                            emptyList()
-                        } else {
-                            aggregateResult(
-                                it.project,
-                                parentConfigurations + listOf(Pair(project.projectDir.path, it.configuration))
-                            )
-                        }
-                    }
-                    is Result.Artifact -> listOf(
-                        Pair(
-                            parentConfigurations + listOf(Pair(project.projectDir.path, it.configuration)),
-                            it.artifact
-                        )
+            aggregateDependencyGraph(rootProject, graph, emptyList())
+
+            return graph
+                .groupBy { x -> x.map { y -> y.second } }
+                .asSequence()
+                .map { x ->
+                    ConfigurationArtifact(
+                        x.key,
+                        x.value.flatMap { y -> resolveConfiguration(y.last().first, y.last().second) }.distinct()
                     )
                 }
+        }
+
+        private fun aggregateDependencyGraph(
+            project: Project,
+            graph: MutableList<List<Pair<Project, String>>>,
+            parentGraph: List<Pair<Project, String>>
+        ) {
+            for (map in results.getOrDefault(project, mutableMapOf())) {
+                graph.add(parentGraph + listOf(Pair(project, map.key)))
+                for (element in map.value) {
+                    if (element !is Result.SubProject) {
+                        continue
+                    }
+                    if (parentGraph.any { it.first == project }) {
+                        // escape infinite loop
+                        continue
+                    }
+                    aggregateDependencyGraph(element.project, graph, parentGraph + listOf(Pair(project, map.key)))
+                }
             }
+        }
+
+        private fun resolveConfiguration(
+            project: Project,
+            configuration: String
+        ): List<Artifact> {
+            val result = mutableListOf<Artifact>()
+
+            for (element in results.getOrDefault(project, mutableMapOf()).getOrDefault(configuration, mutableListOf())) {
+                if (element is Result.Artifact) {
+                    result += element.artifact
+                }
+            }
+
+            return result
         }
     }
 
@@ -104,7 +124,7 @@ class ConfigurationArtifactsLoader(
 
     private val logger = LoggerFactory.getLogger(ConfigurationArtifactsLoader::class.java)
 
-    override fun load(): List<ConfigurationArtifact> {
+    override fun load(): Sequence<ConfigurationArtifact> {
         val context = Context(ignoreArtifacts)
 
         loadResolvedArtifacts(project, context, depth)

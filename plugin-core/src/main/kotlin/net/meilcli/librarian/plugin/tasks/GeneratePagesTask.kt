@@ -75,10 +75,10 @@ open class GeneratePagesTask : DefaultTask() {
     private fun writePage(
         extension: LibrarianExtension,
         page: LibrarianPageExtension,
-        configurationArtifacts: List<ConfigurationArtifact>,
+        configurationArtifacts: Sequence<ConfigurationArtifact>,
         libraries: List<Library>,
         libraryGroups: List<LibraryGroup>,
-        artifactsTranslator: ITranslator<List<ConfigurationArtifact>, Set<Artifact>>,
+        artifactsTranslator: ITranslator<Sequence<ConfigurationArtifact>, Set<Artifact>>,
         noticesAggregator: IAggregator3<Collection<Artifact>, List<Library>, List<LibraryGroup>, List<Notice>>,
         sortTranslator: ITranslator<List<Notice>, List<Notice>>
     ) {

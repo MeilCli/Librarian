@@ -37,7 +37,7 @@ open class GeneratePresetGroupsTask : DefaultTask() {
         }
     }
 
-    private fun writePresetGroups(configurationArtifacts: List<ConfigurationArtifact>, page: LibrarianPageExtension) {
+    private fun writePresetGroups(configurationArtifacts: Sequence<ConfigurationArtifact>, page: LibrarianPageExtension) {
         val pageFilter = ConfigurationArtifactsByPageFilter(page)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val foundPresetGroups = mutableSetOf<LibraryGroup>()

@@ -62,8 +62,8 @@ open class GenerateArtifactsTask : DefaultTask() {
 
     private fun executePage(
         page: LibrarianPageExtension,
-        configurationArtifacts: List<ConfigurationArtifact>,
-        artifactsTranslator: ITranslator<List<ConfigurationArtifact>, Set<Artifact>>,
+        configurationArtifacts: Sequence<ConfigurationArtifact>,
+        artifactsTranslator: ITranslator<Sequence<ConfigurationArtifact>, Set<Artifact>>,
         pomProjectsTranslator: ITranslator<Collection<Artifact>, List<PomProject>>,
         librariesAggregator: IAggregator1<List<PomProject>, List<Library>>,
         librariesWriter: IWriter<List<Library>>

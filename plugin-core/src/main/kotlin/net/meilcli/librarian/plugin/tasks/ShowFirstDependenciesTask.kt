@@ -20,7 +20,7 @@ open class ShowFirstDependenciesTask : DefaultTask() {
 
         val result = configurationArtifactsLoader.load()
         project.logger.quiet("dependencies")
-        for (artifact in result.flatMap { it.artifacts }.map { it.artifact }.distinct().sortedBy { it }) {
+        for (artifact in result.flatMap { it.artifacts.asSequence() }.map { it.artifact }.distinct().sortedBy { it }) {
             project.logger.quiet(artifact)
         }
     }
