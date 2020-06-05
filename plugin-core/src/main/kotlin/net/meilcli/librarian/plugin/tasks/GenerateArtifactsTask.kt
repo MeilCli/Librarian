@@ -4,16 +4,14 @@ import kotlinx.serialization.UnstableDefault
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
-import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
+import net.meilcli.librarian.plugin.entities.ConfigurationArtifacts
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.IAggregator1
 import net.meilcli.librarian.plugin.internal.ITranslator
 import net.meilcli.librarian.plugin.internal.IWriter
-import net.meilcli.librarian.plugin.internal.artifacts.ArtifactsToPomProjectsTranslator
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
+import net.meilcli.librarian.plugin.internal.LibrarianException
+import net.meilcli.librarian.plugin.internal.artifacts.*
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesWriter
 import net.meilcli.librarian.plugin.internal.pomprojects.MavenPomProjectLoader
 import net.meilcli.librarian.plugin.internal.pomprojects.PomProjectToLibraryTranslator
@@ -35,8 +33,16 @@ open class GenerateArtifactsTask : DefaultTask() {
             return
         }
 
-        val configurationArtifactLoader = ConfigurationArtifactsLoader(project, extension.depthType, extension.ignoreArtifacts)
-        val configurationArtifacts = configurationArtifactLoader.load()
+        val dependencyGraphLoader = DependencyGraphLoader(project, extension.depthType, extension.ignoreArtifacts)
+        val dependencyGraph = dependencyGraphLoader.load()
+        val dependencyGraphValidator = DependencyGraphValidator(extension)
+
+        if (dependencyGraphValidator.valid(dependencyGraph).not()) {
+            throw LibrarianException("Librarian encounter too many configurations. please filter page.configurations")
+        }
+
+        val dependencyGraphToConfigurationArtifactsTranslator = DependencyGraphToConfigurationArtifactsTranslator(project, extension)
+        val configurationArtifacts = dependencyGraphToConfigurationArtifactsTranslator.translate(dependencyGraph)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val pomProjectsTranslator = ArtifactsToPomProjectsTranslator(MavenPomProjectLoader(project))
         val librariesAggregator = PomProjectsToLibrariesAggregator(
@@ -62,8 +68,8 @@ open class GenerateArtifactsTask : DefaultTask() {
 
     private fun executePage(
         page: LibrarianPageExtension,
-        configurationArtifacts: Sequence<ConfigurationArtifact>,
-        artifactsTranslator: ITranslator<Sequence<ConfigurationArtifact>, Set<Artifact>>,
+        configurationArtifacts: List<ConfigurationArtifacts>,
+        artifactsTranslator: ITranslator<List<ConfigurationArtifacts>, Set<Artifact>>,
         pomProjectsTranslator: ITranslator<Collection<Artifact>, List<PomProject>>,
         librariesAggregator: IAggregator1<List<PomProject>, List<Library>>,
         librariesWriter: IWriter<List<Library>>

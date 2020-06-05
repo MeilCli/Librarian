@@ -1,9 +1,8 @@
 package net.meilcli.librarian.plugin.tasks
 
 import net.meilcli.librarian.plugin.LibrarianExtension
-import net.meilcli.librarian.plugin.internal.artifacts.ArtifactsByLibraryGroupsFilter
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
+import net.meilcli.librarian.plugin.internal.LibrarianException
+import net.meilcli.librarian.plugin.internal.artifacts.*
 import net.meilcli.librarian.plugin.internal.bintray.*
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesLoader
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupsLoader
@@ -24,11 +23,21 @@ open class GenerateBintrayGroupsTask : DefaultTask() {
             return
         }
 
+        val dependencyGraphLoader = DependencyGraphLoader(project, extension.depthType, extension.ignoreArtifacts)
+        val dependencyGraph = dependencyGraphLoader.load()
+        val dependencyGraphValidator = DependencyGraphValidator(extension)
+
+        if (dependencyGraphValidator.valid(dependencyGraph).not()) {
+            throw LibrarianException("Librarian encounter too many configurations. please filter page.configurations")
+        }
+
+        val dependencyGraphToConfigurationArtifactsTranslator = DependencyGraphToConfigurationArtifactsTranslator(project, extension)
+        val configurationArtifacts = dependencyGraphToConfigurationArtifactsTranslator.translate(dependencyGraph)
+
         val libraryGroupsLoader = LocalLibraryGroupsLoader(project)
-        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension.depthType, extension.ignoreArtifacts)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val libraryGroupsFilter = ArtifactsByLibraryGroupsFilter(libraryGroupsLoader.load())
-        val artifacts = configurationArtifactsLoader.load()
+        val artifacts = configurationArtifacts
             .let { artifactsTranslator.translate(it) }
             .let { libraryGroupsFilter.filter(it) }
 

@@ -5,10 +5,7 @@ import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.*
 import net.meilcli.librarian.plugin.internal.*
-import net.meilcli.librarian.plugin.internal.artifacts.ArtifactsToNoticesAggregator
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
+import net.meilcli.librarian.plugin.internal.artifacts.*
 import net.meilcli.librarian.plugin.internal.libraries.LibrariesToNoticeTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LibraryToNoticeTranslator
 import net.meilcli.librarian.plugin.internal.libraries.LocalLibrariesLoader
@@ -32,9 +29,19 @@ open class GeneratePagesTask : DefaultTask() {
             return
         }
 
+        val dependencyGraphLoader = DependencyGraphLoader(project, extension.depthType, extension.ignoreArtifacts)
+        val dependencyGraph = dependencyGraphLoader.load()
+        val dependencyGraphValidator = DependencyGraphValidator(extension)
+
+        if (dependencyGraphValidator.valid(dependencyGraph).not()) {
+            throw LibrarianException("Librarian encounter too many configurations. please filter page.configurations")
+        }
+
+        val dependencyGraphToConfigurationArtifactsTranslator = DependencyGraphToConfigurationArtifactsTranslator(project, extension)
+        val configurationArtifacts = dependencyGraphToConfigurationArtifactsTranslator.translate(dependencyGraph)
+
         val librariesLoader = LocalLibrariesLoader(project)
         val libraryGroupsLoader = LocalLibraryGroupsLoader(project)
-        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension.depthType, extension.ignoreArtifacts)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val noticesAggregator = ArtifactsToNoticesAggregator(
             extension,
@@ -46,7 +53,6 @@ open class GeneratePagesTask : DefaultTask() {
         )
         val sortTranslator = NoticesBySortTranslator()
 
-        val configurationArtifacts = configurationArtifactsLoader.load()
         val libraries = librariesLoader.load()
         val libraryGroups = libraryGroupsLoader.load()
 
@@ -75,10 +81,10 @@ open class GeneratePagesTask : DefaultTask() {
     private fun writePage(
         extension: LibrarianExtension,
         page: LibrarianPageExtension,
-        configurationArtifacts: Sequence<ConfigurationArtifact>,
+        configurationArtifacts: List<ConfigurationArtifacts>,
         libraries: List<Library>,
         libraryGroups: List<LibraryGroup>,
-        artifactsTranslator: ITranslator<Sequence<ConfigurationArtifact>, Set<Artifact>>,
+        artifactsTranslator: ITranslator<List<ConfigurationArtifacts>, Set<Artifact>>,
         noticesAggregator: IAggregator3<Collection<Artifact>, List<Library>, List<LibraryGroup>, List<Notice>>,
         sortTranslator: ITranslator<List<Notice>, List<Notice>>
     ) {

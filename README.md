@@ -101,11 +101,15 @@ apply plugin: 'librarian-preset'
   - `librarianGeneratePipeline`
     - execute tasks: `librarianGenerateArtifacts`, `librarianGenerateGroups` and `librarianGeneratePages`
   - `librarianShowConfigurations`
-    - output configurations that has dependency to console
+    - output configurations to console
+  - `librarianShowModuleConfigurations`
+    - output configurations to console
   - `librarianShowFirstDependencies`
     - output first level dependencies to console
   - `librarianShowAllDependencies`
     - output all level dependencies to console
+  - `librarianShowFilteredDependencyGraph`
+    - output configurations graph with dependency count to console, filtered by `page.configurations`
 - librarian preset plugin
   - `librarianGeneratePresetGroups`
     - generate preset groups, recommend execute before `librarianGenerateGroups`
@@ -119,6 +123,7 @@ librarian {
     depth = "firstLevel" // String, firstLevel or allLevel, default value is firstLevel
     failOnGeneratePageWhenFoundPlaceholder = true // Boolean, default value is true
     failOnOverrideUnMatchedLicense = true // Boolean, default value is true
+    failOnTooManyResolvingConfigurationLimit = 1000 // Int, default value is 1000
     useBintray = true // Boolean, default value is false
     ignoreArtifacts = [] // Array of String
 
@@ -179,6 +184,7 @@ librarian {
 |librarian.depth|search dependency depth, firstLevel find your directly dependency|
 |librarian.failOnGeneratePageWhenFoundPlaceholder|fail on `librarianGeneratePages` when found placeholder|
 |librarian.failOnOverrideUnMatchedLicense|fail on override un matched license by group|
+|librarian.failOnTooManyResolvingConfigurationLimit|fail limit that resolving configurations too many, multi module project will be increase exponentially|
 |librarian.useBintray|if true, actually use Bintray api at `librarianGenerateBintrayGroups` task, this feature is alpha|
 |librarian.ignoreArtifacts|ignore notice of maven artifact, ignore by prefix match|
 
@@ -281,7 +287,7 @@ the `dependencies` block configuration adds dependencies to these configurations
 
 add configuration names that want to notify at page to `pages.configurations` block. in normal case, you can use `contain` block
 
-in nested module case, you can set exact configuration name order, and `librarianShowConfigurations` task show configuration name order
+in nested module case, you can set exact configuration name order, and `librarianShowFilteredDependencyGraph` task show configuration name order
 
 example table:
 |configurations|contain("releaseRuntimeClasspath", "apiDependenciesMetadata")|exact("releaseRuntimeClasspath", "apiDependenciesMetadata")|

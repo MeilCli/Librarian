@@ -2,11 +2,10 @@ package net.meilcli.librarian.plugin.tasks
 
 import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
-import net.meilcli.librarian.plugin.entities.ConfigurationArtifact
+import net.meilcli.librarian.plugin.entities.ConfigurationArtifacts
 import net.meilcli.librarian.plugin.entities.LibraryGroup
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsByPageFilter
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsLoader
-import net.meilcli.librarian.plugin.internal.artifacts.ConfigurationArtifactsToArtifactsTranslator
+import net.meilcli.librarian.plugin.internal.LibrarianException
+import net.meilcli.librarian.plugin.internal.artifacts.*
 import net.meilcli.librarian.plugin.internal.librarygroups.LocalLibraryGroupsWriter
 import net.meilcli.librarian.plugin.presets.PresetGroups
 import org.gradle.api.DefaultTask
@@ -25,8 +24,16 @@ open class GeneratePresetGroupsTask : DefaultTask() {
             return
         }
 
-        val configurationArtifactsLoader = ConfigurationArtifactsLoader(project, extension.depthType, extension.ignoreArtifacts)
-        val configurationArtifacts = configurationArtifactsLoader.load()
+        val dependencyGraphLoader = DependencyGraphLoader(project, extension.depthType, extension.ignoreArtifacts)
+        val dependencyGraph = dependencyGraphLoader.load()
+        val dependencyGraphValidator = DependencyGraphValidator(extension)
+
+        if (dependencyGraphValidator.valid(dependencyGraph).not()) {
+            throw LibrarianException("Librarian encounter too many configurations. please filter page.configurations")
+        }
+
+        val dependencyGraphToConfigurationArtifactsTranslator = DependencyGraphToConfigurationArtifactsTranslator(project, extension)
+        val configurationArtifacts = dependencyGraphToConfigurationArtifactsTranslator.translate(dependencyGraph)
 
         for (page in extension.pages) {
             try {
@@ -37,7 +44,7 @@ open class GeneratePresetGroupsTask : DefaultTask() {
         }
     }
 
-    private fun writePresetGroups(configurationArtifacts: Sequence<ConfigurationArtifact>, page: LibrarianPageExtension) {
+    private fun writePresetGroups(configurationArtifacts: List<ConfigurationArtifacts>, page: LibrarianPageExtension) {
         val pageFilter = ConfigurationArtifactsByPageFilter(page)
         val artifactsTranslator = ConfigurationArtifactsToArtifactsTranslator()
         val foundPresetGroups = mutableSetOf<LibraryGroup>()

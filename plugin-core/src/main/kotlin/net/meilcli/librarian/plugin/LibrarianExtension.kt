@@ -33,6 +33,8 @@ open class LibrarianExtension @Inject constructor(
 
     var failOnOverrideUnMatchedLicense = true
 
+    var failOnTooManyResolvingConfigurationLimit = 1000
+
     var useBintray = false
 
     var ignoreArtifacts = mutableListOf<String>()

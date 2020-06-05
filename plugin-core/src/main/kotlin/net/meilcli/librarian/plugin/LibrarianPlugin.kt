@@ -25,11 +25,19 @@ open class LibrarianPlugin : Plugin<Project> {
             this.extension = extension
         }
 
+        project.createTask<ShowModuleConfigurationsTask>("librarianShowModuleConfigurations").apply {
+            this.extension = extension
+        }
+
         project.createTask<ShowFirstDependenciesTask>("librarianShowFirstDependencies").apply {
             this.extension = extension
         }
 
         project.createTask<ShowAllDependenciesTask>("librarianShowAllDependencies").apply {
+            this.extension = extension
+        }
+
+        project.createTask<ShowFilteredDependencyGraphTask>("librarianShowFilteredDependencyGraph").apply {
             this.extension = extension
         }
 

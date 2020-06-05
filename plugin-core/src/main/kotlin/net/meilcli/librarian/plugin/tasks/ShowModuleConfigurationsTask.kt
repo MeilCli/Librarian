@@ -6,7 +6,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 
-open class ShowConfigurationsTask : DefaultTask() {
+open class ShowModuleConfigurationsTask : DefaultTask() {
 
     @Input
     var extension: LibrarianExtension? = null
@@ -19,8 +19,8 @@ open class ShowConfigurationsTask : DefaultTask() {
         val dependencyGraph = dependencyGraphLoader.load()
         val configurationNames = dependencyGraph.graph
             .asSequence()
-            .flatMap { it.value.keys.asSequence() }
-            .map { it.name }
+            .flatMap { x -> x.value.keys.asSequence().map { y -> Pair(x.key, y) } }
+            .map { "${it.first.name}:${it.second.name}" }
             .distinct()
             .sorted()
 

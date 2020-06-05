@@ -101,11 +101,15 @@ apply plugin: 'librarian-preset'
   - `librarianGeneratePipeline`
     - これらのタスクを実行します: `librarianGenerateArtifacts`, `librarianGenerateGroups`, `librarianGeneratePages`
   - `librarianShowConfigurations`
-    - 依存を持っているconfigurationsをコンソールに出力します
+    - configurationsをコンソールに出力します
+  - `librarianShowModuleConfigurations`
+    - configurationsをコンソールに出力します
   - `librarianShowFirstDependencies`
     - ファーストレベルの依存をコンソールに出力します
   - `librarianShowAllDependencies`
     - すべてのレベルの依存をコンソールに出力します
+  - `librarianShowFilteredDependencyGraph`
+    - 依存数付きのconfigurationsグラフをコンソールに出力します、これは`page.configurations`によってフィルターされています
 - librarian preset plugin
   - `librarianGeneratePresetGroups`
     - プリセットgroupを生成します、`librarianGenerateGroups`の前に実行することをお勧めします
@@ -119,6 +123,7 @@ librarian {
     depth = "firstLevel" // String, firstLevel or allLevel, default value is firstLevel
     failOnGeneratePageWhenFoundPlaceholder = true // Boolean, default value is true
     failOnOverrideUnMatchedLicense = true // Boolean, default value is true
+    failOnTooManyResolvingConfigurationLimit = 1000 // Int, default value is 1000
     useBintray = true // Boolean, default value is false
     ignoreArtifacts = [] // Array of String
 
@@ -179,6 +184,7 @@ librarian {
 |librarian.depth|依存を検索する深さ、firstLevelはあなたが直接依存したものを探します|
 |librarian.failOnGeneratePageWhenFoundPlaceholder|`librarianGeneratePages`でプレースホルダーが見つかったときに失敗します|
 |librarian.failOnOverrideUnMatchedLicense|groupのライセンス情報と一致しないオーバーライドを使用としたときに失敗します|
+|librarian.failOnTooManyResolvingConfigurationLimit|configurationの解決が多すぎる場合に失敗させる制限値、マルチモジュールプロジェクトは解決数が指数関数的に増えていきます|
 |librarian.useBintray|`librarianGenerateBintrayGroups`タスクのときにBintray APIを使ってライブラリー情報を探します、この機能はアルファ版です|
 |librarian.ignoreArtifacts|通知で無視するartifact、前方一致です|
 
@@ -280,7 +286,7 @@ Librarianはそれぞれのページにおいて依存を通知するconfigurati
 
 通知したいconfiguration名を`pages.configurations`ブロックに追加します。通常では`contain`ブロックを使えばいいです
 
-モジュールをネストした場合、configuration名の正確な順序を設定することができ、`librarianShowConfigurations`タスクではそれらの順序まで表示します
+モジュールをネストした場合、configuration名の正確な順序を設定することができ、`librarianShowFilteredDependencyGraph`タスクではそれらの順序まで表示します
 
 example table:
 |configurations|contain("releaseRuntimeClasspath", "apiDependenciesMetadata")|exact("releaseRuntimeClasspath", "apiDependenciesMetadata")|
