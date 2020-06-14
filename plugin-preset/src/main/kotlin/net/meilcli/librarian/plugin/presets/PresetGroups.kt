@@ -26,5 +26,6 @@ object PresetGroups {
         bumptech()
         coil()
         koin()
+        ktor()
     }
 }
