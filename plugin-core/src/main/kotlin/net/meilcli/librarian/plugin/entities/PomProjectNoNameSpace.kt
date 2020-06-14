@@ -1,6 +1,7 @@
 package net.meilcli.librarian.plugin.entities
 
 import kotlinx.serialization.Serializable
+import net.meilcli.librarian.plugin.extensions.toNullIfEmpty
 import nl.adaptivity.xmlutil.serialization.XmlChildrenName
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import nl.adaptivity.xmlutil.serialization.XmlValue
@@ -69,37 +70,37 @@ data class PomProjectNoNameSpace(
     )
 
     override var group: String?
-        get() = groupValue?.value
+        get() = groupValue?.value?.toNullIfEmpty()
         set(value) {
             groupValue = value?.let { PomGroup(it) }
         }
 
     override var artifact: String?
-        get() = artifactValue?.value
+        get() = artifactValue?.value?.toNullIfEmpty()
         set(value) {
             artifactValue = value?.let { PomArtifact(it) }
         }
 
     override var version: String?
-        get() = versionValue?.value
+        get() = versionValue?.value?.toNullIfEmpty()
         set(value) {
             versionValue = value?.let { PomVersion(it) }
         }
 
     override var name: String?
-        get() = nameValue?.value
+        get() = nameValue?.value?.toNullIfEmpty()
         set(value) {
             nameValue = value?.let { PomName(it) }
         }
 
     override var description: String?
-        get() = descriptionValue?.value
+        get() = descriptionValue?.value?.toNullIfEmpty()
         set(value) {
             descriptionValue = value?.let { PomDescription(it) }
         }
 
     override var url: String?
-        get() = urlValue?.value
+        get() = urlValue?.value?.toNullIfEmpty()
         set(value) {
             urlValue = value?.let { PomUrl(it) }
         }

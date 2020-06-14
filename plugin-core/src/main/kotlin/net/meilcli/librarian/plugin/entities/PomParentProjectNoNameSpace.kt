@@ -1,6 +1,7 @@
 package net.meilcli.librarian.plugin.entities
 
 import kotlinx.serialization.Serializable
+import net.meilcli.librarian.plugin.extensions.toNullIfEmpty
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import nl.adaptivity.xmlutil.serialization.XmlValue
 
@@ -34,11 +35,11 @@ data class PomParentProjectNoNameSpace(
     )
 
     override val group: String?
-        get() = groupValue?.value
+        get() = groupValue?.value?.toNullIfEmpty()
 
     override val artifact: String?
-        get() = artifactValue?.value
+        get() = artifactValue?.value?.toNullIfEmpty()
 
     override val version: String?
-        get() = versionValue?.value
+        get() = versionValue?.value?.toNullIfEmpty()
 }

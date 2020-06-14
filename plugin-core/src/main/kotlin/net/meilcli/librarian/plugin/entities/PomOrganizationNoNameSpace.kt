@@ -1,6 +1,7 @@
 package net.meilcli.librarian.plugin.entities
 
 import kotlinx.serialization.Serializable
+import net.meilcli.librarian.plugin.extensions.toNullIfEmpty
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import nl.adaptivity.xmlutil.serialization.XmlValue
 
@@ -18,5 +19,5 @@ data class PomOrganizationNoNameSpace(
     )
 
     override val name: String?
-        get() = nameValue?.value
+        get() = nameValue?.value?.toNullIfEmpty()
 }
