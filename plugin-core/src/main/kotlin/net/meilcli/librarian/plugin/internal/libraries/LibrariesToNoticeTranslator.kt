@@ -11,11 +11,11 @@ class LibrariesToNoticeTranslator : ITranslator<List<Library>, Notice> {
     override fun translate(source: List<Library>): Notice {
         return Notice(
             artifacts = source.map { it.artifact }.sortedBy { it },
-            name = source.firstOrNull()?.name ?: Placeholder.name,
-            author = source.firstOrNull()?.author ?: Placeholder.author,
-            url = source.firstOrNull()?.url ?: Placeholder.url,
-            description = source.firstOrNull()?.description,
-            licenses = source.firstOrNull()?.licenses ?: listOf(License(Placeholder.licenseName, Placeholder.licenseUrl))
+            name = source.map { it.name }.firstOrNull() ?: Placeholder.name,
+            author = source.map { it.author }.firstOrNull() ?: Placeholder.author,
+            url = source.map { it.url }.firstOrNull() ?: Placeholder.url,
+            description = source.map { it.description }.firstOrNull(),
+            licenses = source.map { it.licenses }.firstOrNull() ?: listOf(License(Placeholder.licenseName, Placeholder.licenseUrl))
         )
     }
 }
