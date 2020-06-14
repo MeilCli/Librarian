@@ -18,5 +18,5 @@ fun fuel() {
         "fuel-kotlinx-serialization",
         "fuel-stetho",
         "fuel-test"
-    )
+    ).addAuthor("Kittinun Vantasin")
 }
