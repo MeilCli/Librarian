@@ -39,3 +39,14 @@ fun LibraryGroup.addLicense(licenseName: String, licenseUrl: String): LibraryGro
         licenses = (licenses ?: emptyList()) + listOf(License(licenseName, licenseUrl))
     )
 }
+
+fun LibraryGroup.addArtifacts(artifacts: List<String>): LibraryGroup {
+    return LibraryGroup(
+        artifacts = this.artifacts + artifacts,
+        name = name,
+        author = author,
+        description = description,
+        url = url,
+        licenses = licenses
+    )
+}
