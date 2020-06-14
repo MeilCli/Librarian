@@ -18,6 +18,7 @@
                 "androidx.customview:customview",
                 "androidx.documentfile:documentfile",
                 "androidx.drawerlayout:drawerlayout",
+                "androidx.exifinterface:exifinterface",
                 "androidx.fragment:fragment",
                 "androidx.interpolator:interpolator",
                 "androidx.legacy:legacy-support-core-utils",
@@ -161,6 +162,28 @@
         },
         {
             "artifacts": [
+                "com.github.bumptech.glide:annotations",
+                "com.github.bumptech.glide:disklrucache",
+                "com.github.bumptech.glide:gifdecoder",
+                "com.github.bumptech.glide:glide"
+            ],
+            "name": "Glide",
+            "author": "Sam Judd",
+            "url": "https://github.com/bumptech/glide",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "Simplified BSD License",
+                    "url": "http://www.opensource.org/licenses/bsd-license"
+                },
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
                 "com.google.android.gms:play-services",
                 "com.google.android.gms:play-services-ads",
                 "com.google.android.gms:play-services-ads-base",
@@ -274,6 +297,21 @@
         },
         {
             "artifacts": [
+                "io.ktor:ktor-server"
+            ],
+            "name": "Ktor",
+            "author": "JetBrains - JetBrains Team",
+            "url": "https://github.com/ktorio/ktor",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
                 "com.android.installreferrer:installreferrer"
             ],
             "name": "Play Install Referrer Library",
@@ -304,6 +342,21 @@
         },
         {
             "artifacts": [
+                "org.slf4j:slf4j-api"
+            ],
+            "name": "SLF4J API Module",
+            "author": "QOS.ch",
+            "url": "http://www.slf4j.org",
+            "description": "The slf4j API",
+            "licenses": [
+                {
+                    "name": "MIT License",
+                    "url": "http://www.opensource.org/licenses/mit-license.php"
+                }
+            ]
+        },
+        {
+            "artifacts": [
                 "org.threeten:threetenbp"
             ],
             "name": "ThreeTen backport",
@@ -319,6 +372,21 @@
         },
         {
             "artifacts": [
+                "org.jetbrains.kotlinx:atomicfu"
+            ],
+            "name": "atomicfu",
+            "author": "JetBrains - JetBrains Team",
+            "url": "https://github.com/Kotlin/atomicfu",
+            "description": "AtomicFU utilities",
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
                 "javax.inject:javax.inject"
             ],
             "name": "javax.inject",
@@ -329,6 +397,21 @@
                 {
                     "name": "The Apache Software License, Version 2.0",
                     "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+            ],
+            "name": "kotlinx.coroutines",
+            "author": "JetBrains - JetBrains Team",
+            "url": "https://github.com/Kotlin/kotlinx.coroutines",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
                 }
             ]
         }
