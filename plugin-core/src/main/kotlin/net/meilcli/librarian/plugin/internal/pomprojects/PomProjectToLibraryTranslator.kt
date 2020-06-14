@@ -1,14 +1,14 @@
 package net.meilcli.librarian.plugin.internal.pomprojects
 
+import net.meilcli.librarian.plugin.entities.IPomProject
 import net.meilcli.librarian.plugin.entities.Library
 import net.meilcli.librarian.plugin.entities.License
-import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.ITranslator
 import net.meilcli.librarian.plugin.internal.Placeholder
 
-class PomProjectToLibraryTranslator : ITranslator<PomProject, Library> {
+class PomProjectToLibraryTranslator : ITranslator<IPomProject, Library> {
 
-    override fun translate(source: PomProject): Library {
+    override fun translate(source: IPomProject): Library {
         val name = source.name ?: Placeholder.name
         val developer = source.developers
             ?.filter { it.name != null || it.organization != null }

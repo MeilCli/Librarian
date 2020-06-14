@@ -6,63 +6,63 @@ import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import nl.adaptivity.xmlutil.serialization.XmlValue
 
 @Serializable
-@XmlSerialName("project", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
-data class PomProject(
+@XmlSerialName("project", namespace = "", prefix = "")
+data class PomProjectNoNameSpace(
     private var groupValue: PomGroup?,
     private var artifactValue: PomArtifact?,
     private var versionValue: PomVersion?,
     private var nameValue: PomName?,
     private var descriptionValue: PomDescription?,
     private var urlValue: PomUrl?,
-    override val parent: PomParentProject?,
-    override val organization: PomOrganization?,
+    override val parent: PomParentProjectNoNameSpace?,
+    override val organization: PomOrganizationNoNameSpace?,
 
-    @XmlSerialName("licenses", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
-    @XmlChildrenName("license", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
-    override val licenses: List<PomLicense>?,
+    @XmlSerialName("licenses", namespace = "", prefix = "")
+    @XmlChildrenName("license", namespace = "", prefix = "")
+    override val licenses: List<PomLicenseNoNameSpace>?,
 
-    @XmlSerialName("developers", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
-    @XmlChildrenName("developer", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
-    override val developers: List<PomDeveloper>?
+    @XmlSerialName("developers", namespace = "", prefix = "")
+    @XmlChildrenName("developer", namespace = "", prefix = "")
+    override val developers: List<PomDeveloperNoNameSpace>?
 ) : IPomProject {
 
     @Serializable
-    @XmlSerialName("groupId", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
+    @XmlSerialName("groupId", namespace = "", prefix = "")
     data class PomGroup(
         @XmlValue(true)
         val value: String
     )
 
     @Serializable
-    @XmlSerialName("artifactId", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
+    @XmlSerialName("artifactId", namespace = "", prefix = "")
     data class PomArtifact(
         @XmlValue(true)
         val value: String
     )
 
     @Serializable
-    @XmlSerialName("version", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
+    @XmlSerialName("version", namespace = "", prefix = "")
     data class PomVersion(
         @XmlValue(true)
         val value: String
     )
 
     @Serializable
-    @XmlSerialName("name", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
+    @XmlSerialName("name", namespace = "", prefix = "")
     data class PomName(
         @XmlValue(true)
         val value: String = ""
     )
 
     @Serializable
-    @XmlSerialName("description", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
+    @XmlSerialName("description", namespace = "", prefix = "")
     data class PomDescription(
         @XmlValue(true)
         val value: String = ""
     )
 
     @Serializable
-    @XmlSerialName("url", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
+    @XmlSerialName("url", namespace = "", prefix = "")
     data class PomUrl(
         @XmlValue(true)
         val value: String = ""
@@ -111,10 +111,10 @@ data class PomProject(
         name: String?,
         description: String?,
         url: String?,
-        parent: PomParentProject?,
-        organization: PomOrganization?,
-        licenses: List<PomLicense>?,
-        developers: List<PomDeveloper>?
+        parent: PomParentProjectNoNameSpace?,
+        organization: PomOrganizationNoNameSpace?,
+        licenses: List<PomLicenseNoNameSpace>?,
+        developers: List<PomDeveloperNoNameSpace>?
     ) : this(
         group?.let { PomGroup(it) },
         artifact?.let { PomArtifact(it) },

@@ -1,9 +1,9 @@
 package net.meilcli.librarian.plugin.internal.pomprojects
 
 import kotlinx.serialization.modules.EmptyModule
-import net.meilcli.librarian.plugin.entities.Artifact
-import net.meilcli.librarian.plugin.entities.PomProject
+import net.meilcli.librarian.plugin.entities.*
 import net.meilcli.librarian.plugin.internal.IParameterizedLoader
+import nl.adaptivity.xmlutil.XmlException
 import nl.adaptivity.xmlutil.serialization.XML
 import org.gradle.api.Project
 import org.gradle.api.artifacts.result.ResolvedArtifactResult
@@ -16,13 +16,13 @@ import java.io.File
 
 class MavenPomProjectLoader(
     private val project: Project
-) : IParameterizedLoader<Artifact, PomProject?> {
+) : IParameterizedLoader<Artifact, IPomProject?> {
 
     private val logger = LoggerFactory.getLogger(MavenPomProjectLoader::class.java)
 
-    private val pomCache = mutableMapOf<Artifact, PomProject>()
+    private val pomCache = mutableMapOf<Artifact, IPomProject>()
 
-    override fun load(parameter: Artifact): PomProject? {
+    override fun load(parameter: Artifact): IPomProject? {
         var result = pomCache[parameter]
         if (result != null) {
             return result
@@ -70,16 +70,24 @@ class MavenPomProjectLoader(
         return artifact.file
     }
 
-    private fun File.loadPomProject(artifact: Artifact): PomProject? {
+    private fun File.loadPomProject(artifact: Artifact): IPomProject? {
         try {
             val text = readText(Charsets.UTF_8)
             val xml = XML(EmptyModule) {
                 this.unknownChildHandler = { _, _, _, _ -> }
             }
-            return xml.parse(PomProject.serializer(), text).apply {
-                this.group = this.group ?: artifact.group
-                this.artifact = this.artifact ?: artifact.name
-                this.version = this.version ?: artifact.version
+            return try {
+                xml.parse(PomProject.serializer(), text).apply {
+                    this.group = this.group ?: artifact.group
+                    this.artifact = this.artifact ?: artifact.name
+                    this.version = this.version ?: artifact.version
+                }
+            } catch (exception: XmlException) {
+                xml.parse(PomProjectNoNameSpace.serializer(), text).apply {
+                    this.group = this.group ?: artifact.group
+                    this.artifact = this.artifact ?: artifact.name
+                    this.version = this.version ?: artifact.version
+                }
             }
         } catch (exception: Exception) {
             logger.warn("Librarian okio error", exception)
@@ -88,10 +96,10 @@ class MavenPomProjectLoader(
     }
 
     // try override name, url, description
-    private fun PomProject.toOverridePomProjectIfNeeded(): PomProject {
+    private fun IPomProject.toOverridePomProjectIfNeeded(): IPomProject {
         val parentGroup = parent?.group ?: return this
-        val parentArtifact = parent.artifact ?: return this
-        val parentVersion = parent.version ?: return this
+        val parentArtifact = parent?.artifact ?: return this
+        val parentVersion = parent?.version ?: return this
 
         if (name != null &&
             url != null &&
@@ -104,18 +112,18 @@ class MavenPomProjectLoader(
 
         try {
             val parentProject = load(Artifact(parentGroup, parentArtifact, parentVersion))
-            return PomProject(
-                group = group,
-                artifact = artifact,
-                version = version,
-                parent = parent,
-                name = name ?: parentProject?.name,
-                url = url ?: parentProject?.url,
-                description = description ?: parentProject?.description,
-                organization = organization ?: parentProject?.organization,
-                developers = developers ?: parentProject?.developers,
-                licenses = licenses ?: parentProject?.licenses
-            )
+            return object : IPomProject {
+                override var group: String? = this@toOverridePomProjectIfNeeded.group
+                override var artifact: String? = this@toOverridePomProjectIfNeeded.artifact
+                override var version: String? = this@toOverridePomProjectIfNeeded.version
+                override var name: String? = this@toOverridePomProjectIfNeeded.name ?: parentProject?.name
+                override var description: String? = this@toOverridePomProjectIfNeeded.description ?: parentProject?.description
+                override var url: String? = this@toOverridePomProjectIfNeeded.url ?: parentProject?.url
+                override val parent: IPomParentProject? = this@toOverridePomProjectIfNeeded.parent
+                override val organization: IPomOrganization? = this@toOverridePomProjectIfNeeded.organization ?: parentProject?.organization
+                override val licenses: List<IPomLicense>? = this@toOverridePomProjectIfNeeded.licenses ?: parentProject?.licenses
+                override val developers: List<IPomDeveloper>? = this@toOverridePomProjectIfNeeded.developers ?: parentProject?.developers
+            }
         } catch (exception: Exception) {
             return this
         }

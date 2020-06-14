@@ -5,13 +5,13 @@ import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import nl.adaptivity.xmlutil.serialization.XmlValue
 
 @Serializable
-@XmlSerialName("organization", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
-data class PomOrganization(
+@XmlSerialName("organization", namespace = "", prefix = "")
+data class PomOrganizationNoNameSpace(
     private val nameValue: PomName?
 ) : IPomOrganization {
 
     @Serializable
-    @XmlSerialName("name", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
+    @XmlSerialName("name", namespace = "", prefix = "")
     data class PomName(
         @XmlValue(true)
         val value: String = ""

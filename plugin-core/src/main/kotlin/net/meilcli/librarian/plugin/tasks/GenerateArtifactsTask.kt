@@ -5,8 +5,8 @@ import net.meilcli.librarian.plugin.LibrarianExtension
 import net.meilcli.librarian.plugin.LibrarianPageExtension
 import net.meilcli.librarian.plugin.entities.Artifact
 import net.meilcli.librarian.plugin.entities.ConfigurationArtifacts
+import net.meilcli.librarian.plugin.entities.IPomProject
 import net.meilcli.librarian.plugin.entities.Library
-import net.meilcli.librarian.plugin.entities.PomProject
 import net.meilcli.librarian.plugin.internal.IAggregator1
 import net.meilcli.librarian.plugin.internal.ITranslator
 import net.meilcli.librarian.plugin.internal.IWriter
@@ -70,8 +70,8 @@ open class GenerateArtifactsTask : DefaultTask() {
         page: LibrarianPageExtension,
         configurationArtifacts: List<ConfigurationArtifacts>,
         artifactsTranslator: ITranslator<List<ConfigurationArtifacts>, Set<Artifact>>,
-        pomProjectsTranslator: ITranslator<Collection<Artifact>, List<PomProject>>,
-        librariesAggregator: IAggregator1<List<PomProject>, List<Library>>,
+        pomProjectsTranslator: ITranslator<Collection<Artifact>, List<IPomProject>>,
+        librariesAggregator: IAggregator1<List<IPomProject>, List<Library>>,
         librariesWriter: IWriter<List<Library>>
     ) {
         val pageFilter = ConfigurationArtifactsByPageFilter(page)

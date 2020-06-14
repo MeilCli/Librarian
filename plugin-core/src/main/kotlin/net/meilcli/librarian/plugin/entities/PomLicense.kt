@@ -9,7 +9,8 @@ import nl.adaptivity.xmlutil.serialization.XmlValue
 data class PomLicense(
     private val nameValue: PomName?,
     private val urlValue: PomUrl?
-) {
+) : IPomLicense {
+
     @Serializable
     @XmlSerialName("name", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
     data class PomName(
@@ -24,9 +25,9 @@ data class PomLicense(
         val value: String = ""
     )
 
-    val name: String?
+    override val name: String?
         get() = nameValue?.value
 
-    val url: String?
+    override val url: String?
         get() = urlValue?.value
 }
