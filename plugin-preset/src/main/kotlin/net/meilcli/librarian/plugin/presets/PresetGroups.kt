@@ -27,5 +27,6 @@ object PresetGroups {
         coil()
         koin()
         ktor()
+        fuel()
     }
 }
