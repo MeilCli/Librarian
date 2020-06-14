@@ -22,5 +22,6 @@ object PresetGroups {
         xmlUtil()
         immutables()
         google()
+        java()
     }
 }
