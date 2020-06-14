@@ -24,5 +24,6 @@ object PresetGroups {
         google()
         java()
         bumptech()
+        coil()
     }
 }
