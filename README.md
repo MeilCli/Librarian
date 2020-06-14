@@ -30,6 +30,7 @@ Librarian can:
   - [Add image resource license notice](README.md#add-image-resource-license-notice)
 - [GitHub Actions](README.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
+- [Contributing](README.md#Contributing)
 - [License](README.md#license)
   - [Using Libraries](README.md#using-libraries)
   
@@ -425,6 +426,9 @@ jobs:
           commit-message: "update library notices"
           title: "update library notices"
 ```
+
+## Contributing
+see [Contributing.md](.github/CONTRIBUTING.md). if you think to report issue, select [Issue Template](https://github.com/MeilCli/Librarian/issues/new/choose)
 
 ## License
 Librarian is MIT License

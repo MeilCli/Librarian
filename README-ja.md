@@ -30,6 +30,7 @@ Librarianは以下のことができます:
   - [イメージリソースライセンス通知を追加する](README-ja.md#イメージリソースライセンス通知を追加する)
 - [GitHub Actions](README-ja.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README-ja.md#auto-generate-notice-page-and-create-pull-request)
+- [Contributing](README.md#Contributing)
 - [License](README-ja.md#license)
   - [Using Libraries](README-ja.md#using-libraries)
 
@@ -424,6 +425,9 @@ jobs:
           commit-message: "update library notices"
           title: "update library notices"
 ```
+
+## Contributing
+see [Contributing.md](.github/CONTRIBUTING.md). if you think to report issue, select [Issue Template](https://github.com/MeilCli/Librarian/issues/new/choose)
 
 ## License
 Librarian is MIT License
