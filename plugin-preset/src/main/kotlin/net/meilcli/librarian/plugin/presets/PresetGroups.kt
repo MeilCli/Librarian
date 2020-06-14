@@ -23,5 +23,6 @@ object PresetGroups {
         immutables()
         google()
         java()
+        bumptech()
     }
 }
