@@ -10,6 +10,7 @@
       <w>jcenter</w>
       <w>jfrog</w>
       <w>kapt</w>
+      <w>koin</w>
       <w>kotlinx</w>
       <w>meilcli</w>
       <w>moshi</w>

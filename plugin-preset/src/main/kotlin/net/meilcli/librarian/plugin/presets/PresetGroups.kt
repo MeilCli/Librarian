@@ -25,5 +25,6 @@ object PresetGroups {
         java()
         bumptech()
         coil()
+        koin()
     }
 }
