@@ -90,32 +90,19 @@ apply plugin: 'librarian-preset'
 
 ### Task
 - librarian plugin
-  - `librarianGenerateArtifacts`
-    - generate artifacts
-  - `librarianGenerateGroups`
-    - generate groups
-  - `librarianGenerateBintrayGroups`
-    - generate groups using by Bintray package information
-    - this feature is alpha
-  - `librarianGeneratePages`
-    - generate page, must execute after `librarianGenerateArtifacts`
-  - `librarianGeneratePipeline`
-    - execute tasks: `librarianGenerateArtifacts`, `librarianGenerateGroups` and `librarianGeneratePages`
-  - `librarianShowConfigurations`
-    - output configurations to console
-  - `librarianShowModuleConfigurations`
-    - output configurations to console
-  - `librarianShowFirstDependencies`
-    - output first level dependencies to console
-  - `librarianShowAllDependencies`
-    - output all level dependencies to console
-  - `librarianShowFilteredDependencyGraph`
-    - output configurations graph with dependency count to console, filtered by `page.configurations`
+  - [librarianGenerateArtifacts](Document/Task/LibrarianGenerateArtifacts.md)
+  - [librarianGenerateGroups](Document/Task/LibrarianGenerateGroups.md)
+  - [librarianGenerateBintrayGroups](Document/Task/LibrarianGenerateBintrayGroups.md)
+  - [librarianGeneratePages](Document/Task/LibrarianGeneratePages.md)
+  - [librarianGeneratePipeline](Document/Task/LibrarianGeneratePipeline.md)
+  - [librarianShowConfigurations](Document/Task/LibrarianShowConfigurations.md)
+  - [librarianShowModuleConfigurations](Document/Task/LibrarianShowModuleConfigurations.md)
+  - [librarianShowFirstDependencies](Document/Task/LibrarianShowFirstDependencies.md)
+  - [librarianShowAllDependencies](Document/Task/LibrarianShowAllDependencies.md)
+  - [librarianShowFilteredDependencyGraph](Document/Task/LibrarianShowFilteredDependencyGraph.md)
 - librarian preset plugin
-  - `librarianGeneratePresetGroups`
-    - generate preset groups, recommend execute before `librarianGenerateGroups`
-  - `librarianGeneratePresetPipeline`
-    - execute tasks: `librarianGenerateArtifacts`, `librarianGeneratePresetGroups` ,`librarianGenerateGroups` and `librarianGeneratePages`
+  - [librarianGeneratePresetGroups](Document/Task/LibrarianGeneratePresetGroups.md)
+  - [librarianGeneratePresetPipeline](Document/Task/LibrarianGeneratePresetPipeline.md)
 
 ### Configuration
 ```groovy

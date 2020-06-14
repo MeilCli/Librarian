@@ -1,0 +1,33 @@
+# librarianShowConfigurations
+## Description
+output configurations to console
+
+## Result
+Console:
+```
+> Task :sample:sample-from-maven:librarianShowConfigurations
+Configurations
+_internal_aapt2_binary
+androidTestImplementationDependenciesMetadata
+classpath
+debugAndroidTestCompileClasspath
+debugAndroidTestImplementationDependenciesMetadata
+debugAndroidTestRuntimeClasspath
+debugCompileClasspath
+debugImplementationDependenciesMetadata
+debugRuntimeClasspath
+debugUnitTestCompileClasspath
+debugUnitTestImplementationDependenciesMetadata
+debugUnitTestRuntimeClasspath
+implementationDependenciesMetadata
+kotlinCompilerClasspath
+kotlinCompilerPluginClasspath
+lintClassPath
+releaseCompileClasspath
+releaseImplementationDependenciesMetadata
+releaseRuntimeClasspath
+releaseUnitTestCompileClasspath
+releaseUnitTestImplementationDependenciesMetadata
+releaseUnitTestRuntimeClasspath
+testImplementationDependenciesMetadata
+```

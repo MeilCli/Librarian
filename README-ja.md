@@ -90,32 +90,19 @@ apply plugin: 'librarian-preset'
 
 ### タスク
 - librarian plugin
-  - `librarianGenerateArtifacts`
-    - artifactsを生成します
-  - `librarianGenerateGroups`
-    - groupsを生成します
-  - `librarianGenerateBintrayGroups`
-    - Bintrayのパッケージ情報を使ってgroupsを生成します
-    - この機能はアルファ版です
-  - `librarianGeneratePages`
-    - pageを生成します、必ず`librarianGenerateArtifacts`を実行したあとにする必要があります
-  - `librarianGeneratePipeline`
-    - これらのタスクを実行します: `librarianGenerateArtifacts`, `librarianGenerateGroups`, `librarianGeneratePages`
-  - `librarianShowConfigurations`
-    - configurationsをコンソールに出力します
-  - `librarianShowModuleConfigurations`
-    - configurationsをコンソールに出力します
-  - `librarianShowFirstDependencies`
-    - ファーストレベルの依存をコンソールに出力します
-  - `librarianShowAllDependencies`
-    - すべてのレベルの依存をコンソールに出力します
-  - `librarianShowFilteredDependencyGraph`
-    - 依存数付きのconfigurationsグラフをコンソールに出力します、これは`page.configurations`によってフィルターされています
+  - [librarianGenerateArtifacts](Document/Task/LibrarianGenerateArtifacts.md)
+  - [librarianGenerateGroups](Document/Task/LibrarianGenerateGroups.md)
+  - [librarianGenerateBintrayGroups](Document/Task/LibrarianGenerateBintrayGroups.md)
+  - [librarianGeneratePages](Document/Task/LibrarianGeneratePages.md)
+  - [librarianGeneratePipeline](Document/Task/LibrarianGeneratePipeline.md)
+  - [librarianShowConfigurations](Document/Task/LibrarianShowConfigurations.md)
+  - [librarianShowModuleConfigurations](Document/Task/LibrarianShowModuleConfigurations.md)
+  - [librarianShowFirstDependencies](Document/Task/LibrarianShowFirstDependencies.md)
+  - [librarianShowAllDependencies](Document/Task/LibrarianShowAllDependencies.md)
+  - [librarianShowFilteredDependencyGraph](Document/Task/LibrarianShowFilteredDependencyGraph.md)
 - librarian preset plugin
-  - `librarianGeneratePresetGroups`
-    - プリセットgroupを生成します、`librarianGenerateGroups`の前に実行することをお勧めします
-  - `librarianGeneratePresetPipeline`
-    - これらのタスクを実行します: `librarianGenerateArtifacts`, `librarianGeneratePresetGroups` ,`librarianGenerateGroups`, `librarianGeneratePages`
+  - [librarianGeneratePresetGroups](Document/Task/LibrarianGeneratePresetGroups.md)
+  - [librarianGeneratePresetPipeline](Document/Task/LibrarianGeneratePresetPipeline.md)
 
 ### 構成
 ```groovy
