@@ -53,6 +53,7 @@ fun android() {
             "androidx.fragment:fragment-testing",
             "androidx.gridlayout:gridlayout",
             "androidx.heifwriter:heifwriter",
+            "androidx.hilt:hilt-*",
             "androidx.interpolator:interpolator",
             "androidx.leanback:leanback",
             "androidx.leanback:leanback-preference",
