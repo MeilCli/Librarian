@@ -4,11 +4,41 @@
     "notices": [
         {
             "artifacts": [
+                "androidx.activity:activity",
+                "androidx.annotation:annotation",
                 "androidx.appcompat:appcompat",
+                "androidx.appcompat:appcompat-resources",
+                "androidx.arch.core:core-common",
+                "androidx.arch.core:core-runtime",
                 "androidx.browser:browser",
                 "androidx.cardview:cardview",
+                "androidx.collection:collection",
+                "androidx.core:core",
+                "androidx.cursoradapter:cursoradapter",
+                "androidx.customview:customview",
+                "androidx.documentfile:documentfile",
+                "androidx.drawerlayout:drawerlayout",
+                "androidx.fragment:fragment",
+                "androidx.interpolator:interpolator",
+                "androidx.legacy:legacy-support-core-utils",
+                "androidx.lifecycle:lifecycle-common",
+                "androidx.lifecycle:lifecycle-livedata",
+                "androidx.lifecycle:lifecycle-livedata-core",
+                "androidx.lifecycle:lifecycle-runtime",
+                "androidx.lifecycle:lifecycle-viewmodel",
+                "androidx.loader:loader",
+                "androidx.localbroadcastmanager:localbroadcastmanager",
+                "androidx.media:media",
+                "androidx.mediarouter:mediarouter",
+                "androidx.palette:palette",
+                "androidx.print:print",
                 "androidx.recyclerview:recyclerview",
-                "androidx.transition:transition"
+                "androidx.savedstate:savedstate",
+                "androidx.transition:transition",
+                "androidx.vectordrawable:vectordrawable",
+                "androidx.vectordrawable:vectordrawable-animated",
+                "androidx.versionedparcelable:versionedparcelable",
+                "androidx.viewpager:viewpager"
             ],
             "name": "Android Jetpack",
             "author": "The Android Open Source Project",
@@ -46,6 +76,21 @@
         },
         {
             "artifacts": [
+                "com.google.auto.value:auto-value-annotations"
+            ],
+            "name": "AutoValue Annotations",
+            "author": "Google, Inc.",
+            "url": "https://github.com/google/auto",
+            "description": "\n    Immutable value-type code generation for Java 1.6+.\n  ",
+            "licenses": [
+                {
+                    "name": "Apache 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
                 "com.google.dagger:dagger"
             ],
             "name": "Dagger",
@@ -61,23 +106,111 @@
         },
         {
             "artifacts": [
+                "com.google.firebase:firebase-analytics",
+                "com.google.firebase:firebase-analytics-impl",
+                "com.google.firebase:firebase-appindexing",
+                "com.google.firebase:firebase-auth",
+                "com.google.firebase:firebase-auth-interop",
+                "com.google.firebase:firebase-crash",
+                "com.google.firebase:firebase-database-connection",
+                "com.google.firebase:firebase-dynamic-links",
+                "com.google.firebase:firebase-iid",
+                "com.google.firebase:firebase-iid-interop",
+                "com.google.firebase:firebase-measurement-connector",
+                "com.google.firebase:firebase-messaging",
+                "com.google.firebase:firebase-storage-common"
+            ],
+            "name": "Firebase",
+            "author": "Google Inc.",
+            "url": "https://firebase.google.com",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "Android Software Development Kit License",
+                    "url": "https://developer.android.com/studio/terms.html"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "com.google.android.datatransport:transport-api",
+                "com.google.android.datatransport:transport-backend-cct",
+                "com.google.android.datatransport:transport-runtime",
+                "com.google.firebase:firebase-abt",
+                "com.google.firebase:firebase-common",
+                "com.google.firebase:firebase-components",
+                "com.google.firebase:firebase-config",
+                "com.google.firebase:firebase-database",
+                "com.google.firebase:firebase-database-collection",
+                "com.google.firebase:firebase-datatransport",
+                "com.google.firebase:firebase-encoders-json",
+                "com.google.firebase:firebase-installations",
+                "com.google.firebase:firebase-installations-interop",
+                "com.google.firebase:firebase-storage"
+            ],
+            "name": "Firebase",
+            "author": "Google Inc.",
+            "url": "https://firebase.google.com",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "com.google.android.gms:play-services",
                 "com.google.android.gms:play-services-ads",
+                "com.google.android.gms:play-services-ads-base",
+                "com.google.android.gms:play-services-ads-identifier",
+                "com.google.android.gms:play-services-ads-lite",
                 "com.google.android.gms:play-services-analytics",
+                "com.google.android.gms:play-services-analytics-impl",
+                "com.google.android.gms:play-services-appinvite",
+                "com.google.android.gms:play-services-audience",
                 "com.google.android.gms:play-services-auth",
+                "com.google.android.gms:play-services-auth-api-phone",
+                "com.google.android.gms:play-services-auth-base",
                 "com.google.android.gms:play-services-awareness",
                 "com.google.android.gms:play-services-base",
+                "com.google.android.gms:play-services-basement",
                 "com.google.android.gms:play-services-cast",
+                "com.google.android.gms:play-services-cast-framework",
+                "com.google.android.gms:play-services-clearcut",
                 "com.google.android.gms:play-services-drive",
+                "com.google.android.gms:play-services-fido",
                 "com.google.android.gms:play-services-fitness",
+                "com.google.android.gms:play-services-flags",
                 "com.google.android.gms:play-services-games",
+                "com.google.android.gms:play-services-gass",
                 "com.google.android.gms:play-services-gcm",
                 "com.google.android.gms:play-services-identity",
+                "com.google.android.gms:play-services-iid",
+                "com.google.android.gms:play-services-instantapps",
                 "com.google.android.gms:play-services-location",
+                "com.google.android.gms:play-services-maps",
+                "com.google.android.gms:play-services-measurement",
+                "com.google.android.gms:play-services-measurement-api",
+                "com.google.android.gms:play-services-measurement-base",
+                "com.google.android.gms:play-services-measurement-impl",
+                "com.google.android.gms:play-services-measurement-sdk",
+                "com.google.android.gms:play-services-measurement-sdk-api",
                 "com.google.android.gms:play-services-nearby",
                 "com.google.android.gms:play-services-panorama",
+                "com.google.android.gms:play-services-phenotype",
+                "com.google.android.gms:play-services-places",
+                "com.google.android.gms:play-services-places-placereport",
                 "com.google.android.gms:play-services-plus",
                 "com.google.android.gms:play-services-safetynet",
+                "com.google.android.gms:play-services-stats",
+                "com.google.android.gms:play-services-tagmanager",
+                "com.google.android.gms:play-services-tagmanager-api",
+                "com.google.android.gms:play-services-tagmanager-v4-impl",
+                "com.google.android.gms:play-services-tasks",
                 "com.google.android.gms:play-services-vision",
+                "com.google.android.gms:play-services-vision-common",
                 "com.google.android.gms:play-services-wallet",
                 "com.google.android.gms:play-services-wearable"
             ],
@@ -94,6 +227,38 @@
         },
         {
             "artifacts": [
+                "com.google.guava:listenablefuture"
+            ],
+            "name": "Guava ListenableFuture only",
+            "author": "Google - Kevin Bourrillion",
+            "url": "https://github.com/google/guava",
+            "description": "\n    Contains Guava's com.google.common.util.concurrent.ListenableFuture class,\n    without any of its other classes -- but is also available in a second\n    \"version\" that omits the class to avoid conflicts with the copy in Guava\n    itself. The idea is:\n\n    - If users want only ListenableFuture, they depend on listenablefuture-1.0.\n\n    - If users want all of Guava, they depend on guava, which, as of Guava\n    27.0, depends on\n    listenablefuture-9999.0-empty-to-avoid-conflict-with-guava. The 9999.0-...\n    version number is enough for some build systems (notably, Gradle) to select\n    that empty artifact over the \"real\" listenablefuture-1.0 -- avoiding a\n    conflict with the copy of ListenableFuture in guava itself. If users are\n    using an older version of Guava or a build system other than Gradle, they\n    may see class conflicts. If so, they can solve them by manually excluding\n    the listenablefuture artifact or manually forcing their build systems to\n    use 9999.0-....\n  ",
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains:annotations"
+            ],
+            "name": "IntelliJ IDEA Annotations",
+            "author": "JetBrains - JetBrains Team",
+            "url": "http://www.jetbrains.org",
+            "description": "A set of annotations used for code inspection support and code documentation.",
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "org.jetbrains.kotlin:kotlin-stdlib",
+                "org.jetbrains.kotlin:kotlin-stdlib-common",
                 "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
             ],
             "name": "Kotlin",
@@ -124,6 +289,21 @@
         },
         {
             "artifacts": [
+                "com.google.protobuf:protobuf-lite"
+            ],
+            "name": "Protocol Buffers [Lite]",
+            "author": "Google",
+            "url": "https://developers.google.com/protocol-buffers/",
+            "description": "A trimmed-down version of the Protocol Buffers library.",
+            "licenses": [
+                {
+                    "name": "New BSD license",
+                    "url": "http://www.opensource.org/licenses/bsd-license.php"
+                }
+            ]
+        },
+        {
+            "artifacts": [
                 "org.threeten:threetenbp"
             ],
             "name": "ThreeTen backport",
@@ -134,6 +314,21 @@
                 {
                     "name": "BSD 3-clause",
                     "url": "https://raw.githubusercontent.com/ThreeTen/threetenbp/master/LICENSE.txt"
+                }
+            ]
+        },
+        {
+            "artifacts": [
+                "javax.inject:javax.inject"
+            ],
+            "name": "javax.inject",
+            "author": "The JSR-330 Expert Group",
+            "url": "http://code.google.com/p/atinject/",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "The Apache Software License, Version 2.0",
+                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
                 }
             ]
         }

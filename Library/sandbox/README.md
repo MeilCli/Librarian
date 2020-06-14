@@ -6,8 +6,15 @@ This list is sandbox
 ## Using
 - [Android Jetpack](https://developer.android.com/jetpack/androidx), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The Android Open Source Project
 - [Android Jetpack](http://developer.android.com/tools/extras/support-library.html), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [SIL Open Font License, Version 1.1](http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web), [Unicode, Inc. License](http://www.unicode.org/copyright.html#License), made by The Android Open Source Project
+- [AutoValue Annotations](https://github.com/google/auto), licensed on [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Google, Inc.
 - [Dagger](https://github.com/google/dagger), licensed on [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by Google, Inc.
+- [Firebase](https://firebase.google.com), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
+- [Firebase](https://firebase.google.com), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Google Inc.
 - [Google Play Services](https://developers.google.com/android/guides/overview), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
+- [Guava ListenableFuture only](https://github.com/google/guava), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Google - Kevin Bourrillion
+- [IntelliJ IDEA Annotations](http://www.jetbrains.org), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
 - [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
 - [Play Install Referrer Library](https://developer.android.com/google/play/installreferrer/library), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
+- [Protocol Buffers [Lite]](https://developers.google.com/protocol-buffers/), licensed on [New BSD license](http://www.opensource.org/licenses/bsd-license.php), made by Google
 - [ThreeTen backport](https://www.threeten.org/threetenbp), licensed on [BSD 3-clause](https://raw.githubusercontent.com/ThreeTen/threetenbp/master/LICENSE.txt), made by ThreeTen.org
+- [javax.inject](http://code.google.com/p/atinject/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The JSR-330 Expert Group
