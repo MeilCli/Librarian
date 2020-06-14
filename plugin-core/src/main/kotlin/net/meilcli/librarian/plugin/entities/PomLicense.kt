@@ -14,14 +14,14 @@ data class PomLicense(
     @XmlSerialName("name", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
     data class PomName(
         @XmlValue(true)
-        val value: String
+        val value: String = ""
     )
 
     @Serializable
     @XmlSerialName("url", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
     data class PomUrl(
         @XmlValue(true)
-        val value: String
+        val value: String = ""
     )
 
     val name: String?

@@ -7,13 +7,13 @@ import nl.adaptivity.xmlutil.serialization.XmlValue
 @Serializable
 @XmlSerialName("organization", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
 data class PomOrganization(
-    private val nameValue: PomLicense.PomName?
+    private val nameValue: PomName?
 ) {
     @Serializable
     @XmlSerialName("name", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
     data class PomName(
         @XmlValue(true)
-        val value: String
+        val value: String = ""
     )
 
     val name: String?

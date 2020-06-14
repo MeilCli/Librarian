@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>test-group</groupId>
+    <artifactId>test-artifact</artifactId>
+    <version>1.0.0</version>
+    <parent>
+        <groupId>test-group</groupId>
+        <artifactId>test-artifact</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <name>test-name</name>
+    <description>test-description</description>
+    <url></url>
+    <organization>
+        <name>test-organization</name>
+    </organization>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>test-name</name>
+            <organization>test-organization</organization>
+        </developer>
+    </developers>
+</project>

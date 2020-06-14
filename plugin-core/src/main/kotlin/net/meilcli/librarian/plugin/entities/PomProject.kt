@@ -51,21 +51,21 @@ data class PomProject(
     @XmlSerialName("name", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
     data class PomName(
         @XmlValue(true)
-        val value: String
+        val value: String = ""
     )
 
     @Serializable
     @XmlSerialName("description", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
     data class PomDescription(
         @XmlValue(true)
-        val value: String
+        val value: String = ""
     )
 
     @Serializable
     @XmlSerialName("url", namespace = "http://maven.apache.org/POM/4.0.0", prefix = "")
     data class PomUrl(
         @XmlValue(true)
-        val value: String
+        val value: String = ""
     )
 
     var group: String?

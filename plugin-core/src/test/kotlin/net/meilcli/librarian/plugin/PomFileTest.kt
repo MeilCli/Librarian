@@ -46,6 +46,62 @@ class PomFileTest {
     }
 
     @Test
+    fun testWithEmptyUrl() {
+        val text = readFile("test-pom-with-empty-url.xml")
+        val xml = XML(EmptyModule) {
+            this.unknownChildHandler = { _, _, _, _ -> }
+        }
+        val project = xml.parse(PomProject.serializer(), text)
+
+        assertEquals("test-group", project.group)
+        assertEquals("test-artifact", project.artifact)
+        assertEquals("1.0.0", project.version)
+        assertEquals("test-name", project.name)
+        assertEquals("test-description", project.description)
+        assertEquals("", project.url)
+        assertEquals(1, project.licenses?.size)
+        assertEquals("The Apache License, Version 2.0", project.licenses?.first()?.name)
+        assertEquals("http://www.apache.org/licenses/LICENSE-2.0.txt", project.licenses?.first()?.url)
+        assertEquals(1, project.developers?.size)
+        assertEquals("test-name", project.developers?.first()?.name)
+        assertEquals("test-organization", project.developers?.first()?.organization)
+        assertNotNull(project.parent)
+        assertEquals("test-group", project.parent?.group)
+        assertEquals("test-artifact", project.parent?.artifact)
+        assertEquals("1.0.0", project.parent?.version)
+        assertNotNull(project.organization)
+        assertEquals("test-organization", project.organization?.name)
+    }
+
+    @Test
+    fun testWithNullUrl() {
+        val text = readFile("test-pom-with-null-url.xml")
+        val xml = XML(EmptyModule) {
+            this.unknownChildHandler = { _, _, _, _ -> }
+        }
+        val project = xml.parse(PomProject.serializer(), text)
+
+        assertEquals("test-group", project.group)
+        assertEquals("test-artifact", project.artifact)
+        assertEquals("1.0.0", project.version)
+        assertEquals("test-name", project.name)
+        assertEquals("test-description", project.description)
+        assertEquals("", project.url)
+        assertEquals(1, project.licenses?.size)
+        assertEquals("The Apache License, Version 2.0", project.licenses?.first()?.name)
+        assertEquals("http://www.apache.org/licenses/LICENSE-2.0.txt", project.licenses?.first()?.url)
+        assertEquals(1, project.developers?.size)
+        assertEquals("test-name", project.developers?.first()?.name)
+        assertEquals("test-organization", project.developers?.first()?.organization)
+        assertNotNull(project.parent)
+        assertEquals("test-group", project.parent?.group)
+        assertEquals("test-artifact", project.parent?.artifact)
+        assertEquals("1.0.0", project.parent?.version)
+        assertNotNull(project.organization)
+        assertEquals("test-organization", project.organization?.name)
+    }
+
+    @Test
     fun testWithoutLicenses() {
         val text = readFile("test-pom-without-licenses.xml")
         val xml = XML(EmptyModule) {
