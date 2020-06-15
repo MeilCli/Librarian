@@ -15,7 +15,7 @@ fun square() {
         "okio-macosx64",
         "okio-iosarm64",
         "okio-linuxx64"
-    )
+    ).addAuthor("Square, Inc.")
     PresetGroups += group(
         "OkHttp",
         "com.squareup.okhttp3",
