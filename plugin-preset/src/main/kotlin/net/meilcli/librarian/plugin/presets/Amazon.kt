@@ -554,4 +554,24 @@ fun amazon() {
         "macie2",
         "codeartifact"
     )
+
+    PresetGroups += group(
+        "AWS X-Ray Recorder SDK for Java",
+        "aws-xray-recorder-sdk-pom",
+        "aws-xray-recorder-sdk-apache-http",
+        "aws-xray-recorder-sdk-aws-sdk",
+        "aws-xray-recorder-sdk-aws-sdk-instrumentor",
+        "aws-xray-recorder-sdk-bom",
+        "aws-xray-recorder-sdk-core",
+        "aws-xray-recorder-sdk-sql",
+        "aws-xray-recorder-sdk-sql-mysql",
+        "aws-xray-recorder-sdk-sql-postgres",
+        "aws-xray-recorder-sdk-spring",
+        "aws-xray-recorder-sdk-aws-sdk-core",
+        "aws-xray-recorder-sdk-aws-sdk-v2",
+        "aws-xray-recorder-sdk-aws-sdk-v2-instrumentor",
+        "aws-xray-recorder-sdk-slf4j",
+        "aws-xray-recorder-sdk-log4j",
+        "aws-xray-recorder-sdk-metrics"
+    )
 }
