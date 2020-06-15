@@ -29,5 +29,6 @@ object PresetGroups {
         ktor()
         fuel()
         facebook()
+        amazon()
     }
 }
