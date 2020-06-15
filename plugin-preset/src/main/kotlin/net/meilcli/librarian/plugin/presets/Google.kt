@@ -223,4 +223,20 @@ fun google() {
         listOf("com.google.code.gson:gson"),
         "Gson"
     ).addAuthor("Google Inc.")
+
+    PresetGroups += group(
+        "Error Prone",
+        "com.google.errorprone",
+        "error_prone_core",
+        "error_prone_check_api",
+        "error_prone_test_helpers",
+        "error_prone_annotation",
+        "error_prone_annotations",
+        "error_prone_type_annotations",
+        "error_prone_docgen",
+        "error_prone_docgen_processor",
+        "error_prone_refaster"
+    )
+        .addUrl("https://github.com/google/error-prone")
+        .addAuthor("The Error Prone Authors.")
 }
