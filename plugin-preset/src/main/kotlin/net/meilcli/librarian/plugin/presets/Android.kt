@@ -199,6 +199,12 @@ fun android() {
         description = null,
         licenses = null
     )
+    PresetGroups += group(
+        "Android Multi Dex Library",
+        "androidx.multidex",
+        "multidex",
+        "multidex-instrumentation"
+    ).addUrl("https://android.googlesource.com/platform/frameworks/multidex/")
     PresetGroups += LibraryGroup(
         listOf(
             "androidx.test:core",
