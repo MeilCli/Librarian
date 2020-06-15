@@ -15,7 +15,7 @@ This list is sandbox
 - [Guava ListenableFuture only](https://github.com/google/guava), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Google - Kevin Bourrillion
 - [IntelliJ IDEA Annotations](http://www.jetbrains.org), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
 - [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
-- [Ktor](https://github.com/ktorio/ktor), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
+- [Ktor](https://github.com/ktorio/ktor), licensed on [The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
 - [Play Install Referrer Library](https://developer.android.com/google/play/installreferrer/library), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
 - [Protocol Buffers [Lite]](https://developers.google.com/protocol-buffers/), licensed on [New BSD license](http://www.opensource.org/licenses/bsd-license.php), made by Google
 - [SLF4J API Module](http://www.slf4j.org), licensed on [MIT License](http://www.opensource.org/licenses/mit-license.php), made by QOS.ch
