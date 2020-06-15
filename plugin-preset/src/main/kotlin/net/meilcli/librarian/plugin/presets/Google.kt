@@ -163,6 +163,7 @@ fun google() {
         "firebase-common",
         "firebase-common-ktx",
         "firebase-components",
+        "firebase-core",
         "firebase-crash",
         "firebase-crashlytics",
         "firebase-crashlytics-ndx",
