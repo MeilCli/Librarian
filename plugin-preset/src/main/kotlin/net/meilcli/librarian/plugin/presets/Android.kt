@@ -180,6 +180,13 @@ fun android() {
         ),
         "Android Jetpack"
     )
+    PresetGroups += group(
+        "Android ConstraintLayout",
+        "androidx.constraintlayout",
+        "constraintlayout",
+        "constraintlayout-solver",
+        "constraintlayout-core"
+    )
     PresetGroups += LibraryGroup(
         artifacts = listOf(
             "androidx.databinding:databinding-adapters",
