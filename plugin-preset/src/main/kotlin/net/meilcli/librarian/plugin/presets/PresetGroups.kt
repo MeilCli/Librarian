@@ -28,5 +28,6 @@ object PresetGroups {
         koin()
         ktor()
         fuel()
+        facebook()
     }
 }
