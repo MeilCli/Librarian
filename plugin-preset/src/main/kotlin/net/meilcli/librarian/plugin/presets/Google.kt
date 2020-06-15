@@ -239,4 +239,33 @@ fun google() {
     )
         .addUrl("https://github.com/google/error-prone")
         .addAuthor("The Error Prone Authors.")
+
+    PresetGroups += group(
+        "Guava",
+        "com.google.guava",
+        "guava",
+        "guava-parent",
+        "guava-testlib",
+        "guava-gwt",
+        "guava-tests",
+        "guava-bom",
+        "listenablefuture",
+        "failureaccess",
+        "guava-jdk5",
+        "guava-collections",
+        "guava-io",
+        "guava-base",
+        "guava-annotations",
+        "guava-bootstrap-jdk5",
+        "org.motechproject.guava",
+        "guava-bootstrap",
+        "guava-testlib-jdk5",
+        "guava-primitives",
+        "guava-bridge",
+        "guava-rate-limiter",
+        "guava-parent-jdk5",
+        "guava-beta-checker",
+        "guava-concurrent",
+        "guava-tests-jdk5"
+    )
 }
