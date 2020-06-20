@@ -34,7 +34,7 @@ object Dependencies {
     object Librarian {
 
         private const val group = "net.meilcli.librarian"
-        private const val version = "0.9.5"
+        private const val version = "0.10.0"
 
         val pluginCore = Dependency(group, "plugin-core", version)
         val pluginPreset = Dependency(group, "plugin-preset", version)
