@@ -51,17 +51,21 @@ Json:
     "description": "Example",
     "notices": [
         {
-            "artifacts": [
-                "com.example:example"
-            ],
             "name": "Example",
             "author": "Example human",
             "url": "https://google.com",
             "description": "Description is optional, will be null",
-            "licenses": [
+            "resources", [
                 {
-                    "name": "Example license",
-                    "url": "https://google.com"
+                    "artifacts": [
+                        "com.example:example"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "Example license",
+                            "url": "https://google.com"
+                        }
+                    ]
                 }
             ]
         }
