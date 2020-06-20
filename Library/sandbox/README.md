@@ -4,23 +4,25 @@
 This list is sandbox
 
 ## Using
-- [Android Jetpack](https://developer.android.com/jetpack/androidx), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The Android Open Source Project
-- [Android Jetpack](http://developer.android.com/tools/extras/support-library.html), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [SIL Open Font License, Version 1.1](http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web), [Unicode, Inc. License](http://www.unicode.org/copyright.html#License), made by The Android Open Source Project
-- [AutoValue Annotations](https://github.com/google/auto), licensed on [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Google, Inc.
-- [Dagger](https://github.com/google/dagger), licensed on [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by Google, Inc.
-- [Firebase](https://firebase.google.com), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
-- [Firebase](https://firebase.google.com), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Google Inc.
-- [Glide](https://github.com/bumptech/glide), licensed on [Simplified BSD License](http://www.opensource.org/licenses/bsd-license), [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Sam Judd
-- [Google Play Services](https://developers.google.com/android/guides/overview), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
-- [Guava ListenableFuture only](https://github.com/google/guava), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Google - Kevin Bourrillion
-- [IntelliJ IDEA Annotations](http://www.jetbrains.org), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
-- [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
-- [Ktor](https://github.com/ktorio/ktor), licensed on [The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
-- [Play Install Referrer Library](https://developer.android.com/google/play/installreferrer/library), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
-- [Protocol Buffers [Lite]](https://developers.google.com/protocol-buffers/), licensed on [New BSD license](http://www.opensource.org/licenses/bsd-license.php), made by Google
-- [SLF4J API Module](http://www.slf4j.org), licensed on [MIT License](http://www.opensource.org/licenses/mit-license.php), made by QOS.ch
-- [Test](https://google.com), licensed on [Test License](https://google.com), made by Test User
-- [ThreeTen backport](https://www.threeten.org/threetenbp), licensed on [BSD 3-clause](https://raw.githubusercontent.com/ThreeTen/threetenbp/master/LICENSE.txt), made by ThreeTen.org
-- [atomicfu](https://github.com/Kotlin/atomicfu), licensed on [The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
-- [javax.inject](http://code.google.com/p/atinject/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The JSR-330 Expert Group
-- [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines), licensed on [The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
+|Name|author|license|
+|:--|:--|:--|
+|[Android Jetpack](https://developer.android.com/jetpack/androidx)|The Android Open Source Project|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|||[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [SIL Open Font License, Version 1.1](http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web), [Unicode, Inc. License](http://www.unicode.org/copyright.html#License)|
+|[AutoValue Annotations](https://github.com/google/auto)|Google, Inc.|[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Dagger](https://github.com/google/dagger)|Google, Inc.|[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Firebase](https://firebase.google.com)|Google Inc.|[Android Software Development Kit License](https://developer.android.com/studio/terms.html)|
+|||[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Glide](https://github.com/bumptech/glide)|Sam Judd|[Simplified BSD License](http://www.opensource.org/licenses/bsd-license), [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Google Play Services](https://developers.google.com/android/guides/overview)|Google Inc.|[Android Software Development Kit License](https://developer.android.com/studio/terms.html)|
+|[Guava](https://github.com/google/guava)|Google - Kevin Bourrillion|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[IntelliJ IDEA Annotations](http://www.jetbrains.org)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Kotlin](https://kotlinlang.org/)|JetBrains - Kotlin Team|[The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Ktor](https://github.com/ktorio/ktor)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Play Install Referrer Library](https://developer.android.com/google/play/installreferrer/library)|Google Inc.|[Android Software Development Kit License](https://developer.android.com/studio/terms.html)|
+|[Protocol Buffers [Lite]](https://developers.google.com/protocol-buffers/)|Google|[New BSD license](http://www.opensource.org/licenses/bsd-license.php)|
+|[SLF4J API Module](http://www.slf4j.org)|QOS.ch|[MIT License](http://www.opensource.org/licenses/mit-license.php)|
+|[Test](https://google.com)|Test User|[Test License](https://google.com)|
+|[ThreeTen backport](https://www.threeten.org/threetenbp)|ThreeTen.org|[BSD 3-clause](https://raw.githubusercontent.com/ThreeTen/threetenbp/master/LICENSE.txt)|
+|[atomicfu](https://github.com/Kotlin/atomicfu)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[javax.inject](http://code.google.com/p/atinject/)|The JSR-330 Expert Group|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)|

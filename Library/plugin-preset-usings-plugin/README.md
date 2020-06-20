@@ -4,10 +4,12 @@
 This list is including plugin binary
 
 ## Using
-- [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
-- [OkHttp](https://square.github.io/okhttp/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
-- [Okio](https://github.com/square/okio/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
-- [Retrofit](https://github.com/square/retrofit/), licensed on [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by Square, Inc.
-- [Retrofit 2 Kotlin Serialization Converter](https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Jake Wharton
-- [XmlUtil](https://github.com/pdvrieze/xmlutil), licensed on [Apache License 2.0](https://github.com/pdvrieze/xmlutil/blob/master/COPYING), made by pdvrieze
-- [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
+|Name|author|license|
+|:--|:--|:--|
+|[Kotlin](https://kotlinlang.org/)|JetBrains - Kotlin Team|[The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[OkHttp](https://square.github.io/okhttp/)|Square, Inc.|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Okio](https://github.com/square/okio/)|Square, Inc.|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Retrofit](https://github.com/square/retrofit/)|Square, Inc.|[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Retrofit 2 Kotlin Serialization Converter](https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/)|Jake Wharton|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[XmlUtil](https://github.com/pdvrieze/xmlutil)|pdvrieze|[Apache License 2.0](https://github.com/pdvrieze/xmlutil/blob/master/COPYING)|
+|[kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
