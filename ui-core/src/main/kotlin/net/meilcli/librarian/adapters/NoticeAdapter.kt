@@ -17,6 +17,9 @@ class NoticeAdapter : RecyclerView.Adapter<NoticeHolder>() {
         private const val urlViewType = 4
         private const val licenseLabelViewType = 5
         private const val licenseViewType = 6
+        private const val artifactLabelViewType = 7
+        private const val artifactViewType = 8
+        private const val resourceDividerViewType = 9
     }
 
     private sealed class Entity {
@@ -27,6 +30,9 @@ class NoticeAdapter : RecyclerView.Adapter<NoticeHolder>() {
         class Url(val url: String) : Entity()
         object LicenseLabel : Entity()
         class License(val license: ILicense) : Entity()
+        object ArtifactLabel : Entity()
+        class Artifact(val artifact: String) : Entity()
+        object ResourceDivider : Entity()
     }
 
     private val entities = mutableListOf<Entity>()
@@ -59,9 +65,23 @@ class NoticeAdapter : RecyclerView.Adapter<NoticeHolder>() {
         }
         entities += Entity.Author(notice.author)
         entities += Entity.Url(notice.url)
-        entities += Entity.LicenseLabel
-        for (license in notice.licenses) {
-            entities += Entity.License(license)
+        for ((i, resource) in notice.resources.withIndex()) {
+            if (0 < i) {
+                entities += Entity.ResourceDivider
+            }
+
+            entities += Entity.LicenseLabel
+            for (license in resource.licenses) {
+                entities += Entity.License(license)
+            }
+
+            if (resource.artifacts.isEmpty()) {
+                continue
+            }
+            entities += Entity.ArtifactLabel
+            for (artifact in resource.artifacts) {
+                entities += Entity.Artifact(artifact)
+            }
         }
     }
 
@@ -77,6 +97,9 @@ class NoticeAdapter : RecyclerView.Adapter<NoticeHolder>() {
             is Entity.Url -> urlViewType
             is Entity.LicenseLabel -> licenseLabelViewType
             is Entity.License -> licenseViewType
+            is Entity.ArtifactLabel -> artifactLabelViewType
+            is Entity.Artifact -> artifactViewType
+            is Entity.ResourceDivider -> resourceDividerViewType
         }
     }
 
@@ -88,6 +111,9 @@ class NoticeAdapter : RecyclerView.Adapter<NoticeHolder>() {
             urlViewType -> NoticeHolder.Url(parent, style)
             licenseLabelViewType -> NoticeHolder.LicenseLabel(parent, style)
             licenseViewType -> NoticeHolder.License(parent, style)
+            artifactLabelViewType -> NoticeHolder.ArtifactLabel(parent, style)
+            artifactViewType -> NoticeHolder.Artifact(parent, style)
+            resourceDividerViewType -> NoticeHolder.ResourceDivider(parent, style)
             else -> throw IllegalStateException("unknown view holder type")
         }
     }
@@ -102,6 +128,10 @@ class NoticeAdapter : RecyclerView.Adapter<NoticeHolder>() {
             is NoticeHolder.LicenseLabel -> {
             }
             is NoticeHolder.License -> holder.bind((entity as Entity.License).license)
+            is NoticeHolder.ArtifactLabel -> {
+            }
+            is NoticeHolder.Artifact -> holder.bind((entity as Entity.Artifact).artifact)
+            is NoticeHolder.ResourceDivider -> holder.bind()
         }
     }
 }

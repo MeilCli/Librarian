@@ -4,9 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class GsonNotice(
 
-    @SerializedName("artifacts")
-    val artifacts: List<String>?,
-
     @SerializedName("name")
     val name: String?,
 
@@ -19,22 +16,21 @@ data class GsonNotice(
     @SerializedName("description")
     val description: String?,
 
-    @SerializedName("licenses")
-    val licenses: List<GsonLicense>?
+    @SerializedName("resources")
+    val resources: List<GsonNoticeResource>?
 ) {
 
     fun isValid(): Boolean {
-        return artifacts != null && name != null && author != null && url != null && licenses != null && licenses.all { it.isValid() }
+        return name != null && author != null && url != null && resources != null && resources.all { it.isValid() }
     }
 
     fun toNotice(): Notice {
         return Notice(
-            artifacts = checkNotNull(artifacts),
             name = checkNotNull(name),
             author = checkNotNull(author),
             url = checkNotNull(url),
             description = description,
-            licenses = checkNotNull(licenses).map { it.toLicense() }
+            resources = checkNotNull(resources).map { it.toNoticeResource() }
         )
     }
 }

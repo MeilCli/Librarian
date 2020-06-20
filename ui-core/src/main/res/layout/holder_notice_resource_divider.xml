@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <View
+        android:id="@+id/notice_resource_divider"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="16dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="4dp"
-        android:text="License:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-        tools:ignore="HardcodedText" />
+        android:layerType="software" />
 </FrameLayout>

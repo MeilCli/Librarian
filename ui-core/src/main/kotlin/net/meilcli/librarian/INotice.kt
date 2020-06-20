@@ -2,8 +2,6 @@ package net.meilcli.librarian
 
 interface INotice {
 
-    val artifacts: List<String>
-
     val name: String
 
     val author: String
@@ -12,5 +10,5 @@ interface INotice {
 
     val description: String?
 
-    val licenses: List<ILicense>
+    val resources: List<INoticeResource>
 }

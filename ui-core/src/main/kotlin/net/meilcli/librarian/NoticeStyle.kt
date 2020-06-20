@@ -1,5 +1,6 @@
 package net.meilcli.librarian
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 
@@ -39,6 +40,24 @@ class NoticeStyle {
 
     @IdRes
     var licenseHolderLicenseId = R.id.notice_license
+
+    @LayoutRes
+    var artifactLabelHolderLayout = R.layout.holder_notice_artifact_label
+
+    @LayoutRes
+    var artifactHolderLayout = R.layout.holder_notice_artifact
+
+    @IdRes
+    var artifactHolderArtifactId = R.id.notice_artifact
+
+    @LayoutRes
+    var resourceDividerHolderLayout = R.layout.holder_notice_resource_divider
+
+    @IdRes
+    var resourceDividerHolderDividerId = R.id.notice_resource_divider
+
+    @DrawableRes
+    var resourceDividerHolderDividerDrawable = R.drawable.background_resource_divider
 
     var onUrlClicked: (String) -> Unit = {}
 

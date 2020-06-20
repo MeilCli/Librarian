@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="4dp"
-        android:text="License:"
+        android:text="Related Resource:"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         tools:ignore="HardcodedText" />
 </FrameLayout>

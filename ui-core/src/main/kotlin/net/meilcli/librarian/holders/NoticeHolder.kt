@@ -82,4 +82,33 @@ sealed class NoticeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             }
         }
     }
+
+    class ArtifactLabel(
+        parent: ViewGroup,
+        style: NoticeStyle
+    ) : NoticeHolder(LayoutInflater.from(parent.context).inflate(style.artifactLabelHolderLayout, parent, false))
+
+    class Artifact(
+        parent: ViewGroup,
+        style: NoticeStyle
+    ) : NoticeHolder(LayoutInflater.from(parent.context).inflate(style.artifactHolderLayout, parent, false)) {
+
+        private val artifact = itemView.findViewById<TextView>(style.artifactHolderArtifactId)
+
+        fun bind(artifact: String) {
+            this.artifact.text = artifact
+        }
+    }
+
+    class ResourceDivider(
+        parent: ViewGroup,
+        private val style: NoticeStyle
+    ) : NoticeHolder(LayoutInflater.from(parent.context).inflate(style.resourceDividerHolderLayout, parent, false)) {
+
+        private val divider = itemView.findViewById<View>(style.resourceDividerHolderDividerId)
+
+        fun bind() {
+            this.divider.setBackgroundResource(style.resourceDividerHolderDividerDrawable)
+        }
+    }
 }

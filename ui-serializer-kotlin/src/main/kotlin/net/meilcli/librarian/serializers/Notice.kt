@@ -7,9 +7,6 @@ import net.meilcli.librarian.INotice
 @Serializable
 data class Notice(
 
-    @SerialName("artifacts")
-    override val artifacts: List<String>,
-
     @SerialName("name")
     override val name: String,
 
@@ -22,6 +19,6 @@ data class Notice(
     @SerialName("description")
     override val description: String?,
 
-    @SerialName("licenses")
-    override val licenses: List<License>
+    @SerialName("resources")
+    override val resources: List<NoticeResource>
 ) : INotice

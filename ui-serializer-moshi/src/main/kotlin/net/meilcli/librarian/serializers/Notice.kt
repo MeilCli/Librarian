@@ -7,9 +7,6 @@ import net.meilcli.librarian.INotice
 @JsonClass(generateAdapter = true)
 data class Notice(
 
-    @Json(name = "artifacts")
-    override val artifacts: List<String>,
-
     @Json(name = "name")
     override val name: String,
 
@@ -22,6 +19,6 @@ data class Notice(
     @Json(name = "description")
     override val description: String?,
 
-    @Json(name = "licenses")
-    override val licenses: List<License>
+    @Json(name = "resources")
+    override val resources: List<NoticeResource>
 ) : INotice
