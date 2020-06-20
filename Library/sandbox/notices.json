@@ -357,6 +357,20 @@
         },
         {
             "artifacts": [
+            ],
+            "name": "Test",
+            "author": "Test User",
+            "url": "https://google.com",
+            "description": null,
+            "licenses": [
+                {
+                    "name": "Test License",
+                    "url": "https://google.com"
+                }
+            ]
+        },
+        {
+            "artifacts": [
                 "org.threeten:threetenbp"
             ],
             "name": "ThreeTen backport",

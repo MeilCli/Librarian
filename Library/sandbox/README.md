@@ -19,6 +19,7 @@ This list is sandbox
 - [Play Install Referrer Library](https://developer.android.com/google/play/installreferrer/library), licensed on [Android Software Development Kit License](https://developer.android.com/studio/terms.html), made by Google Inc.
 - [Protocol Buffers [Lite]](https://developers.google.com/protocol-buffers/), licensed on [New BSD license](http://www.opensource.org/licenses/bsd-license.php), made by Google
 - [SLF4J API Module](http://www.slf4j.org), licensed on [MIT License](http://www.opensource.org/licenses/mit-license.php), made by QOS.ch
+- [Test](https://google.com), licensed on [Test License](https://google.com), made by Test User
 - [ThreeTen backport](https://www.threeten.org/threetenbp), licensed on [BSD 3-clause](https://raw.githubusercontent.com/ThreeTen/threetenbp/master/LICENSE.txt), made by ThreeTen.org
 - [atomicfu](https://github.com/Kotlin/atomicfu), licensed on [The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - JetBrains Team
 - [javax.inject](http://code.google.com/p/atinject/), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The JSR-330 Expert Group
