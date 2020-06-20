@@ -4,6 +4,8 @@
 This list is including library binary
 
 ## Using
-- [Android Jetpack](https://developer.android.com/jetpack/androidx), licensed on [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by The Android Open Source Project
-- [Gson](https://github.com/google/gson), licensed on [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by Google Inc.
-- [Kotlin](https://kotlinlang.org/), licensed on [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), made by JetBrains - Kotlin Team
+|Name|author|license|
+|:--|:--|:--|
+|[Android Jetpack](https://developer.android.com/jetpack/androidx)|The Android Open Source Project|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Gson](https://github.com/google/gson)|Google Inc.|[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Kotlin](https://kotlinlang.org/)|JetBrains - Kotlin Team|[The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
