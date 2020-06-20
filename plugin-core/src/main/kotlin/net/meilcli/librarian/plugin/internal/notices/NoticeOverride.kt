@@ -11,14 +11,21 @@ class NoticeOverride : IOverride<Notice> {
         val author = if (override.author != Placeholder.author) override.author else source.author
         val url = if (override.url != Placeholder.url) override.url else source.url
         val description = override.description
-        val licenses = if (override.licenses.isNotEmpty()) override.licenses else source.licenses
+        val resources = if (override.resources.isNotEmpty()) {
+            if (override.resources.all { it.licenses.isEmpty() }) {
+                source.resources
+            } else {
+                override.resources
+            }
+        } else {
+            source.resources
+        }
         return Notice(
-            artifacts = source.artifacts,
             name = name,
             author = author,
             url = url,
             description = description,
-            licenses = licenses
+            resources = resources
         )
     }
 }

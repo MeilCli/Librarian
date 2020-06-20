@@ -1,6 +1,7 @@
 package net.meilcli.librarian.plugin
 
 import net.meilcli.librarian.plugin.entities.Notice
+import net.meilcli.librarian.plugin.entities.NoticeResource
 import net.meilcli.librarian.plugin.internal.Placeholder
 import org.gradle.api.Action
 import org.gradle.api.NamedDomainObjectContainer
@@ -25,12 +26,11 @@ open class LibrarianNoticeExtension @Inject constructor(
 
     fun toNotice(): Notice {
         return Notice(
-            artifacts = artifacts,
             name = name,
             author = author,
             url = url,
             description = description,
-            licenses = licenses.map { it.toLicense() }
+            resources = listOf(NoticeResource(artifacts = artifacts, licenses = licenses.map { it.toLicense() }))
         )
     }
 }

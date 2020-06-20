@@ -79,30 +79,37 @@ class ArtifactsToNoticesAggregator(
             val libraryGroupNotice = libraryGroupToNoticeTranslator.translate(key)
             if (overrideNoticeValidator.valid(notice, libraryGroupNotice).not()) {
                 if (extension.failOnOverrideUnMatchedLicense) {
-                    throw LibrarianException("group has not artifact license, ${key.name}, ${notice.artifacts.joinToString()}, source: ${notice.licenses.joinToString()}, group: ${libraryGroupNotice.licenses.joinToString()}")
+                    throw LibrarianException("group has not artifact license, ${key.name}, source: $notice, group: $libraryGroupNotice")
                 } else {
-                    logger.warn("Librarian warning: group has not artifact license, ${key.name}, ${notice.artifacts.joinToString()}, source: ${notice.licenses.joinToString()}, group: ${libraryGroupNotice.licenses.joinToString()}")
+                    logger.warn("Librarian warning: group has not artifact license, ${key.name}, source: $notice, group: $libraryGroupNotice")
                 }
             }
             notice = noticeOverride.override(notice, libraryGroupNotice)
             return notice
         }
 
-        fun Map.Entry<LibraryGroup, List<Artifact>>.nonOverrideLicenseTranslate(): List<Notice> {
+        fun Map.Entry<LibraryGroup, List<Artifact>>.nonOverrideLicenseTranslate(): Notice {
             val licenseGroups = value.map { it.findLibrary(source) }
                 .groupBy { it.licenses }
-            return licenseGroups.map {
+            val notices = licenseGroups.map {
                 val notice = librariesToNoticeTranslator.translate(it.value)
                 val libraryGroupNotice = libraryGroupToNoticeTranslator.translate(key)
                 noticeOverride.override(notice, libraryGroupNotice)
             }
+            return Notice(
+                name = notices.first().name,
+                author = notices.first().author,
+                url = notices.first().url,
+                description = notices.first().description,
+                resources = notices.flatMap { it.resources }
+            )
         }
 
-        return this.groups.flatMap {
+        return this.groups.map {
             if (it.key.licenses?.isEmpty() != false) {
                 it.nonOverrideLicenseTranslate()
             } else {
-                listOf(it.overrideLicenseTranslate())
+                it.overrideLicenseTranslate()
             }
         }
     }

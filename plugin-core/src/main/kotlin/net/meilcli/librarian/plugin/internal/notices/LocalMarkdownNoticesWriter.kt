@@ -23,8 +23,16 @@ class LocalMarkdownNoticesWriter(
             sb.appendln()
         }
         sb.appendln("## Using")
+        sb.appendln("|Name|author|license|")
+        sb.appendln("|:--|:--|:--|")
         for (notice in source) {
-            sb.appendln("- [${notice.name}](${notice.url}), licensed on ${notice.licenses.joinToString { "[${it.name}](${it.url})" }}, made by ${notice.author}")
+            for ((i, resource) in notice.resources.withIndex()) {
+                if (i == 0) {
+                    sb.appendln("|[${notice.name}](${notice.url})|${notice.author}|${resource.licenses.joinToString { "[${it.name}](${it.url})" }}|")
+                } else {
+                    sb.appendln("|||${resource.licenses.joinToString { "[${it.name}](${it.url})" }}|")
+                }
+            }
         }
 
         val outputDirectory = File(project.rootProject.rootDir, "${extension.dataFolderName}/${page.name}")

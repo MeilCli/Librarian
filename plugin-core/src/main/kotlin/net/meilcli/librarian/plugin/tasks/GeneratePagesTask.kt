@@ -117,9 +117,9 @@ open class GeneratePagesTask : DefaultTask() {
 
         fun warnOrThrow(notice: Notice, name: String) {
             if (extension.failOnGeneratePageWhenFoundPlaceholder) {
-                throw LibrarianException("Librarian error: notice has placeholder at $name, ${notice.artifacts.joinToString()}")
+                throw LibrarianException("Librarian error: notice has placeholder at $name, ${notice.resources.flatMap { it.artifacts }.joinToString()}")
             } else {
-                project.logger.warn("Librarian warning: notice has placeholder at $name, ${notice.artifacts.joinToString()}")
+                project.logger.warn("Librarian warning: notice has placeholder at $name, ${notice.resources.flatMap { it.artifacts }.joinToString()}")
             }
         }
 
@@ -133,16 +133,13 @@ open class GeneratePagesTask : DefaultTask() {
             if (notice.url == Placeholder.url) {
                 warnOrThrow(notice, "url")
             }
-            for (license in notice.licenses) {
+            for (license in notice.resources.flatMap { it.licenses }) {
                 if (license.name == Placeholder.name) {
                     warnOrThrow(notice, "license.name")
                 }
                 if (license.url == Placeholder.url) {
                     warnOrThrow(notice, "license.url")
                 }
-            }
-            if (1 < notices.count { it.artifacts == notice.artifacts }) {
-                project.logger.warn("Librarian warning: notice has duplication, ${notice.artifacts.joinToString()}")
             }
         }
     }
