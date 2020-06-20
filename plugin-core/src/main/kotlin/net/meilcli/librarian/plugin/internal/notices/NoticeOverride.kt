@@ -1,6 +1,7 @@
 package net.meilcli.librarian.plugin.internal.notices
 
 import net.meilcli.librarian.plugin.entities.Notice
+import net.meilcli.librarian.plugin.entities.NoticeResource
 import net.meilcli.librarian.plugin.internal.IOverride
 import net.meilcli.librarian.plugin.internal.Placeholder
 
@@ -12,10 +13,14 @@ class NoticeOverride : IOverride<Notice> {
         val url = if (override.url != Placeholder.url) override.url else source.url
         val description = override.description
         val resources = if (override.resources.isNotEmpty()) {
-            if (override.resources.all { it.licenses.isEmpty() }) {
-                source.resources
-            } else {
-                override.resources
+            when {
+                override.resources.all { it.licenses.isEmpty() } -> {
+                    source.resources
+                }
+                source.resources.size == override.resources.size -> {
+                    source.resources.zip(override.resources).map { NoticeResource(it.first.artifacts, it.second.licenses) }
+                }
+                else -> override.resources
             }
         } else {
             source.resources
