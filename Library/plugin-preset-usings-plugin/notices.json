@@ -3,108 +3,142 @@
     "description": "This list is including plugin binary",
     "notices": [
         {
-            "artifacts": [
-                "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
-            ],
             "name": "Kotlin",
             "author": "JetBrains - Kotlin Team",
             "url": "https://kotlinlang.org/",
             "description": null,
-            "licenses": [
+            "resources": [
                 {
-                    "name": "The Apache License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    "artifacts": [
+                        "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "The Apache License, Version 2.0",
+                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "artifacts": [
-                "com.squareup.okhttp3:okhttp"
-            ],
             "name": "OkHttp",
             "author": "Square, Inc.",
             "url": "https://square.github.io/okhttp/",
             "description": null,
-            "licenses": [
+            "resources": [
                 {
-                    "name": "The Apache Software License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    "artifacts": [
+                        "com.squareup.okhttp3:okhttp"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "The Apache Software License, Version 2.0",
+                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "artifacts": [
-                "com.squareup.okio:okio"
-            ],
             "name": "Okio",
             "author": "Square, Inc.",
             "url": "https://github.com/square/okio/",
             "description": null,
-            "licenses": [
+            "resources": [
                 {
-                    "name": "The Apache Software License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    "artifacts": [
+                        "com.squareup.okio:okio"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "The Apache Software License, Version 2.0",
+                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "artifacts": [
-                "com.squareup.retrofit2:retrofit"
-            ],
             "name": "Retrofit",
             "author": "Square, Inc.",
             "url": "https://github.com/square/retrofit/",
             "description": null,
-            "licenses": [
+            "resources": [
                 {
-                    "name": "Apache 2.0",
-                    "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                    "artifacts": [
+                        "com.squareup.retrofit2:retrofit"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "Apache 2.0",
+                            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "artifacts": [
-                "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter"
-            ],
             "name": "Retrofit 2 Kotlin Serialization Converter",
             "author": "Jake Wharton",
             "url": "https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/",
             "description": "A Converter.Factory for Kotlin's serialization support.",
-            "licenses": [
+            "resources": [
                 {
-                    "name": "The Apache Software License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    "artifacts": [
+                        "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "The Apache Software License, Version 2.0",
+                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "artifacts": [
-                "net.devrieze:xmlutil-jvm",
-                "net.devrieze:xmlutil-serialization-jvm"
-            ],
             "name": "XmlUtil",
             "author": "pdvrieze",
             "url": "https://github.com/pdvrieze/xmlutil",
             "description": null,
-            "licenses": [
+            "resources": [
                 {
-                    "name": "Apache License 2.0",
-                    "url": "https://github.com/pdvrieze/xmlutil/blob/master/COPYING"
+                    "artifacts": [
+                        "net.devrieze:xmlutil",
+                        "net.devrieze:xmlutil-jvm",
+                        "net.devrieze:xmlutil-android",
+                        "net.devrieze:xmlutil-js",
+                        "net.devrieze:xmlutil-serialization",
+                        "net.devrieze:xmlutil-serialization-jvm",
+                        "net.devrieze:xmlutil-serialization-android",
+                        "net.devrieze:xmlutil-serialization-js"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "Apache License 2.0",
+                            "url": "https://github.com/pdvrieze/xmlutil/blob/master/COPYING"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "artifacts": [
-                "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
-            ],
             "name": "kotlinx.serialization",
             "author": "JetBrains - JetBrains Team",
             "url": "https://github.com/Kotlin/kotlinx.serialization",
             "description": null,
-            "licenses": [
+            "resources": [
                 {
-                    "name": "The Apache Software License, Version 2.0",
-                    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    "artifacts": [
+                        "org.jetbrains.kotlinx:kotlinx-serialization-runtime"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "The Apache Software License, Version 2.0",
+                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
                 }
             ]
         }
