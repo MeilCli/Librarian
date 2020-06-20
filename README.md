@@ -135,7 +135,7 @@ librarian {
             }
             additionalNotices {
                 "AdditionalNotice" { // Notice name
-                    artifacts = ["text:com"] // Array of String, default is empty, must set value
+                    artifacts = ["text:com"] // Array of String, default is empty
                     author = "Tester" // String, default is empty, must set value
                     url = "https://google.com" // String, default is empty, must set value
                     description = "" // String?, default value is null
@@ -331,9 +331,9 @@ librarian {
         "example" { // page name
             additionalNotices {
                 "Material design icons" { // Notice name
-                    artifacts = ["com.google.material:icons"] // set any value
+                    artifacts = []
                     author = "Google Inc."
-                    url = https://github.com/google/material-design-icons"
+                    url = "https://github.com/google/material-design-icons"
                     description = "Material Design icons by Google" // optional
                     licenses {
                         "Apache License 2.0" {

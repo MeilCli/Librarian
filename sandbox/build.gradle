@@ -53,6 +53,18 @@ librarian {
                     ]
                 }
             }
+            additionalNotices {
+                "Test" {
+                    artifacts = []
+                    author = "Test User"
+                    url = "https://google.com"
+                    licenses {
+                        "Test License" {
+                            url = "https://google.com"
+                        }
+                    }
+                }
+            }
         }
     }
 }
