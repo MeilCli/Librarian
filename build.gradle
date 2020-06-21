@@ -1,11 +1,20 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.Android
+import net.meilcli.librarian.gradle.dependencies.Bintray
+import net.meilcli.librarian.gradle.dependencies.Gmazzo
+import net.meilcli.librarian.gradle.dependencies.JakeWharton
+import net.meilcli.librarian.gradle.dependencies.Kotlin
+import net.meilcli.librarian.gradle.dependencies.KotlinSerialization
+import net.meilcli.librarian.gradle.dependencies.Librarian
+import net.meilcli.librarian.gradle.dependencies.Repositories
+import net.meilcli.librarian.gradle.dependencies.SquareUp
+import net.meilcli.librarian.gradle.dependencies.XmlUtil
 
 buildscript {
     ext.local_build = false
     repositories {
         google()
         jcenter()
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url Repositories.gradle }
         def githubUser = System.getenv("GITHUB_USER")
         def githubToken = System.getenv("GITHUB_TOKEN")
         if (githubUser != null && githubToken != null) {
@@ -17,28 +26,28 @@ buildscript {
                 }
             }
         } else {
-            maven { url "https://dl.bintray.com/meilcli/librarian" }
+            maven { url Repositories.librarian }
         }
     }
     dependencies {
-        classpath Dependencies.Android.gradle
-        classpath Dependencies.Kotlin.gradle
-        classpath Dependencies.Kotlin.Serialization.gradle
-        classpath Dependencies.Bintray.plugin
+        classpath Android.gradle
+        classpath Kotlin.gradle
+        classpath KotlinSerialization.gradle
+        classpath Bintray.plugin
         if (local_build) {
             classpath fileTree(dir: 'libs', include: ['*.jar'])
-            classpath Dependencies.Kotlin.Serialization.runtime
-            classpath Dependencies.XmlUtil.core
-            classpath Dependencies.XmlUtil.serialization
-            classpath Dependencies.SquareUp.okio
-            classpath Dependencies.SquareUp.okhttp
-            classpath Dependencies.SquareUp.retrofit
-            classpath Dependencies.JakeWharton.retrofitKotlinSerializationConverter
+            classpath KotlinSerialization.runtime
+            classpath XmlUtil.core
+            classpath XmlUtil.serialization
+            classpath SquareUp.okio
+            classpath SquareUp.okhttp
+            classpath SquareUp.retrofit
+            classpath JakeWharton.retrofitKotlinSerializationConverter
         } else {
-            classpath Dependencies.Librarian.pluginCore
+            classpath Librarian.pluginCore
         }
-        classpath Dependencies.Librarian.pluginPreset // cannot use local jar
-        classpath "com.github.gmazzo:gradle-buildconfig-plugin:2.0.1"
+        classpath Librarian.pluginPreset // cannot use local jar
+        classpath Gmazzo.gradleBuildConfigPlugin
     }
 }
 
@@ -46,6 +55,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url Repositories.gradle }
         def githubUser = System.getenv("GITHUB_USER")
         def githubToken = System.getenv("GITHUB_TOKEN")
         if (githubUser != null && githubToken != null) {
@@ -57,7 +67,7 @@ allprojects {
                 }
             }
         } else {
-            maven { url "https://dl.bintray.com/meilcli/librarian" }
+            maven { url Repositories.librarian }
         }
     }
 }

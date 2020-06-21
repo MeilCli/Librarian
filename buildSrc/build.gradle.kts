@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-apply(from = "./dependencies/build.gradle")
+apply(from = "../dependencies/build.gradle")
 
 buildscript {
     repositories {
@@ -18,7 +18,10 @@ repositories {
     google()
 }
 
+val androidGradle = extra["library_Android_gradle"] as String
+val bintrayPlugin = extra["library_Bintray_plugin"] as String
+
 dependencies {
-    implementation("com.android.tools.build:gradle:3.6.2")
-    implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
+    implementation(androidGradle)
+    implementation(bintrayPlugin)
 }

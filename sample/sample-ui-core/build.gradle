@@ -1,4 +1,4 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.Android
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -14,7 +14,7 @@ android {
 dependencies {
     implementation project(':ui-core')
     implementation project(':ui-serializer-kotlin')
-    implementation Dependencies.Android.recyclerView
+    implementation Android.recyclerView
 }
 
 apply plugin: 'librarian'

@@ -1,4 +1,4 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.KotlinSerialization
 
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'kotlin'
@@ -9,7 +9,7 @@ apply plugin: 'MavenPublishPlugin'
 
 dependencies {
     implementation project(':plugin-core')
-    implementation Dependencies.Kotlin.Serialization.runtime
+    implementation KotlinSerialization.runtime
 }
 
 gradlePlugin {

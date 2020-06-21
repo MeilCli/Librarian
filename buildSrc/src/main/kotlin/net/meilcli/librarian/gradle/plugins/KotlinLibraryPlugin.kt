@@ -1,6 +1,7 @@
 package net.meilcli.librarian.gradle.plugins
 
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.Junit5
+import net.meilcli.librarian.gradle.dependencies.Kotlin
 import net.meilcli.librarian.gradle.extensions.implementation
 import net.meilcli.librarian.gradle.extensions.testImplementation
 import net.meilcli.librarian.gradle.extensions.testRuntimeOnly
@@ -18,10 +19,10 @@ class KotlinLibraryPlugin : Plugin<Project> {
         }
 
         project.dependencies {
-            implementation(Dependencies.Kotlin.stdlib)
+            implementation(Kotlin.stdlib)
 
-            testImplementation(Dependencies.Junit5.api)
-            testRuntimeOnly(Dependencies.Junit5.engine)
+            testImplementation(Junit5.api)
+            testRuntimeOnly(Junit5.engine)
         }
     }
 }

@@ -1,4 +1,4 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.Android
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
@@ -9,7 +9,7 @@ apply plugin: 'MavenPublishPlugin'
 
 dependencies {
     api project(':ui-core')
-    api Dependencies.Android.fragment
+    api Android.fragment
 }
 
 apply plugin: 'librarian'

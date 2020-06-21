@@ -2,7 +2,9 @@ package net.meilcli.librarian.gradle.plugins
 
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.ProguardFiles
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.Android
+import net.meilcli.librarian.gradle.dependencies.Junit4
+import net.meilcli.librarian.gradle.dependencies.Kotlin
 import net.meilcli.librarian.gradle.extensions.androidTestImplementation
 import net.meilcli.librarian.gradle.extensions.implementation
 import net.meilcli.librarian.gradle.extensions.testImplementation
@@ -39,13 +41,13 @@ class AndroidApplicationPlugin : Plugin<Project> {
         }
 
         project.dependencies {
-            implementation(Dependencies.Kotlin.stdlib)
-            implementation(Dependencies.Android.appCompat)
+            implementation(Kotlin.stdlib)
+            implementation(Android.appCompat)
 
-            testImplementation(Dependencies.Junit4.junit)
+            testImplementation(Junit4.junit)
 
-            androidTestImplementation(Dependencies.Android.espresso)
-            androidTestImplementation(Dependencies.Android.junit)
+            androidTestImplementation(Android.espresso)
+            androidTestImplementation(Android.junit)
         }
     }
 }

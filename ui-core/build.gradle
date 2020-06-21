@@ -1,4 +1,4 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.Android
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
@@ -8,7 +8,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'MavenPublishPlugin'
 
 dependencies {
-    api Dependencies.Android.recyclerView
+    api Android.recyclerView
 }
 
 apply plugin: 'librarian'

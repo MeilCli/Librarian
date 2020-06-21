@@ -1,4 +1,4 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.KotlinSerialization
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
@@ -10,7 +10,7 @@ apply plugin: 'MavenPublishPlugin'
 
 dependencies {
     api project(":ui-core")
-    api Dependencies.Kotlin.Serialization.runtime
+    api KotlinSerialization.runtime
 }
 
 apply plugin: 'librarian'

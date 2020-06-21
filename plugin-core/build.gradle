@@ -1,4 +1,7 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.JakeWharton
+import net.meilcli.librarian.gradle.dependencies.KotlinSerialization
+import net.meilcli.librarian.gradle.dependencies.SquareUp
+import net.meilcli.librarian.gradle.dependencies.XmlUtil
 
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'kotlin'
@@ -10,13 +13,13 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'MavenPublishPlugin'
 
 dependencies {
-    implementation Dependencies.Kotlin.Serialization.runtime
-    implementation Dependencies.XmlUtil.core
-    implementation Dependencies.XmlUtil.serialization
-    implementation Dependencies.SquareUp.okio
-    implementation Dependencies.SquareUp.okhttp
-    implementation Dependencies.SquareUp.retrofit
-    implementation Dependencies.JakeWharton.retrofitKotlinSerializationConverter
+    implementation KotlinSerialization.runtime
+    implementation XmlUtil.core
+    implementation XmlUtil.serialization
+    implementation SquareUp.okio
+    implementation SquareUp.okhttp
+    implementation SquareUp.retrofit
+    implementation JakeWharton.retrofitKotlinSerializationConverter
 }
 
 gradlePlugin {

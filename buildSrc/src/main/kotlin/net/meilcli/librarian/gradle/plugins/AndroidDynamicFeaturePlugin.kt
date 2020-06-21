@@ -1,7 +1,8 @@
 package net.meilcli.librarian.gradle.plugins
 
 import com.android.build.gradle.BaseExtension
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.Android
+import net.meilcli.librarian.gradle.dependencies.Kotlin
 import net.meilcli.librarian.gradle.extensions.implementation
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -25,8 +26,8 @@ class AndroidDynamicFeaturePlugin : Plugin<Project> {
         }
 
         project.dependencies {
-            implementation(Dependencies.Kotlin.stdlib)
-            implementation(Dependencies.Android.appCompat)
+            implementation(Kotlin.stdlib)
+            implementation(Android.appCompat)
         }
     }
 }

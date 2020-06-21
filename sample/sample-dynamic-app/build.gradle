@@ -1,4 +1,4 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.Librarian
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -13,8 +13,8 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.Librarian.uiActivity
-    implementation Dependencies.Librarian.uiSerializerKotlin
+    implementation Librarian.uiActivity
+    implementation Librarian.uiSerializerKotlin
 }
 
 apply plugin: 'librarian'

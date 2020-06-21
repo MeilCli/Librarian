@@ -1,4 +1,4 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.SquareUp
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
@@ -10,8 +10,8 @@ apply plugin: 'MavenPublishPlugin'
 
 dependencies {
     api project(":ui-core")
-    api Dependencies.SquareUp.moshi
-    kapt Dependencies.SquareUp.moshiKapt
+    api SquareUp.moshi
+    kapt SquareUp.moshiKapt
 }
 
 apply plugin: 'librarian'

@@ -1,9 +1,9 @@
-import net.meilcli.librarian.gradle.Dependencies
+import net.meilcli.librarian.gradle.dependencies.SquareUp
 
 apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'AndroidDynamicFeaturePlugin'  // this is define at buildSrc
 
 dependencies {
     implementation project(':sample:sample-dynamic-app')
-    implementation Dependencies.SquareUp.moshi
+    implementation SquareUp.moshi
 }
