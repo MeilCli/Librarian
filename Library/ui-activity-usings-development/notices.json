@@ -118,6 +118,25 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "gradle-buildconfig-plugin",
+            "author": "Guillermo Mazzola",
+            "url": "https://github.com/gmazzo/gradle-buildconfig-plugin",
+            "description": null,
+            "resources": [
+                {
+                    "artifacts": [
+                        "com.github.gmazzo:gradle-buildconfig-plugin"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "MIT License",
+                            "url": "https://github.com/gmazzo/gradle-buildconfig-plugin/blob/master/LICENSE"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

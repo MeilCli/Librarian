@@ -123,7 +123,7 @@
         {
             "name": "Retrofit",
             "author": "Square, Inc.",
-            "url": "https://github.com/square/retrofit/",
+            "url": "https://github.com/square/retrofit",
             "description": null,
             "resources": [
                 {
@@ -132,8 +132,8 @@
                     ],
                     "licenses": [
                         {
-                            "name": "Apache 2.0",
-                            "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                            "name": "The Apache Software License, Version 2.0",
+                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
                         }
                     ]
                 }
@@ -192,6 +192,25 @@
                         {
                             "name": "The Apache Software License, Version 2.0",
                             "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "gradle-buildconfig-plugin",
+            "author": "Guillermo Mazzola",
+            "url": "https://github.com/gmazzo/gradle-buildconfig-plugin",
+            "description": null,
+            "resources": [
+                {
+                    "artifacts": [
+                        "com.github.gmazzo:gradle-buildconfig-plugin"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "MIT License",
+                            "url": "https://github.com/gmazzo/gradle-buildconfig-plugin/blob/master/LICENSE"
                         }
                     ]
                 }
