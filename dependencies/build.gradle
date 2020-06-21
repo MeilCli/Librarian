@@ -90,7 +90,7 @@ dependencies {
     library "$librarianGroup:ui-activity:$librarianVersion", "uiActivity", "Librarian"
     library "$librarianGroup:ui-serializer-kotlin:$librarianVersion", "uiSerializerKotlin", "Librarian"
 
-    library "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4", "plugin", "Bintray"
+    library "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5", "plugin", "Bintray"
 
     library "junit:junit:4.12", "junit", "Junit4"
 
