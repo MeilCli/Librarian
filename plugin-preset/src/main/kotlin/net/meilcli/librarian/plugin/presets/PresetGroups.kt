@@ -30,5 +30,6 @@ object PresetGroups {
         fuel()
         facebook()
         amazon()
+        gmazzo()
     }
 }
