@@ -41,7 +41,9 @@ Markdown:
 Description
 
 ## Using
-- [Example](https://google.com), licensed on [Example license](https://google.com), made by Example human
+|Name|author|license|
+|:--|:--|:--|
+|[Example](https://google.com)|Example human|[Example license](https://google.com)|
 ```
 
 Json:
@@ -55,7 +57,7 @@ Json:
             "author": "Example human",
             "url": "https://google.com",
             "description": "Description is optional, will be null",
-            "resources", [
+            "resources": [
                 {
                     "artifacts": [
                         "com.example:example"
