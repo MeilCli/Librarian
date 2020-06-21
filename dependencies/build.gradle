@@ -95,7 +95,7 @@ dependencies {
     library "junit:junit:4.13", "junit", "Junit4"
 
     ext.junit5Group = "org.junit.jupiter"
-    ext.junit5Version = "5.6.1"
+    ext.junit5Version = "5.6.2"
     library "$junit5Group:junit-jupiter-api:$junit5Version", "api", "Junit5"
     library "$junit5Group:junit-jupiter-engine:$junit5Version", "engine", "Junit5"
 
