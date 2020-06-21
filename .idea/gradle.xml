@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/dependencies" />
             <option value="$PROJECT_DIR$/plugin-core" />
             <option value="$PROJECT_DIR$/plugin-preset" />
             <option value="$PROJECT_DIR$/sample" />
