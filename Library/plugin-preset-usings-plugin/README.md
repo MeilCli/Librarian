@@ -9,7 +9,7 @@ This list is including plugin binary
 |[Kotlin](https://kotlinlang.org/)|JetBrains - Kotlin Team|[The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[OkHttp](https://square.github.io/okhttp/)|Square, Inc.|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Okio](https://github.com/square/okio/)|Square, Inc.|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
-|[Retrofit](https://github.com/square/retrofit/)|Square, Inc.|[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Retrofit](https://github.com/square/retrofit)|Square, Inc.|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Retrofit 2 Kotlin Serialization Converter](https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/)|Jake Wharton|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[XmlUtil](https://github.com/pdvrieze/xmlutil)|pdvrieze|[Apache License 2.0](https://github.com/pdvrieze/xmlutil/blob/master/COPYING)|
 |[kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
