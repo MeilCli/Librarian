@@ -84,7 +84,7 @@ dependencies {
     library "androidx.test.espresso:espresso-core:3.2.0", "espresso", "Android"
 
     ext.librarianGroup = "net.meilcli.librarian"
-    ext.librarianVersion = "0.10.1"
+    ext.librarianVersion = "0.10.2"
     library "$librarianGroup:plugin-core:$librarianVersion", "pluginCore", "Librarian"
     library "$librarianGroup:plugin-preset:$librarianVersion", "pluginPreset", "Librarian"
     library "$librarianGroup:ui-activity:$librarianVersion", "uiActivity", "Librarian"
