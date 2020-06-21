@@ -1,0 +1,38 @@
+import net.meilcli.librarian.gradle.dependencies.Librarian
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'AndroidApplicationPlugin' // this is define at buildSrc
+
+android {
+    defaultConfig {
+        applicationIdSuffix = "custom"
+    }
+}
+
+dependencies {
+    implementation Librarian.uiCore
+    implementation Librarian.uiSerializerKotlin
+}
+
+apply plugin: 'librarian'
+apply plugin: 'librarian-preset'
+
+librarian {
+    pages {
+        "sample-ui-custom" {
+            title = "Using Libraries"
+            description = "sample-ui-custom is using this libraries."
+            configurations {
+                contain {
+                    value = [
+                            "implementationDependenciesMetadata",
+                            "releaseImplementationDependenciesMetadata"
+                    ]
+                }
+            }
+            jsonAdditionalOutputPath = file("src/main/assets/notices.json")
+        }
+    }
+}

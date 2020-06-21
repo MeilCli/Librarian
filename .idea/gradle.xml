@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/sample/sample-from-maven" />
             <option value="$PROJECT_DIR$/sample/sample-ui-activity" />
             <option value="$PROJECT_DIR$/sample/sample-ui-core" />
+            <option value="$PROJECT_DIR$/sample/sample-ui-custom" />
             <option value="$PROJECT_DIR$/sample/sample-ui-fragment" />
             <option value="$PROJECT_DIR$/sandbox" />
             <option value="$PROJECT_DIR$/ui-activity" />

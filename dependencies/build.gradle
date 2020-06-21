@@ -87,6 +87,7 @@ dependencies {
     ext.librarianVersion = "0.10.2"
     library "$librarianGroup:plugin-core:$librarianVersion", "pluginCore", "Librarian"
     library "$librarianGroup:plugin-preset:$librarianVersion", "pluginPreset", "Librarian"
+    library "$librarianGroup:ui-core:$librarianVersion", "uiCore", "Librarian"
     library "$librarianGroup:ui-activity:$librarianVersion", "uiActivity", "Librarian"
     library "$librarianGroup:ui-serializer-kotlin:$librarianVersion", "uiSerializerKotlin", "Librarian"
 
