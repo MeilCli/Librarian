@@ -28,6 +28,7 @@ Librarian can:
   - [Add android dynamic feature module dependency notices](README.md#add-android-dynamic-feature-module-dependency-notices)
   - [Cannot auto generate because Librarian dose not infer some information](README.md#cannot-auto-generate-because-librarian-dose-not-infer-some-information)
   - [Add image resource license notice](README.md#add-image-resource-license-notice)
+  - [Cannot resolve pom file](README.md#cannot-resolve-pom-file)
 - [GitHub Actions](README.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README.md#auto-generate-notice-page-and-create-pull-request)
 - [Contributing](README.md#Contributing)
@@ -346,6 +347,11 @@ librarian {
     }
 }
 ```
+
+### Cannot resolve pom file
+Sometimes, Librarian cannot resolve pom file. In most cases it's because Maven Repository URL is not set to module's build.gradle.
+
+Librarian task aggregate root build.gradle's buildscript. in time, if it is only set to root build.gradle's buildscript, problems will occur.
 
 ## GitHub Actions
 if you use GitHub Actions, recommend use GitHub Packages when CI Build

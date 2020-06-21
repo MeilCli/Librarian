@@ -28,6 +28,7 @@ Librarianは以下のことができます:
   - [Android dynamic feature moduleの依存を通知に追加する](README-ja.md#android-dynamic-feature-moduleの依存を通知に追加する)
   - [Librarianが情報を推測できなくて通知を自動生成できない](README-ja.md#Librarianが情報を推測できなくて通知を自動生成できない)
   - [イメージリソースライセンス通知を追加する](README-ja.md#イメージリソースライセンス通知を追加する)
+  - [pomファイルを解決できない](README.md#pomファイルを解決できない)
 - [GitHub Actions](README-ja.md#github-actions)
   - [Auto Generate Notice Page and Create Pull Request](README-ja.md#auto-generate-notice-page-and-create-pull-request)
 - [Contributing](README.md#Contributing)
@@ -345,6 +346,11 @@ librarian {
     }
 }
 ```
+
+### pomファイルを解決できない
+たまにLibrarianがpomファイルを解決できない時があります。ほとんどの場合でそれはMaven Repository URLがモジュールのbuild.gradleに設定されていないことが原因です
+
+Librarianのタスクではroot直下のbuild.gradleのbuildscriptも集計します。このとき、root直下のbuild.gradleのbuildscriptのみに設定されていると問題が起きます
 
 ## GitHub Actions
 if you use GitHub Actions, recommend use GitHub Packages when CI Build
