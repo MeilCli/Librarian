@@ -261,6 +261,7 @@ button.setOnClickListener {
 - Using `ui-activity`: [sample/sample-ui-activity](sample/sample-ui-activity)
 - Using `ui-fragment`: [sample/sample-ui-fragment](sample/sample-ui-fragment)
 - Using Dynamic Feature Module: [sample/sample-dynamic-app](sample/sample-dynamic-app)
+- Custom style: [sample/sample-ui-custom](sample/sample-ui-custom)
 
 ## Tips
 ### About the mechanism of page configuration
