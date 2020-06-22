@@ -31,5 +31,6 @@ object PresetGroups {
         facebook()
         amazon()
         gmazzo()
+        realm()
     }
 }
