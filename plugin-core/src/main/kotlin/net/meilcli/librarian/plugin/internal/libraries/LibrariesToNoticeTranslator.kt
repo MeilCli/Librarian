@@ -17,7 +17,7 @@ class LibrariesToNoticeTranslator : ITranslator<List<Library>, Notice> {
             description = source.map { it.description }.firstOrNull(),
             resources = listOf(
                 NoticeResource(
-                    artifacts = source.map { it.artifact }.sortedBy { it },
+                    artifacts = source.map { it.artifact }.distinct().sortedBy { it },
                     licenses = source.map { it.licenses }.firstOrNull() ?: listOf(License(Placeholder.licenseName, Placeholder.licenseUrl))
                 )
             )
