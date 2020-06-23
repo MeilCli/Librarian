@@ -73,7 +73,7 @@ dependencies {
     library "$kotlinGroup:kotlin-gradle-plugin:$kotlinVersion", "gradle", "Kotlin"
     library "$kotlinGroup:kotlin-stdlib-jdk7:$kotlinVersion", "stdlib", "Kotlin"
     library "$kotlinGroup:kotlin-serialization:$kotlinVersion", "gradle", "KotlinSerialization"
-    library "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0", "runtime", "KotlinSerialization"
+    library "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0-1.4.0-dev-5730", "runtime", "KotlinSerialization"
 
     library "com.android.tools.build:gradle:3.6.2", "gradle", "Android"
     library "androidx.appcompat:appcompat:1.1.0", "appCompat", "Android"
