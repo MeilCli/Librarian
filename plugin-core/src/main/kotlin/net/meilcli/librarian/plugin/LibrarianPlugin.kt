@@ -37,6 +37,14 @@ open class LibrarianPlugin : Plugin<Project> {
             this.extension = extension
         }
 
+        project.createTask<ShowFirstConfigurationDependenciesTask>("librarianShowFirstConfigurationDependencies").apply {
+            this.extension = extension
+        }
+
+        project.createTask<ShowAllConfigurationDependenciesTask>("librarianShowAllConfigurationDependencies").apply {
+            this.extension = extension
+        }
+
         project.createTask<ShowFilteredDependencyGraphTask>("librarianShowFilteredDependencyGraph").apply {
             this.extension = extension
         }
