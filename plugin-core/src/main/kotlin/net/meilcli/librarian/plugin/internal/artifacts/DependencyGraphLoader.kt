@@ -7,7 +7,7 @@ import net.meilcli.librarian.plugin.entities.DependencyGraph
 import net.meilcli.librarian.plugin.internal.ILoader
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
-import org.gradle.api.artifacts.ResolvedArtifact
+import org.gradle.api.artifacts.ModuleVersionIdentifier
 import org.gradle.api.artifacts.ResolvedDependency
 import org.slf4j.LoggerFactory
 
@@ -30,11 +30,11 @@ class DependencyGraphLoader(
             return projects.contains(project)
         }
 
-        fun addArtifact(project: Project, configuration: Configuration, resolvedArtifact: ResolvedArtifact) {
+        fun addArtifact(project: Project, configuration: Configuration, moduleVersionIdentifier: ModuleVersionIdentifier) {
             val artifact = Artifact(
-                resolvedArtifact.moduleVersion.id.group,
-                resolvedArtifact.moduleVersion.id.name,
-                resolvedArtifact.moduleVersion.id.version
+                moduleVersionIdentifier.group,
+                moduleVersionIdentifier.name,
+                moduleVersionIdentifier.version
             )
 
             if (ignoreArtifacts.any { artifact.artifact.startsWith(it) }) {
@@ -143,8 +143,11 @@ class DependencyGraphLoader(
                     LibrarianDepth.FirstLevel -> resolvedDependency.moduleArtifacts
                     LibrarianDepth.AllLevel -> resolvedDependency.allModuleArtifacts
                 }
+
+                // in Gradle 6.0, some artifact is skipped resolvedArtifacts, so add resolvedDependency
+                context.addArtifact(project, configuration, resolvedDependency.module.id)
                 for (resolvedArtifact in resolvedArtifacts) {
-                    context.addArtifact(project, configuration, resolvedArtifact)
+                    context.addArtifact(project, configuration, resolvedArtifact.moduleVersion.id)
                 }
             }
         }
