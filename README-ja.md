@@ -100,6 +100,8 @@ apply plugin: 'librarian-preset'
   - [librarianShowModuleConfigurations](Document/Task/LibrarianShowModuleConfigurations.md)
   - [librarianShowFirstDependencies](Document/Task/LibrarianShowFirstDependencies.md)
   - [librarianShowAllDependencies](Document/Task/LibrarianShowAllDependencies.md)
+  - [librarianShowFirstConfigurationDependencies](Document/Task/LibrarianShowFirstConfigurationDependencies.md)
+  - [librarianShowAllConfigurationDependencies](Document/Task/LibrarianShowAllConfigurationDependencies.md)
   - [librarianShowFilteredDependencyGraph](Document/Task/LibrarianShowFilteredDependencyGraph.md)
 - librarian preset plugin
   - [librarianGeneratePresetGroups](Document/Task/LibrarianGeneratePresetGroups.md)
