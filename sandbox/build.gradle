@@ -4,7 +4,7 @@ apply plugin: 'AndroidLibraryPlugin'
 
 dependencies {
     implementation "androidx.browser:browser:1.2.0"
-    implementation "androidx.emoji:emoji:1.0.0"
+    implementation "androidx.emoji:emoji:1.1.0"
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.transition:transition:1.3.1"
     implementation "androidx.cardview:cardview:1.0.0"
