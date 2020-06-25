@@ -27,13 +27,11 @@ class AndroidLibraryPlugin : Plugin<Project> {
             consumerProguardFile("consumer-rules.pro")
         }
 
+        val defaultProguard = getDefaultProguardFile("proguard-android-optimize.txt", project.layout)
         (extension.buildTypes.findByName("release")
             ?: extension.buildTypes.create("release")).apply {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt", project),
-                "proguard-rules.pro"
-            )
+            proguardFiles(defaultProguard, "proguard-rules.pro")
         }
 
         extension.sourceSets.all {

@@ -69,13 +69,13 @@ repositories {
 
 dependencies {
     ext.kotlinGroup = "org.jetbrains.kotlin"
-    ext.kotlinVersion = "1.3.70"
+    ext.kotlinVersion = "1.3.72"
     library "$kotlinGroup:kotlin-gradle-plugin:$kotlinVersion", "gradle", "Kotlin"
     library "$kotlinGroup:kotlin-stdlib-jdk7:$kotlinVersion", "stdlib", "Kotlin"
     library "$kotlinGroup:kotlin-serialization:$kotlinVersion", "gradle", "KotlinSerialization"
     library "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0", "runtime", "KotlinSerialization"
 
-    library "com.android.tools.build:gradle:3.6.2", "gradle", "Android"
+    library "com.android.tools.build:gradle:4.0.0", "gradle", "Android"
     library "androidx.appcompat:appcompat:1.1.0", "appCompat", "Android"
     library "androidx.activity:activity:1.1.0", "activity", "Android"
     library "androidx.fragment:fragment:1.2.5", "fragment", "Android"
