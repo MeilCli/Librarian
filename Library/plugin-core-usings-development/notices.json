@@ -102,25 +102,6 @@
             ]
         },
         {
-            "name": "Okio",
-            "author": "Square, Inc.",
-            "url": "https://github.com/square/okio/",
-            "description": null,
-            "resources": [
-                {
-                    "artifacts": [
-                        "com.squareup.okio:okio"
-                    ],
-                    "licenses": [
-                        {
-                            "name": "The Apache Software License, Version 2.0",
-                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "name": "Retrofit",
             "author": "Square, Inc.",
             "url": "https://github.com/square/retrofit",
@@ -153,26 +134,6 @@
                         {
                             "name": "The Apache Software License, Version 2.0",
                             "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "XmlUtil",
-            "author": "pdvrieze",
-            "url": "https://github.com/pdvrieze/xmlutil",
-            "description": null,
-            "resources": [
-                {
-                    "artifacts": [
-                        "net.devrieze:xmlutil-jvm",
-                        "net.devrieze:xmlutil-serialization-jvm"
-                    ],
-                    "licenses": [
-                        {
-                            "name": "Apache License 2.0",
-                            "url": "https://github.com/pdvrieze/xmlutil/blob/master/COPYING"
                         }
                     ]
                 }
