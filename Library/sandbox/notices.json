@@ -121,6 +121,31 @@
             "resources": [
                 {
                     "artifacts": [
+                        "com.google.android.datatransport:transport-api",
+                        "com.google.android.datatransport:transport-backend-cct",
+                        "com.google.android.datatransport:transport-runtime",
+                        "com.google.firebase:firebase-abt",
+                        "com.google.firebase:firebase-bom",
+                        "com.google.firebase:firebase-common",
+                        "com.google.firebase:firebase-components",
+                        "com.google.firebase:firebase-config",
+                        "com.google.firebase:firebase-database",
+                        "com.google.firebase:firebase-database-collection",
+                        "com.google.firebase:firebase-datatransport",
+                        "com.google.firebase:firebase-encoders-json",
+                        "com.google.firebase:firebase-installations",
+                        "com.google.firebase:firebase-installations-interop",
+                        "com.google.firebase:firebase-storage"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "The Apache Software License, Version 2.0",
+                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
+                },
+                {
+                    "artifacts": [
                         "com.google.firebase:firebase-analytics",
                         "com.google.firebase:firebase-analytics-impl",
                         "com.google.firebase:firebase-appindexing",
@@ -139,30 +164,6 @@
                         {
                             "name": "Android Software Development Kit License",
                             "url": "https://developer.android.com/studio/terms.html"
-                        }
-                    ]
-                },
-                {
-                    "artifacts": [
-                        "com.google.android.datatransport:transport-api",
-                        "com.google.android.datatransport:transport-backend-cct",
-                        "com.google.android.datatransport:transport-runtime",
-                        "com.google.firebase:firebase-abt",
-                        "com.google.firebase:firebase-common",
-                        "com.google.firebase:firebase-components",
-                        "com.google.firebase:firebase-config",
-                        "com.google.firebase:firebase-database",
-                        "com.google.firebase:firebase-database-collection",
-                        "com.google.firebase:firebase-datatransport",
-                        "com.google.firebase:firebase-encoders-json",
-                        "com.google.firebase:firebase-installations",
-                        "com.google.firebase:firebase-installations-interop",
-                        "com.google.firebase:firebase-storage"
-                    ],
-                    "licenses": [
-                        {
-                            "name": "The Apache Software License, Version 2.0",
-                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
                         }
                     ]
                 }
@@ -337,6 +338,25 @@
                         {
                             "name": "The Apache Software License, Version 2.0",
                             "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "OkHttp",
+            "author": "Square, Inc.",
+            "url": "https://square.github.io/okhttp/",
+            "description": null,
+            "resources": [
+                {
+                    "artifacts": [
+                        "com.squareup.okhttp3:okhttp-bom"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "The Apache Software License, Version 2.0",
+                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
                         }
                     ]
                 }
