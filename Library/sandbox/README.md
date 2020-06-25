@@ -10,14 +10,15 @@ This list is sandbox
 |||[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt), [SIL Open Font License, Version 1.1](http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web), [Unicode, Inc. License](http://www.unicode.org/copyright.html#License)|
 |[AutoValue Annotations](https://github.com/google/auto)|Google, Inc.|[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Dagger](https://github.com/google/dagger)|Google, Inc.|[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)|
-|[Firebase](https://firebase.google.com)|Google Inc.|[Android Software Development Kit License](https://developer.android.com/studio/terms.html)|
-|||[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[Firebase](https://firebase.google.com)|Google Inc.|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|||[Android Software Development Kit License](https://developer.android.com/studio/terms.html)|
 |[Glide](https://github.com/bumptech/glide)|Sam Judd|[Simplified BSD License](http://www.opensource.org/licenses/bsd-license), [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Google Play Services](https://developers.google.com/android/guides/overview)|Google Inc.|[Android Software Development Kit License](https://developer.android.com/studio/terms.html)|
 |[Guava](https://github.com/google/guava)|Google - Kevin Bourrillion|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[IntelliJ IDEA Annotations](http://www.jetbrains.org)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Kotlin](https://kotlinlang.org/)|JetBrains - Kotlin Team|[The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Ktor](https://github.com/ktorio/ktor)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[OkHttp](https://square.github.io/okhttp/)|Square, Inc.|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Play Install Referrer Library](https://developer.android.com/google/play/installreferrer/library)|Google Inc.|[Android Software Development Kit License](https://developer.android.com/studio/terms.html)|
 |[Protocol Buffers [Lite]](https://developers.google.com/protocol-buffers/)|Google|[New BSD license](http://www.opensource.org/licenses/bsd-license.php)|
 |[SLF4J API Module](http://www.slf4j.org)|QOS.ch|[MIT License](http://www.opensource.org/licenses/mit-license.php)|
