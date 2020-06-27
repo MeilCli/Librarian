@@ -31,7 +31,7 @@ open class GeneratePagesTask : DefaultTask() {
 
         val dependencyGraphLoader = DependencyGraphLoader(project, extension.depthType, extension.ignoreArtifacts)
         val dependencyGraph = dependencyGraphLoader.load()
-        val dependencyGraphValidator = DependencyGraphValidator(extension)
+        val dependencyGraphValidator = DependencyGraphValidator(project, extension)
 
         if (dependencyGraphValidator.valid(dependencyGraph).not()) {
             throw LibrarianException("Librarian encounter too many configurations. please filter page.configurations")
@@ -117,9 +117,11 @@ open class GeneratePagesTask : DefaultTask() {
 
         fun warnOrThrow(notice: Notice, name: String) {
             if (extension.failOnGeneratePageWhenFoundPlaceholder) {
-                throw LibrarianException("Librarian error: notice has placeholder at $name, ${notice.resources.flatMap { it.artifacts }.joinToString()}")
+                throw LibrarianException("Librarian error: notice has placeholder at $name, ${notice.resources.flatMap { it.artifacts }
+                    .joinToString()}")
             } else {
-                project.logger.warn("Librarian warning: notice has placeholder at $name, ${notice.resources.flatMap { it.artifacts }.joinToString()}")
+                project.logger.warn("Librarian warning: notice has placeholder at $name, ${notice.resources.flatMap { it.artifacts }
+                    .joinToString()}")
             }
         }
 

@@ -25,7 +25,7 @@ open class GenerateBintrayGroupsTask : DefaultTask() {
 
         val dependencyGraphLoader = DependencyGraphLoader(project, extension.depthType, extension.ignoreArtifacts)
         val dependencyGraph = dependencyGraphLoader.load()
-        val dependencyGraphValidator = DependencyGraphValidator(extension)
+        val dependencyGraphValidator = DependencyGraphValidator(project, extension)
 
         if (dependencyGraphValidator.valid(dependencyGraph).not()) {
             throw LibrarianException("Librarian encounter too many configurations. please filter page.configurations")
