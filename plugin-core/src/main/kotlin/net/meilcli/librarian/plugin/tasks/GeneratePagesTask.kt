@@ -98,7 +98,7 @@ open class GeneratePagesTask : DefaultTask() {
 
         checkNotice(notices)
 
-        val writers = mutableListOf<IWriter<List<Notice>>>()
+        val writers = mutableListOf<IWriter<List<Notice>>>(LocalGitKeepNoticesWriter(project, extension))
 
         if (page.markdown) {
             writers += LocalMarkdownNoticesWriter(project, extension, page)
