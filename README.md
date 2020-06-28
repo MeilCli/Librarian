@@ -114,7 +114,7 @@ librarian {
     failOnGeneratePageWhenFoundPlaceholder = true // Boolean, default value is true
     failOnOverrideUnMatchedLicense = true // Boolean, default value is true
     failOnTooManyResolvingConfigurationLimit = 1000 // Int, default value is 1000
-    useBintray = true // Boolean, default value is false
+    useBintray = false // Boolean, default value is false
     ignoreArtifacts = [] // Array of String
 
     pages {
