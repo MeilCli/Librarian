@@ -183,13 +183,12 @@ librarian {
 1. Librarianをインストール
 1. プロジェクトで構成を書きます、`pages`ブロックを付けてください
    - `librarianShowConfigurations`タスクを使いながら構成を書くといいでしょう
-1. `librarianGenerateArtifacts`タスクを実行
-1. `librarian-preset`プラグインを使ってる場合は`librarianGeneratePresetGroups`タスクを実行
-1. Bintrayのパッケージ情報を使う場合は`librarianGenerateBintrayGroups`タスクを実行
-1. `librarianGeneratePages`タスクを実行
+1. `librarian.failOnGeneratePageWhenFoundPlaceholder`に`false`を設定します
+1. `librarianGeneratePresetPipeline`タスクを実行
 1. もしエラーが出たり完了しなかったら`groups`ブロックを記述して`librarianGenerateGroups`タスクを実行します
+1. `librarian.failOnGeneratePageWhenFoundPlaceholder`に`true`を設定します
+1. `librarianGeneratePresetPipeline`タスクを実行
 
-これらの流れを1つのタスクで行いたい場合は`librarianGeneratePipeline`タスクまたは`librarianGeneratePresetPipeline`タスクを実行します
 
 ## Androidビューワー
 LibrarianはAndroidで通知を表示するためのネイティブビューワーを用意しています

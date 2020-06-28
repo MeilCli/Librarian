@@ -183,14 +183,11 @@ librarian {
 1. install Librarian
 1. configure your project, put `pages`
    - `librarianShowConfigurations` task helps when configure your project
-1. execute `librarianGenerateArtifacts` task
-1. execute `librarianGeneratePresetGroups` task if using `librarian-preset`
-1. execute `librarianGenerateBintrayGroups` task if using Bintray package information
-1. execute `librarianGeneratePages` task
-1. if output error or incomplete result, configure your project that put `groups` and execute `librarianGenerateGroups` task
-   - then execute `librarianGeneratePages` task
-
-if you want generate notice page by one task, execute `librarianGeneratePipeline` or `librarianGeneratePresetPipeline`
+1. set `false` to `librarian.failOnGeneratePageWhenFoundPlaceholder`
+1. execute `librarianGeneratePresetPipeline` task
+1. if console output error or incomplete result, configure your project that put `groups`
+1. set `true` to `librarian.failOnGeneratePageWhenFoundPlaceholder`
+1. execute `librarianGeneratePresetPipeline` task
 
 ## Android Viewer
 Librarian is prepared Android Viewer library
