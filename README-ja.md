@@ -21,6 +21,7 @@ Librarianは以下の点に焦点を当てています:
   - [ui-activityの導入](README-ja.md#ui-activityの導入)
   - [Jsonシリアライザー](README-ja.md#Jsonシリアライザー)
   - [サンプル](README-ja.md#サンプル)
+  - [その他](README-ja.md#その他)
 - [Viewerの作成](README-ja.md#Viewerの作成)
 - [Tips](README-ja.md#tips)
   - [page configurationのメカニズムについて](README-ja.md#page-configurationのメカニズムについて)
@@ -261,6 +262,9 @@ button.setOnClickListener {
 - Using `ui-fragment`: [sample/sample-ui-fragment](sample/sample-ui-fragment)
 - Using Dynamic Feature Module: [sample/sample-dynamic-app](sample/sample-dynamic-app)
 - Custom style: [sample/sample-ui-custom](sample/sample-ui-custom)
+
+### その他
+- [Create Own Android Serializer](Document/Viewer/CreateOwnAndroidSerializer.md)
 
 ## Viewerの作成
 See [Create Own Viewer](Document/Viewer/CreateOwnViewer.md)

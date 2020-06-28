@@ -21,6 +21,7 @@ Librarian focuses on:
   - [Getting started of ui-activity](README.md#getting-started-of-ui-activity)
   - [Serializers](README.md#serializers)
   - [Samples](README.md#samples)
+  - [Other](README.md#other)
 - [Create Viewer](README.md#create-viewer)
 - [Tips](README.md#tips)
   - [About the mechanism of page configuration](README.md#about-the-mechanism-of-page-configuration)
@@ -260,6 +261,9 @@ button.setOnClickListener {
 - Using `ui-fragment`: [sample/sample-ui-fragment](sample/sample-ui-fragment)
 - Using Dynamic Feature Module: [sample/sample-dynamic-app](sample/sample-dynamic-app)
 - Custom style: [sample/sample-ui-custom](sample/sample-ui-custom)
+
+### Other
+- [Create Own Android Serializer](Document/Viewer/CreateOwnAndroidSerializer.md)
 
 ## Create Viewer
 See [Create Own Viewer](Document/Viewer/CreateOwnViewer.md)
