@@ -265,6 +265,7 @@ button.setOnClickListener {
 
 ### その他
 - [Create Own Android Serializer](Document/Viewer/CreateOwnAndroidSerializer.md)
+- [Customize Android Viewer](Document/Viewer/CustomizeAndroidViewer.md)
 
 ## Viewerの作成
 See [Create Own Viewer](Document/Viewer/CreateOwnViewer.md)
