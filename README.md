@@ -429,22 +429,14 @@ see [Contributing.md](.github/CONTRIBUTING.md). if you think to report issue, se
 Librarian is MIT License
 
 ### Using Libraries
-including binary:
-- `plugin-core`: [see link](Library/plugin-core-usings-plugin)
-- `plugin-preset`: [see link](Library/plugin-preset-usings-plugin)
-- `ui-core`: [see link](Library/ui-core-usings-library)
-- `ui-activity`: [see link](Library/ui-activity-usings-library)
-- `ui-fragment`: [see link](Library/ui-fragment-usings-library)
-- `ui-serializer-kotlin`: [see link](Library/ui-serializer-kotlin-usings-library)
-- `ui-serializer-moshi`: [see link](Library/ui-serializer-moshi-usings-library)
-- `ui-serializer-gson`: [see link](Library/ui-serializer-gson-usings-library)
-
-when developing
-- `plugin-core`: [see link](Library/plugin-core-usings-development)
-- `plugin-preset`: [see link](Library/plugin-preset-usings-development)
-- `ui-core`: [see link](Library/ui-core-usings-development)
-- `ui-activity`: [see link](Library/ui-activity-usings-development)
-- `ui-fragment`: [see link](Library/ui-fragment-usings-development)
-- `ui-serializer-kotlin`: [see link](Library/ui-serializer-kotlin-usings-development)
-- `ui-serializer-moshi`: [see link](Library/ui-serializer-moshi-usings-development)
-- `ui-serializer-gson`: [see link](Library/ui-serializer-gson-usings-development)
+Each notices is located in the [Library](Library) folder
+|artifact name|including binary libraries|using when developing|
+|:--|:--|:--|
+|`plugin-core`|[plugin-core-usings-plugin](Library/plugin-core-usings-plugin)|[plugin-core-usings-development](Library/plugin-core-usings-development)|
+|`plugin-preset`|[plugin-preset-usings-plugin](Library/plugin-preset-usings-plugin)|[plugin-preset-usings-development](Library/plugin-preset-usings-development)|
+|`ui-core`|[ui-core-usings-library](Library/ui-core-usings-library)|[ui-core-usings-development](Library/ui-core-usings-development)|
+|`ui-activity`|[ui-activity-usings-library](Library/ui-activity-usings-library)|[ui-activity-usings-development](Library/ui-activity-usings-development)|
+|`ui-fragment`|[ui-fragment-usings-library](Library/ui-fragment-usings-library)|[ui-fragment-usings-development](Library/ui-fragment-usings-development)|
+|`ui-serializer-kotlin`|[ui-serializer-kotlin-usings-library](Library/ui-serializer-kotlin-usings-library)|[ui-serializer-kotlin-usings-development](Library/ui-serializer-kotlin-usings-development)|
+|`ui-serializer-moshi`|[ui-serializer-moshi-usings-library](Library/ui-serializer-moshi-usings-library)|[ui-serializer-moshi-usings-development](Library/ui-serializer-moshi-usings-development)|
+|`ui-serializer-gson`|[ui-serializer-gson-usings-library](Library/ui-serializer-gson-usings-library)|[ui-serializer-gson-usings-development](Library/ui-serializer-gson-usings-development)|
