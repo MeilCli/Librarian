@@ -191,6 +191,10 @@ librarian {
 
 
 ## Androidビューワー
+<p align="center">
+<img src="Document/Image/AndroidViewer1.png" width="250" /> <img src="Document/Image/AndroidViewer2.png" width="250"/>
+</p>
+
 LibrarianはAndroidで通知を表示するためのネイティブビューワーを用意しています
 
 - `ui-core`: UIのコア実装であり、NoticesViewとNoticeViewが含まれてます
