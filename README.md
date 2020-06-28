@@ -3,13 +3,11 @@
 
 Librarian is generate notice that library used in gradle module
 
-Librarian can:
-- notify by every configurations
-- aggregate artifacts by same library
-- reference preset library information
-- generate markdown and json
-- separating notice file
-- Android native viewer
+Librarian focuses on:
+- Aggregate artifacts as Group by same library
+- Accurately aggregate the library
+- Automation as much as possible with prepared preset information
+- Aggregate configurations as Page, generate multiple notice files
 
 ## Table of Contents
 - [Required](README.md#Required)
