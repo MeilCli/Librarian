@@ -1,6 +1,6 @@
 package net.meilcli.librarian.plugin
 
-class LibrarianGroupExtension(val name: String) {
+open class LibrarianGroupExtension(val name: String) {
 
     var artifacts = emptyArray<String>()
     var author: String? = null
