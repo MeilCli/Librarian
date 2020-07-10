@@ -20,7 +20,7 @@ This list is sandbox
 |[Ktor](https://github.com/ktorio/ktor)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[OkHttp](https://square.github.io/okhttp/)|Square, Inc.|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Play Install Referrer Library](https://developer.android.com/google/play/installreferrer/library)|Google Inc.|[Android Software Development Kit License](https://developer.android.com/studio/terms.html)|
-|[Protocol Buffers [Lite]](https://developers.google.com/protocol-buffers/)|Google|[New BSD license](http://www.opensource.org/licenses/bsd-license.php)|
+|[Protocol Buffers [Lite]](https://developers.google.com/protocol-buffers/)|Google - Hao Nguyen|[3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)|
 |[SLF4J API Module](http://www.slf4j.org)|QOS.ch|[MIT License](http://www.opensource.org/licenses/mit-license.php)|
 |[Test](https://google.com)|Test User|[Test License](https://google.com)|
 |[ThreeTen backport](https://www.threeten.org/threetenbp)|ThreeTen.org|[BSD 3-clause](https://raw.githubusercontent.com/ThreeTen/threetenbp/master/LICENSE.txt)|
