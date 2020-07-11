@@ -383,18 +383,18 @@
         },
         {
             "name": "Protocol Buffers [Lite]",
-            "author": "Google",
+            "author": "Google - Hao Nguyen",
             "url": "https://developers.google.com/protocol-buffers/",
-            "description": "A trimmed-down version of the Protocol Buffers library.",
+            "description": "\n    Lite version of Protocol Buffers library. This version is optimized for code size, but does\n    not guarantee API/ABI stability.\n  ",
             "resources": [
                 {
                     "artifacts": [
-                        "com.google.protobuf:protobuf-lite"
+                        "com.google.protobuf:protobuf-javalite"
                     ],
                     "licenses": [
                         {
-                            "name": "New BSD license",
-                            "url": "http://www.opensource.org/licenses/bsd-license.php"
+                            "name": "3-Clause BSD License",
+                            "url": "https://opensource.org/licenses/BSD-3-Clause"
                         }
                     ]
                 }
