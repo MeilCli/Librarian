@@ -6,6 +6,7 @@ import net.meilcli.librarian.gradle.dependencies.Android
 import net.meilcli.librarian.gradle.dependencies.Junit4
 import net.meilcli.librarian.gradle.dependencies.Kotlin
 import net.meilcli.librarian.gradle.extensions.androidTestImplementation
+import net.meilcli.librarian.gradle.extensions.applyLintSetting
 import net.meilcli.librarian.gradle.extensions.implementation
 import net.meilcli.librarian.gradle.extensions.testImplementation
 import org.gradle.api.Plugin
@@ -33,6 +34,8 @@ class AndroidLibraryPlugin : Plugin<Project> {
             isMinifyEnabled = false
             proguardFiles(defaultProguard, "proguard-rules.pro")
         }
+
+        project.applyLintSetting()
 
         extension.sourceSets.all {
             java.srcDir("src/${name}/kotlin")

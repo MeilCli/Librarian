@@ -3,6 +3,7 @@ package net.meilcli.librarian.gradle.plugins
 import com.android.build.gradle.BaseExtension
 import net.meilcli.librarian.gradle.dependencies.Android
 import net.meilcli.librarian.gradle.dependencies.Kotlin
+import net.meilcli.librarian.gradle.extensions.applyLintSetting
 import net.meilcli.librarian.gradle.extensions.implementation
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -20,6 +21,8 @@ class AndroidDynamicFeaturePlugin : Plugin<Project> {
             versionCode = 1
             versionName = "1.0"
         }
+
+        project.applyLintSetting()
 
         extension.sourceSets.all {
             java.srcDir("src/${name}/kotlin")
