@@ -15,6 +15,7 @@ This list is using development of Librarian
 |[Retrofit](https://github.com/square/retrofit)|Square, Inc.|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Retrofit 2 Kotlin Serialization Converter](https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/)|Jake Wharton|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[XmlUtil](https://github.com/pdvrieze/xmlutil)|pdvrieze|[Apache License 2.0](https://github.com/pdvrieze/xmlutil/blob/master/COPYING)|
+|[detekt](https://detekt.github.io/detekt)|Artur Bosch|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin)|JFrog|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[gradle-buildconfig-plugin](https://github.com/gmazzo/gradle-buildconfig-plugin)|Guillermo Mazzola|[MIT License](https://github.com/gmazzo/gradle-buildconfig-plugin/blob/master/LICENSE)|
 |[kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)|JetBrains - JetBrains Team|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|

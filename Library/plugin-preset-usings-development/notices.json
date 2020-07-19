@@ -179,6 +179,25 @@
             ]
         },
         {
+            "name": "detekt",
+            "author": "Artur Bosch",
+            "url": "https://detekt.github.io/detekt",
+            "description": "Static code analysis for Kotlin",
+            "resources": [
+                {
+                    "artifacts": [
+                        "io.gitlab.arturbosch.detekt:detekt-gradle-plugin"
+                    ],
+                    "licenses": [
+                        {
+                            "name": "The Apache Software License, Version 2.0",
+                            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "gradle-bintray-plugin",
             "author": "JFrog",
             "url": "https://github.com/bintray/gradle-bintray-plugin",
