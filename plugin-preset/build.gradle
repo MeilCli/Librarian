@@ -6,6 +6,8 @@ apply plugin: 'KotlinLibraryPlugin'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'MavenPublishPlugin'
+apply plugin: 'io.gitlab.arturbosch.detekt'
+apply plugin: 'DetektConfigPlugin'
 
 dependencies {
     implementation project(':plugin-core')

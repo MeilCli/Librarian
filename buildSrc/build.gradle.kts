@@ -20,8 +20,10 @@ repositories {
 
 val androidGradle = extra["library_Android_gradle"] as String
 val bintrayPlugin = extra["library_Bintray_plugin"] as String
+val detektGradle = extra["library_Detekt_gradle"] as String
 
 dependencies {
     implementation(androidGradle)
     implementation(bintrayPlugin)
+    implementation(detektGradle)
 }

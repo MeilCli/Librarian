@@ -17,3 +17,7 @@ fun DependencyHandlerScope.testRuntimeOnly(dependency: String) {
 fun DependencyHandlerScope.androidTestImplementation(dependency: String) {
     add("androidTestImplementation", dependency)
 }
+
+fun DependencyHandlerScope.detektPlugins(dependency: String) {
+    add("detektPlugins", dependency)
+}

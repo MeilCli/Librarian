@@ -1,13 +1,4 @@
-import net.meilcli.librarian.gradle.dependencies.Android
-import net.meilcli.librarian.gradle.dependencies.Bintray
-import net.meilcli.librarian.gradle.dependencies.Gmazzo
-import net.meilcli.librarian.gradle.dependencies.JakeWharton
-import net.meilcli.librarian.gradle.dependencies.Kotlin
-import net.meilcli.librarian.gradle.dependencies.KotlinSerialization
-import net.meilcli.librarian.gradle.dependencies.Librarian
-import net.meilcli.librarian.gradle.dependencies.Repositories
-import net.meilcli.librarian.gradle.dependencies.SquareUp
-import net.meilcli.librarian.gradle.dependencies.XmlUtil
+import net.meilcli.librarian.gradle.dependencies.*
 
 buildscript {
     ext.local_build = false
@@ -34,6 +25,7 @@ buildscript {
         classpath Kotlin.gradle
         classpath KotlinSerialization.gradle
         classpath Bintray.plugin
+        classpath Detekt.gradle
         if (local_build) {
             classpath fileTree(dir: 'libs', include: ['*.jar'])
             classpath KotlinSerialization.runtime
@@ -56,6 +48,7 @@ allprojects {
         google()
         jcenter()
         maven { url Repositories.gradle }
+        maven { url Repositories.retekt }
         def githubUser = System.getenv("GITHUB_USER")
         def githubToken = System.getenv("GITHUB_TOKEN")
         if (githubUser != null && githubToken != null) {

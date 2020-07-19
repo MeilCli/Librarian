@@ -1,0 +1,54 @@
+build:
+  maxIssues: 5000
+
+complexity:
+  LargeClass:
+    threshold: 1200
+  LongMethod:
+    threshold: 120
+  TooManyFunctions:
+    thresholdInFiles: 30
+    thresholdInClasses: 30
+    thresholdInInterfaces: 30
+    thresholdInObjects: 30
+    thresholdInEnums: 30
+exceptions:
+  TooGenericExceptionCaught:
+    active: false
+
+formatting:
+  android: true
+  MaximumLineLength:
+    maxLineLength: 160
+  FinalNewline:
+    active: false
+
+naming:
+  ClassNaming:
+    classPattern: '^[A-Z]?([A-Z][a-z0-9]+)+[A-Z]?$'
+  EnumNaming:
+    enumEntryPattern: '^[A-Z]?([A-Z][a-z0-9]+)+[A-Z]?$'
+  ObjectPropertyNaming:
+    constantPattern: '^[a-z]+[0-9]*([A-Z][a-z0-9]+)*[A-Z]?$'
+    propertyPattern: '^[a-z]+[0-9]*([A-Z][a-z0-9]+)*[A-Z]?$'
+    privatePropertyPattern: '^_?[a-z]+[0-9]*([A-Z][a-z0-9]+)*[A-Z]?$'
+  TopLevelPropertyNaming:
+    constantPattern: '^[a-z]+[0-9]*([A-Z][a-z0-9]+)*[A-Z]?$'
+    propertyPattern: '^[a-z]+[0-9]*([A-Z][a-z0-9]+)*[A-Z]?$'
+    privatePropertyPattern: '^_?[a-z]+[0-9]*([A-Z][a-z0-9]+)*[A-Z]?$'
+
+style:
+  MaxLineLength:
+    maxLineLength: 160
+  NewLineAtEndOfFile:
+    active: false
+  WildcardImport:
+    active: false
+
+retekt:
+  InterfaceNaming:
+    active: true
+    interfacePattern:  '^I[A-Z]?([A-Z][a-z0-9]+)+[A-Z]?$'
+  TypeParameterNaming:
+    active: true
+    typeParameterPattern: '^T[A-Z]?([A-Z][a-z0-9]+)+[A-Z]?$'

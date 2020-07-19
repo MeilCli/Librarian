@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'AndroidLibraryPlugin'
+apply plugin: 'io.gitlab.arturbosch.detekt'
+apply plugin: 'DetektConfigPlugin'
 
 dependencies {
     implementation "androidx.browser:browser:1.2.0"

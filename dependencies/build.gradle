@@ -1,9 +1,10 @@
 apply plugin: "com.github.gmazzo.buildconfig"
 
+ext.detektVersion = "1.10.0"
 buildConfig {
     packageName("net.meilcli.librarian.gradle.dependencies")
     className("Dependencies")
-    buildConfigField("String", "test", "\"test_value\"")
+    buildConfigField("String", "detektVersion", "\"$detektVersion\"")
 }
 
 ext {
@@ -65,6 +66,10 @@ repositories {
         url "https://dl.bintray.com/meilcli/librarian"
         name "librarian"
     }
+    maven {
+        url "https://dl.bintray.com/mobile-act/RetektRule"
+        name "retekt"
+    }
 }
 
 dependencies {
@@ -99,6 +104,12 @@ dependencies {
     ext.junit5Version = "5.6.2"
     library "$junit5Group:junit-jupiter-api:$junit5Version", "api", "Junit5"
     library "$junit5Group:junit-jupiter-engine:$junit5Version", "engine", "Junit5"
+
+    ext.detektGroup = "io.gitlab.arturbosch.detekt"
+    library "$detektGroup:detekt-gradle-plugin:$detektVersion", "gradle", "Detekt"
+    library "$detektGroup:detekt-formatting:$detektVersion", "formatting", "Detekt"
+
+    library "mobile-act:retekt:0.1", "retekt", "MobileAct"
 
     ext.xmlUtilGroup = "net.devrieze"
     ext.xmlUtilVersion = "0.20.0.1"
