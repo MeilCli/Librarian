@@ -12,5 +12,6 @@ This list is using development of Librarian
 |[Kotlin](https://kotlinlang.org/)|JetBrains - Kotlin Team|[The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[Librarian](https://github.com/MeilCli/Librarian)|MeilCli|[MIT License](https://github.com/MeilCli/Librarian/blob/master/LICENSE)|
 |[Moshi](https://github.com/square/moshi)|Square, Inc.|[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
+|[detekt](https://detekt.github.io/detekt)|Artur Bosch|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[gradle-bintray-plugin](https://github.com/bintray/gradle-bintray-plugin)|JFrog|[The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)|
 |[gradle-buildconfig-plugin](https://github.com/gmazzo/gradle-buildconfig-plugin)|Guillermo Mazzola|[MIT License](https://github.com/gmazzo/gradle-buildconfig-plugin/blob/master/LICENSE)|
