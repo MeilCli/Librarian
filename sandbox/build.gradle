@@ -19,7 +19,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-identity:17.0.0"
     implementation "com.google.android.gms:play-services-analytics:17.0.0"
     implementation "com.google.android.gms:play-services-awareness:18.0.0"
-    implementation "com.google.android.gms:play-services-cast:18.1.0"
+    implementation "com.google.android.gms:play-services-cast:19.0.0"
     implementation "com.google.android.gms:play-services-gcm:17.0.0"
     implementation "com.google.android.gms:play-services-drive:17.0.0"
     implementation "com.google.android.gms:play-services-fitness:18.0.0"
