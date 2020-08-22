@@ -112,7 +112,7 @@ dependencies {
     library "mobile-act:retekt:0.1", "retekt", "MobileAct"
 
     ext.xmlUtilGroup = "net.devrieze"
-    ext.xmlUtilVersion = "0.20.0.1"
+    ext.xmlUtilVersion = "0.20.0.10"
     library "$xmlUtilGroup:xmlutil-jvm:$xmlUtilVersion", "core", "XmlUtil"
     library "$xmlUtilGroup:xmlutil-serialization-jvm:$xmlUtilVersion", "serialization", "XmlUtil"
 
