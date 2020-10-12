@@ -122,7 +122,7 @@ dependencies {
     library "com.squareup.okhttp3:okhttp:4.8.0", "okhttp", "SquareUp"
     library "com.squareup.retrofit2:retrofit:2.9.0", "retrofit", "SquareUp"
 
-    library "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0", "retrofitKotlinSerializationConverter", "JakeWharton"
+    library "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0", "retrofitKotlinSerializationConverter", "JakeWharton"
 
     library "com.google.code.gson:gson:2.8.6", "gson", "Google"
 
