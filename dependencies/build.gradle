@@ -119,7 +119,7 @@ dependencies {
     library "com.squareup.okio:okio:2.7.0", "okio", "SquareUp"
     library "com.squareup.moshi:moshi:1.9.3", "moshi", "SquareUp"
     library "com.squareup.moshi:moshi-kotlin-codegen:1.9.3", "moshiKapt", "SquareUp"
-    library "com.squareup.okhttp3:okhttp:4.8.0", "okhttp", "SquareUp"
+    library "com.squareup.okhttp3:okhttp:4.9.1", "okhttp", "SquareUp"
     library "com.squareup.retrofit2:retrofit:2.9.0", "retrofit", "SquareUp"
 
     library "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0", "retrofitKotlinSerializationConverter", "JakeWharton"
