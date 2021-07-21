@@ -81,7 +81,7 @@ dependencies {
     library "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0", "runtime", "KotlinSerialization"
 
     library "com.android.tools.build:gradle:4.0.1", "gradle", "Android"
-    library "androidx.appcompat:appcompat:1.1.0", "appCompat", "Android"
+    library "androidx.appcompat:appcompat:1.3.1", "appCompat", "Android"
     library "androidx.activity:activity:1.1.0", "activity", "Android"
     library "androidx.fragment:fragment:1.2.5", "fragment", "Android"
     library "androidx.recyclerview:recyclerview:1.1.0", "recyclerView", "Android"
