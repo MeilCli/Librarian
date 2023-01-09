@@ -116,7 +116,7 @@ dependencies {
     library "$xmlUtilGroup:xmlutil-jvm:$xmlUtilVersion", "core", "XmlUtil"
     library "$xmlUtilGroup:xmlutil-serialization-jvm:$xmlUtilVersion", "serialization", "XmlUtil"
 
-    library "com.squareup.okio:okio:2.7.0", "okio", "SquareUp"
+    library "com.squareup.okio:okio:3.3.0", "okio", "SquareUp"
     library "com.squareup.moshi:moshi:1.9.3", "moshi", "SquareUp"
     library "com.squareup.moshi:moshi-kotlin-codegen:1.9.3", "moshiKapt", "SquareUp"
     library "com.squareup.okhttp3:okhttp:4.8.0", "okhttp", "SquareUp"
